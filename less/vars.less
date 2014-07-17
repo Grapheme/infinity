@@ -1,5 +1,4 @@
 @htmlFontSize: 16;
-@min-width: 768rem / @htmlFontSize;
 
 .transition(@elem: all, @duration: .5s, @effect: ease) {
 	-webkit-transition: @elem @duration @effect;
@@ -12,13 +11,8 @@
 	box-sizing: @val;
 }
 
-.unstyled-list {
-	padding: 0;
+.list-unstyled {
 	margin: 0;
-}
-.fl-r {
-	float: right;
-}
-.fl-l {
-	float: left;
+	padding: 0;
+	list-style: none;
 }
