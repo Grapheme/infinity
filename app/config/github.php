@@ -8,7 +8,7 @@ return array(
     'remote'            => 'origin',
     'branch'            => 'master',
     'repository_name'   => 'infinity',
-    'repository_id'     => 21561647,
+    'repository_id'     => 21935394,
     'user_group'        => 'www-data',
     'user_name'         => 'www-data',
     'set_log'           => TRUE,
