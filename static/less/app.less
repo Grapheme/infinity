@@ -1,0 +1,47 @@
+header {
+	min-width: @min-width;
+	background: #ccc;
+
+	.logo {
+		display: inline-block;
+		vertical-align: top;
+		height: 130rem / @htmlFontSize;
+		width: 290rem / @htmlFontSize;
+		background: url('../img/logo.png') no-repeat center center e('/') 109rem / @htmlFontSize 49rem / @htmlFontSize #fff;
+	}
+
+	.header-cont {
+		vertical-align: top;
+		display: inline-block;
+		float: right;
+
+		.fl-r {
+			display: inline-block;
+		}
+
+		.main-nav {
+			display: inline-block;
+			vertical-align: middle;
+
+			.option {
+				display: inline-block;
+				margin-right: 30rem / @htmlFontSize;
+
+				&:last-child {
+					margin-right: 0;
+				}
+
+				a {
+					color: #fff;
+					text-decoration: none;
+					font-size: 14rem / @htmlFontSize;
+				}
+			}
+		}
+
+		.search {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+}
