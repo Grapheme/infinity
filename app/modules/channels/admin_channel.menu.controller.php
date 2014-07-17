@@ -46,7 +46,7 @@ class AdminChannelMenuController extends BaseController {
     public static function returnMenu() {
         return array(
             array(
-            	'title' => 'Инфоблоки',
+            	'title' => 'Инфоблоки1',
             	'link' => '#',
                 'class' => 'fa-info',
                 'permit' => 'view',
