@@ -164,5 +164,33 @@
 			background-position: bottom center;
 			background-repeat: no-repeat;
 		}
+
+		.auto-info {
+			position: absolute;
+			top: 100rem / @htmlFontSize;
+			left: 0;
+			color: #000;
+			z-index: 2;
+
+			.title {
+				text-transform: uppercase;
+				font-size: 34rem / @htmlFontSize;
+				margin-bottom: 18rem / @htmlFontSize;
+			}
+
+			.text {
+				text-transform: uppercase;
+				font-size: 15rem / @htmlFontSize;
+			}
+
+			.price {
+				font-size: 23rem / @htmlFontSize;
+				margin: 5rem / @htmlFontSize 0;
+			}
+
+			.drive-btn {
+				margin-top: 1rem;
+			}
+		}
 	}
 }

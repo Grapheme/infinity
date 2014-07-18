@@ -46,3 +46,58 @@
 		font-size: 13px;
 	}
 }
+
+.btn-with-img {
+	position: relative;
+	display: inline-block;
+	background: #633e7c;
+	border: 2rem / @htmlFontSize solid #633e7c;
+	height: 55rem / @htmlFontSize;
+	line-height: 53rem / @htmlFontSize;
+	font-size: 15rem / @htmlFontSize;
+	text-transform: uppercase;
+	padding: 0 15rem / @htmlFontSize 0 40rem / @htmlFontSize;
+	font-weight: 600;
+	color: #fff;
+	text-decoration: none;
+
+	&:hover {
+		background: #fff;
+		color: #633e7c;
+
+		&:after {
+			opacity: 1;
+		}
+		&:before {
+			opacity: 0;
+		}
+	}
+}
+
+.drive-btn {
+	.box-sizing;
+	.transition;
+	.btn-with-img;
+
+	&:before, &:after {
+		.transition(opacity);
+		content: "";
+		width: 16rem / @htmlFontSize;
+		height: 16rem / @htmlFontSize;
+		position: absolute;
+		left: 15rem / @htmlFontSize;
+		top: 50%;
+		margin-top: -8rem / @htmlFontSize;
+		
+	}
+
+	&:before {
+		background: url(../img/wheel.png);
+		opacity: 1;
+	}
+
+	&:after {
+		background: url(../img/wheel-hover.png);
+		opacity: 0;
+	}
+}
