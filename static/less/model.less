@@ -5,20 +5,98 @@
 	color: #000;
 
 	h2 {
-		float: left;
-		margin: 0 0 37px;
+		display: inline-block;
+		margin: 0 99px 0 0;
 
 		font-size: 34.5px; 
 		line-height: 37px;
 		text-transform: uppercase;
+		vertical-align: middle;
 	}
 
-	header {
-		.filter {
-			float: left;
-		}
+	header {		
+		margin: 0 0 37px;
+
 		button {
-			float: left;
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+}
+
+.filter {
+	display: inline-block;
+	.filter-ul {
+		.list-unstyled;
+		margin-right: 65px;
+	}
+
+	.filter-li {
+		display: inline-block;
+		margin: 0 18px 0 0;
+		vertical-align: middle;
+		font-size: 14px;
+
+		a {
+			.typical-link;
+			font-weight: 300;
+		}
+	}
+}
+
+.car-list {
+	.list-unstyled;
+
+	.car-item {
+		margin: 0 0 32px;
+		padding: 0 0 32px;
+		border-bottom: 2px dotted;
+
+		.car-head {
+			vertical-align: top;
+			display: inline-block;
+			width: 280px;
+			font-size: 14px;
+
+			h3 {
+				margin: 0;
+				font-weight: 600;
+			}
+
+			.car-price {
+				margin: 0 0 24px;
+			}
+		}
+		.car-body {
+			vertical-align: top;
+			display: inline-block;
+			width: 1064px - 280;
+
+			.car-links {
+				margin: 0 0 32px 0;
+				font-size: 13px;
+				text-transform: uppercase;
+
+				a {
+					.transition;
+					margin: 0 34px 0 0;
+					color: inherit;
+					text-decoration: none;
+					border-bottom: 1px solid transparent;
+
+					&:hover {
+						border-color: #000;
+					}
+				}
+			}
+
+			.car-prop {
+				.list-unstyled;
+				list-style-type: disc;
+				list-style-position: inside;
+				font-size: 14px;
+				line-height: 24px;
+			}
 		}
 	}
 }
