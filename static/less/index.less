@@ -1,0 +1,54 @@
+.slider-container {
+	position: relative;
+	z-index: 1;
+	height: 970rem / @htmlFontSize;
+	background: #000;
+
+	.slider-img {
+		position: absolute;
+		width: 100%;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.slider-nav {
+		position: absolute;
+		top: 665rem / @htmlFontSize;
+		right: 0;
+		height: 73rem / @htmlFontSize;
+
+		.thumb {
+			display: inline-block;
+			vertical-align: top;
+			width: 145rem / @htmlFontSize;
+			height: 75rem / @htmlFontSize;
+			background-size: cover;
+			background-position: center center;
+			margin-right: 3rem / @htmlFontSize;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+
+	.index-nav {
+		.unstyled-list;
+		position: absolute;
+		bottom: 0;
+
+		.option {
+			display: inline-block;
+			vertical-align: top;
+
+			a {
+				color: #fff;
+				text-transform: uppercase;
+				font-size: 24rem / @htmlFontSize;
+				text-decoration: none;
+			}
+		}
+	}
+}
