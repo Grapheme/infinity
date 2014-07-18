@@ -4,9 +4,15 @@
 	height: 970rem / @htmlFontSize;
 	background: #000;
 
+	.slider-wrapper {
+		height: 970rem / @htmlFontSize;
+	}
+
 	.slider-img {
 		position: absolute;
 		width: 100%;
+		height: 100%;
+		overflow: hidden;
 
 		img {
 			width: 100%;
@@ -20,6 +26,7 @@
 		height: 73rem / @htmlFontSize;
 
 		.thumb {
+			position: relative;
 			display: inline-block;
 			vertical-align: top;
 			width: 145rem / @htmlFontSize;
@@ -31,23 +38,64 @@
 			&:last-child {
 				margin-right: 0;
 			}
+
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0; left: 0; right: 0; bottom: 0;
+				background: rgba(0, 0, 0, .5);
+			}
+
+			&.active {
+
+				&:before {
+					content: "";
+					position: absolute;
+					top: -15rem / @htmlFontSize;
+					left: 50%;
+					margin-left: -15rem / @htmlFontSize;
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 0 15rem / @htmlFontSize 15rem / @htmlFontSize 15rem / @htmlFontSize;
+					border-color: transparent transparent #633e7c transparent;
+				}
+
+				&:after {
+					background: rgba(0, 0, 0, 0);
+				}
+			}
 		}
 	}
 
 	.index-nav {
 		.list-unstyled;
 		position: absolute;
-		bottom: 0;
+		bottom: 40rem / @htmlFontSize;
 
 		.option {
 			display: inline-block;
 			vertical-align: top;
+			margin-right: 40rem / @htmlFontSize;
 
 			a {
+				.transition;
+				.box-sizing;
+				display: inline-block;
+				padding: 15rem / @htmlFontSize 55rem / @htmlFontSize 15rem / @htmlFontSize 15rem / @htmlFontSize;
+				border: 2px solid transparent;
 				color: #fff;
 				text-transform: uppercase;
 				font-size: 24rem / @htmlFontSize;
 				text-decoration: none;
+			}
+
+			&:hover {
+
+				a {
+					color: #8e65aa;
+					border-color: #8e65aa;
+				}
 			}
 		}
 	}
