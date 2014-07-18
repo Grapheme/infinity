@@ -1,0 +1,87 @@
+.main-footer {
+	background: #000;
+	padding: 35rem / @htmlFontSize 0 0;
+	font-size: 11rem / @htmlFontSize;
+
+	.footer-top {
+		color: rgba(255, 255, 255, 0.4);
+	}
+
+	.footer-left {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.footer-block {
+		display: inline-block;
+		vertical-align: top;
+		padding-right: 45rem / @htmlFontSize;
+
+		.title {
+			font-size: 11rem / @htmlFontSize;
+			text-transform: uppercase;
+			margin-bottom: 25rem / @htmlFontSize;
+		}
+
+		.footer-ul {
+			.list-unstyled;
+			line-height: 20rem / @htmlFontSize;
+
+			.option {
+				a {
+					font-size: 11rem / @htmlFontSize;
+					text-decoration: none;
+					color: rgba(255, 255, 255, 0.4);
+				}
+			}
+		}
+	}
+
+	.footer-right {
+		position: relative;
+		top: -4rem / @htmlFontSize;
+		display: inline-block;
+		vertical-align: top;
+		line-height: 23rem / @htmlFontSize;
+		float: right;
+
+		.contact-block {
+			display: block;
+			margin-bottom: 15rem / @htmlFontSize;
+		}
+
+		.contact-link {
+			text-decoration: none;
+			color: rgba(255, 255, 255, 0.4);
+		}
+
+		.soc-icons {
+			font-size: 20rem / @htmlFontSize;
+
+			.soc-link {
+				.transition(color);
+				font-family: "social";
+				text-decoration: none;
+				color: rgba(255, 255, 255, 0.4);
+				margin-right: 5rem / @htmlFontSize;
+
+				&:hover {
+					color: #fff;
+				}
+			}
+		}
+
+		.icon-fb:before { content: '\e800'; }
+		.icon-in:before { content: '\e801'; }
+		.icon-vk:before { content: '\e803'; }
+	}
+
+	.footer-bottom {
+		padding: 95rem / @htmlFontSize 0 25rem / @htmlFontSize;
+
+		a {
+			color: #fff;
+			text-decoration: none;
+		}
+	}
+}
