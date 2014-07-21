@@ -48,16 +48,25 @@
 		}
 	}
 
-	.slider-nav {
+	.slider-nav-win {
+		padding-top: 15rem / @htmlFontSize;
 		position: absolute;
 		top: 665rem / @htmlFontSize;
 		right: 2.5rem;
 		height: 73rem / @htmlFontSize;
+		overflow: hidden;
+	}
+
+	.slider-nav {
+		.list-unstyled;
+		position: absolute;
+		width: 2000rem / @htmlFontSize;
+		bottom: 0;
+		left: 0;
 
 		.thumb {
 			position: relative;
-			display: inline-block;
-			vertical-align: top;
+			float: left;
 			width: 145rem / @htmlFontSize;
 			height: 75rem / @htmlFontSize;
 			background-size: cover;

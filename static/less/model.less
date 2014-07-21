@@ -106,11 +106,17 @@
 }
 
 .auto-slider {
-	.slider-nav {
-		.list-unstyled;
+	.slider-nav-win {
+		position: relative;
 		height: 112rem / @htmlFontSize;
 		background: #1e1e1c;
 		text-align: center;
+	}
+
+	.slider-nav {
+		.list-unstyled;
+		height: 100%;
+		display: inline-block;
 
 		.thumb {
 			position: relative;
@@ -153,6 +159,10 @@
 		position: relative;
 		background: #fff;
 		height: 695rem / @htmlFontSize;
+
+		.wrapper {
+			height: 100%;
+		}
 
 		.slider-photo {
 			position: absolute;
