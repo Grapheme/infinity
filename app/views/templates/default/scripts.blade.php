@@ -15,3 +15,5 @@
 			loadScript("{{asset('js/vendor/jquery-form.min.js');}}");
 		}
 	</script>
+{{ HTML::script('theme/js/plugins.js'); }}
+{{ HTML::script('theme/js/main.js'); }}
