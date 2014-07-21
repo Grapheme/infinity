@@ -1,29 +1,72 @@
-<footer>
+<footer class="main-footer">
     <div class="wrapper">
-        <div class="contact-blocks">
-            <div class="con-block">
-                +7 (495) 502-92-90<br>
-                +7 (499) 479-69-20<br>
-                info@lessad.ru
+        <div class="footer-top">
+            <div class="footer-left">
+                <div class="footer-block">
+                    <div class="title">Модели</div>
+                    <ul class="footer-ul">
+                        <li class="option"><a href="{{ link::to() }}">Q50</a>
+                        <li class="option"><a href="{{ link::to() }}">Q60</a>
+                        <li class="option"><a href="{{ link::to() }}">M</a>
+                        <li class="option"><a href="{{ link::to() }}">Q70</a>
+                        <li class="line">&nbsp;
+                        <li class="option"><a href="{{ link::to() }}">QX50</a>
+                        <li class="option"><a href="{{ link::to() }}">JX</a>
+                        <li class="option"><a href="{{ link::to() }}">QX70</a>
+                        <li class="option"><a href="{{ link::to() }}">QX80</a>
+                    </ul>
+                </div>
+                <div class="footer-block">
+                    <div class="title">О компании</div>
+                    <ul class="footer-ul">
+                        <li class="option"><a href="{{ link::to() }}">Лица компании</a>
+                        <li class="option"><a href="{{ link::to() }}">Вакансии</a>
+                        <li class="option"><a href="{{ link::to() }}">Новости</a>
+                        <li class="option"><a href="{{ link::to() }}">События</a>
+                        <li class="option"><a href="{{ link::to() }}">Клуб</a>
+                        <li class="option"><a href="{{ link::to() }}">История</a>
+                        <li class="option"><a href="{{ link::to() }}">Контакты</a>
+                    </ul>
+                </div>
+                <div class="footer-block">
+                    <div class="title">Услуги</div>
+                    <ul class="footer-ul">
+                        <li class="option"><a href="{{ link::to() }}">Гарантия</a>
+                        <li class="option"><a href="{{ link::to() }}">Программы ТО</a>
+                        <li class="option"><a href="{{ link::to() }}">Аксессуары</a>
+                    </ul>
+                </div>
+                <div class="footer-block">
+                    <div class="title">Сервис и запчасти</div>
+                    <ul class="footer-ul">
+                        <li class="option"><a href="{{ link::to() }}">Гарантия</a>
+                        <li class="option"><a href="{{ link::to() }}">Программы ТО</a>
+                        <li class="option"><a href="{{ link::to() }}">Запчасти</a>
+                        <li class="option"><a href="{{ link::to() }}">Аксессуары</a>
+                    </ul>
+                </div>
             </div>
-            <div class="con-block">
-                Россия, 143900,<br>
-                Московская область, г. Балашиха,<br>
-                Щелковское шоссе, 54-Б
+            <div class="footer-right">
+                <adress class="contact-block">
+                    346715, г. Ростовская обл.,<br>
+                    Аксайский р-н, п. Янтарный,<br>
+                    Новочеркасское шоссе, 16В
+                </adress>
+                <div class="contact-block">
+                    <a href="tel:+78632928892" class="contact-link">+7 863-292-88-92</a><br>
+                    <a href="tel:+78633050500" class="contact-link">+7 863 305-05-00</a>
+                </div>
+                <div class="soc-icons">
+                    <a href="{{ link::to() }}" class="soc-link icon-fb"></a>
+                    <a href="{{ link::to() }}" class="soc-link icon-vk"></a>
+                    <a href="{{ link::to() }}" class="soc-link icon-in"></a>
+                </div>
             </div>
+            <div class="clearfix"></div>
         </div>
-        <div class="fl-r">
-            <ul class="footer-nav">
-                <li><a href="{{ link::to('about') }}">О компании</a></li>
-                <li><a href="{{ link::to('catalog') }}">Продукция</a></li>
-                <li><a href="{{ link::to('experience') }}">Опыт</a></li>
-                <li><a href="{{ link::to('contacts') }}">Контакты</a></li>
-            </ul>
-        </div>
-        <div class="clearfix"></div>
         <div class="footer-bottom">
-            <span>Все права защищены. (с) 2014 ООО «Лессад»</span>
-            <span class="fl-r">Сделано в <a href="http://grapheme.ru" target="_blank" class="ftr-link">ГРАФЕМА</a></span>
+            <span>© 2014 Copyright GEDON Group</span>
+            <span class="fl-r">сделано в <a href="http://grapheme.ru" target="_blank">ГРАФЕМА</a></span>
         </div>
     </div>
 </footer>
