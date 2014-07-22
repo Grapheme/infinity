@@ -14,6 +14,7 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/sumoselect.css">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
@@ -78,14 +79,21 @@
                         </div>
                     </header>
                     <div class="cars-filter">
-                        <label class="styled-select">
-                            <select>
-                                <option selected value="">Модель</option>
-                                <option>QX50</option>
-                                <option>QX60</option>
-                            </select>
-                        </label>
-                        
+                        <select class="customSelect selectModel">
+                            <option>The Shawshank Redemption</option>
+                            <option>The Godfather</option>
+                            <option>Pulp Fiction</option>
+                            <option>The Good, the Bad and the Ugly</option>
+                            <option>12 Angry Men</option>
+                        </select>
+
+                        <select class="customSelect selectYear">
+                            <option>2012</option>
+                            <option>2013</option>
+                            <option>2014</option>
+                            <option>2015</option>
+                            <option>2016</option>
+                        </select>                 
                     </div>
                     
                     <ul class="sub-offers-ul">
@@ -96,50 +104,21 @@
                             <div class="sub-offers-li-body">
                                 <h3 class="sub-offers-li-header">
                                     <a href="#">
-                                        INFINITI Q50:
-                                        СТАНЬ ПЕРВЫМ!
+                                        INFINITI Q50
                                     </a>
                                 </h3>
-                                <div class="sub-offers-li-desc">
-                                    Новая и яркая модель премиум-класса Infiniti
-                                    Q50 с 2,0-литровым бензиновым двигателем.
-                                </div>
-                            </div>
-                        <li class="sub-offers-li">
-                            <div class="sub-offers-li-head" style="background: url(img/offer/offers/02.jpg) no-repeat 0 0 / cover;">
-                                <a href="#"></a>
-                            </div>
-                            <div class="sub-offers-li-body">
-                                <h3 class="sub-offers-li-header">
-                                    <a href="#">
-                                        Первый гибридный
-                                        Infiniti доступен
-                                        к заказу!
-                                    </a>
-                                </h3>
-                                <div class="sub-offers-li-desc">
-                                    Infinti QX60 Hybrid уже доступен к заказу
-                                    в дилерском центре Infiniti Gedon
-                                    в Ростове-на-Дону!
-                                </div>
-                            </div>
-                        <li class="sub-offers-li">
-                            <div class="sub-offers-li-head" style="background: url(img/offer/offers/03.jpg) no-repeat 0 0 / cover;">
-                                <a href="#"></a>
-                            </div>
-                            <div class="sub-offers-li-body">
-                                <h3 class="sub-offers-li-header">
-                                    <a href="#">
-                                        INFINITI QX80
-                                        ОТ 25 000 РУБ. В МЕСЯЦ
-                                    </a>
-                                </h3>
-                                <div class="sub-offers-li-desc">
-                                    Оцените уникальную систему
-                                    стабилизации колебаний кузова Infiniti
-                                    QX80. Ощутите плавность прохождения
-                                    любых поворотов
-                                </div>
+                                <dl class="chars-list">
+                                    <dt>Год:</dt>
+                                        <dd>2008</dd>
+                                    <dt>Пробег:</dt>
+                                        <dd>68 172 км</dd>
+                                    <dt>Кузов:</dt>
+                                        <dd>купе</dd>
+                                    <dt>КПП:</dt>
+                                        <dd>автомат</dd>
+                                    <dt>Цена:</dt>
+                                        <dd>1 299 000 р</dd>
+                                </dl>
                             </div>
                         <li class="sub-offers-li">
                             <div class="sub-offers-li-head" style="background: url(img/offer/offers/01.jpg) no-repeat 0 0 / cover;">
@@ -148,50 +127,136 @@
                             <div class="sub-offers-li-body">
                                 <h3 class="sub-offers-li-header">
                                     <a href="#">
-                                        INFINITI Q50:
-                                        СТАНЬ ПЕРВЫМ!
+                                        INFINITI Q50
                                     </a>
                                 </h3>
-                                <div class="sub-offers-li-desc">
-                                    Новая и яркая модель премиум-класса Infiniti
-                                    Q50 с 2,0-литровым бензиновым двигателем.
-                                </div>
+                                <dl class="chars-list">
+                                    <dt>Год:</dt>
+                                        <dd>2008</dd>
+                                    <dt>Пробег:</dt>
+                                        <dd>68 172 км</dd>
+                                    <dt>Кузов:</dt>
+                                        <dd>купе</dd>
+                                    <dt>КПП:</dt>
+                                        <dd>автомат</dd>
+                                    <dt>Цена:</dt>
+                                        <dd>1 299 000 р</dd>
+                                </dl>
                             </div>
                         <li class="sub-offers-li">
-                            <div class="sub-offers-li-head" style="background: url(img/offer/offers/02.jpg) no-repeat 0 0 / cover;">
+                            <div class="sub-offers-li-head" style="background: url(img/offer/offers/01.jpg) no-repeat 0 0 / cover;">
                                 <a href="#"></a>
                             </div>
                             <div class="sub-offers-li-body">
                                 <h3 class="sub-offers-li-header">
                                     <a href="#">
-                                        Первый гибридный
-                                        Infiniti доступен
-                                        к заказу!
+                                        INFINITI Q50
                                     </a>
                                 </h3>
-                                <div class="sub-offers-li-desc">
-                                    Infinti QX60 Hybrid уже доступен к заказу
-                                    в дилерском центре Infiniti Gedon
-                                    в Ростове-на-Дону!
-                                </div>
+                                <dl class="chars-list">
+                                    <dt>Год:</dt>
+                                        <dd>2008</dd>
+                                    <dt>Пробег:</dt>
+                                        <dd>68 172 км</dd>
+                                    <dt>Кузов:</dt>
+                                        <dd>купе</dd>
+                                    <dt>КПП:</dt>
+                                        <dd>автомат</dd>
+                                    <dt>Цена:</dt>
+                                        <dd>1 299 000 р</dd>
+                                </dl>
                             </div>
                         <li class="sub-offers-li">
-                            <div class="sub-offers-li-head" style="background: url(img/offer/offers/03.jpg) no-repeat 0 0 / cover;">
+                            <div class="sub-offers-li-head" style="background: url(img/offer/offers/01.jpg) no-repeat 0 0 / cover;">
                                 <a href="#"></a>
                             </div>
                             <div class="sub-offers-li-body">
                                 <h3 class="sub-offers-li-header">
                                     <a href="#">
-                                        INFINITI QX80
-                                        ОТ 25 000 РУБ. В МЕСЯЦ
+                                        INFINITI Q50
                                     </a>
                                 </h3>
-                                <div class="sub-offers-li-desc">
-                                    Оцените уникальную систему
-                                    стабилизации колебаний кузова Infiniti
-                                    QX80. Ощутите плавность прохождения
-                                    любых поворотов
-                                </div>
+                                <dl class="chars-list">
+                                    <dt>Год:</dt>
+                                        <dd>2008</dd>
+                                    <dt>Пробег:</dt>
+                                        <dd>68 172 км</dd>
+                                    <dt>Кузов:</dt>
+                                        <dd>купе</dd>
+                                    <dt>КПП:</dt>
+                                        <dd>автомат</dd>
+                                    <dt>Цена:</dt>
+                                        <dd>1 299 000 р</dd>
+                                </dl>
+                            </div>
+                        <li class="sub-offers-li">
+                            <div class="sub-offers-li-head" style="background: url(img/offer/offers/01.jpg) no-repeat 0 0 / cover;">
+                                <a href="#"></a>
+                            </div>
+                            <div class="sub-offers-li-body">
+                                <h3 class="sub-offers-li-header">
+                                    <a href="#">
+                                        INFINITI Q50
+                                    </a>
+                                </h3>
+                                <dl class="chars-list">
+                                    <dt>Год:</dt>
+                                        <dd>2008</dd>
+                                    <dt>Пробег:</dt>
+                                        <dd>68 172 км</dd>
+                                    <dt>Кузов:</dt>
+                                        <dd>купе</dd>
+                                    <dt>КПП:</dt>
+                                        <dd>автомат</dd>
+                                    <dt>Цена:</dt>
+                                        <dd>1 299 000 р</dd>
+                                </dl>
+                            </div>
+                        <li class="sub-offers-li">
+                            <div class="sub-offers-li-head" style="background: url(img/offer/offers/01.jpg) no-repeat 0 0 / cover;">
+                                <a href="#"></a>
+                            </div>
+                            <div class="sub-offers-li-body">
+                                <h3 class="sub-offers-li-header">
+                                    <a href="#">
+                                        INFINITI Q50
+                                    </a>
+                                </h3>
+                                <dl class="chars-list">
+                                    <dt>Год:</dt>
+                                        <dd>2008</dd>
+                                    <dt>Пробег:</dt>
+                                        <dd>68 172 км</dd>
+                                    <dt>Кузов:</dt>
+                                        <dd>купе</dd>
+                                    <dt>КПП:</dt>
+                                        <dd>автомат</dd>
+                                    <dt>Цена:</dt>
+                                        <dd>1 299 000 р</dd>
+                                </dl>
+                            </div>
+                        <li class="sub-offers-li">
+                            <div class="sub-offers-li-head" style="background: url(img/offer/offers/01.jpg) no-repeat 0 0 / cover;">
+                                <a href="#"></a>
+                            </div>
+                            <div class="sub-offers-li-body">
+                                <h3 class="sub-offers-li-header">
+                                    <a href="#">
+                                        INFINITI Q50
+                                    </a>
+                                </h3>
+                                <dl class="chars-list">
+                                    <dt>Год:</dt>
+                                        <dd>2008</dd>
+                                    <dt>Пробег:</dt>
+                                        <dd>68 172 км</dd>
+                                    <dt>Кузов:</dt>
+                                        <dd>купе</dd>
+                                    <dt>КПП:</dt>
+                                        <dd>автомат</dd>
+                                    <dt>Цена:</dt>
+                                        <dd>1 299 000 р</dd>
+                                </dl>
                             </div>
                     </ul>
                 </section>
@@ -274,5 +339,10 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/vendor/jquery.sumoselect.min.js"></script>
+        <script>
+            $('.customSelect.selectModel').SumoSelect({placeholder: 'Модель'});
+            $('.customSelect.selectYear').SumoSelect({placeholder: 'Год'});
+        </script>
     </body>
 </html>
