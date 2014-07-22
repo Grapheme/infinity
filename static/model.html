@@ -76,7 +76,7 @@
                             <div class="text">Новый INFINITY QX70</div>
                             <div class="price">1 728 000 руб</div>
                             <div class="text">Кредит от <b>5,75%</b></div>
-                            <a href="#" class="drive-btn">Записаться на тестдрайв</a>
+                            <a href="#" class="drive-btn js-pop-show" data-popup="test-drive">Записаться на тестдрайв</a>
                         </div>
                     </div>
                 </div>
@@ -302,6 +302,24 @@
                 </div>
             </div>
         </footer>
+
+        <section class="overlay">
+            <div class="pop-window pop-dtest" data-popup="test-drive">
+                <i class="js-pop-close">&#x2715;</i>
+                <div class="dtest-in">
+                    <div class="title">Заявка<br>на тест-драйв</div>
+                    <div class="dtest-form">
+                        <form>
+                            <input type="text" class="dtest-input" placeholder="Ф.И.О.">
+                            <input type="text" class="dtest-input" placeholder="Телефон">
+                            <input type="text" class="dtest-input" placeholder="Email">
+                            <button type="submit" class="btn fl-r">Отправить</button>
+                        </form>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
