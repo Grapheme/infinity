@@ -16,4 +16,8 @@ class Reviews extends BaseModel {
 
         return $this->hasOne('Photo','id','image_id');
     }
+
+    public  function images(){
+        return $this->belongsTo('Photo','image_id');
+    }
 }

@@ -5,15 +5,15 @@
                 <div class="footer-block">
                     <div class="title">Модели</div>
                     <ul class="footer-ul">
-                        <li class="option"><a href="{{ link::to() }}">Q50</a>
-                        <li class="option"><a href="{{ link::to() }}">Q60</a>
-                        <li class="option"><a href="{{ link::to() }}">M</a>
-                        <li class="option"><a href="{{ link::to() }}">Q70</a>
+                        <li class="option"><a href="{{ link::to('model') }}">Q50</a>
+                        <li class="option"><a href="{{ link::to('model') }}">Q60</a>
+                        <li class="option"><a href="{{ link::to('model') }}">M</a>
+                        <li class="option"><a href="{{ link::to('model') }}">Q70</a>
                         <li class="line">&nbsp;
-                        <li class="option"><a href="{{ link::to() }}">QX50</a>
-                        <li class="option"><a href="{{ link::to() }}">JX</a>
-                        <li class="option"><a href="{{ link::to() }}">QX70</a>
-                        <li class="option"><a href="{{ link::to() }}">QX80</a>
+                        <li class="option"><a href="{{ link::to('model') }}">QX50</a>
+                        <li class="option"><a href="{{ link::to('model') }}">JX</a>
+                        <li class="option"><a href="{{ link::to('model') }}">QX70</a>
+                        <li class="option"><a href="{{ link::to('model') }}">QX80</a>
                     </ul>
                 </div>
                 <div class="footer-block">

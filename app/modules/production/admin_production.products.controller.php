@@ -178,6 +178,7 @@ class AdminProductionProductsController extends BaseController {
 
 		$input = array(
             'title' => Input::get('title'),
+            'link' => Input::get('link'),
             'category_id' => Input::get('category_id'),
             'short' => Input::get('short'),
             'desc' => Input::get('desc'),
@@ -245,6 +246,7 @@ class AdminProductionProductsController extends BaseController {
 
         $input = array(
             'title' => Input::get('title'),
+            'link' => Input::get('link'),
             'category_id' => Input::get('category_id'),
             'short' => Input::get('short'),
             'desc' => Input::get('desc'),
@@ -292,7 +294,15 @@ class AdminProductionProductsController extends BaseController {
 
 		$json_request = array('status'=>FALSE, 'responseText'=>'');
 
-	    $deleted = Product::find($id)->delete();
+	    $product = Product::find($id);
+        if($image = $product->images()->first()):
+            if (!empty($image->name) && File::exists(public_path('uploads/galleries/thumbs/'.$image->name))):
+                File::delete(public_path('uploads/galleries/thumbs/'.$image->name));
+                File::delete(public_path('uploads/galleries/'.$image->name));
+                Photo::find($image->id)->delete();
+            endif;
+        endif;
+        $product->delete();
 		$json_request['responseText'] = 'Продукт удален';
 		$json_request['status'] = TRUE;
 		return Response::json($json_request, 200);

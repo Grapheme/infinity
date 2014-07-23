@@ -20,5 +20,6 @@
     @include('templates.default.scripts')
     @yield('scripts')
     {{ HTML::script('theme/js/main.js') }}
+    {{ HTML::script('theme/js/plugins.js'); }}
 </body>
 </html>

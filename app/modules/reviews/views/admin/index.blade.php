@@ -47,7 +47,7 @@
                     @endif
                     @if(Allow::action('news', 'delete'))
                     <form method="POST" action="{{ link::auth('reviews/destroy/'.$review->id) }}">
-                        <button type="button" class="btn btn-default remove-news">
+                        <button type="button" class="btn btn-default remove-reviews">
                             Удалить
                         </button>
                     </form>

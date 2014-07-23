@@ -1,4 +1,4 @@
-<header class="main-header">
+<header class="main-header{{ Request::is('/') ? '' : ' static-header' }}">
     @if(!Request::is('/'))
     <a href="{{ link::to() }}" class="logo"></a>
     @else
@@ -10,7 +10,7 @@
                 <li class="option"><a href="{{ link::to('about') }}">О компании</a>
                 <li class="option"><a href="{{ link::to('auto') }}">Автомобили</a>
                 <li class="option"><a href="{{ link::to('accessories') }}">Сервисы и запчасти</a>
-                <li class="option"><a href="{{ link::to('specials') }}">Спецпредложения</a>
+                <li class="option"><a href="{{ link::to('offers') }}">Спецпредложения</a>
                 <li class="option"><a href="{{ link::to('services') }}">Услуги</a>
             </ul>
         </nav>
@@ -18,13 +18,13 @@
             <div class="model">
                 <div class="title">Седаны и купе</div>
                 <div class="items">
-                    <a href="javascript:void(0);">Q50</a><a href="javascript:void(0);">Q60</a><a href="javascript:void(0);">M</a><a href="javascript:void(0);">Q70</a>
+                    <a href="{{ link::to('model') }}">Q50</a><a href="{{ link::to('model') }}">Q60</a><a href="{{ link::to('model') }}">M</a><a href="{{ link::to('model') }}">Q70</a>
                 </div>
             </div>
             <div class="model">
                 <div class="title">Кроссоверы и внедорожники</div>
                 <div class="items">
-                    <a href="javascript:void(0);">QX50</a><a href="javascript:void(0);">JX</a><a href="javascript:void(0);">QX60</a><a href="javascript:void(0);">QX70</a><a href="javascript:void(0);">QX80</a>
+                    <a href="{{ link::to('model') }}">QX50</a><a href="{{ link::to('model') }}">JX</a><a href="{{ link::to('model') }}">QX60</a><a href="{{ link::to('model') }}">QX70</a><a href="{{ link::to('model') }}">QX80</a>
                 </div>
             </div>
             <div class="model">

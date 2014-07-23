@@ -199,10 +199,7 @@ class AdminChannelController extends BaseController {
 
 		$validation = Validator::make($input, Channel::$rules);
 		if($validation->passes()) {
-
             Channel::create($input);
-			#return link::auth('groups');
-
 			$json_request['responseText'] = "Элемент канала создан";
 			$json_request['redirect'] = link::auth($this->module['rest']);
 			$json_request['status'] = TRUE;
@@ -270,18 +267,10 @@ class AdminChannelController extends BaseController {
             $input['image_id'] = $image_id;
         }
         ################################################
-
-		$validation = Validator::make($input, Product::$rules);
+		$validation = Validator::make($input, Channel::$rules);
 		if($validation->passes()):
-
 			$channel->update($input);
-
 			$json_request['responseText'] = 'Элемент канала обновлен';
-			#$json_request['responseText'] = print_r($group_id, 1);
-			#$json_request['responseText'] = print_r($group, 1);
-			#$json_request['responseText'] = print_r(Input::get('actions'), 1);
-			#$json_request['responseText'] = print_r($group->actions(), 1);
-			#$json_request['redirect'] = link::auth('groups');
 			$json_request['status'] = TRUE;
 		else:
 			$json_request['responseText'] = 'Неверно заполнены поля';
@@ -301,11 +290,17 @@ class AdminChannelController extends BaseController {
             return App::abort(404);
 
 		$json_request = array('status'=>FALSE, 'responseText'=>'');
-        $channel = Channel::find($id)->first();
+        $channel = Channel::find($id);
         if (File::exists(public_path($channel->file))):
             File::delete(public_path($channel->file));
         endif;
-
+        if($image = $channel->images()->first()):
+            if (!empty($image->name) && File::exists(public_path('uploads/galleries/thumbs/'.$image->name))):
+                File::delete(public_path('uploads/galleries/thumbs/'.$image->name));
+                File::delete(public_path('uploads/galleries/'.$image->name));
+                Photo::find($image->id)->delete();
+            endif;
+        endif;
         $channel->delete();
 		$json_request['responseText'] = 'Элемент канала удален';
 		$json_request['status'] = TRUE;

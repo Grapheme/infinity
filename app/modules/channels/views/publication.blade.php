@@ -1,5 +1,5 @@
 <?php
-$channel = Channel::where('category_id',2)->take(3)->get();
+$channel = Channel::where('category_id',2)->take(100)->get();
 ?>
 @if($channel->count())
 <div class="about-posts">
@@ -14,12 +14,16 @@ $channel = Channel::where('category_id',2)->take(3)->get();
             <ul class="post-ul">
                 @foreach($channel as $pub)
                 <li>
-                    <a href="{{ !empty($pub->link) ? link::to($pub->link) :'javascript::void(0);'}}" class="title">{{ $pub->title }}</a>
+                    @if(!empty($pub->link))
+                    <a href="{{ link::to($pub->link) }}" class="title">{{ $pub->title }}</a>
+                    @else
+                    {{ $pub->title }}
+                    @endif
                     <div class="desc">{{ $pub->short }}</div>
                 @endforeach
             </ul>
         </div>
-        @if(Channel::where('category_id',2)->count() > 3)
+        @if(Channel::where('category_id',2)->count() > 100)
         <a href="javascript::void(0);" class="post-link js-posts">Показать все</a>
         @endif
     </div>

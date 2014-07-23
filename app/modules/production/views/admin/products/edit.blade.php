@@ -22,7 +22,12 @@
 							{{ Form::text('title') }}
 						</label>
 					</section>
-
+                    <section>
+                        <label class="label">Ссылка на страницу</label>
+                        <label class="input">
+                            {{ Form::text('link') }}
+                        </label>
+                    </section>
 					<section>
 						<label class="label">Категория</label>
 						<label class="select">
@@ -42,7 +47,7 @@
 					<section>
 						<label class="label">Краткое описание</label>
 						<label class="textarea">
-							{{ Form::textarea('short') }}
+							{{ Form::textarea('short',NULL,array('class'=>'redactor')) }}
 						</label>
 					</section>
                     <section>
@@ -75,11 +80,13 @@
 	var validation_rules = {
 		title: { required: true },
 		category_id: { required: true, min: 1 },
+        link: { required: true},
 		//desc: { required: true },
 	};
 	var validation_messages = {
 		title: { required: 'Укажите название' },
 		category_id: { required: 'Укажите категорию', min: 'Укажите категорию' },
+        link : { required: 'Укажите ссылку на товар' }
 		//desc: { required: 'Укажите описание' },
 	};
     </script>
