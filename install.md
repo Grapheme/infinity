@@ -18,7 +18,6 @@ Or if you don't have curl: php -r "readfile('https://getcomposer.org/installer')
 3) устанавливаем зависимости - php composer.phar install
 4) создаем базу данных. Имя БД можно можно узнать из файла app/config/database.php [mysql.database];
 5) Не обязательно! В корне проекта создаем файл .htaccess (если он не существует). Вносим в него следующий текст:
-#---------------------------
 AddDefaultCharset utf-8
 Options +FollowSymLinks
 Options -Indexes
@@ -32,9 +31,9 @@ php_value max_input_time 500
     RewriteEngine on
 	RewriteRule (.*) /public/$1 [L]
 </IfModule>
-#---------------------------
 6) Миграции и заполнения таблиц БД: php artisan migrate --seed
 7) Логины и пароли можно узнать из файла app/database/seeds/UserTableSeeder.php
+
     'email'=>'admin@grapheme-cms.ru'
     'password'=>Hash::make('grapheme1234')
 
