@@ -65,5 +65,5 @@ $env = $app->detectEnvironment(array(
     ....
 ));
 
-создать каталог my_name, скопировать нужные файлы конфигурации. Можно воспользоваться из каталога app/config/local/ внеся нужные изменения
+создать каталог app/config/my_name, скопировать нужные файлы конфигурации. Можно воспользоваться из каталога app/config/local/ внеся нужные изменения
 http://laravel.com/docs/configuration#environment-configuration
