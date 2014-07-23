@@ -221,9 +221,49 @@ var Popup = (function(){
 		e.stopPropagation();
 	});
 
-	if(window.location.hash != '') {
-		show(window.location.hash.substr(1));
-	}
+	// if(window.location.hash != '') {
+	// 	show(window.location.hash.substr(1));
+	// }
 
 	return { show: show, close: close };
 })();
+
+jQuery.fn.tabs = function(control) {
+	var element = $(this);
+	control = $(control);
+
+	element.delegate('li', 'click', function(){
+		//Извлечение имени вкладки
+		var tabName = $(this).data('tab');
+
+		//Запуск пользовательского события при щелчке на вкладке
+		element.trigger("change.tabs", tabName);
+	});
+
+	//Привязка к пользовательскому событию
+	element.bind('change.tabs', function(e, tabName){
+		element.find('li').removeClass('active');
+		element.find('>[data-tab="' + tabName + '"]').addClass('active');
+	});
+
+	element.bind('change.tabs', function(e, tabName) {
+		control.find('>[data-tab]').removeClass("active");
+		control.find('>[data-tab="' + tabName + '"]').addClass("active");
+	});
+
+	$('#tabs').bind('change.tabs', function(e, tabName) {
+		window.location.hash = tabName;
+	});
+
+	$(window).bind('hashchange', function(){
+		var tabName = window.location.hash.slice(1);
+		$('#tabs').trigger('change.tabs', tabName);
+	});
+
+	//Активация первой вкладки
+	var garant = element.find('li:first').attr('data-tab');
+	element.trigger('change.tabs', garant);
+	return this;
+};
+
+$("ul#tabs").tabs("#tabContent");

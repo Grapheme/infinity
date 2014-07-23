@@ -1,0 +1,103 @@
+.information {
+	max-width: 1240px;
+	margin: 0 auto;
+	padding: 0 70px;
+	color: #000;
+
+	h2 {
+		font-size: 34.5px;
+		font-family: 'MetaPro', sans-serif;
+		line-height: .95;
+		text-transform: uppercase;
+	}
+
+	.tabs {
+		.list-unstyled;
+		margin: 56px 0 0;
+
+		li {
+			.transition;
+			position: relative;
+			display: inline-block;
+			margin: 0 28px 0 0;
+			padding: 16px 21px;
+			font-size: 23px;
+			line-height: .95;
+			text-transform: uppercase;
+			cursor: pointer;
+
+			&:after {
+				.transition;
+
+				content: '';
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				bottom: 5px;
+				left: 5px;
+
+				border: 2px solid transparent;
+			}
+
+			&:hover,
+			&.active {
+				color: #8e65aa;
+
+				&:after {
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					border-color: #8e65aa;
+				}
+			}
+		}
+	}
+
+	.tabs-content {
+		.list-unstyled;
+
+		.tab-li {
+			display: none;
+
+			&.active {
+				display: block;
+			}
+		}
+	}
+
+	.column {
+		float: left;
+
+		img {
+			max-width: 100%;
+		}
+
+		p {
+			&:first-child {
+				margin-top: -3px;
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.column-40 {
+		width: 40%;
+		
+		&:first-child {
+			width: 35%;
+			margin: 0 5% 0 0;
+		}
+	}
+
+	.column-60 {
+		width: 60%;
+		
+		&:first-child {
+			width: 55%;
+			margin: 0 5% 0 0;
+		}
+	}
+}

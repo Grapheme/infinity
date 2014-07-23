@@ -107,8 +107,8 @@ textarea {
 }
 @font-face {
   font-family: 'social';
-  src: url('../fonts/fontello.eot?6348785');
-  src: url('../fonts/fontello.eot?6348785#iefix') format('embedded-opentype'), url('../fonts/fontello.woff?6348785') format('woff'), url('../fonts/fontello.ttf?6348785') format('truetype'), url('../fonts/fontello.svg?6348785#fontello') format('svg');
+  src: url('../fonts/fontello.eot?6348787');
+  src: url('../fonts/fontello.eot?6348787#iefix') format('embedded-opentype'), url('../fonts/fontello.woff?6348787') format('woff'), url('../fonts/fontello.ttf?6348787') format('truetype'), url('../fonts/fontello.svg?6348787#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -147,6 +147,18 @@ textarea {
   content: '\e807';
 }
 /* '' */
+.icon-lock:before {
+  content: '\e808';
+}
+/* '' */
+.icon-angle-right:before {
+  content: '\e809';
+}
+/* '' */
+.icon-angle-left:before {
+  content: '\e80a';
+}
+/* '' */
 .list-unstyled {
   padding: 0;
   margin: 0;
@@ -180,6 +192,9 @@ textarea {
   padding: 9px 16px;
   font-size: 13px;
 }
+.btn .icon {
+  margin: 0 10px 0 0;
+}
 .btn-with-img {
   position: relative;
   display: inline-block;
@@ -208,6 +223,11 @@ textarea {
   font-family: "MetaPro";
   text-transform: uppercase;
   font-size: 2.125rem;
+}
+.inf-text {
+  font-family: "MetaPro";
+  text-transform: uppercase;
+  font-size: 0.9375rem;
 }
 .drive-btn {
   -webkit-box-sizing: border-box;
@@ -257,6 +277,79 @@ textarea {
 .drive-btn:after {
   background: url(../img/wheel-hover.png);
   opacity: 0;
+}
+.sect-wrapper {
+  color: #000;
+  padding: 0 78px;
+}
+.sect-wrapper header {
+  position: relative;
+}
+.sect-wrapper header h1 {
+  display: inline-block;
+  margin: 114px 0 40px;
+  font-size: 34.5px;
+  font-family: 'MetaPro', sans-serif;
+  line-height: .95;
+  text-transform: uppercase;
+}
+.sect-wrapper header .year {
+  display: inline-block;
+  margin: 0 0 0 32px;
+  font-size: 34.5px;
+  font-family: 'MetaPro', sans-serif;
+  line-height: .95;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.sect-wrapper header .price {
+  position: absolute;
+  top: 114px;
+  right: 0;
+  font-size: 34.5px;
+  font-family: 'MetaPro', sans-serif;
+  line-height: .95;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.sect-wrapper header .price span {
+  font-size: 28px;
+}
+h1 {
+  display: inline-block;
+  margin: 114px 0 40px;
+  font-size: 34.5px;
+  font-family: 'MetaPro', sans-serif;
+  line-height: .95;
+  text-transform: uppercase;
+}
+h2 {
+  margin: 52px 0 32px;
+  font-size: 23px;
+  line-height: .95;
+  text-transform: uppercase;
+}
+h3 {
+  margin: 52px 0 32px;
+  font-size: 23px;
+  line-height: .95;
+  text-transform: uppercase;
+}
+.desc {
+  font-size: 15px;
+  line-height: 21px;
+}
+.margin-bottom-60 {
+  margin-bottom: 60px !important;
+}
+.typical-ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  list-style-type: disc;
+  list-style-position: inside;
+  font-size: 15px;
+  line-height: 29px;
 }
 .wrapper {
   position: relative;
@@ -695,6 +788,12 @@ html {
 .used header {
   padding: 0;
 }
+.cars-filter {
+  margin: 0 0 55px;
+}
+.cars-filter .SumoSelect {
+  margin-right: 16px;
+}
 .sub-offers-ul {
   padding: 0;
   margin: 0;
@@ -749,6 +848,20 @@ html {
 }
 .sub-offers-ul .sub-offers-li .sub-offers-li-body .sub-offers-li-header a:hover {
   color: #333333;
+}
+.chars-list {
+  margin: -7px 0 0;
+}
+.chars-list dt {
+  float: left;
+  font-size: 15px;
+  line-height: 29px;
+}
+.chars-list dd {
+  font-size: 15px;
+  line-height: 29px;
+  font-weight: 600;
+  text-align: right;
 }
 .main-footer {
   background: #000;
@@ -1082,6 +1195,307 @@ html {
   font-size: 12px;
   line-height: 22px;
 }
+.gallery-block {
+  position: relative;
+  height: 100vh;
+}
+.gallery-block .title {
+  font-family: "MetaPro";
+  text-transform: uppercase;
+  font-size: 2.125rem;
+  margin-bottom: 1.25rem;
+}
+.gallery-block .gallery-info {
+  position: absolute;
+  left: 0;
+  top: 7.8125rem;
+}
+.gallery-block .gallery-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+.gallery-block .gallery-photo .gallery-img {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+}
+.gallery-block .gal-prev {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: absolute;
+  left: 3.125rem;
+  top: 50%;
+  width: 30px;
+  height: 45px;
+}
+.gallery-block .gal-prev:before {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  content: "";
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  width: 2px;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+}
+.gallery-block .gal-prev:after {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 2px;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+}
+.gallery-block .gal-prev:hover {
+  -webkit-transform: translateX(-3px);
+  transform: translateX(-3px);
+}
+.gallery-block .gal-prev:hover:after {
+  background: #ffffff;
+  -webkit-transform: rotate(-55deg);
+  transform: rotate(-55deg);
+}
+.gallery-block .gal-prev:hover:before {
+  background: #ffffff;
+  -webkit-transform: rotate(55deg);
+  transform: rotate(55deg);
+}
+.gallery-block .gal-next {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: absolute;
+  right: 3.125rem;
+  top: 50%;
+  width: 30px;
+  height: 45px;
+}
+.gallery-block .gal-next:before {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  content: "";
+  position: absolute;
+  bottom: 50%;
+  right: 0;
+  width: 2px;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+}
+.gallery-block .gal-next:after {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 2px;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+}
+.gallery-block .gal-next:hover {
+  -webkit-transform: translateX(3px);
+  transform: translateX(3px);
+}
+.gallery-block .gal-next:hover:after {
+  background: #ffffff;
+  -webkit-transform: rotate(55deg);
+  transform: rotate(55deg);
+}
+.gallery-block .gal-next:hover:before {
+  background: #ffffff;
+  -webkit-transform: rotate(-55deg);
+  transform: rotate(-55deg);
+}
+.gallery-block .gal-half {
+  position: relative;
+  float: left;
+  width: 50%;
+  height: 50%;
+  background-size: cover;
+  background-position: center center;
+  cursor: pointer;
+}
+.gallery-block .gal-half:before {
+  -webkit-transition: background 0.5s ease;
+  transition: background 0.5s ease;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.gallery-block .gal-half:hover:before {
+  background: rgba(0, 0, 0, 0);
+}
+.gallery-block .gal-half:hover .gal-play {
+  opacity: 0;
+  -webkit-transform: scale(2);
+  transform: scale(2);
+}
+.gallery-block .gal-half .gal-play {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -2.65625rem;
+  margin-left: -2.65625rem;
+  width: 5.3125rem;
+  height: 5.3125rem;
+  border-radius: 5.3125rem;
+  border: 6px solid rgba(255, 255, 255, 0.5);
+}
+.gallery-block .gal-half .gal-play:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -12.5px;
+  margin-left: -3.5px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 12.5px 0 12.5px 13px;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.5);
+}
+.jcarousel {
+  height: 428px;
+  background: #ccc;
+}
+.used-car .chars {
+  float: left;
+  width: 23%;
+  margin: 0 7% 0 0;
+}
+.used-car .complectation {
+  width: 70%;
+  float: left;
+}
+.used-car .book-auto {
+  margin: 50px 0 0;
+}
+.used-car .used-car-options {
+  margin: 0 0 146px;
+}
+.information {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 70px;
+  color: #000;
+}
+.information h2 {
+  font-size: 34.5px;
+  font-family: 'MetaPro', sans-serif;
+  line-height: .95;
+  text-transform: uppercase;
+}
+.information .tabs {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin: 56px 0 0;
+}
+.information .tabs li {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: relative;
+  display: inline-block;
+  margin: 0 28px 0 0;
+  padding: 16px 21px;
+  font-size: 23px;
+  line-height: .95;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.information .tabs li:after {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
+  border: 2px solid transparent;
+}
+.information .tabs li:hover,
+.information .tabs li.active {
+  color: #8e65aa;
+}
+.information .tabs li:hover:after,
+.information .tabs li.active:after {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-color: #8e65aa;
+}
+.information .tabs-content {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.information .tabs-content .tab-li {
+  display: none;
+}
+.information .tabs-content .tab-li.active {
+  display: block;
+}
+.information .column {
+  float: left;
+}
+.information .column img {
+  max-width: 100%;
+}
+.information .column p:first-child {
+  margin-top: -3px;
+}
+.information .column p:last-child {
+  margin-bottom: 0;
+}
+.information .column-40 {
+  width: 40%;
+}
+.information .column-40:first-child {
+  width: 35%;
+  margin: 0 5% 0 0;
+}
+.information .column-60 {
+  width: 60%;
+}
+.information .column-60:first-child {
+  width: 55%;
+  margin: 0 5% 0 0;
+}
 @media screen and (min-width: 1800px) {
   .sub-offers-ul .sub-offers-li:nth-child(3n) {
     margin: 0 86px 86px 0;
@@ -1094,6 +1508,74 @@ html {
   .main-header .logo {
     width: 16.25rem;
   }
+}
+/*
+This is the visible area of you carousel.
+Set a width here to define how much items are visible.
+The width can be either fixed in px or flexible in %.
+Position must be relative!
+*/
+.jcarousel {
+  position: relative;
+  overflow: hidden;
+}
+/*
+This is the container of the carousel items.
+You must ensure that the position is relative or absolute and
+that the width is big enough to contain all items.
+*/
+.jcarousel ul {
+  width: 20000em;
+  position: relative;
+  /* Optional, required in this case since it's a <ul> element */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/*
+These are the item elements. jCarousel works best, if the items
+have a fixed width and height (but it's not required).
+*/
+.jcarousel li {
+  /* Required only for block elements like <li>'s */
+  float: left;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+.jcarousel li:first-child {
+  border-left: none;
+}
+.jcarousel li:last-child {
+  border-right: none;
+}
+.jcarousel-wrapper {
+  position: relative;
+}
+.jcarousel-control {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: absolute;
+  top: 50%;
+  margin-top: -16px;
+  font-size: 32px;
+  line-height: 1;
+  outline: none !important;
+}
+.jcarousel-control.inactive {
+  opacity: .35;
+}
+.jcarousel-control:hover {
+  opacity: 0.65;
+}
+.jcarousel-control-prev {
+  left: 32px;
+  color: #fff;
+  text-decoration: none;
+}
+.jcarousel-control-next {
+  right: 32px;
+  color: #fff;
+  text-decoration: none;
 }
 /* ==========================================================================
    Helper classes
