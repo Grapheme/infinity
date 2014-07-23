@@ -18,6 +18,7 @@ Or if you don't have curl: php -r "readfile('https://getcomposer.org/installer')
 3) устанавливаем зависимости - php composer.phar install
 4) создаем базу данных. Имя БД можно можно узнать из файла app/config/database.php [mysql.database];
 5) Не обязательно! В корне проекта создаем файл .htaccess (если он не существует). Вносим в него следующий текст:
+
 AddDefaultCharset utf-8
 Options +FollowSymLinks
 Options -Indexes
@@ -31,6 +32,7 @@ php_value max_input_time 500
     RewriteEngine on
 	RewriteRule (.*) /public/$1 [L]
 </IfModule>
+
 6) Миграции и заполнения таблиц БД: php artisan migrate --seed
 7) Логины и пароли можно узнать из файла app/database/seeds/UserTableSeeder.php
 
@@ -39,23 +41,29 @@ php_value max_input_time 500
 
     Логин: admin@grapheme-cms.ru
     Пароль: grapheme1234
+
 8) Ввести URL-адрес в браузере
 
 Дополнительно:
 Настройка среды окружения для локальной работы
 1) Открыть файл bootstrap/start.php
 2) Найти запись и добавить информацию о новой среде разработки
+
 Способ 1-й: использовать значения по умолчанию см. файлы из app/config/local/
+
 $env = $app->detectEnvironment(array(
     ....
     'local' => array('ИМЯ КОМПЬЮТЕРА1','ИМЯ КОМПЬЮТЕРА2'),
     ....
 ));
+
 Способ 2-й: создать независимую среду
+
 $env = $app->detectEnvironment(array(
     ....
     'my_name' => array('ИМЯ МОЕГО КОМПЬЮТЕРА'),
     ....
 ));
+
 создать каталог my_name, скопировать нужные файлы конфигурации. Можно воспользоваться из каталога app/config/local/ внеся нужные изменения
 http://laravel.com/docs/configuration#environment-configuration
