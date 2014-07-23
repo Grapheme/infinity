@@ -365,6 +365,69 @@ html {
   color: #fff;
   font-family: 'Open Sans', sans-serif;
 }
+.news-ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin: 0 0 148px;
+}
+.news-ul .news-li {
+  padding: 60px 78px;
+}
+.news-ul .news-li:first-child {
+  padding-top: 0;
+}
+.news-ul .news-li:nth-child(2n) {
+  background: #f7f7f7;
+}
+.news-ul .news-li-left {
+  float: left;
+  width: 200px;
+  font-size: 23px;
+}
+.news-ul .news-li-left .day {
+  float: left;
+  margin: 0 20px 0 0;
+  line-height: .8;
+}
+.news-ul .news-li-left .date {
+  position: relative;
+  float: left;
+  line-height: .8;
+}
+.news-ul .news-li-left .date:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -10px;
+  border-left: 1px solid #633e7c;
+  width: 0;
+  height: 100%;
+}
+.news-ul .news-li-left .month {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+.news-ul .news-li-right {
+  float: left;
+  width: 738px;
+}
+.news-ul .news-li-right h2 {
+  margin: 0 0 18px;
+  font-size: 23px;
+  line-height: .95;
+}
+.news-ul .news-li-right a {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.news-ul .news-li-right a:hover {
+  border-color: #000;
+}
 .main-header {
   font-family: 'HelveticaNeue';
   position: absolute;
@@ -793,6 +856,13 @@ html {
 }
 .cars-filter .SumoSelect {
   margin-right: 16px;
+}
+.cars-filter .founded {
+  float: right;
+  color: #aaa;
+}
+.cars-filter .founded span {
+  color: #000;
 }
 .sub-offers-ul {
   padding: 0;
@@ -1298,8 +1368,8 @@ html {
   background: rgba(255, 255, 255, 0.65);
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
-  -webkit-transform-origin: 0 100%;
-  transform-origin: 0 100%;
+  -webkit-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
 }
 .gallery-block .gal-next:after {
   -webkit-transition: all 0.5s ease;
@@ -1313,8 +1383,8 @@ html {
   background: rgba(255, 255, 255, 0.65);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
-  -webkit-transform-origin: 100% 0;
-  transform-origin: 100% 0;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
 }
 .gallery-block .gal-next:hover {
   -webkit-transform: translateX(3px);
