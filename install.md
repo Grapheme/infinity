@@ -41,3 +41,22 @@ php_value max_input_time 500
     Логин: admin@grapheme-cms.ru
     Пароль: grapheme1234
 8) Ввести URL-адрес в браузере
+
+Дополнительно:
+Настройка среды окружения для локальной работы
+1) Открыть файл bootstrap/start.php
+2) Найти запись и добавить информацию о новой среде разработки
+Способ 1-й: использовать значения по умолчанию см. файлы из app/config/local/
+$env = $app->detectEnvironment(array(
+    ....
+    'local' => array('ИМЯ КОМПЬЮТЕРА1','ИМЯ КОМПЬЮТЕРА2'),
+    ....
+));
+Способ 2-й: создать независимую среду
+$env = $app->detectEnvironment(array(
+    ....
+    'my_name' => array('ИМЯ МОЕГО КОМПЬЮТЕРА'),
+    ....
+));
+создать каталог my_name, скопировать нужные файлы конфигурации. Можно воспользоваться из каталога app/config/local/ внеся нужные изменения
+http://laravel.com/docs/configuration#environment-configuration
