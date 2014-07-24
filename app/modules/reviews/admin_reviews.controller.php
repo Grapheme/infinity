@@ -138,7 +138,7 @@ class AdminReviewsController extends BaseController {
 
     public function deleteDestroy($id){
 
-        $this->moduleActionPermission('news', 'delete');
+        $this->moduleActionPermission('reviews', 'delete');
         $json_request = array('status'=>FALSE, 'responseText'=>'');
         if(Request::ajax()):
             $review = $this->review->find($id);

@@ -1,9 +1,9 @@
-{{ Form::open(array('url'=>link::auth('news/store'),'role'=>'form','class'=>'smart-form','id'=>'news-form','method'=>'post')) }}
+{{ Form::open(array('url'=>link::auth('events/store'),'role'=>'form','class'=>'smart-form','id'=>'event-form','method'=>'post')) }}
     <div class="well">
-        <header>Для создания новости заполните форму:</header>
+        <header>Для создания события заполните форму:</header>
         <fieldset>
             <section class="col col-6">
-                <label class="label">Идентификатор новости</label>
+                <label class="label">Идентификатор события</label>
                 <label class="input col-11"> <i class="icon-append fa fa-list-alt"></i>
                     {{ Form::text('slug','') }}
                 </label>
@@ -17,12 +17,12 @@
             </section>
             @if(Allow::module('templates'))
             <section>
-                <label class="label">Шаблон новости:</label>
+                <label class="label">Шаблон события:</label>
                 <label class="select col-5">
                     @foreach($templates as $template)
                         <?php $temps[$template->name] = $template->name;?>
                     @endforeach
-                    {{ Form::select('template', $temps, 'news', array('class'=>'template-change','autocomplete'=>'off')) }} <i></i>
+                    {{ Form::select('template', $temps, 'events', array('class'=>'template-change','autocomplete'=>'off')) }} <i></i>
                 </label>
             </section>
             @endif
@@ -30,20 +30,17 @@
     </div>
     <!-- Tabs -->
     <ul class="nav nav-tabs margin-top-10">
-    @foreach ($locales as $l => $locale)
+        @foreach ($locales as $l => $locale)
         <li class="{{ $l === 0 ? 'active' : '' }}">
             <a href="#lang_{{ $locale }}" data-toggle="tab">{{ $locale }}</a>
         </li>
-    @endforeach
+        @endforeach
     </ul>
-
-
     <!-- Fields -->
-	<div class="row margin-top-10">
+    <div class="row margin-top-10">
         <div class="tab-content">
-        @foreach ($locales as $l => $locale)
+            @foreach ($locales as $l => $locale)
             <div class="tab-pane{{ $l === 0 ? ' active' : '' }}" id="lang_{{ $locale }}">
-
                 <!-- Form -->
                 <section class="col col-6">
                     <div class="well">
@@ -55,9 +52,17 @@
                                     {{ Form::text('title['.$locale.']','') }}
                                 </label>
                             </section>
+                            @if (Allow::module('galleries'))
+                            <section>
+                                <label class="label">Изображение</label>
+                                <label class="input">
+                                    {{ ExtForm::image('image', '') }}
+                                </label>
+                            </section>
+                            @endif
                             <section>
                                 <label class="label">Анонс</label>
-                                <label class="input">
+                                <label class="textarea">
                                     {{ Form::textarea('preview['.$locale.']','',array('class'=>'redactor redactor_150')) }}
                                 </label>
                             </section>
@@ -68,41 +73,27 @@
                                 </label>
                             </section>
                         </fieldset>
-        			</div>
-        		</section>
-        	    @if(Allow::enabled_module('seo'))
-        		<section class="col col-6">
-        			<div class="well">
-        				@include('modules.seo.i18n_news')
-        			</div>
-        		</section>
-            	@endif
-            	<!-- /Form -->
-
+                    </div>
+                </section>
             </div>
-        @endforeach
+            @endforeach
         </div>
-   	</div>
-
-	<div style="float:none; clear:both;"></div>
-
+    </div>
+    <div style="float:none; clear:both;"></div>
     @if(Allow::enabled_module('galleries') && 0)
     <section class="col-12">
-		@include('modules.galleries.abstract')
-		@include('modules.galleries.uploaded', array('gallery' => $gall))
-	</section>
+        @include('modules.galleries.abstract')
+        @include('modules.galleries.uploaded', array('gallery' => $gall))
+    </section>
     @endif
-
     <section class="col-6">
         <footer>
-        	<a class="btn btn-default no-margin regular-10 uppercase pull-left btn-spinner" href="{{URL::previous()}}">
-        		<i class="fa fa-arrow-left hidden"></i> <span class="btn-response-text">Назад</span>
-        	</a>
-        	<button type="submit" autocomplete="off" class="btn btn-success no-margin regular-10 uppercase btn-form-submit">
-        		<i class="fa fa-spinner fa-spin hidden"></i> <span class="btn-response-text">Создать</span>
-        	</button>
+            <a class="btn btn-default no-margin regular-10 uppercase pull-left btn-spinner" href="{{URL::previous()}}">
+                <i class="fa fa-arrow-left hidden"></i> <span class="btn-response-text">Назад</span>
+            </a>
+            <button type="submit" autocomplete="off" class="btn btn-success no-margin regular-10 uppercase btn-form-submit">
+                <i class="fa fa-spinner fa-spin hidden"></i> <span class="btn-response-text">Создать</span>
+            </button>
         </footer>
     </section>
-
-
 {{ Form::close() }}
