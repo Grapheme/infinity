@@ -10,11 +10,29 @@
 		.transition(all, 1s);
 	}
 
+	.slide-info {
+		.transition(all, 1s);
+		opacity: 0;
+		.transform(translateX(-150px));
+
+		&.active {
+			.transform(translateX(0));
+			opacity: 1;
+		}
+
+		&.fadeout {
+			.transition(all, .5s);
+			.transform(scale(.7));
+			opacity: 0;
+		}
+	}
+
 	.js-thumbs, .js-slider-nav {
 		display: none;
 	}
 
 	.thumb {
+		cursor: pointer;
 		.transition(opacity);
 	}
 

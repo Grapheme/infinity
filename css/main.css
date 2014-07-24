@@ -379,6 +379,9 @@ h3 {
 .margin-bottom-60 {
   margin-bottom: 60px !important;
 }
+.margin-bottom-100 {
+  margin-bottom: 100px !important;
+}
 .typical-ul {
   padding: 0;
   margin: 0;
@@ -604,11 +607,31 @@ html {
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
+.js-slider .slide-info {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  opacity: 0;
+  -webkit-transform: translateX(-150px);
+  transform: translateX(-150px);
+}
+.js-slider .slide-info.active {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  opacity: 1;
+}
+.js-slider .slide-info.fadeout {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7);
+  opacity: 0;
+}
 .js-slider .js-thumbs,
 .js-slider .js-slider-nav {
   display: none;
 }
 .js-slider .thumb {
+  cursor: pointer;
   -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
 }
@@ -1684,6 +1707,38 @@ html {
   font-size: 1.125em;
   line-height: 1.16666667em;
   color: #999;
+}
+.history h1 {
+  font-size: 3.625em;
+  color: #463153;
+  display: block;
+  text-align: center;
+  font-family: 'MetaPro';
+  font-weight: 600;
+  margin-bottom: 5rem;
+}
+.history .history-banner {
+  text-align: center;
+  max-width: 100%;
+  margin-bottom: 5rem;
+}
+.history .history-date {
+  font-size: 7.5em;
+  line-height: .75;
+  font-family: 'Open Sans';
+  font-weight: 300;
+}
+.history .medium-desc {
+  font-size: 1.4375em;
+  line-height: 1.39130435em;
+  font-family: 'Open Sans';
+  font-weight: 300;
+}
+.history .big-desc {
+  font-size: 4.5em;
+  line-height: 1;
+  font-family: 'MetaPro';
+  text-transform: uppercase;
 }
 .contacts {
   font-size: 15px;
