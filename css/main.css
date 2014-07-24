@@ -604,11 +604,31 @@ html {
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
+.js-slider .slide-info {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  opacity: 0;
+  -webkit-transform: translateX(-150px);
+  transform: translateX(-150px);
+}
+.js-slider .slide-info.active {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  opacity: 1;
+}
+.js-slider .slide-info.fadeout {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7);
+  opacity: 0;
+}
 .js-slider .js-thumbs,
 .js-slider .js-slider-nav {
   display: none;
 }
 .js-slider .thumb {
+  cursor: pointer;
   -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
 }
