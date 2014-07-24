@@ -9,6 +9,7 @@ class Reviews extends BaseModel {
     public static $order_by = "reviews.published_at DESC,reviews.id DESC";
 
     public static $rules = array(
+        'slug' => 'required',
         'name' => 'required'
     );
 
@@ -19,5 +20,9 @@ class Reviews extends BaseModel {
 
     public  function images(){
         return $this->belongsTo('Photo','image_id');
+    }
+
+    public  function meta(){
+        return $this->hasMany('ReviewsMeta','review_id');
     }
 }

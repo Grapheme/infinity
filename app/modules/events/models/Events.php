@@ -9,7 +9,8 @@ class Events extends BaseModel {
     public static $order_by = "events.published_at DESC,events.id DESC";
 
     public static $rules = array(
-        'title' => 'required',
+        'slug' => 'required',
+        'title' => 'required'
     );
 
     public function photo() {

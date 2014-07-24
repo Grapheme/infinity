@@ -5,6 +5,8 @@ class ReviewsController extends \BaseController {
     public static $name = 'reviews_public';
     public static $group = 'reviews';
 
+    public static $prefix_url = 'review';
+
     public static function returnRoutes($prefix = null) {
 
         ## УРЛЫ С ЯЗЫКОВЫМИ ПРЕФИКСАМИ ДОЛЖНЫ ИДТИ ПЕРЕД ОБЫЧНЫМИ!
@@ -35,7 +37,7 @@ class ReviewsController extends \BaseController {
 
         $tpl = static::returnTpl();
 
-        shortcode::add("news",
+        shortcode::add("reviews",
 
             function($params = null) use ($tpl) {
                 #print_r($params); die;

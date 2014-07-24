@@ -73,14 +73,14 @@ class AdminReviewsController extends BaseController {
 
     public function getIndex(){
 
-        $reviews = $this->review->orderBy('published_at', 'DESC')->orderBy('id','DESC')->get();
+        $reviews = $this->review->orderBy('published_at', 'DESC')->orderBy('id','DESC')->with('meta')->get();
         return View::make($this->tpl.'index', array('reviews' => $reviews, 'locales' => $this->locales));
     }
 
     public function getCreate(){
 
         $this->moduleActionPermission('reviews','create');
-        return View::make($this->tpl.'create', array('locales' => $this->locales));
+        return View::make($this->tpl.'create', array('locales' => $this->locales,'templates'=>$this->templates(__DIR__)));
     }
 
     public function postStore(){
@@ -107,7 +107,7 @@ class AdminReviewsController extends BaseController {
     public function getEdit($id){
 
         $this->moduleActionPermission('reviews','edit');
-        if(!$review = $this->review->find($id)):
+        if(!$review = $this->review->find($id)->with('meta')->with('images')->first()):
             return App::abort(404);
         endif;
         $gall = Rel_mod_gallery::where('module','reviews')->where('unit_id', $id)->first();
@@ -171,21 +171,65 @@ class AdminReviewsController extends BaseController {
         else:
             $review->template = 'default';
         endif;
+        $review->slug = Input::get('slug');
         $review->publication = 1;
         $review->published_at = date("Y-m-d", strtotime(Input::get('published_at')));
-        $slug = Input::get('slug');
-
-        $locale = Config::get('app.locale');
-
-        $review->name = Input::get('name.'.$locale);
-        $review->position = Input::get('position.'.$locale);
-        $review->content = Input::get('content.'.$locale);
-        $review->slug = $slug;
         $review->image_id =  Input::get('image');
+
         ## Сохраняем в БД
         $review->save();
         $review->touch();
+        self::saveReviewMetaModel($review);
         return $review->id;
     }
 
+    private function saveReviewMetaModel($review = NULL){
+
+        foreach($this->locales as $locale):
+            if (!$reviewMeta = ReviewsMeta::where('review_id',$review->id)->where('language',$locale)->first()):
+                $reviewMeta = new ReviewsMeta;
+            endif;
+            $reviewMeta->review_id = $review->id;
+            $reviewMeta->language = $locale;
+            $reviewMeta->name = Input::get('name.' . $locale);
+            $reviewMeta->position = Input::get('position.' . $locale);
+            $reviewMeta->preview = Input::get('preview.' . $locale);
+            $reviewMeta->content = Input::get('content.' . $locale);
+
+            /*
+           $eventMeta->seo_url = Input::get('seo_url.' . $locale);
+           $eventMeta->seo_title = Input::get('seo_title.' . $locale);
+           $eventMeta->seo_description = Input::get('seo_description.' . $locale);
+           $eventMeta->seo_keywords = Input::get('seo_keywords.' . $locale);
+           $eventMeta->seo_h1 = Input::get('seo_h1.' . $locale);
+           */
+
+            if(Allow::enabled_module('seo')):
+                if(is_null(Input::get('seo_url.' . $locale))):
+                    $reviewMeta->seo_url = '';
+                elseif(Input::get('seo_url.' . $locale) === ''):
+                    $reviewMeta->seo_url = $this->stringTranslite(Input::get('name' . $locale));
+                else:
+                    $reviewMeta->seo_url = $this->stringTranslite(Input::get('seo_url.' . $locale));
+                endif;
+                $reviewMeta->seo_url = (string)$reviewMeta->seo_url;
+                if(Input::get('seo_title.' . $locale) == ''):
+                    $reviewMeta->seo_title = $reviewMeta->title;
+                else:
+                    $reviewMeta->seo_title = trim(Input::get('seo_title.' . $locale));
+                endif;
+                $reviewMeta->seo_description = Input::get('seo_description.' . $locale);
+                $reviewMeta->seo_keywords = Input::get('seo_keywords.' . $locale);
+                $reviewMeta->seo_h1 = Input::get('seo_h1.' . $locale);
+            else:
+                $reviewMeta->seo_url = $this->stringTranslite(Input::get('name.' . $locale));
+                $reviewMeta->seo_title = Input::get('name.' . $locale);
+                $reviewMeta->seo_description = $reviewMeta->seo_keywords = $reviewMeta->seo_h1 = '';
+            endif;
+
+            $reviewMeta->save();
+            $reviewMeta->touch();
+        endforeach;
+        return TRUE;
+    }
 }

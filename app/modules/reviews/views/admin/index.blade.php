@@ -21,6 +21,9 @@
                 @if(Allow::action('reviews','publication'))
                 <th class="text-center">Публикация</th>
                 @endif
+                @if(ReviewsController::$prefix_url !== FALSE)
+                <th class="col col-sm-3 text-center">URL</th>
+                @endif
                 <th></th>
             </tr>
             </thead>
@@ -28,7 +31,7 @@
             @foreach($reviews as $review)
             <tr>
                 <td class="text-center">{{ date("d.m.Y", strtotime($review->published_at)) }}</a></td>
-                <td>{{$review->name}}</td>
+                <td>{{$review->meta->first()->name}}</td>
                 @if(Allow::action('review','publication'))
                 <td class="wigth-100">
                     <div class="smart-form">
@@ -39,8 +42,13 @@
                     </div>
                 </td>
                 @endif
+                 @if(ReviewsController::$prefix_url !== FALSE)
+                 <td class="wigth-250 text-center">
+                    <a href="{{ link::to(ReviewsController::$prefix_url.'/'.$review->meta->first()->seo_url) }}" target="_blank">{{ $review->meta->first()->seo_url }}</a>
+                </td>
+                @endif
                 <td class="wigth-250">
-                    @if(Allow::action('news', 'edit'))
+                    @if(Allow::action('reviews', 'edit'))
                     <a class="btn btn-default pull-left margin-right-10" href="{{ link::auth('reviews/edit/'.$review->id) }}">
                         Редактировать
                     </a>

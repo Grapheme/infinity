@@ -15,10 +15,9 @@
                     <input type="text" name="published_at" value="{{ date("d.m.Y", strtotime($event->published_at)) }}" class="datepicker" />
                 </label>
             </section>
-
-             @if(Allow::module('templates'))
+            @if(Allow::module('templates'))
             <section>
-                <label class="label">Шаблон события:</label>
+                <label class="label">Шаблон события</label>
                 <label class="select col-5">
                     @foreach($templates as $template)
                         <?php $temps[$template->name] = $template->name;?>
@@ -57,7 +56,7 @@
                             <section>
                                 <label class="label">Изображение</label>
                                 <label class="input">
-                                    {{ ExtForm::image('image',$event->images->first()) }}
+                                    {{ ExtForm::image('image',@$event->images) }}
                                 </label>
                             </section>
                             @endif

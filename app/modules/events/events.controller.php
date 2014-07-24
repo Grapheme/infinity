@@ -5,6 +5,8 @@ class EventsController extends \BaseController {
     public static $name = 'events_public';
     public static $group = 'events';
 
+    public static $prefix_url = 'events';
+
     public static function returnRoutes($prefix = null) {
 
         ## УРЛЫ С ЯЗЫКОВЫМИ ПРЕФИКСАМИ ДОЛЖНЫ ИДТИ ПЕРЕД ОБЫЧНЫМИ!

@@ -174,8 +174,8 @@ class AdminEventsController extends BaseController {
         $event->publication = 1;
         $event->published_at = date("Y-m-d", strtotime(Input::get('published_at')));
         $event->image_id =  Input::get('image');
-        ## Сохраняем в БД
 
+        ## Сохраняем в БД
         $event->save();
         $event->touch();
         self::saveEventsMetaModel($event);
