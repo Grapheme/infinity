@@ -9,28 +9,21 @@ class EventsController extends \BaseController {
 
     public static function returnRoutes($prefix = null) {
 
-        ## УРЛЫ С ЯЗЫКОВЫМИ ПРЕФИКСАМИ ДОЛЖНЫ ИДТИ ПЕРЕД ОБЫЧНЫМИ!
-        ## Если в конфиге прописано несколько языковых версий...
-        if (is_array(Config::get('app.locales')) && count(Config::get('app.locales'))) {
-            ## Для каждого из языков...
-            foreach(Config::get('app.locales') as $locale) {
-                ## ...генерим роуты с префиксом (первый сегмент), который будет указывать на текущую локаль.
-                ## Также указываем before-фильтр i18n_url, для выставления текущей локали.
-                Route::group(array('before' => 'i18n_url', 'prefix' => $locale), function(){
-                    Route::get('/events/{url}', array('as' => 'events_full', 'uses' => __CLASS__.'@showFullByUrl')); ## I18n events
-                });
+        if (self::$prefix_url !== FALSE):
+            if (is_array(Config::get('app.locales')) && count(Config::get('app.locales'))) {
+                foreach(Config::get('app.locales') as $locale) {
+                    Route::group(array('before' => 'i18n_url', 'prefix' => $locale), function(){
+                        Route::get('/'.self::$prefix_url.'/{url}', array('as' => 'events_full', 'uses' => __CLASS__.'@showFullByUrl'));
+                    });
+                }
             }
-        }
+            Route::group(array('before' => 'i18n_url'), function(){
+                Route::get('/'.self::$prefix_url.'/{url}', array('as' => 'events_full', 'uses' => __CLASS__.'@showFullByUrl'));
+            });
+        else:
+            return NULL;
+        endif;
 
-        ## Генерим роуты без префикса, и назначаем before-фильтр i18n_url.
-        ## Это позволяет нам делать редирект на урл с префиксом только для этих роутов, не затрагивая, например, /admin и /login
-        Route::group(array('before' => 'i18n_url'), function(){
-            Route::get('/events/{url}', array('as' => 'events_full', 'uses' => __CLASS__.'@showFullByUrl'
-                #function($url) {
-                #	return $this->showFullByUrl($url);
-                #}
-            )); ## I18n events
-        });
     }
 
     public static function returnShortCodes() {

@@ -75,20 +75,24 @@
                         </fieldset>
                     </div>
                 </section>
+                 @if(Allow::enabled_module('seo'))
+                <section class="col col-6">
+                    <div class="well">
+                        @include('modules.seo.events')
+                    </div>
+                </section>
+                @endif
             </div>
             @endforeach
         </div>
     </div>
-
     <div style="float:none; clear:both;"></div>
-
     @if(Allow::enabled_module('galleries') && 0)
     <section class="col-12">
         @include('modules.galleries.abstract')
         @include('modules.galleries.uploaded', array('gall' => $gall))
     </section>
     @endif
-
     <section class="col-6">
         <footer>
             <a class="btn btn-default no-margin regular-10 uppercase pull-left btn-spinner" href="{{URL::previous()}}">

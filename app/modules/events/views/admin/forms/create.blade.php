@@ -75,6 +75,13 @@
                         </fieldset>
                     </div>
                 </section>
+                @if(Allow::enabled_module('seo'))
+                <section class="col col-6">
+                    <div class="well">
+                        @include('modules.seo.events')
+                    </div>
+                </section>
+                @endif
             </div>
             @endforeach
         </div>

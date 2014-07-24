@@ -20,6 +20,7 @@ class CreateEventsTable extends Migration {
                 $table->date('published_at');
                 $table->timestamps();
                 $table->index('publication');
+                $table->index('published_at');
             });
             echo(' + ' . $this->table1 . PHP_EOL);
         } else {

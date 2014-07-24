@@ -82,6 +82,13 @@
                         </fieldset>
                     </div>
                 </section>
+                @if(Allow::enabled_module('seo'))
+                <section class="col col-6">
+                    <div class="well">
+                        @include('modules.seo.reviews')
+                    </div>
+                </section>
+                @endif
             </div>
             @endforeach
         </div>
