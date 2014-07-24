@@ -174,6 +174,39 @@ textarea {
 .typical-link:hover {
   border-color: transparent;
 }
+.input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 30px 0;
+  padding: 3px 0 0 10px;
+  border: 1px solid #999;
+  box-shadow: none;
+  font-size: 18px;
+  line-height: 1;
+  outline: none;
+}
+.textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 30px 0;
+  padding: 3px 0 0 10px;
+  border: 1px solid #999;
+  box-shadow: none;
+  font-size: 18px;
+  line-height: 1;
+  outline: none;
+  height: 158px;
+  margin-bottom: 18px;
+  resize: none;
+}
 .btn {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -190,6 +223,10 @@ textarea {
 }
 .btn.small {
   padding: 9px 16px;
+  font-size: 13px;
+}
+.btn.medium {
+  padding: 15px 16px 17px;
   font-size: 13px;
 }
 .btn .icon {
@@ -1565,6 +1602,146 @@ html {
 .information .column-60:first-child {
   width: 55%;
   margin: 0 5% 0 0;
+}
+.accessories .acc-dl {
+  margin: 0 0 9.25rem;
+}
+.accessories .acc-dd {
+  margin: 0;
+}
+.accessories .acc-ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.accessories .acc-li {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: relative;
+  height: 12.375rem;
+  border: 1px solid #e0e0e0;
+  margin: 0 0 1.25rem;
+}
+.accessories .acc-li:last-child {
+  margin-bottom: 0;
+}
+.accessories .acc-li:hover {
+  border-color: #ababab;
+}
+.accessories .acc-left {
+  float: left;
+  position: relative;
+  width: 17.625rem;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 center;
+}
+.accessories .acc-left a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.accessories .acc-right {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  width: 58.625rem;
+  height: 100%;
+  padding: 2.5rem 0 0 1.5rem;
+}
+.accessories .acc-right h2 {
+  margin-top: 0;
+  margin-bottom: 0.875rem;
+}
+.accessories .acc-right h2 a {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.accessories .acc-right h2 a:hover {
+  border-color: #000;
+}
+.accessories .acc-right .desc {
+  max-width: 32rem;
+}
+.accessories .acc-right .price {
+  position: absolute;
+  top: 2.5rem;
+  right: 1.5rem;
+  font-size: 1.125em;
+  line-height: 1.16666667em;
+}
+.accessories .acc-right .availability {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.5rem;
+  font-size: 1.125em;
+  line-height: 1.16666667em;
+  color: #999;
+}
+.contacts {
+  font-size: 15px;
+  line-height: 21px;
+}
+.contacts .contact-wrapper {
+  margin-bottom: 148px;
+}
+.contacts .desc {
+  max-width: 730px;
+  margin: 0 0 70px;
+}
+.contacts .left {
+  float: left;
+  width: 360px;
+}
+.contacts .left div:first-child h2 {
+  margin-top: 0;
+}
+.contacts .left h2 {
+  margin: 50px 0 16px;
+}
+.contacts .left address {
+  font-style: normal;
+}
+.contacts .left a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.contacts .mid {
+  float: left;
+  width: 547px;
+}
+.contacts .mid div:first-child h2 {
+  margin-top: 0;
+}
+.contacts .mid h2 {
+  margin: 50px 0 16px;
+}
+.contacts .mid .map {
+  width: 480px;
+  height: 380px;
+  background: #ddd;
+}
+.contacts .right {
+  float: left;
+  width: 318px;
+}
+.contacts .right h2 {
+  margin-top: 0;
+}
+.contacts .right .SlectBox,
+.contacts .right .SlectBoxa {
+  width: 306px;
+}
+.contacts .right .btn {
+  float: right;
 }
 @media screen and (min-width: 1800px) {
   .sub-offers-ul .sub-offers-li:nth-child(3n) {
