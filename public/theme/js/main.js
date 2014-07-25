@@ -1,27 +1,174 @@
 var grphm_slider = (function(){
-	$.fn.slider = function(options) {
-		var obj = [];
-		var photo_cont = $(this).find('.slider-photo').parent();
-		var slider_nav = $(this).find('.slider-nav');
-		var slider = $(this);
+	$.fn.slider = function(option) {
+		var img = [],
+			thumb = [],
+			photo_cont = $(this).find('.slider-img'),
+			slider_nav = $(this).find('.slider-nav'),
+			slider = $(this),
+			max = 4,
+			slide_length = $(this).find('.js-slider-nav i').length,
+			active_thumb,
+			active_id = 0,
+			slider_allow = true,
+			active_info;
+
+		var get_thumb = function(id, thumb, img) {
+			return '<li class="thumb" data-id="' + id + '" style="background-image: url(' + thumb + ')" data-img="' + img + '">';
+		}
 
 		var init = function() {
 			var j = 0;
-			slider.find('.thumb').each(function(){
+			
+			slider.find('.js-slider-nav i').each(function(){
 				$(this).attr('data-id', j);
-				obj[j] = $(this).attr('data-img');
+				img[j] = $(this).attr('data-img');
+				thumb[j] = $(this).attr('data-thumb');
 				j++;
 			});
+			j = 0;
+			slider.find('.slide-info').each(function(){
+				$(this).attr('data-id', j);
+				j++;	
+			});
+			for(var i = 0; i < 3; i++) {
+				slider_nav.append(get_thumb(i, thumb[i], img[i]));
+			}
+			for(i = slide_length - 1; i > slide_length - 3; i--) {
+				slider_nav.prepend(get_thumb(i, thumb[i], img[i]));
+			}
 			slider.addClass('js-slider');
+			active_thumb = slider_nav.find('.thumb[data-id=0]');
+			active_thumb.addClass('active');
+			active_info = slider.find('.slide-info[data-id=0]');
+			active_info.addClass('active');
+			photo_cont.html('<div class="slider-photo" style="background-image: url(' + active_thumb.attr('data-img') + ');"></div>');
+			if(option) {
+				slider.find('.slider-nav-win').css('width', slider_nav.find('.thumb').outerWidth(true) * (max + 1));
+			} else {
+				//slider.find('.slider-nav').css('width', slider_nav.find('.thumb').outerWidth(true) * (max + 1));
+			}
 		}
 
 		init();
 
+		var thumb_rm = function(del, out, i) {
+			slider_allow = false;
+			var block = slider.find('.slider-nav .thumb[data-id=' + del + ']');
+			var time;
+			if(out) {
+				block.css({
+					'position': 'absolute',
+					'left': -(i+1) * block.outerWidth(true)
+				});
+				setTimeout(function(){
+					block.remove();
+					slider_allow = true;
+				}, 500);
+			} else {
+				setTimeout(function(){
+					block.remove();
+					slider_allow = true;
+				}, 500);
+			}
+		}
+
+		var thumb_show = function(id, type) {
+			var pre_str = get_thumb(id, thumb[id], img[id]);
+			if(type == 'prepend') {
+				slider.find('.slider-nav').prepend(pre_str);
+			} else {
+				slider.find('.slider-nav').append(pre_str);
+			}
+		}
+
+		var nav_change = function(dif, direction) {
+			if(direction == 'prepend') {
+				var x = - slider.find('.thumb').outerWidth(true) * dif;
+				slider_nav.attr('style', '-webkit-transform: translateX('+ x +'px);');
+				setTimeout(function(){
+					slider_nav.addClass('transition');
+					slider_nav.removeAttr('style');
+					setTimeout(function(){
+						slider_nav.removeClass('transition');
+					}, 500);
+				}, 1);
+			}
+			if(direction == 'append') {
+				var x = slider.find('.thumb').outerWidth(true) * dif;
+				slider_nav.attr('style', '-webkit-transform: translateX('+ x +'px);');
+				setTimeout(function(){
+					slider_nav.addClass('transition');
+					slider_nav.removeAttr('style');
+					setTimeout(function(){
+						slider_nav.removeClass('transition');
+					}, 500);
+				}, 1);
+				
+				
+			}
+
+		}
+
 		var show = function(id) {
-			slider.find('.thumb[data-id=' + id + ']').addClass('active').siblings().removeClass('active');
+			if(id == active_id || !slider_allow) return;
+
+			var dif = Math.abs(slider.find('.thumb[data-id=' + id + ']').index() - active_thumb.index());
+
+			active_info = slider.find('.slide-info[data-id=' + id + ']');
+			var info_rm = slider.find('.slide-info.active');
+			active_info.addClass('active');
+			info_rm.addClass('fadeout');
+			setTimeout(function(){
+				info_rm.removeClass('fadeout').removeClass('active');
+			}, 500);
+
+			if(slider.find('.thumb[data-id=' + id + ']').index() < active_thumb.index()) {
+				var del_id = parseInt(slider.find('.thumb').last().attr('data-id'));
+				var add_id = parseInt(slider.find('.thumb').first().attr('data-id')) - 1;
+
+				for(var i = 0; i < dif; i++) {
+					del = del_id - i;
+					add = add_id - i;
+					
+					if(add < 0) {
+						add = slide_length - Math.abs(add);
+					}
+					if(del < 0) {
+						del = slide_length - Math.abs(del);
+					}
+
+					thumb_rm(del);
+					thumb_show(add, 'prepend');
+					nav_change(dif, 'prepend');
+				}
+
+			} else {
+				var del_id = parseInt(slider.find('.thumb').first().attr('data-id'));
+				var add_id = parseInt(slider.find('.thumb').last().attr('data-id')) + 1;
+
+				for(var i = 0; i < dif; i++) {
+					del = del_id + (dif - 1 - i);
+					add = add_id + i;
+
+					if(add > slide_length - 1) {
+						add = add - slide_length;
+					}
+					if(del > slide_length - 1) {
+						del = del - slide_length;
+					}
+
+					thumb_rm(del, true, i);
+					thumb_show(add, 'append');
+					nav_change(dif, 'append');
+				}
+			}
+
+			active_thumb = slider.find('.thumb[data-id=' + id + ']');
+			active_id = id;
+			active_thumb.addClass('active').siblings().removeClass('active');
 			
 			var old_slide = photo_cont.find('.slider-photo');
-			var new_slide = $('<div class="slider-photo closed" style="background-image: url(' + obj[id] + ');"></div>');
+			var new_slide = $('<div class="slider-photo closed" style="background-image: url(' + img[id] + ');"></div>');
 			
 			old_slide.addClass('to-remove');
 			photo_cont.append(new_slide);
@@ -42,4 +189,129 @@ var grphm_slider = (function(){
 	}
 })();
 
-$('.slider-container').slider();
+$('.slider-container').slider(true);
+$('.auto-slider').slider();
+
+var Popup = (function(){
+
+	allow = true;
+	opened = false;
+	var show = function(popup) {
+		if(!allow) return;
+		$('.overlay').addClass('active').css('z-index', 99);
+		$('.pop-window[data-popup=' + popup + ']').removeClass('closed');
+		$('html').css('overflow', 'hidden');
+		opened = popup;
+	}
+
+	var close = function(popup) {
+		allow = false;
+		$('.overlay').removeClass('active');
+		$('html').removeAttr('style');
+		setTimeout(function(){
+			$('.overlay').css('z-index', -1);
+			$('.pop-window[data-popup=' + popup + ']').addClass('closed');
+			allow = true;
+			opened = false;
+		}, 500);
+	}
+
+	$(document).on('click', '.js-pop-close', function(){
+		if(opened) {
+			close(opened);
+		}
+		return false;
+	});
+
+	$(document).on('click', '.js-pop-show', function(){
+		if(!opened) {
+			show($(this).attr('data-popup'));
+		}
+		return false;
+	});
+
+	$(document).on('click', '.overlay', function(){
+		if(opened) {
+			close(opened);
+		}
+	});
+
+	$(document).on('click', '.pop-window', function(e){
+		e.preventDefault();
+		e.stopPropagation();
+	});
+
+	// if(window.location.hash != '') {
+	// 	show(window.location.hash.substr(1));
+	// }
+
+	return { show: show, close: close };
+})();
+
+jQuery.fn.tabs = function(control) {
+	var element = $(this);
+	control = $(control);
+
+	element.delegate('li', 'click', function(){
+		//Извлечение имени вкладки
+		var tabName = $(this).data('tab');
+
+		//Запуск пользовательского события при щелчке на вкладке
+		element.trigger("change.tabs", tabName);
+	});
+
+	//Привязка к пользовательскому событию
+	element.bind('change.tabs', function(e, tabName){
+		element.find('li').removeClass('active');
+		element.find('>[data-tab="' + tabName + '"]').addClass('active');
+	});
+
+	element.bind('change.tabs', function(e, tabName) {
+		control.find('>[data-tab]').removeClass("active");
+		control.find('>[data-tab="' + tabName + '"]').addClass("active");
+	});
+
+	$('#tabs').bind('change.tabs', function(e, tabName) {
+		window.location.hash = tabName;
+	});
+
+	$(window).bind('hashchange', function(){
+		var tabName = window.location.hash.slice(1);
+		$('#tabs').trigger('change.tabs', tabName);
+	});
+
+	//Активация первой вкладки
+	var garant = element.find('li:first').attr('data-tab');
+	element.trigger('change.tabs', garant);
+	return this;
+};
+
+jQuery.fn.colorChange = function(colorNames) {
+	var element = $(this);
+
+	element.delegate('li', 'click', function(){
+		var colorNum = $(this).data('color');
+		element.trigger("change.color", colorNum);
+	});
+
+	element.bind('change.color', function(e, colorNum) {
+		element.parent().attr('data-color', colorNum);
+		element.prev().html(colorNames[--colorNum]);
+	});
+
+	element.prev().html(colorNames[0]);
+	element.parent().attr('data-color', 1);
+};
+
+//Click events
+$('.colorView').click( function() {
+	$('.colorWrapper').addClass('active');
+});
+$('.color-close').click( function() {
+	$('.colorWrapper').removeClass('active');
+});
+
+var colorNames = ['цвет1','цвет2','цвет3','цвет4','цвет5','цвет6','цвет7','цвет8','цвет9','цвет10'];
+
+$("ul#tabs").tabs("#tabContent");
+$(".colors-list").colorChange(colorNames);
