@@ -31,8 +31,8 @@
 		position: absolute;
 		left: 50rem / @htmlFontSize;
 		top: 50%;
-		width: 30px;
-		height: 45px;
+		width: 30rem / @htmlFontSize;
+		height: 45rem / @htmlFontSize;
 
 		&:before {
 			.transition;
@@ -40,7 +40,7 @@
 			position: absolute;
 			bottom: 50%;
 			left: 0;
-			width: 2px;
+			width: 2rem / @htmlFontSize;
 			height: 50%;
 			background: rgba(255, 255, 255, .65);
 			.transform(rotate(45deg));
@@ -53,7 +53,7 @@
 			position: absolute;
 			top: 50%;
 			left: 0;
-			width: 2px;
+			width: 2rem / @htmlFontSize;
 			height: 50%;
 			background: rgba(255, 255, 255, .65);
 			.transform(rotate(-45deg));
@@ -61,7 +61,7 @@
 		}
 
 		&:hover {
-			.transform(translateX(-3px));
+			.transform(translateX(-3rem / @htmlFontSize));
 
 			&:after {
 				background: rgba(255, 255, 255, 1);
@@ -80,8 +80,8 @@
 		position: absolute;
 		right: 50rem / @htmlFontSize;
 		top: 50%;
-		width: 30px;
-		height: 45px;
+		width: 30rem / @htmlFontSize;
+		height: 45rem / @htmlFontSize;
 
 		&:before {
 			.transition;
@@ -89,7 +89,7 @@
 			position: absolute;
 			bottom: 50%;
 			right: 0;
-			width: 2px;
+			width: 2rem / @htmlFontSize;
 			height: 50%;
 			background: rgba(255, 255, 255, .65);
 			.transform(rotate(-45deg));
@@ -102,7 +102,7 @@
 			position: absolute;
 			top: 50%;
 			right: 0;
-			width: 2px;
+			width: 2rem / @htmlFontSize;
 			height: 50%;
 			background: rgba(255, 255, 255, .65);
 			.transform(rotate(45deg));
@@ -110,7 +110,7 @@
 		}
 
 		&:hover {
-			.transform(translateX(3px));
+			.transform(translateX(3rem / @htmlFontSize));
 
 			&:after {
 				background: rgba(255, 255, 255, 1);
@@ -163,19 +163,19 @@
 			width: 85rem / @htmlFontSize;
 			height: 85rem / @htmlFontSize;
 			border-radius: 85rem / @htmlFontSize;
-			border: 6px solid rgba(255, 255, 255, .5);
+			border: 6rem / @htmlFontSize solid rgba(255, 255, 255, .5);
 
 			&:before {
 				content: "";
 				position: absolute;
 				top: 50%;
 				left: 50%;
-				margin-top: -12.5px;
-				margin-left: -3.5px;
+				margin-top: -12.5rem / @htmlFontSize;
+				margin-left: -3.5rem / @htmlFontSize;
 				width: 0;
 				height: 0;
 				border-style: solid;
-				border-width: 12.5px 0 12.5px 13px;
+				border-width: 12.5rem / @htmlFontSize 0 12.5rem / @htmlFontSize 13rem / @htmlFontSize;
 				border-color: transparent transparent transparent rgba(255, 255, 255, .5);
 			}
 		}

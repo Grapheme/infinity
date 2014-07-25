@@ -1,22 +1,22 @@
 .complectations {
-	width: 1064px;
+	width: 1064rem / @htmlFontSize;
 	margin: 0 auto;
-	padding: 60px 0 0;
+	padding: 60rem / @htmlFontSize 0 0;
 	color: #000;
 
 	h1 {
 		display: inline-block;
-		margin: 0 99px 0 0;
+		margin: 0 99rem / @htmlFontSize 0 0;
 
-		font-size: 34.5px;
+		font-size: 34.5em / @htmlFontSize;
 		font-family: 'MetaPro', sans-serif;
-		line-height: 37px;
+		line-height: 37 / 34.5;
 		text-transform: uppercase;
 		vertical-align: middle;
 	}
 
 	header {		
-		margin: 0 0 37px;
+		margin: 0 0 37rem / @htmlFontSize;
 
 		button {
 			display: inline-block;
@@ -27,18 +27,18 @@
 
 .filter {
 	display: inline-block;
-	font-family: 'HelveticaNeue', sans-serif;
+	font-family: 'Helvetica Neue', 'Open Sans', sans-serif;
 
 	.filter-ul {
 		.list-unstyled;
-		margin-right: 65px;
+		margin-right: 65rem / @htmlFontSize;
 	}
 
 	.filter-li {
 		display: inline-block;
-		margin: 0 18px 0 0;
+		margin: 0 18rem / @htmlFontSize 0 0;
 		vertical-align: middle;
-		font-size: 14px;
+		font-size: 14em / @htmlFontSize;
 
 		a {
 			.typical-link;
@@ -51,8 +51,8 @@
 	.list-unstyled;
 
 	.car-item {
-		margin: 0 0 32px;
-		padding: 0 0 32px;
+		margin: 0 0 32rem / @htmlFontSize;
+		padding: 0 0 32rem / @htmlFontSize;
 		border-bottom: 2px dotted;
 
 		&:last-child {
@@ -62,8 +62,8 @@
 		.car-head {
 			vertical-align: top;
 			display: inline-block;
-			width: 280px;
-			font-size: 14px;
+			width: 280rem / @htmlFontSize;
+			font-size: 14em / @htmlFontSize;
 
 			h3 {
 				margin: 0;
@@ -77,16 +77,16 @@
 		.car-body {
 			vertical-align: top;
 			display: inline-block;
-			width: 1064px - 280;
+			width: 784rem / @htmlFontSize;
 
 			.car-links {
-				margin: 0 0 32px 0;
-				font-size: 13px;
+				margin: 0 0 32rem / @htmlFontSize 0;
+				font-size: 13em / @htmlFontSize;
 				text-transform: uppercase;
 
 				a {
 					.transition;
-					margin: 0 34px 0 0;
+					margin: 0 34rem / @htmlFontSize 0 0;
 					color: inherit;
 					text-decoration: none;
 					border-bottom: 1px solid transparent;
@@ -101,8 +101,8 @@
 				.list-unstyled;
 				list-style-type: disc;
 				list-style-position: inside;
-				font-size: 14px;
-				line-height: 24px;
+				font-size: 14em / @htmlFontSize;
+				line-height: 24em / 14;
 			}
 		}
 	}

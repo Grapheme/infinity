@@ -3,17 +3,17 @@
 
 	h1 {
 		margin: 0;
-		padding: 64px 0;
+		padding: 64rem / @htmlFontSize 0;
 
 		font-family: 'MetaPro', sans-serif;
-		font-size: 34.5px; 
-		line-height: 37px;
+		font-size: 34.5em / @htmlFontSize; 
+		line-height: 37em / 34.5;
 		text-transform: uppercase;
 		text-align: center;
 	}
 }
 .columns {
-	max-width: 960px;
+	max-width: 960rem / @htmlFontSize;
 	margin: 0 auto;
 
 	.column-50 {
@@ -24,27 +24,27 @@
 		clear: both;
 
 		.column-head {
-			height: 442px;
+			height: 442rem / @htmlFontSize;
 		}
 	}
 	.column-left {
-		margin: 0 2% 50px 0;
+		margin: 0 2% 50rem / @htmlFontSize 0;
 	}
 	.column-right {
-		margin: 0 0 50px 2%;
+		margin: 0 0 50rem / @htmlFontSize 2%;
 	}
 	.column-head {
-		height: 264px;
+		height: 264rem / @htmlFontSize;
 	}
 	.column-body {
 		h2 {
-			margin: 24px 0;
-			font-size: 14px;
+			margin: 24rem / @htmlFontSize 0;
+			font-size: 14rem / @htmlFontSize;
 			text-transform: uppercase;
 		}
 		.column-desc {
-			font-size: 12px;
-			line-height: 22px;
+			font-size: 12rem / @htmlFontSize;
+			line-height: 22rem / @htmlFontSize;
 		}
 	}
 }
