@@ -149,6 +149,7 @@ class AdminReviewsController extends BaseController {
                     Photo::find($image->id)->delete();
                 endif;
             endif;
+            $review->meta()->delete();
             $review->delete();
             $json_request['responseText'] = 'Отзыв удален';
             $json_request['status'] = TRUE;

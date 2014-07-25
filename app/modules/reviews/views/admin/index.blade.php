@@ -33,7 +33,7 @@
                 <td class="text-center">{{ date("d.m.Y", strtotime($review->published_at)) }}</a></td>
                 <td>{{$review->meta->first()->name}}</td>
                 @if(Allow::action('review','publication'))
-                <td class="wigth-100">
+                <td class="width-100">
                     <div class="smart-form">
                         <label class="toggle pull-left">
                             <input type="checkbox" name="publication" disabled="" checked="" value="1">
@@ -42,12 +42,12 @@
                     </div>
                 </td>
                 @endif
-                 @if(ReviewsController::$prefix_url !== FALSE)
-                 <td class="wigth-250 text-center">
+                @if(ReviewsController::$prefix_url !== FALSE)
+                <td class="width-350 text-center">
                     <a href="{{ link::to(ReviewsController::$prefix_url.'/'.$review->meta->first()->seo_url) }}" target="_blank">{{ $review->meta->first()->seo_url }}</a>
                 </td>
                 @endif
-                <td class="wigth-250">
+                <td class="width-350">
                     @if(Allow::action('reviews', 'edit'))
                     <a class="btn btn-default pull-left margin-right-10" href="{{ link::auth('reviews/edit/'.$review->id) }}">
                         Редактировать

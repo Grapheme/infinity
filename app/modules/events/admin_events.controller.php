@@ -150,6 +150,7 @@ class AdminEventsController extends BaseController {
                     Photo::find($image->id)->delete();
                 endif;
             endif;
+            $event->meta()->delete();
             $event->delete();
             $json_request['responseText'] = 'Событие удалено';
             $json_request['status'] = TRUE;

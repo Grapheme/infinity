@@ -21,7 +21,9 @@
                 @if(Allow::action('events','publication'))
                 <th class="text-center">Публикация</th>
                 @endif
+                 @if(EventsController::$prefix_url !== FALSE)
                 <th class="col col-sm-3 text-center">URL</th>
+                @endif
                 <th></th>
             </tr>
             </thead>
@@ -31,7 +33,7 @@
                 <td class="text-center">{{ date("d.m.Y", strtotime($event->published_at)) }}</a></td>
                 <td>{{ $event->meta->first()->title }}</td>
                 @if(Allow::action('event','publication'))
-                <td class="wigth-100">
+                <td class="width-100">
                     <div class="smart-form">
                         <label class="toggle pull-left">
                             <input type="checkbox" name="publication" disabled="" checked="" value="1">
@@ -40,10 +42,12 @@
                     </div>
                 </td>
                 @endif
-                <td class="wigth-250 text-center">
+                @if(EventsController::$prefix_url !== FALSE)
+                <td class="width-350 text-center">
                     <a href="{{ link::to(EventsController::$prefix_url.'/'.$event->meta->first()->seo_url) }}" target="_blank">{{ $event->meta->first()->seo_url }}</a>
                 </td>
-                <td class="width-250">
+                @endif
+                <td class="width-350">
                     @if(Allow::action('event', 'edit'))
                     <a class="btn btn-default pull-left margin-right-10" href="{{ link::auth('events/edit/'.$event->id) }}">
                         Редактировать
