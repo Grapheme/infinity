@@ -286,4 +286,32 @@ jQuery.fn.tabs = function(control) {
 	return this;
 };
 
+jQuery.fn.colorChange = function(colorNames) {
+	var element = $(this);
+
+	element.delegate('li', 'click', function(){
+		var colorNum = $(this).data('color');
+		element.trigger("change.color", colorNum);
+	});
+
+	element.bind('change.color', function(e, colorNum) {
+		element.parent().attr('data-color', colorNum);
+		element.prev().html(colorNames[--colorNum]);
+	});
+
+	element.prev().html(colorNames[0]);
+	element.parent().attr('data-color', 1);
+};
+
+//Click events
+$('.colorView').click( function() {
+	$('.colorWrapper').addClass('active');
+});
+$('.color-close').click( function() {
+	$('.colorWrapper').removeClass('active');
+});
+
+var colorNames = ['цвет1','цвет2','цвет3','цвет4','цвет5','цвет6','цвет7','цвет8','цвет9','цвет10'];
+
 $("ul#tabs").tabs("#tabContent");
+$(".colors-list").colorChange(colorNames);

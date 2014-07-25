@@ -98,21 +98,18 @@
 	line-height: 53rem / @htmlFontSize;
 	font-size: 15rem / @htmlFontSize;
 	text-transform: uppercase;
-	padding: 0 15rem / @htmlFontSize 0 40rem / @htmlFontSize;
+	padding: 0 15rem / @htmlFontSize;
 	font-weight: 600;
 	color: #fff;
 	text-decoration: none;
 
+	.icon {
+		margin: 0 1rem 0 0;
+	}
+
 	&:hover {
 		background: #fff;
 		color: #633e7c;
-
-		&:after {
-			opacity: 1;
-		}
-		&:before {
-			opacity: 0;
-		}
 	}
 }
 
@@ -143,16 +140,6 @@
 		top: 50%;
 		margin-top: -8rem / @htmlFontSize;
 		
-	}
-
-	&:before {
-		background: url(../img/wheel.png);
-		opacity: 1;
-	}
-
-	&:after {
-		background: url(../img/wheel-hover.png);
-		opacity: 0;
 	}
 }
 
