@@ -55,6 +55,7 @@ class AdminEventsController extends BaseController {
 
     /****************************************************************************/
     protected $event;
+    public $locales;
 
     public function __construct(Events $event){
 
@@ -123,7 +124,6 @@ class AdminEventsController extends BaseController {
             if($validator->passes()):
                 $event = $this->event->find($id);
                 self::saveEventsModel($event);
-                self::saveEventsMetaModel($event);
                 $json_request['responseText'] = 'Событие сохранено';
                 $json_request['redirect'] = link::auth('events');
                 $json_request['status'] = TRUE;
@@ -154,7 +154,6 @@ class AdminEventsController extends BaseController {
             $event->delete();
             $json_request['responseText'] = 'Событие удалено';
             $json_request['status'] = TRUE;
-        #endif;
         else:
             return App::abort(404);
         endif;

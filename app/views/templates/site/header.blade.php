@@ -1,3 +1,12 @@
+<?php
+    $header_models = ProductCategory::orderby('title')->with(array('product'=>function($query_product){
+        $query_product->where('publication',1);
+        $query_product->with(array('meta'=>function($query_product_meta){
+            $query_product_meta->orderBy('title');
+        }));
+    }))->get();
+?>
+
 <header class="main-header{{ Request::is('/') ? '' : ' static-header' }}">
     @if(!Request::is('/'))
     <a href="{{ link::to() }}" class="logo"></a>
@@ -15,22 +24,20 @@
             </ul>
         </nav>
         <div class="head-models">
+        @foreach($header_models as $model)
             <div class="model">
-                <div class="title">Седаны и купе</div>
+                <div class="title">{{ $model->title }}</div>
                 <div class="items">
-                    <a href="{{ link::to('model') }}">Q50</a><a href="{{ link::to('model') }}">Q60</a><a href="{{ link::to('model') }}">M</a><a href="{{ link::to('model') }}">Q70</a>
+                @foreach($model->product as $product)
+                    <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->meta->first()->short_title  }}</a>
+                @endforeach
                 </div>
             </div>
-            <div class="model">
-                <div class="title">Кроссоверы и внедорожники</div>
-                <div class="items">
-                    <a href="{{ link::to('model') }}">QX50</a><a href="{{ link::to('model') }}">JX</a><a href="{{ link::to('model') }}">QX60</a><a href="{{ link::to('model') }}">QX70</a><a href="{{ link::to('model') }}">QX80</a>
-                </div>
-            </div>
+        @endforeach
             <div class="model">
                 <div class="title">&nbsp;</div>
                 <div class="items">
-                    <a href="javascript:void(0);">Все модели</a>
+                    <a href="{{ link::to('catalog') }}">Все модели</a>
                 </div>
             </div>
         </div>
