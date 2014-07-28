@@ -16,7 +16,6 @@
             </section>
         </fieldset>
     </div>
-    <!-- Tabs -->
     <ul class="nav nav-tabs margin-top-10">
         @foreach ($locales as $l => $locale)
         <li class="{{ $l === 0 ? 'active' : '' }}">
@@ -24,8 +23,6 @@
         </li>
         @endforeach
     </ul>
-    <!-- Fields -->
-
 	<div class="row margin-top-10">
         <div class="tab-content">
             @foreach ($locales as $l => $locale)
@@ -58,6 +55,12 @@
                                 <label class="label">Изображение</label>
                                 <label class="input">
                                     {{ ExtForm::image('image', '') }}
+                                </label>
+                            </section>
+                            <section>
+                                <label class="label">Галерея</label>
+                                <label class="input">
+                                    {{ ExtForm::gallery('gallery', '') }}
                                 </label>
                             </section>
                             @endif

@@ -108,7 +108,7 @@ class AdminEventsController extends BaseController {
     public function getEdit($id){
 
         $this->moduleActionPermission('events','edit');
-        if(!$event = $this->event->find($id)->with('meta')->with('images')->first()):
+        if(!$event = $this->event->where('id',$id)->with('meta')->with('images')->first()):
             return App::abort(404);
         endif;
         $gall = Rel_mod_gallery::where('module','events')->where('unit_id', $id)->first();

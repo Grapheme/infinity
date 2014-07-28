@@ -193,8 +193,10 @@ class AdminProductionProductsController extends BaseController {
 	public function getEdit($id){
 
         Allow::permission($this->module['group'], 'product_edit');
-		$product = $this->product->find($id)->with('meta')->with('images')->first();
-
+        $product = $this->product->where('id',$id)->with('meta')->with('images')->with(array('gallery'=>function($query) use ($id){
+            $query->where('module',self::$name);
+            $query->where('unit_id',$id);
+        }))->first();
         $categories = array('Выберите категорию');
         foreach (ProductCategory::all() as $category):
             $categories[$category->id] = $category->title;
@@ -263,6 +265,7 @@ class AdminProductionProductsController extends BaseController {
         $product->save();
         $product->touch();
         self::saveProductsMetaModel($product);
+        self::saveProductsGallery($product);
         return $product;
     }
 
@@ -313,8 +316,24 @@ class AdminProductionProductsController extends BaseController {
 
             $productMeta->save();
             $productMeta->touch();
+
         endforeach;
         return TRUE;
     }
 
+    private function saveProductsGallery($product = NULL){
+
+        if(!is_null($product)):
+            if(Allow::action('admin_galleries','edit')):
+                ExtForm::process('gallery', array(
+                    'module'  => 'products',
+                    'unit_id' => $product->id,
+                    'gallery' => Input::get('gallery'),
+                ));
+            endif;
+        else:
+            return FALSE;
+        endif;
+
+    }
 }

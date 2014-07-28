@@ -19,6 +19,10 @@ class Product extends BaseModel {
         return $this->belongsTo('Photo','image_id');
     }
 
+    public  function gallery(){
+        return $this->hasMany('Rel_mod_gallery','unit_id');
+    }
+
     public  function meta(){
         return $this->hasMany('ProductsMeta','product_id');
     }

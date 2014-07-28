@@ -58,6 +58,12 @@
                                     {{ ExtForm::image('image', $product->images) }}
                                 </label>
                             </section>
+                            <section>
+                                <label class="label">Галерея</label>
+                                <label class="input">
+                                    {{ ExtForm::gallery('gallery',$product->gallery->first()) }}
+                                </label>
+                            </section>
                             @endif
                             <section>
                                 <label class="label">Краткое описание</label>
