@@ -5,7 +5,7 @@
 	width: 100%;
 	height: 130rem / @htmlFontSize;
 	min-width: 1280rem / @htmlFontSize;
-	text-align: center;
+	//text-align: center;
 
 	&.static-header {
 		position: relative;
@@ -31,7 +31,7 @@
 	.header-cont {
 		vertical-align: top;
 		display: inline-block;
-		text-align: left;
+		margin-left: 50rem / @htmlFontSize;
 
 		.fl-r {
 			display: inline-block;
@@ -138,6 +138,90 @@
 			width: 102rem / @htmlFontSize;
 			height: 32rem / @htmlFontSize;
 			background: url(../img/gedon.png) no-repeat 0 0 e('/') 100%;
+		}
+	}
+}
+
+.model-menu {
+	position: absolute;
+	left: 290rem / @htmlFontSize;
+	right: 0;
+	top: 8.125rem;
+	height: 55rem / @htmlFontSize;
+	line-height: 54rem / @htmlFontSize;
+	background: #633e7c;
+	z-index: 5;
+	font-family: 'Helvetica Neue', 'Open Sans', sans-serif;
+	white-space: nowrap;
+	min-width: 1020rem / @htmlFontSize;
+
+	.model-options {
+		display: inline-block;
+		vertical-align: top;
+		background: #000;
+		padding: 0 15rem / @htmlFontSize 0 50rem / @htmlFontSize;
+	}
+
+	.model-name {
+		font-size: 16rem / @htmlFontSize;
+		font-weight: 500;
+		margin-right: 10rem / @htmlFontSize;
+
+		&:after {
+			font-family: "social";
+			content: '\e809';
+			margin-left: 10rem / @htmlFontSize;
+		}
+	}
+
+	.model-option {
+		.transition(border);
+		color: #fff;
+		font-size: 14rem / @htmlFontSize;
+		font-weight: 300;
+		text-decoration: none;
+		border-bottom: 1px solid transparent;
+		letter-spacing: .5px;
+		margin: 0 10rem / @htmlFontSize;
+
+		&:hover {
+			border-bottom: 1px solid #fff;
+		}
+	}
+
+	.model-exist, .broshure-link {
+		.box-sizing;
+		display: inline-block;
+		vertical-align: top;
+		height: 100%;
+		border-bottom: 1px solid #000;
+		color: #fff;
+		font-size: 14rem / @htmlFontSize;
+		text-transform: uppercase;
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	.model-exist {
+		border-right: 1px solid #000;
+		padding: 0 35rem / @htmlFontSize;
+	}
+
+	.broshure-link {
+		padding: 0 20rem / @htmlFontSize;
+
+		&:before {
+			content: "";
+			display: inline-block;
+			height: 100%;
+			width: 20rem / @htmlFontSize;
+			background: url(../img/broshure.png) no-repeat center center e('/') 20rem / @htmlFontSize 16rem / @htmlFontSize;
+			margin-right: 8rem / @htmlFontSize;
+		}
+
+		span {
+			display: inline-block;
+			vertical-align: top;
 		}
 	}
 }

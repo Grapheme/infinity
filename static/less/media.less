@@ -16,10 +16,27 @@
 	}
 }
 
+@media screen and (max-width: 1395px) {	
+	.model-menu {
+		.broshure-link {
+			&:before {
+				margin: 0;
+			}
+			& > span {
+				display: none;
+			}
+		}
+	}
+}
+
 @media screen and (max-width: 1379px) {	
 
 	.main-header .logo {
 		width: 260rem / @htmlFontSize;
+	}
+
+	.model-menu {
+		left: 260rem / @htmlFontSize;
 	}
 
 	.contacts {
