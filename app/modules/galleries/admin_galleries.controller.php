@@ -73,7 +73,8 @@ class AdminGalleriesController extends BaseController {
                 $unit_id = (int)trim($unit_id);
 
                 ## Perform all actions for adding photos to the gallery & bind gallery to the unit_id of module
-                $class::imagesToUnit($uploaded_images, $module, $unit_id, $gallery_id);
+
+                return $class::imagesToUnit($uploaded_images, $module, $unit_id, $gallery_id);
             }
         );
 
@@ -500,9 +501,8 @@ class AdminGalleriesController extends BaseController {
 			return false;
 
 		$gallery_id = self::moveImagesToGallery($images, $gallery_id);
-		self::relModuleUnitGallery($module, (int)$unit_id, $gallery_id);
-
-		return true;
+        self::relModuleUnitGallery($module, (int)$unit_id, $gallery_id);
+		return $gallery_id;
 	}
 
 }

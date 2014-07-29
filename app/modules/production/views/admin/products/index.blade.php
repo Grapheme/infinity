@@ -75,11 +75,9 @@
     					<td class="text-center" style="white-space:nowrap;">
 
         					@if(Allow::action($module['group'], 'product_edit'))
-							<form method="GET" action="{{ link::auth($module['rest'].'/edit/'.$product->id) }}" style="display:inline-block">
-								<button type="submit" class="btn btn-success margin-right-10">
-									Изменить
-								</button>
-							</form>
+        					<a href="{{ URL::route('product_video_index',array('product_id'=>$product->id)) }}" class="btn btn-info margin-right-10">Видео</a>
+        					<a href="{{ URL::route('product_gallery_index',array('product_id'=>$product->id)) }}" class="btn btn-info margin-right-10">Галереи</a>
+        					<a href="{{ link::auth($module['rest'].'/edit/'.$product->id) }}" class="btn btn-success margin-right-10">Изменить</a>
                     		@endif
 
         					@if(Allow::action($module['group'], 'product_delete'))

@@ -126,6 +126,11 @@ class AdminProductionProductsController extends BaseController {
     protected $product;
     public $locales;
 
+    public function getVideo(){
+        print_r(12312313);
+        exit;
+    }
+
 	public function __construct(Product $product){
 
         $this->product = $product;
@@ -174,10 +179,12 @@ class AdminProductionProductsController extends BaseController {
 
         if(!Request::ajax()) return App::abort(404);
         Allow::permission($this->module['group'], 'product_create');
-		$json_request = array('status'=>FALSE, 'responseText'=>'', 'responseErrorText'=>'', 'redirect'=>FALSE);
+		$json_request = array('status'=>FALSE, 'responseText'=>'', 'responseErrorText'=>'', 'redirect'=>FALSE, 'gallery'=>0);
 		$validation = Validator::make(Input::all(), Product::$rules);
 		if($validation->passes()) {
             self::saveProductModel();
+            self::saveProductsMetaModel();
+            $json_request['gallery'] = self::saveProductsGallery();
 			$json_request['responseText'] = "Продукт создан";
 			$json_request['redirect'] = link::auth($this->module['rest']);
 			$json_request['status'] = TRUE;
@@ -209,11 +216,13 @@ class AdminProductionProductsController extends BaseController {
 
         if(!Request::ajax()) return App::abort(404);
         Allow::permission($this->module['group'], 'product_edit');
-		$json_request = array('status'=>FALSE, 'responseText'=>'', 'responseErrorText'=>'', 'redirect'=>FALSE);
+		$json_request = array('status'=>FALSE, 'responseText'=>'', 'responseErrorText'=>'', 'redirect'=>FALSE, 'gallery'=>0);
 		$validation = Validator::make(Input::all(), Product::$rules);
 		if($validation->passes()):
             $product = $this->product->find($id);
             self::saveProductModel($product);
+            self::saveProductsMetaModel();
+            $json_request['gallery'] = self::saveProductsGallery();
 			$json_request['responseText'] = 'Продукт обновлен';
 			$json_request['status'] = TRUE;
 		else:
@@ -264,18 +273,18 @@ class AdminProductionProductsController extends BaseController {
         ## Сохраняем в БД
         $product->save();
         $product->touch();
-        self::saveProductsMetaModel($product);
-        self::saveProductsGallery($product);
-        return $product;
+
+        $this->product = $product;
+        return TRUE;
     }
 
-    private function saveProductsMetaModel($product = NULL){
+    private function saveProductsMetaModel(){
 
         foreach($this->locales as $locale):
-            if (!$productMeta = ProductsMeta::where('product_id',$product->id)->where('language',$locale)->first()):
+            if (!$productMeta = ProductsMeta::where('product_id',$this->product->id)->where('language',$locale)->first()):
                 $productMeta = new ProductsMeta;
             endif;
-            $productMeta->product_id = $product->id;
+            $productMeta->product_id = $this->product->id;
             $productMeta->language = $locale;
             $productMeta->title = Input::get('title.' . $locale);
             $productMeta->short_title = Input::get('short_title.' . $locale);
@@ -321,19 +330,16 @@ class AdminProductionProductsController extends BaseController {
         return TRUE;
     }
 
-    private function saveProductsGallery($product = NULL){
+    private function saveProductsGallery(){
 
-        if(!is_null($product)):
-            if(Allow::action('admin_galleries','edit')):
-                ExtForm::process('gallery', array(
-                    'module'  => 'products',
-                    'unit_id' => $product->id,
-                    'gallery' => Input::get('gallery'),
-                ));
-            endif;
-        else:
-            return FALSE;
+        $gallery_id = FALSE;
+        if(Allow::action('admin_galleries','edit')):
+            $gallery_id = ExtForm::process('gallery', array(
+                'module'  => 'products',
+                'unit_id' => $this->product->id,
+                'gallery' => Input::get('gallery'),
+            ));
         endif;
-
+        return $gallery_id;
     }
 }

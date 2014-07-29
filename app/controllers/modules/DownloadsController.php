@@ -70,9 +70,9 @@ class DownloadsController extends BaseController {
 				if(is_file($uploadPath.'/'.$file)):
 					$thumbnail = $uploadPath.'/thumbnail/thumb_'.$file;
 					if(file_exists($thumbnail) && is_file($thumbnail)):
-						$fileList['thumb'] = url('uploads/thumbnail/thumb_'.$file);
+						$fileList['thumb'] = '/uploads/thumbnail/thumb_'.$file;
 					endif;
-					$fileList['image'] = url('uploads/'.$file);
+					$fileList['image'] = '/uploads/'.$file;
 					$fullList[$index] = $fileList;
 					$index++;
 				endif;
@@ -91,7 +91,7 @@ class DownloadsController extends BaseController {
 			endif;
 			ImageManipulation::make(Input::file('file')->getRealPath())->resize(100,100)->save($uploadPath.'/thumbnail/thumb_'.$fileName);
 			ImageManipulation::make(Input::file('file')->getRealPath())->resize(600,600)->save($uploadPath.'/'.$fileName);
-			$file = array('filelink'=>url('uploads/'.$fileName));
+			$file = array('filelink'=>'/uploads/'.$fileName);
 			echo stripslashes(json_encode($file));
 		else:
 			exit('Нет файла для загрузки!');

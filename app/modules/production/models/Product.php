@@ -27,6 +27,10 @@ class Product extends BaseModel {
         return $this->hasMany('ProductsMeta','product_id');
     }
 
+    public  function videos(){
+        return $this->hasMany('ProductVideos','product_id');
+    }
+
     /*
 	public function group(){
 		return $this->hasOne('Group', 'group_id', 'id');
