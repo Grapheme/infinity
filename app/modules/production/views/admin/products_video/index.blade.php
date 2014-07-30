@@ -1,6 +1,6 @@
 @extends(Helper::acclayout())
 @section('content')
-<h1>Продукция: Видео контент</h1>
+<h1>Продукция: Видео контент ({{ $product->meta->first()->title }})</h1>
 {{ Form::model($videos,array('url'=>URL::route('product_video_store',array('product_id'=>$product->id)), 'role'=>'form', 'class'=>'smart-form', 'id'=>'product-video-form', 'method'=>'post')) }}
     <div class="row margin-top-10">
         <section class="col col-6">

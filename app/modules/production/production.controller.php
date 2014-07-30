@@ -24,6 +24,8 @@ class ProductionController extends BaseController {
                 ## Также указываем before-фильтр i18n_url, для выставления текущей локали.
                 Route::group(array('before' => 'i18n_url', 'prefix' => $locale), function(){
                     Route::get('/'.self::$prefix_url.'/{url}', array('as' => 'single_product', 'uses' => __CLASS__.'@showProduct')); ## I18n Production
+                    Route::get('/'.self::$prefix_url.'/{url}/specifications', array('as' => 'specifications_product', 'uses' => __CLASS__.'@showProductSpecifications')); ## I18n Production
+                    Route::get('/'.self::$prefix_url.'/{url}/galleries', array('as' => 'galleries_product', 'uses' => __CLASS__.'@showProductGalleries')); ## I18n Production
                 });
             }
         }
@@ -31,11 +33,9 @@ class ProductionController extends BaseController {
         ## Генерим роуты без префикса, и назначаем before-фильтр i18n_url.
         ## Это позволяет нам делать редирект на урл с префиксом только для этих роутов, не затрагивая, например, /admin и /login
         Route::group(array('before' => 'i18n_url'), function(){
-            Route::get('/'.self::$prefix_url.'/{url}', array('as' => 'single_product', 'uses' => __CLASS__.'@showProduct'
-                #function($url) {
-                #	return $this->showFullByUrl($url);
-                #}
-            )); ## I18n News
+            Route::get('/'.self::$prefix_url.'/{url}', array('as' => 'single_product', 'uses' => __CLASS__.'@showProduct'));
+            Route::get('/'.self::$prefix_url.'/{url}/specifications', array('as' => 'specifications_product', 'uses' => __CLASS__.'@showProductSpecifications'));
+            Route::get('/'.self::$prefix_url.'/{url}/galleries', array('as' => 'galleries_product', 'uses' => __CLASS__.'@showProductGalleries'));
         });
     }
 
@@ -64,10 +64,13 @@ class ProductionController extends BaseController {
     public function showProduct($url){
 
         if (!@$url) $url = Input::get('url');
-
         $products = Product::with(array('meta' => function ($query) use ($url) {
             $query->where('seo_url', $url);
-        }))->with('images')->get();
+        }))->with('images')->with(array('gallery'=>function($query){
+            $query->with('photos');
+        }))->with(array('colors'=>function($query){
+            $query->with('images');
+        }))->get();
         $product = NULL;
         foreach ($products as $product_info):
             if (!is_null($product_info->meta->first()) && $product_info->meta->first()->seo_url == $url):
@@ -90,4 +93,59 @@ class ProductionController extends BaseController {
         );
     }
 
+    public function showProductSpecifications($url){
+
+        if (!@$url) $url = Input::get('url');
+        $products = Product::with(array('meta' => function ($query) use ($url) {$query->where('seo_url', $url);}))->get();
+        $product = NULL;
+        foreach ($products as $product_info):
+            if (!is_null($product_info->meta->first()) && $product_info->meta->first()->seo_url == $url):
+                $product = $product_info;
+                break;
+            endif;
+        endforeach;
+        if(is_null($product)):
+            return App::abort(404);
+        endif;
+        return View::make($this->tpl.'specifications',
+            array(
+                'product' => $product,
+                'page_title'=>$product->meta->first()->title,
+                'page_description'=>'',
+                'page_keywords'=>'',
+                'page_author'=>'',
+                'page_h1'=>$product->meta->first()->title
+            )
+        );
+    }
+
+    public function showProductGalleries($url){
+
+        if (!@$url) $url = Input::get('url');
+        $products = Product::with(array('meta' => function ($query) use ($url) {
+            $query->where('seo_url', $url);
+        }))->with(array('galleries'=>function($query){
+            $query->with('photos');
+        }))->get();
+        $product = NULL;
+        foreach ($products as $product_info):
+            if (!is_null($product_info->meta->first()) && $product_info->meta->first()->seo_url == $url):
+                $product = $product_info;
+                break;
+            endif;
+        endforeach;
+        if(is_null($product)):
+            return App::abort(404);
+        endif;
+        return View::make($this->tpl.'galleries',
+            array(
+                'product' => $product,
+                'page_title'=>$product->meta->first()->title,
+                'page_description'=>'',
+                'page_keywords'=>'',
+                'page_author'=>'',
+                'page_h1'=>$product->meta->first()->title
+            )
+        );
+    }
 }

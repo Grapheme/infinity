@@ -29,6 +29,7 @@ class CreateProductionTables extends Migration {
                 $table->integer('category_id')->default(0)->unsigned()->nullable();
                 $table->boolean('publication')->default(1)->unsigned()->nullable();
                 $table->integer('image_id')->default(0)->unsigned()->nullable();
+                $table->integer('gallery_color_id')->default(0)->unsigned()->nullable();
                 $table->integer('gallery_id')->default(0)->unsigned()->nullable();
                 $table->timestamps();
                 $table->index('publication');
@@ -48,6 +49,7 @@ class CreateProductionTables extends Migration {
                 $table->string('short_title', 20)->nullable();
                 $table->mediumText('preview')->nullable();
                 $table->Text('content')->nullable();
+                $table->Text('specifications')->nullable();
                 $table->string('seo_url',255)->nullable();
                 $table->string('seo_title',255)->nullable();
                 $table->text('seo_description')->nullable();

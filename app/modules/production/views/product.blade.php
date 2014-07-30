@@ -4,7 +4,9 @@
 @stop
 
 @section('content')
+@include('production/views/accepts/product-menu')
  <section class="auto-slider">
+    @if($product->colors->count())
     <div class="slider-window">
         <div class="wrapper">
             <div class="colorWrapper">
@@ -12,20 +14,17 @@
                 <div class="color-close">✕</div>
                 <div class="color-name"></div>
                 <ul class="colors-list">
-                    <li class="color-item" data-color="1"></li>
-                    <li class="color-item" data-color="2"></li>
-                    <li class="color-item" data-color="3"></li>
-                    <li class="color-item" data-color="4"></li>
-                    <li class="color-item" data-color="5"></li>
-                    <li class="color-item" data-color="6"></li>
-                    <li class="color-item" data-color="7"></li>
-                    <li class="color-item" data-color="8"></li>
+                @foreach($product->colors as $product_color)
+                    <li class="color-item" data-color="{{ $product_color->color }}" data-color-title="{{ $product_color->title }}"></li>
+                @endforeach
                 </ul>
             </div>
             <a class="drive-btn colorView" href="javascript:void(0);"><span class="icon icon-circle"></span> Выбор цвета</a>
-            @if(File::exists(public_path('uploads/galleries/'.$product->images['name'])))
-             <div class="slider-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->images['name']) }});"></div>
+        @foreach($product->colors as $product_color)
+            @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
+                <div class="slider-photo" style="background-image: url({{ asset('uploads/galleries/'.$product_color->images->name) }});"></div>
             @endif
+        @endforeach
             <div class="auto-info">
                 <div class="title">Объект желания</div>
                 <div class="text">{{ $product->meta->first()->title }}</div>
@@ -37,17 +36,17 @@
             </div>
         </div>
     </div>
+    @endif
+@if(!is_null($product->gallery) && $product->gallery->photos->count())
     <div class="js-slider-nav">
-        <i data-thumb="img/thumbs/thumb1.jpg" data-img="img/slide1.jpg"></i>
-        <i data-thumb="img/thumbs/thumb2.jpg" data-img="img/fx35.jpg"></i>
-        <i data-thumb="img/thumbs/thumb3.jpg" data-img="img/slide1.jpg"></i>
-        <i data-thumb="img/thumbs/thumb4.jpg" data-img="img/slide1.jpg"></i>
-        <i data-thumb="img/thumbs/thumb5.jpg" data-img="img/slide1.jpg"></i>
-        <i data-thumb="img/thumbs/thumb1.jpg" data-img="img/slide1.jpg"></i>
+    @foreach($product->gallery->photos as $image)
+        <i data-thumb="{{ asset('uploads/galleries/thumbs/'.$image->name) }}" data-img="{{ asset('uploads/galleries/'.$image->name) }}"></i>
+    @endforeach
     </div>
     <div class="slider-nav-win">
         <ul class="slider-nav"></ul>
     </div>
+@endif
 </section>
 <section class="model-sect">
     {{ $product->meta->first()->content }}

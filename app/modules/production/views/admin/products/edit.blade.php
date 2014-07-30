@@ -61,7 +61,7 @@
                             <section>
                                 <label class="label">Галерея</label>
                                 <label class="input">
-                                    {{ ExtForm::gallery('gallery',$product->gallery->first()) }}
+                                    {{ ExtForm::gallery('gallery',$product->galleries->first(),array('id'=>'gallery-input-id')) }}
                                 </label>
                             </section>
                             @endif
@@ -75,6 +75,12 @@
                                 <label class="label">Описание</label>
                                 <label class="textarea">
                                     {{ Form::textarea('content['.$locale.']',$product->meta->first()->content,array('class'=>'redactor redactor_450')) }}
+                                </label>
+                            </section>
+                            <section>
+                                <label class="label">Характеристики</label>
+                                <label class="textarea">
+                                    {{ Form::textarea('specifications['.$locale.']',$product->meta->first()->specifications,array('class'=>'redactor redactor_450')) }}
                                 </label>
                             </section>
                         </fieldset>

@@ -200,7 +200,7 @@ class AdminProductionProductsController extends BaseController {
 	public function getEdit($id){
 
         Allow::permission($this->module['group'], 'product_edit');
-        $product = $this->product->where('id',$id)->with('meta')->with('images')->with(array('gallery'=>function($query) use ($id){
+        $product = $this->product->where('id',$id)->with('meta')->with('images')->with(array('galleries'=>function($query) use ($id){
             $query->where('module',self::$name);
             $query->where('unit_id',$id);
         }))->first();
@@ -268,7 +268,8 @@ class AdminProductionProductsController extends BaseController {
         $product->category_id = Input::get('category_id');
         $product->publication = 1;
         $product->image_id =  Input::get('image');
-        $product->gallery_id =  Input::get('gallery_id');
+//        $product->gallery_color_id =  Input::get('gallery_color.gallery_id');
+//        $product->gallery_id = Input::get('gallery.gallery_id');
 
         ## Сохраняем в БД
         $product->save();
@@ -291,6 +292,7 @@ class AdminProductionProductsController extends BaseController {
             $productMeta->price = Input::get('price.' . $locale);
             $productMeta->preview = Input::get('preview.' . $locale);
             $productMeta->content = Input::get('content.' . $locale);
+            $productMeta->specifications = Input::get('specifications.' . $locale);
 
             /*
            $eventMeta->seo_url = Input::get('seo_url.' . $locale);
@@ -340,6 +342,10 @@ class AdminProductionProductsController extends BaseController {
                 'gallery' => Input::get('gallery'),
             ));
         endif;
+
+        $this->product->gallery_id = $gallery_id;
+        $this->product->save();
+
         return $gallery_id;
     }
 }

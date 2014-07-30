@@ -60,7 +60,7 @@
                             <section>
                                 <label class="label">Галерея</label>
                                 <label class="input">
-                                    {{ ExtForm::gallery('gallery', '') }}
+                                    {{ ExtForm::gallery('gallery','',array('id'=>'gallery-input-id')) }}
                                 </label>
                             </section>
                             @endif
@@ -74,6 +74,12 @@
                                 <label class="label">Описание</label>
                                 <label class="textarea">
                                     {{ Form::textarea('content['.$locale.']','',array('class'=>'redactor redactor_450')) }}
+                                </label>
+                            </section>
+                            <section>
+                                <label class="label">Характеристики</label>
+                                <label class="textarea">
+                                    {{ Form::textarea('specifications['.$locale.']','',array('class'=>'redactor redactor_450')) }}
                                 </label>
                             </section>
                         </fieldset>

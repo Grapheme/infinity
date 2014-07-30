@@ -1,6 +1,6 @@
 @extends(Helper::acclayout())
 @section('content')
-<h1>Продукция: Галереи</h1>
+<h1>Продукция: Галереи ({{ $product->meta->first()->title }})</h1>
 {{ Form::model($galleries,array('url'=>URL::route('product_gallery_store',array('product_id'=>$product->id)), 'role'=>'form', 'class'=>'smart-form', 'id'=>'product-gallery-form', 'method'=>'post')) }}
     <div class="row margin-top-10">
         <section class="col col-6">
