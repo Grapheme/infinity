@@ -82,6 +82,12 @@
                                     {{ Form::textarea('specifications['.$locale.']','',array('class'=>'redactor redactor_450')) }}
                                 </label>
                             </section>
+                            <section>
+                                <label class="label">Брошюра</label>
+                                <label class="input input-file" for="file">
+                                    <div class="button"><input type="file" onchange="this.parentNode.nextSibling.value = this.value" name="file">Выбрать</div><input type="text" readonly="">
+                                </label>
+                            </section>
                         </fieldset>
                     </div>
                 </section>

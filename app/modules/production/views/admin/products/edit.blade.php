@@ -55,13 +55,13 @@
                             <section>
                                 <label class="label">Изображение</label>
                                 <label class="input">
-                                    {{ ExtForm::image('image', $product->images) }}
+                                    {{ ExtForm::image('image', @$product->images) }}
                                 </label>
                             </section>
                             <section>
                                 <label class="label">Галерея</label>
                                 <label class="input">
-                                    {{ ExtForm::gallery('gallery',$product->galleries->first(),array('id'=>'gallery-input-id')) }}
+                                    {{ ExtForm::gallery('gallery',@$product->gallery,array('id'=>'gallery-input-id')) }}
                                 </label>
                             </section>
                             @endif
@@ -81,6 +81,12 @@
                                 <label class="label">Характеристики</label>
                                 <label class="textarea">
                                     {{ Form::textarea('specifications['.$locale.']',$product->meta->first()->specifications,array('class'=>'redactor redactor_450')) }}
+                                </label>
+                            </section>
+                            <section>
+                                <label class="label">Брошюра</label>
+                                <label class="input input-file" for="file">
+                                    <div class="button"><input type="file" onchange="this.parentNode.nextSibling.value = this.value" name="file">Выбрать</div><input type="text" readonly="">
                                 </label>
                             </section>
                         </fieldset>

@@ -28,6 +28,7 @@ class CreateProductionTables extends Migration {
                 $table->increments('id');
                 $table->integer('category_id')->default(0)->unsigned()->nullable();
                 $table->boolean('publication')->default(1)->unsigned()->nullable();
+                $table->string('brochure',256)->nullable();
                 $table->integer('image_id')->default(0)->unsigned()->nullable();
                 $table->integer('gallery_color_id')->default(0)->unsigned()->nullable();
                 $table->integer('gallery_id')->default(0)->unsigned()->nullable();

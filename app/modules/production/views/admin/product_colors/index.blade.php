@@ -63,7 +63,7 @@
     		<div class="ajax-notifications custom">
     			<div class="alert alert-transparent">
     				<h4>Список пуст</h4>
-    				В данном разделе находятся продукты
+    				В данном разделе находятся цвета продукта
     				<p><br><i class="regular-color-light fa fa-th-list fa-3x"></i></p>
     			</div>
     		</div>

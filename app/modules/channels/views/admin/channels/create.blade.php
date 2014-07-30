@@ -73,7 +73,7 @@
                     <section>
                         <label class="label">Файл</label>
                         <label class="input input-file" for="file">
-                            <div class="button"><input type="file" onchange="this.parentNode.nextSibling.value = this.value" name="file">Выбрать</div><input type="text" readonly=""">
+                            <div class="button"><input type="file" onchange="this.parentNode.nextSibling.value = this.value" name="file">Выбрать</div><input type="text" readonly="">
                         </label>
                     </section>
                 </fieldset>

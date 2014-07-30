@@ -8,7 +8,7 @@
     <div class="row margin-top-10">
         <section class="col col-6">
             <div class="well">
-                <header>Для создания нового продукта заполните форму:</header>
+                <header>Для добавления нового цвета продукта заполните форму:</header>
                 <fieldset>
                     <section>
                         <label class="label">Название</label>

@@ -6,6 +6,11 @@
 @section('content')
 @include('production/views/accepts/product-menu')
  <section class="auto-slider">
+    @if(!is_null($product->images))
+        @if(File::exists(public_path('uploads/galleries/'.$product->images->name)))
+        <div class="slider-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->images->name) }});"></div>
+        @endif
+    @endif
     @if($product->colors->count())
     <div class="slider-window">
         <div class="wrapper">
@@ -26,10 +31,10 @@
             @endif
         @endforeach
             <div class="auto-info">
-                <div class="title">Объект желания</div>
-                <div class="text">{{ $product->meta->first()->title }}</div>
-                <div class="price">{{ number_format($product->meta->first()->price,0,' ',' ') }} руб</div>
+                <div class="title">{{ $product->meta->first()->title }}</div>
                 <div class="text">{{ $product->meta->first()->preview }}</div>
+                <div class="price">{{ number_format($product->meta->first()->price,0,' ',' ') }} руб</div>
+                <div class="text"></div>
                 <a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive">
                     <span class="icon icon-wheel"></span> Записаться на тестдрайв
                 </a>

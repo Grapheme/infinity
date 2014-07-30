@@ -29,6 +29,7 @@ class AdminProductionColorController extends BaseController {
     /****************************************************************************/
 
     protected $product;
+    protected $color;
 
     public function __construct(Product $product, ProductColors $color){
 
@@ -70,7 +71,7 @@ class AdminProductionColorController extends BaseController {
         if($validation->passes()) {
             self::saveProductColorModel();
             $json_request['responseText'] = "Цвет продукта добавлен";
-            $json_request['redirect'] = URL::route('product_color_index',array('roduct_id'=>$this->product->id));
+            $json_request['redirect'] = URL::route('product_color_index',array('product_id'=>$this->product->id));
             $json_request['status'] = TRUE;
         } else {
             $json_request['responseText'] = 'Неверно заполнены поля';
