@@ -4,6 +4,7 @@
         $query_product->with(array('meta'=>function($query_product_meta){
             $query_product_meta->orderBy('title');
         }));
+        $query_product->with('images');
     }))->get();
 ?>
 
@@ -75,7 +76,11 @@
             </ul>
         </div><!--
         --><div class="main-blocks">
-            <div class="main-block" style="background-image: url('img/tooltip_car.jpg')">
+            @if(!is_null($product->images) && File::exists(public_path('uploads/galleries/'.$product->images->name)))
+               <div class="main-block" style="background-image: url({{ asset('uploads/galleries/'.$product->images->name) }})">
+            @else
+                <div class="main-block">
+            @endif
                 <div class="car-name">{{ $product->meta->first()->title }}</div>
                 {{ $product->meta->first()->preview }}
                 <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="car-link"><span class="icon icon-page"></span>Подробнее</a>
@@ -99,9 +104,11 @@
                 <ul class="cars-ul">
                  @foreach($product_category->product as $product)
                     <li>
-                        <a href="#" class="full-a"></a>
-                        <div class="car-photo" style="background-image: url(img/tooltip_car_min.png)"></div>
-                        <div class="car-name">Q50</div>
+                        <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="full-a"></a>
+                    @if(!is_null($product->images) && File::exists(public_path('uploads/galleries/thumbs/'.$product->images->name)))
+                        <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/thumbs/'.$product->images->name) }});"></div>
+                    @endif
+                        <div class="car-name">{{ $product->meta->first()->title }}</div>
                  @endforeach
                 </ul>
             </div>
