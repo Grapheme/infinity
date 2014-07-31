@@ -8,7 +8,7 @@
     <header>
         <h2>{{ $element->channel->first()->title }}</h2>
         <div class="desc">
-            {{ $element->channel->first()->desc }}
+            {{ $element->channel->first()->short }}
         </div>
     </header>
     @if(File::exists(public_path('uploads/galleries/'.$element->channel->first()->images->name)))
@@ -22,15 +22,11 @@
 ?>
 <section class="buy-offer">
     <header>
-        <h2>Предложение о покупке</h2>
         <div class="desc">
-            Внимание! Стартует беспрецедентная акция - 20 автомобилей по себестоимости*. Подробности<br>
-            при встрече. В настоящее время бренд прокладывает себе путь через европейские рынки.<br>
-            С момента своего основания, компания невероятно расширилась, и в настоящее время включает<br>
-            в себя 230 дилеров в 15 странах мира. Ее деятельность выросла в геометрической прогрессии,<br>
-            растянувшись от Мексики до России, и от Украины до Китая и Тайваня.
+            {{ $element->channel->first()->desc }}
         </div>
     </header>
+    @if($offers->count())
     <section class="buy-suboffer">
         <h2>Другие интересные предложения</h2>
         <ul class="sub-offers-ul">
@@ -58,6 +54,7 @@
             @endforeach
         </ul>
     </section>
+    @endif
 </section>
 @stop
 @section('scripts')

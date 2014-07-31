@@ -7,6 +7,6 @@
        <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url.'/complections') }}" class="model-option">Комплектации и цены</a>
        <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url.'/accessories') }}" class="model-option">Аксессуары</a>
    </div><!--
---><span class="model-exist">6 Infinity QX50 в наличии</span><!--
---><a href="#" class="broshure-link"><span>Брошюра</span></a>
+--><span class="model-exist">Х {{ $product->meta->first()->title }} в наличии</span><!--
+-->@if(!empty($product->brochure) && File::exists(public_path($product->brochure)))<a href="{{ asset($product->brochure) }}" target="_blank" class="broshure-link"><span>Брошюра</span></a>@endif
 </div>

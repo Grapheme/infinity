@@ -2,6 +2,7 @@
     $channelCategory = ChannelCategory::where('slug','offer')->first();
     $offers = Channel::where('category_id',@$channelCategory->id)->orderBy('title')->with('images')->get();
 ?>
+@if(!is_null($channelCategory) && $offers->count())
 <section class="buy-offer">
     <section class="buy-suboffer">
         <h1>{{ $channelCategory->title }}</h1>
@@ -31,3 +32,4 @@
         </ul>
     </section>
 </section>
+@endif

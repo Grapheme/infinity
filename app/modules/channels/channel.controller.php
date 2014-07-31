@@ -144,9 +144,9 @@ class ChannelController extends BaseController {
 
         try{
             $element = ChannelCategory::where('slug', Request::segment(1))->with(array('channel' => function ($query) use ($url) {
-                    $query->where('link', $url);
-                    $query->with('images');
-                }))->first();
+                $query->where('link', $url);
+                $query->with('images');
+            }))->first();
 
             if(!$element):
                 return App::abort(404);
