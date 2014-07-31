@@ -14,8 +14,8 @@
                 <div class="footer-block">
                     <div class="title">Модели</div>
                     <ul class="footer-ul">
-                @foreach($footer_models as $model)
-                    @foreach($model->product as $product)
+                @foreach($footer_models as $product_category)
+                    @foreach($product_category->product as $product)
                         <li class="option"><a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->meta->first()->short_title  }}</a>
                     @endforeach
                 @endforeach

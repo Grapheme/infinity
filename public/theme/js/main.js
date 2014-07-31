@@ -303,6 +303,151 @@ jQuery.fn.colorChange = function(colorNames) {
 	element.parent().attr('data-color', 1);
 };
 
+jQuery.fn.galleryAnim = function() {
+
+	var cont = $(this);
+		block = $(this).find('.gallery-block'),
+		slides_length = block.length,
+		allow_scroll = 'top',
+		fade_allow = true,
+		fade_time = 1000;
+
+	block.eq(0).addClass('active').siblings().addClass('fadeOut');
+	block.addClass('transition');
+	
+	$(window).scrollTop(0);
+
+	$(window).on('scroll', function(){
+		if(allow_scroll != 'bottom' && $(window).scrollTop() > $('.gallery').offset().top) {
+			$(window).scrollTop($('.gallery').offset().top);
+			$('html').addClass('scroll-blocked');
+		}
+
+		if(allow_scroll == 'bottom' && $(window).scrollTop() + $(window).height() < $('.gallery').offset().top + $('.gallery').height()) {
+			$(window).scrollTop($('.gallery').offset().top);
+			$('html').addClass('scroll-blocked');
+		}
+	});
+
+	$(document).on('mousewheel', function(event) {
+		var delta = event.originalEvent.wheelDelta;
+
+		if(delta > 0 && allow_scroll == 'top') {
+			$('html').removeClass('scroll-blocked');
+		} else
+
+		if(delta < 0 && allow_scroll == 'bottom') {
+			$('html').removeClass('scroll-blocked');
+		}
+
+		if($('html').hasClass('scroll-blocked') && fade_allow) {
+			if(delta > 0) {
+				var active = cont.find('.gallery-block.active');
+				if(active.index() == 0) {
+					allow_scroll = 'top';
+					return ;
+				}
+				fade_allow = false;
+				allow_scroll = false;
+				active.removeClass('active').addClass('fadeOut');
+				block.eq(active.index() - 1).addClass('active');
+				setTimeout(function(){
+					fade_allow = true;
+				}, fade_time);
+			} else
+
+			if(delta < 0) {
+				var active = cont.find('.gallery-block.active');
+				if(active.index() + 1 == slides_length) {
+					allow_scroll = 'bottom';
+					return ;
+				}
+				fade_allow = false;
+				allow_scroll = false;
+				active.removeClass('active');
+				block.eq(active.index() + 1).removeClass('fadeOut').addClass('active');
+				setTimeout(function(){
+					fade_allow = true;
+				}, fade_time);
+			}
+		}
+	});
+};
+
+jQuery.fn.carsHover = function(){
+	var cont = $(this);
+
+	$(document).on('mouseover', '.cars-ul li', function(){
+		cont.find('.cars-ul li').addClass('fadeOut');
+		$(this).removeClass('fadeOut');
+	});
+};
+
+var tooltips = (function(){
+	$('.js-tooltip-block').hide();
+	var timeout = false;
+	var timeout_trans = false;
+	var pos_y = $('.main-header').height();
+
+	$(document).on('mouseover', '.js-tooltip, .js-tooltip-block', function(){
+		show($('.js-tooltip-block[data-tooltip="' + $(this).attr('data-tooltip') + '"]'));
+	});
+	$(document).on('mouseover', '.js-tooltip', function(){
+		if($(this).attr('data-tooltip') != $('.js-tooltip-block.fadeIn').attr('data-tooltip')) {
+			$('.js-tooltip-block.fadeIn').hide().removeClass('fadeIn');
+		}
+	});
+	$(document).on('mouseout', '.js-tooltip, .js-tooltip-block', function(){
+		close($('.js-tooltip-block[data-tooltip="' + $(this).attr('data-tooltip') + '"]'));
+	});
+
+	function show(cont) {
+		cont.css('z-index', 999);
+		var this_tool = $('.js-tooltip[data-tooltip="' + cont.attr('data-tooltip') + '"]');
+		cont.css({
+			'top': pos_y
+		});
+		cont.show();
+		var tr_x = this_tool.offset().left - cont.offset().left + this_tool.width()/2 - 15/2;
+		cont.find('.tool-triangle').css('left', tr_x);
+		setTimeout(function(){
+			cont.addClass('fadeIn');
+		}, 1);
+		clearTimeout(timeout);
+		clearTimeout(timeout_trans);
+	}
+
+	function close(cont) {
+		cont.css('z-index', 5);
+		timeout = setTimeout(function(){
+			cont.removeClass('fadeIn');
+			timeout_trans = setTimeout(function(){
+				cont.hide();
+				//cont.find('.cars-ul li').removeClass('fadeOut');
+			}, 500);
+		}, 1000);
+	}
+
+})();
+
+var smart_tabs = (function() {
+	if($('.js-smartabs').length != 0) {
+		$('.js-smartabs').each(function(){
+			$(this).find('li').eq(0).addClass('active');
+			var parent = $(this).parent().parent();
+			parent.find('.main-block').eq(0).siblings().hide();
+		});
+	}
+
+	$(document).on('mouseover', '.js-smartabs li', function(){
+		$(this).addClass('active').siblings().removeClass('active');
+		var parent = $(this).parent().parent().parent();
+		parent.find('.main-block').eq($(this).index()).show().siblings().hide();
+	});
+})();
+
+$('.cars-tooltip').carsHover();
+
 //Click events
 $('.colorView').click( function() {
 	$('.colorWrapper').addClass('active');
