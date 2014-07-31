@@ -374,7 +374,79 @@ jQuery.fn.galleryAnim = function() {
 	});
 };
 
-$('.gallery').galleryAnim();
+jQuery.fn.carsHover = function(){
+	var cont = $(this);
+
+	$(document).on('mouseover', '.cars-ul li', function(){
+		cont.find('.cars-ul li').addClass('fadeOut');
+		$(this).removeClass('fadeOut');
+	});
+};
+
+var tooltips = (function(){
+	$('.js-tooltip-block').hide();
+	var timeout = false;
+	var timeout_trans = false;
+	var pos_y = $('.main-header').height();
+
+	$(document).on('mouseover', '.js-tooltip, .js-tooltip-block', function(){
+		show($('.js-tooltip-block[data-tooltip="' + $(this).attr('data-tooltip') + '"]'));
+	});
+	$(document).on('mouseover', '.js-tooltip', function(){
+		if($(this).attr('data-tooltip') != $('.js-tooltip-block.fadeIn').attr('data-tooltip')) {
+			$('.js-tooltip-block.fadeIn').hide().removeClass('fadeIn');
+		}
+	});
+	$(document).on('mouseout', '.js-tooltip, .js-tooltip-block', function(){
+		close($('.js-tooltip-block[data-tooltip="' + $(this).attr('data-tooltip') + '"]'));
+	});
+
+	function show(cont) {
+		cont.css('z-index', 999);
+		var this_tool = $('.js-tooltip[data-tooltip="' + cont.attr('data-tooltip') + '"]');
+		cont.css({
+			'top': pos_y
+		});
+		cont.show();
+		var tr_x = this_tool.offset().left - cont.offset().left + this_tool.width()/2 - 15/2;
+		cont.find('.tool-triangle').css('left', tr_x);
+		setTimeout(function(){
+			cont.addClass('fadeIn');
+		}, 1);
+		clearTimeout(timeout);
+		clearTimeout(timeout_trans);
+	}
+
+	function close(cont) {
+		cont.css('z-index', 5);
+		timeout = setTimeout(function(){
+			cont.removeClass('fadeIn');
+			timeout_trans = setTimeout(function(){
+				cont.hide();
+				//cont.find('.cars-ul li').removeClass('fadeOut');
+			}, 500);
+		}, 1000);
+	}
+
+})();
+
+var smart_tabs = (function() {
+	if($('.js-smartabs').length != 0) {
+		$('.js-smartabs').each(function(){
+			$(this).find('li').eq(0).addClass('active');
+			var parent = $(this).parent().parent();
+			parent.find('.main-block').eq(0).siblings().hide();
+		});
+	}
+
+	$(document).on('mouseover', '.js-smartabs li', function(){
+		$(this).addClass('active').siblings().removeClass('active');
+		var parent = $(this).parent().parent().parent();
+		parent.find('.main-block').eq($(this).index()).show().siblings().hide();
+	});
+})();
+
+$('.cars-tooltip').carsHover();
 
 //Click events
 $('.colorView').click( function() {
