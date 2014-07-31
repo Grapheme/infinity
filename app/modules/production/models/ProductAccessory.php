@@ -7,7 +7,6 @@ class ProductAccessory extends BaseModel {
 
     public static $rules = array(
         'title' => 'required',
-        'price' => 'required',
         'category_id' => 'required',
         'accessibility_id' => 'required',
     );

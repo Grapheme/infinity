@@ -79,11 +79,9 @@
     var essence_name = 'аксессуар продукта';
 	var validation_rules = {
 		title: { required: true },
-		price: { required: true },
 	};
 	var validation_messages = {
 		title: { required: 'Укажите название' },
-		price: { required: 'Укажите цену' },
 	};
     </script>
 

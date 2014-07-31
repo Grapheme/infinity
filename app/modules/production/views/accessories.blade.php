@@ -24,9 +24,11 @@
                             <div class="desc">
                                 {{ $accessory->description }}
                             </div>
+                            @if(!empty())
                             <div class="price">
                                 {{ number_format($accessory->price,0,' ',' ') }} руб.
                             </div>
+                            @endif
                             <div class="availability">
                                 {{ $accessory->accessibility->title }}
                             </div>

@@ -25,4 +25,12 @@ class I18nNews extends BaseModel {
     public  function meta(){
         return $this->hasMany('I18nNewsMeta','news_id');
     }
+
+    public  function galleries(){
+        return $this->hasMany('Rel_mod_gallery','unit_id');
+    }
+
+    public  function gallery(){
+        return $this->belongsTo('Gallery','gallery_id');
+    }
 }
