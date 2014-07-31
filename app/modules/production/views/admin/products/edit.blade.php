@@ -89,6 +89,12 @@
                                     <div class="button"><input type="file" onchange="this.parentNode.nextSibling.value = this.value" name="file">Выбрать</div><input type="text" readonly="">
                                 </label>
                             </section>
+                            <section>
+                                <label class="checkbox">
+                                    {{ Form::checkbox('in_menu',1) }}
+                                    <i></i>Показывать товар в главном меню
+                                </label>
+                            </section>
                         </fieldset>
                     </div>
                 </section>

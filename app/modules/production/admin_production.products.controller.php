@@ -264,6 +264,7 @@ class AdminProductionProductsController extends BaseController {
 
         $product->category_id = Input::get('category_id');
         $product->publication = 1;
+        $product->in_menu = Input::get('in_menu');
         $product->image_id =  Input::get('image');
 //        $product->gallery_color_id =  Input::get('gallery_color.gallery_id');
 //        $product->gallery_id = Input::get('gallery.gallery_id');
