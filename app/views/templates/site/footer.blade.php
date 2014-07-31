@@ -11,16 +11,12 @@
         <div class="footer-top">
             <div class="footer-left">
                 <div class="footer-block">
+                    <div class="title">Модели</div>
                     <ul class="footer-ul">
                 @foreach($footer_models as $model)
-                    @if($model->product->count())
                     @foreach($model->product as $product)
                         <li class="option"><a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->meta->first()->short_title  }}</a>
                     @endforeach
-                        @if($model->count() > 1)
-                        <li class="line">&nbsp;
-                        @endif
-                    @endif
                 @endforeach
                     </ul>
                 </div>
@@ -29,7 +25,7 @@
                     <ul class="footer-ul">
                         <li class="option"><a href="{{ link::to() }}">Лица компании</a>
                         <li class="option"><a href="{{ link::to() }}">Вакансии</a>
-                        <li class="option"><a href="{{ link::to() }}">Новости</a>
+                        <li class="option"><a href="{{ link::to('news') }}">Новости</a>
                         <li class="option"><a href="{{ link::to() }}">События</a>
                         <li class="option"><a href="{{ link::to() }}">Клуб</a>
                         <li class="option"><a href="{{ link::to() }}">История</a>
