@@ -46,7 +46,7 @@ class CreateProductionTables extends Migration {
                 $table->integer('product_id')->default(0)->unsigned()->nullable();
                 $table->string('language',10)->nullable();
                 $table->string('title',100)->nullable();
-                $table->float('price')->default(0)->nullable();
+                $table->double('price')->default(0)->nullable();
                 $table->string('short_title', 20)->nullable();
                 $table->mediumText('preview')->nullable();
                 $table->Text('content')->nullable();

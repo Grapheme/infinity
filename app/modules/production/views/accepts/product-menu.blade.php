@@ -1,6 +1,6 @@
 <div class="model-menu">
    <div class="model-options">
-       <span class="model-name">QX70</span>
+       <span class="model-name">{{ $product->meta->first()->short_title }}</span>
        <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="model-option">Обзор</a>
        <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url.'/specifications') }}" class="model-option">Характеристики</a>
        <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url.'/galleries') }}" class="model-option">Галерея</a>

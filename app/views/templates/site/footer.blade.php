@@ -1,19 +1,27 @@
+<?php
+    $footer_models = ProductCategory::orderby('title')->with(array('product'=>function($query_product){
+        $query_product->where('publication',1);
+        $query_product->with(array('meta'=>function($query_product_meta){
+            $query_product_meta->orderBy('title');
+        }));
+    }))->get();
+?>
 <footer class="main-footer">
     <div class="wrapper">
         <div class="footer-top">
             <div class="footer-left">
                 <div class="footer-block">
-                    <div class="title">Модели</div>
                     <ul class="footer-ul">
-                        <li class="option"><a href="{{ link::to('model') }}">Q50</a>
-                        <li class="option"><a href="{{ link::to('model') }}">Q60</a>
-                        <li class="option"><a href="{{ link::to('model') }}">M</a>
-                        <li class="option"><a href="{{ link::to('model') }}">Q70</a>
+                @foreach($footer_models as $model)
+                    @if($model->product->count())
+                    @foreach($model->product as $product)
+                        <li class="option"><a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->meta->first()->short_title  }}</a>
+                    @endforeach
+                        @if($model->count() > 1)
                         <li class="line">&nbsp;
-                        <li class="option"><a href="{{ link::to('model') }}">QX50</a>
-                        <li class="option"><a href="{{ link::to('model') }}">JX</a>
-                        <li class="option"><a href="{{ link::to('model') }}">QX70</a>
-                        <li class="option"><a href="{{ link::to('model') }}">QX80</a>
+                        @endif
+                    @endif
+                @endforeach
                     </ul>
                 </div>
                 <div class="footer-block">
