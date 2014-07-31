@@ -303,6 +303,79 @@ jQuery.fn.colorChange = function(colorNames) {
 	element.parent().attr('data-color', 1);
 };
 
+jQuery.fn.galleryAnim = function() {
+
+	var cont = $(this);
+		block = $(this).find('.gallery-block'),
+		slides_length = block.length,
+		allow_scroll = 'top',
+		fade_allow = true,
+		fade_time = 1000;
+
+	block.eq(0).addClass('active').siblings().addClass('fadeOut');
+	block.addClass('transition');
+	
+	$(window).scrollTop(0);
+
+	$(window).on('scroll', function(){
+		if(allow_scroll != 'bottom' && $(window).scrollTop() > $('.gallery').offset().top) {
+			$(window).scrollTop($('.gallery').offset().top);
+			$('html').addClass('scroll-blocked');
+		}
+
+		if(allow_scroll == 'bottom' && $(window).scrollTop() + $(window).height() < $('.gallery').offset().top + $('.gallery').height()) {
+			$(window).scrollTop($('.gallery').offset().top);
+			$('html').addClass('scroll-blocked');
+		}
+	});
+
+	$(document).on('mousewheel', function(event) {
+		var delta = event.originalEvent.wheelDelta;
+
+		if(delta > 0 && allow_scroll == 'top') {
+			$('html').removeClass('scroll-blocked');
+		} else
+
+		if(delta < 0 && allow_scroll == 'bottom') {
+			$('html').removeClass('scroll-blocked');
+		}
+
+		if($('html').hasClass('scroll-blocked') && fade_allow) {
+			if(delta > 0) {
+				var active = cont.find('.gallery-block.active');
+				if(active.index() == 0) {
+					allow_scroll = 'top';
+					return ;
+				}
+				fade_allow = false;
+				allow_scroll = false;
+				active.removeClass('active').addClass('fadeOut');
+				block.eq(active.index() - 1).addClass('active');
+				setTimeout(function(){
+					fade_allow = true;
+				}, fade_time);
+			} else
+
+			if(delta < 0) {
+				var active = cont.find('.gallery-block.active');
+				if(active.index() + 1 == slides_length) {
+					allow_scroll = 'bottom';
+					return ;
+				}
+				fade_allow = false;
+				allow_scroll = false;
+				active.removeClass('active');
+				block.eq(active.index() + 1).removeClass('fadeOut').addClass('active');
+				setTimeout(function(){
+					fade_allow = true;
+				}, fade_time);
+			}
+		}
+	});
+};
+
+$('.gallery').galleryAnim();
+
 //Click events
 $('.colorView').click( function() {
 	$('.colorWrapper').addClass('active');

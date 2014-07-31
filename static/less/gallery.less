@@ -1,6 +1,24 @@
-.gallery-block {
+html.scroll-blocked {
+	overflow: hidden;
+}
+
+.gallery {
 	position: relative;
 	height: 100vh;
+	overflow: hidden;
+}
+
+.gallery-block {
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+
+	&.fadeOut {
+		.transform(translateY(100%));
+	}
+
+	&.transition {
+		.transition(all, 1s);
+	}
 
 	.title {
 		.inf-title;
