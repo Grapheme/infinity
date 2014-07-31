@@ -5,6 +5,7 @@
     <div class="row">
     	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 margin-bottom-25 margin-top-10">
     		<div class="pull-left margin-right-10">
+    		    <a class="btn btn-default" href="{{ link::auth('production/products') }}">К списку товаров</a>
     		@if(Allow::action('production', 'product_create'))
     			<a class="btn btn-primary" href="{{ URL::route('product_color_create',array('product_id'=>$product->id) )}}">Новый цвет</a>
     		@endif

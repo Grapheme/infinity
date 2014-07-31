@@ -57,6 +57,7 @@
                         --}}
     					<th class="col-lg-5 text-center" style="white-space:nowrap;">Продукт</th>
     					<th class="col-lg-5 text-center" style="white-space:nowrap;">Цена</th>
+    					<th class="col-lg-1 text-center">Дополнительно</th>
     					<th class="col-lg-1 text-center">Действия</th>
     				</tr>
     			</thead>
@@ -73,12 +74,17 @@
                             {{ $product->meta->first()->price }} руб.
                         </td>
     					<td class="text-center" style="white-space:nowrap;">
+    					    @if(Allow::action($module['group'], 'product_edit'))
+                            <a href="{{ URL::route('product_accessory_index',array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">Аксессуары</a>
+                            <a href="{{ URL::route('product_complection_index',array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">Комплектации и цены</a>
+                            <a href="{{ URL::route('product_color_index',array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">Цвета</a>
+                            <a href="{{ URL::route('product_video_index',array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">Видео</a>
+                            <a href="{{ URL::route('product_gallery_index',array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">Галереи</a>
+                            @endif
+    					</td>
+    					<td class="text-center" style="white-space:nowrap;">
 
         					@if(Allow::action($module['group'], 'product_edit'))
-        					<a href="{{ URL::route('product_complection_index',array('product_id'=>$product->id)) }}" class="btn btn-info margin-right-10">Комплектации и цены </a>
-        					<a href="{{ URL::route('product_color_index',array('product_id'=>$product->id)) }}" class="btn btn-info margin-right-10">Цвета</a>
-        					<a href="{{ URL::route('product_video_index',array('product_id'=>$product->id)) }}" class="btn btn-info margin-right-10">Видео</a>
-        					<a href="{{ URL::route('product_gallery_index',array('product_id'=>$product->id)) }}" class="btn btn-info margin-right-10">Галереи</a>
         					<a href="{{ link::auth($module['rest'].'/edit/'.$product->id) }}" class="btn btn-success margin-right-10">Изменить</a>
                     		@endif
 

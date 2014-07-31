@@ -30,6 +30,9 @@ class Product extends BaseModel {
     public  function complections(){
         return $this->hasMany('ProductComplections','product_id');
     }
+    public  function accessories(){
+        return $this->hasMany('ProductAccessory','product_id');
+    }
 
     public  function galleries(){
         return $this->hasMany('Rel_mod_gallery','unit_id');
