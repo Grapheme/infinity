@@ -10,15 +10,25 @@
         <h1>Аксессуары</h1>
     </header>
     <?php
-        $products = array();
+        $products = $accessories = array();
         if($all_products = Product::with('meta')->get()):
             foreach($all_products as $product):
                 $products[$product->id] = $product->meta->first()->title;
             endforeach;
         endif;
-        $accessories = ProductAccessory::orderBy('title')->orderBy('price')->with('category')->with('accessibility')->with('images')->with('product')->get();
+        $all_accessories = ProductAccessory::orderBy('title')->orderBy('price')->with('category')->with('accessibility')->with('images')->with('product')->get();
 
-        Helper::dd($accessories->toArray());
+        if($all_accessories->count()):
+            $categories = ProductAccessoryCategories::lists('title','id');
+            $accessories = array();
+            foreach ($categories as $category_id => $category_title):
+                foreach ($all_accessories as $accessory):
+                    if($accessory->category_id == $category_id):
+                        $accessories[$category_title][] = $accessory;
+                    endif;
+                endforeach;
+            endforeach;
+        endif;
     ?>
 @if(count($products))
     <div class="cars-filter">
@@ -28,77 +38,42 @@
         @endforeach
         </select>
         <div class="founded">
-            Найдено результатов: <span>6</span>
+            Найдено результатов: <span id="count-results">{{ $all_accessories->count() }}</span>
         </div>
     </div>
 @endif
+@if(count($accessories))
     <dl class="acc-dl">
-        <dt class="acc-dt"><h2>Интерьер</h2></dt>
+        @foreach($accessories as $accessories_category_title => $accessories_category )
+        <dt class="acc-dt"><h2>{{ $accessories_category_title }}</h2></dt>
             <dd class="acc-dd">
                 <ul class="acc-ul">
-                    <li class="acc-li clearfix">
-                        <div class="acc-left" style="background-image: url(https://pp.vk.me/c320724/v320724831/90b2/kJ0ComDcRUQ.jpg);">
-                            <a href="#"></a>
-                        </div>
+                @foreach($accessories_category as $accessory )
+                    <li data-model-id="{{ $accessory->product->id }}" class="acc-li clearfix">
+                        @if(File::exists(public_path('uploads/galleries/thumbs/'.$accessory->images->name)))
+                            <img class="acc-left" src="{{ asset('uploads/galleries/thumbs/'.$accessory->images->name) }}" alt="">
+                        @endif
                         <div class="acc-right">
-                            <h2>
-                                <a href="#">Стальная накладка на задний бампер</a>
-                            </h2>
+                            <h2>{{ $accessory->title }}</h2>
                             <div class="desc">
-                                Оригинальный аксессуар Infiniti. Защитит лакокрасочное покрытие
-                                от царапин и не испортит экстерьер Infiniti.
+                                {{ $accessory->description }}
                             </div>
+                            @if(!empty($accessory->price))
                             <div class="price">
-                                15 000 руб.
+                                {{ $accessory->price }}
                             </div>
+                            @endif
                             <div class="availability">
-                                в наличии
+                                {{ $accessory->accessibility->title }}
                             </div>
                         </div>
                     </li>
-                    <li class="acc-li clearfix">
-                        <div class="acc-left" style="background-image: url(https://pp.vk.me/c320724/v320724831/90b2/kJ0ComDcRUQ.jpg);">
-                            <a href="#"></a>
-                        </div>
-                        <div class="acc-right">
-                            <h2>
-                                <a href="#">Стальная накладка на задний бампер</a>
-                            </h2>
-                            <div class="desc">
-                                Оригинальный аксессуар Infiniti. Защитит лакокрасочное покрытие
-                                от царапин и не испортит экстерьер Infiniti.
-                            </div>
-                            <div class="price">
-                                15 000 руб.
-                            </div>
-                            <div class="availability">
-                                в наличии
-                            </div>
-                        </div>
-                    </li>
-                    <li class="acc-li clearfix">
-                        <div class="acc-left" style="background-image: url(https://pp.vk.me/c320724/v320724831/90b2/kJ0ComDcRUQ.jpg);">
-                            <a href="#"></a>
-                        </div>
-                        <div class="acc-right">
-                            <h2>
-                                <a href="#">Стальная накладка на задний бампер</a>
-                            </h2>
-                            <div class="desc">
-                                Оригинальный аксессуар Infiniti. Защитит лакокрасочное покрытие
-                                от царапин и не испортит экстерьер Infiniti.
-                            </div>
-                            <div class="price">
-                                15 000 руб.
-                            </div>
-                            <div class="availability">
-                                в наличии
-                            </div>
-                        </div>
-                    </li>
+                @endforeach
                 </ul>
             </dd>
+        @endforeach
     </dl>
+@endif
 </section>
 @stop
 @section('scripts')

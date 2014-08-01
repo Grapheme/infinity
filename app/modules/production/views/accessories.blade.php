@@ -12,9 +12,9 @@
     <dl class="acc-dl">
         @foreach($product->accessories as $accessories_category_title => $accessories )
         <dt class="acc-dt"><h2>{{ $accessories_category_title }}</h2></dt>
-            @foreach($accessories as $accessory )
             <dd class="acc-dd">
                 <ul class="acc-ul">
+                 @foreach($accessories as $accessory )
                     <li class="acc-li clearfix">
                         @if(File::exists(public_path('uploads/galleries/thumbs/'.$accessory->images->name)))
                             <img class="acc-left" src="{{ asset('uploads/galleries/thumbs/'.$accessory->images->name) }}" alt="">
@@ -34,8 +34,8 @@
                             </div>
                         </div>
                     </li>
+                    @endforeach
                 </ul>
-                @endforeach
             </dd>
         @endforeach
     </dl>
