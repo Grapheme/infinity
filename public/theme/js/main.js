@@ -53,7 +53,7 @@ var grphm_slider = (function(){
 
 		var thumb_rm = function(del, out, i) {
 			slider_allow = false;
-			var block = slider.find('.slider-nav .thumb[data-id=' + del + ']');
+			var block = slider.find('.slider-nav .thumb[data-id=' + del + ']').first();
 			var time;
 			if(out) {
 				block.css({
