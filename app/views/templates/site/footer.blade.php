@@ -24,29 +24,29 @@
                 <div class="footer-block">
                     <div class="title">О компании</div>
                     <ul class="footer-ul">
-                        <li class="option"><a href="{{ link::to() }}">Лица компании</a>
-                        <li class="option"><a href="{{ link::to() }}">Вакансии</a>
+                        <li class="option"><a href="{{ link::to('persons-of-the-company') }}">Лица компании</a>
+                        <li class="option"><a href="{{ link::to('vacancies') }}">Вакансии</a>
                         <li class="option"><a href="{{ link::to('news') }}">Новости</a>
-                        <li class="option"><a href="{{ link::to() }}">Клуб</a>
+                        <li class="option"><a href="{{ link::to('club') }}">Клуб</a>
                         <li class="option"><a href="{{ link::to('history') }}">История</a>
-                        <li class="option"><a href="{{ link::to() }}">Контакты</a>
+                        <li class="option"><a href="{{ link::to('contacts') }}">Контакты</a>
                     </ul>
                 </div>
                 <div class="footer-block">
                     <div class="title">Услуги</div>
                     <ul class="footer-ul">
-                        <li class="option"><a href="{{ link::to() }}">Гарантия</a>
-                        <li class="option"><a href="{{ link::to() }}">Программы ТО</a>
-                        <li class="option"><a href="{{ link::to() }}">Аксессуары</a>
+                        <li class="option"><a href="{{ link::to('services-warranty') }}">Гарантия</a>
+                        <li class="option"><a href="{{ link::to('services-maintenance-program') }}">Программы ТО</a>
+                        <li class="option"><a href="{{ link::to('services-accessories') }}">Аксессуары</a>
                     </ul>
                 </div>
                 <div class="footer-block">
                     <div class="title">Сервис и запчасти</div>
                     <ul class="footer-ul">
-                        <li class="option"><a href="{{ link::to() }}">Гарантия</a>
-                        <li class="option"><a href="{{ link::to() }}">Программы ТО</a>
-                        <li class="option"><a href="{{ link::to() }}">Запчасти</a>
-                        <li class="option"><a href="{{ link::to() }}">Аксессуары</a>
+                        <li class="option"><a href="{{ link::to('reserve-parts-warranty') }}">Гарантия</a>
+                        <li class="option"><a href="{{ link::to('reserve-parts-maintenance-program') }}">Программы ТО</a>
+                        <li class="option"><a href="{{ link::to('reserve-parts') }}">Запчасти</a>
+                        <li class="option"><a href="{{ link::to('reserve-parts-accessories') }}">Аксессуары</a>
                     </ul>
                 </div>
             </div>
