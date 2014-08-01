@@ -1,5 +1,5 @@
 <?php
-    $footer_models = ProductCategory::orderby('title')->with(array('product'=>function($query_product){
+    $footer_models = ProductCategory::orderby('id')->with(array('product'=>function($query_product){
         $query_product->where('publication',1);
         $query_product->where('in_menu',1);
         $query_product->with(array('meta'=>function($query_product_meta){
