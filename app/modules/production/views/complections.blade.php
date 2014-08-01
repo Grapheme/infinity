@@ -15,7 +15,7 @@
             <div class="auto-info">
                 <div class="title">{{ $product->meta->first()->title }}</div>
                 <div class="text">{{ $product->meta->first()->preview }}</div>
-                <div class="price">{{ number_format($product->meta->first()->price,0,' ',' ') }} руб</div>
+                <div class="price">{{ $product->meta->first()->price }} руб</div>
                 <div class="text"></div>
                 <a href="javascript:void(0);" class="drive-btn">Записаться на тестдрайв</a>
             </div>

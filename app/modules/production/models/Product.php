@@ -19,6 +19,10 @@ class Product extends BaseModel {
         return $this->belongsTo('Photo','image_id');
     }
 
+    public  function menu_image(){
+        return $this->belongsTo('Photo','image_menu_id');
+    }
+
     public  function gallery(){
         return $this->belongsTo('Gallery','gallery_id');
     }

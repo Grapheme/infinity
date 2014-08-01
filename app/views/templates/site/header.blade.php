@@ -5,6 +5,7 @@
             $query_product_meta->orderBy('title');
         }));
         $query_product->with('images');
+        $query_product->with('menu_image');
     }))->get();
 ?>
 
@@ -76,8 +77,8 @@
             </ul>
         </div><!--
         --><div class="main-blocks">
-            @if(!is_null($product->images) && File::exists(public_path('uploads/galleries/'.$product->images->name)))
-               <div class="main-block" style="background-image: url({{ asset('uploads/galleries/'.$product->images->name) }})">
+            @if(!is_null($product->menu_image) && File::exists(public_path('uploads/galleries/'.$product->menu_image->name)))
+               <div class="main-block" style="background-image: url({{ asset('uploads/galleries/'.$product->menu_image->name) }})">
             @else
                 <div class="main-block">
             @endif
@@ -105,8 +106,8 @@
                  @foreach($product_category->product as $product)
                     <li>
                         <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="full-a"></a>
-                    @if(!is_null($product->images) && File::exists(public_path('uploads/galleries/thumbs/'.$product->images->name)))
-                        <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/thumbs/'.$product->images->name) }});"></div>
+                    @if(!is_null($product->menu_image) && File::exists(public_path('uploads/galleries/thumbs/'.$product->menu_image->name)))
+                        <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/thumbs/'.$product->menu_image->name) }});"></div>
                     @endif
                         <div class="car-name">{{ $product->meta->first()->title }}</div>
                  @endforeach

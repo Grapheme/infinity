@@ -58,6 +58,12 @@
                                 </label>
                             </section>
                             <section>
+                                <label class="label">Изображение в меню</label>
+                                <label class="input">
+                                    {{ ExtForm::image('menu_image', '') }}
+                                </label>
+                            </section>
+                            <section>
                                 <label class="label">Галерея</label>
                                 <label class="input">
                                     {{ ExtForm::gallery('gallery','',array('id'=>'gallery-input-id')) }}

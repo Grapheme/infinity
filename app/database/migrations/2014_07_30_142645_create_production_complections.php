@@ -12,7 +12,7 @@ class CreateProductionComplections extends Migration {
             Schema::create($this->table, function(Blueprint $table) {
                 $table->increments('id');
                 $table->string('title',128)->nullable();
-                $table->string('price',128)->nullable();
+                $table->string('price',20)->nullable();
                 $table->string('brochure',256)->nullable();
                 $table->text('description')->nullable();
                 $table->text('dynamics')->nullable();

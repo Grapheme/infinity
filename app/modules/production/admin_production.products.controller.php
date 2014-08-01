@@ -200,7 +200,7 @@ class AdminProductionProductsController extends BaseController {
 	public function getEdit($id){
 
         Allow::permission($this->module['group'], 'product_edit');
-        $product = $this->product->where('id',$id)->with('meta')->with('images')->with('gallery')->first();
+        $product = $this->product->where('id',$id)->with('meta')->with('images')->with('menu_image')->with('gallery')->first();
         $categories = array('Выберите категорию');
         foreach (ProductCategory::all() as $category):
             $categories[$category->id] = $category->title;
@@ -266,6 +266,7 @@ class AdminProductionProductsController extends BaseController {
         $product->publication = 1;
         $product->in_menu = Input::get('in_menu');
         $product->image_id =  Input::get('image');
+        $product->image_menu_id =  Input::get('menu_image');
 //        $product->gallery_color_id =  Input::get('gallery_color.gallery_id');
 //        $product->gallery_id = Input::get('gallery.gallery_id');
 
