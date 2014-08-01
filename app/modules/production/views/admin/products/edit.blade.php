@@ -124,7 +124,7 @@
                                     @if($model_category->product->count())
                                     <optgroup label="{{ $model_category->title }}">
                                     @foreach($model_category->product as $related_product)
-                                    <option {{ in_array($related_product->id,$related_products) ? 'selected' : '' }} value="{{ $related_product->id }}">{{ $related_product->meta->first()->short_title }}</option>
+                                    <option {{ in_array($related_product->id,$related_products) ? 'selected' : '' }} value="{{ $related_product->id }}">{{ $related_product->meta->first()->title }}</option>
                                     @endforeach
                                     </optgroup>
                                     @endif
