@@ -27,9 +27,8 @@
                         <li class="option"><a href="{{ link::to() }}">Лица компании</a>
                         <li class="option"><a href="{{ link::to() }}">Вакансии</a>
                         <li class="option"><a href="{{ link::to('news') }}">Новости</a>
-                        <li class="option"><a href="{{ link::to() }}">События</a>
                         <li class="option"><a href="{{ link::to() }}">Клуб</a>
-                        <li class="option"><a href="{{ link::to() }}">История</a>
+                        <li class="option"><a href="{{ link::to('history') }}">История</a>
                         <li class="option"><a href="{{ link::to() }}">Контакты</a>
                     </ul>
                 </div>
