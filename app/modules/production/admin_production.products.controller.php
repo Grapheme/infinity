@@ -280,9 +280,9 @@ class AdminProductionProductsController extends BaseController {
         $product->touch();
 
         if(Input::get('related')):
-            $product->related_products()->sync($related_products);
+            $product->related_products()->sync(Input::get('related'));
         else:
-            $product->related_products()->detach();
+            $product->related_products()->sync(array());
         endif;
 
         $this->product = $product;
