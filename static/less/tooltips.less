@@ -26,7 +26,7 @@
 	top: 0;
 	left: 0;
 	color: #000;
-	background: #f7f7f7;
+	background: #fff;
 
 	&.fadeIn {
 		.transform(translateY(0));
@@ -38,6 +38,7 @@
 	}
 
 	.left-block {
+		margin-right: -4rem / @htmlFontSize;
 		display: inline-block;
 		vertical-align: top;
 
@@ -60,6 +61,7 @@
 						background: #fff;
 						top: 0;
 						right: -1px;
+						z-index: 2;
 					}
 				}
 			}
