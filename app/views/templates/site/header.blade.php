@@ -96,7 +96,7 @@
             <div class="main-block">
             @endif
                 <div class="car-name">{{ $product->meta->first()->title }}</div>
-                {{ $product->meta->first()->preview }}
+                {{ $product->meta->first()->in_menu_content }}
                 <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="car-link"><span class="icon icon-page"></span>Подробнее</a>
                 <div class="car-btns">
                     <a href="javascript:void(0);" class="drive-btn"><span class="icon icon-wheel"></span>Записться на тестдрайв</a>
@@ -112,7 +112,7 @@
             <div class="main-block">
             @endif
                 <div class="car-name">{{ $related_product->meta->first()->title }}</div>
-            {{ $related_product->meta->first()->preview }}
+            {{ $related_product->meta->first()->in_menu_content }}
                 <a href="{{ link::to(ProductionController::$prefix_url.'/'.$related_product->meta->first()->seo_url) }}" class="car-link"><span class="icon icon-page"></span>Подробнее</a>
                 <div class="car-btns">
                     <a href="javascript:void(0);" class="drive-btn"><span class="icon icon-wheel"></span>Записться на тестдрайв</a>

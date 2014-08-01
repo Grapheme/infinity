@@ -101,6 +101,12 @@
                                     <i></i>Показывать товар в главном меню
                                 </label>
                             </section>
+                            <section>
+                                <label class="label">Описание в выпадающем меню</label>
+                                <label class="textarea">
+                                    {{ Form::textarea('menu_content['.$locale.']','',array('class'=>'redactor redactor_150')) }}
+                                </label>
+                            </section>
                             <?php
                                 $models = ProductCategory::orderby('id')->with(array('product'=>function($query_product){
                                     $query_product->with(array('meta'=>function($query_product_meta){

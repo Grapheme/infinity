@@ -268,8 +268,6 @@ class AdminProductionProductsController extends BaseController {
         $product->in_menu = Input::get('in_menu');
         $product->image_id =  Input::get('image');
         $product->image_menu_id =  Input::get('menu_image');
-//        $product->gallery_color_id =  Input::get('gallery_color.gallery_id');
-//        $product->gallery_id = Input::get('gallery.gallery_id');
 
         if ($newFileName = $this->getUploadedFile(Input::get('file'))):
             File::delete(public_path($product->brochure));
@@ -302,6 +300,7 @@ class AdminProductionProductsController extends BaseController {
             $productMeta->price = Input::get('price.' . $locale);
             $productMeta->preview = Input::get('preview.' . $locale);
             $productMeta->content = Input::get('content.' . $locale);
+            $productMeta->in_menu_content = Input::get('menu_content.' . $locale);
             $productMeta->specifications = Input::get('specifications.' . $locale);
 
             /*

@@ -52,6 +52,7 @@ class CreateProductionTables extends Migration {
                 $table->string('short_title', 20)->nullable();
                 $table->mediumText('preview')->nullable();
                 $table->Text('content')->nullable();
+                $table->Text('in_menu_content')->nullable();
                 $table->Text('specifications')->nullable();
                 $table->string('seo_url',255)->nullable();
                 $table->string('seo_title',255)->nullable();
