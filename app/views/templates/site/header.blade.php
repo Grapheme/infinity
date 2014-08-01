@@ -25,8 +25,7 @@
         <nav class="main-nav">
             <ul class="list-unstyled">
                 <li class="option"><a href="{{ link::to('about') }}">О компании</a>
-                <li class="option"><a href="{{ link::to('cars') }}">Автомобили</a>
-                <li class="option"><a href="{{ link::to('reserve-parts') }}">Сервисы и запчасти</a>
+                <li class="option"><a href="{{ link::to('reserve-parts') }}">Сервис и запчасти</a>
                 <li class="option"><a href="{{ link::to('offers') }}">Спецпредложения</a>
                 <li class="option"><a href="{{ link::to('services') }}">Услуги</a>
             </ul>
