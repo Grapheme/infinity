@@ -68,11 +68,11 @@
         <div class="left-block">
             <ul class="car-ul js-smartabs">
                 <li>
-                    <div class="car-photo" style="background-image: url(img/tooltip_car_min.png)"></div>
+                    <div class="car-photo" style="background-image: url(theme/img/tooltip_car_min.png)"></div>
                     <div class="car-name">Q60 CUPE</div>
 
                 <li>
-                    <div class="car-photo" style="background-image: url(img/tooltip_car_min.png)"></div>
+                    <div class="car-photo" style="background-image: url(theme/img/tooltip_car_min.png)"></div>
                     <div class="car-name">Q60 CUPE</div>
             </ul>
         </div><!--
