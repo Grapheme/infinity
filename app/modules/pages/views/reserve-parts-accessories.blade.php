@@ -33,6 +33,7 @@
 @if(count($products))
     <div class="cars-filter">
         <select class="customSelect selectModel">
+            <option value="0">Все модели</option>
         @foreach($products as $product_id => $product_title)
             <option value="{{ $product_id }}">{{ $product_title }}</option>
         @endforeach
