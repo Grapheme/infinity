@@ -1094,7 +1094,7 @@ html {
   left: 0;
   right: 0;
   z-index: 1;
-  height: 12.5rem;
+  height: 20rem;
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000000 66%, #000000 91%, #000000 100%);
   /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(66%, #000000), color-stop(91%, #000000), color-stop(100%, #000000));
