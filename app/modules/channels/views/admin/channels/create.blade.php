@@ -55,6 +55,12 @@
                             {{ ExtForm::image('image', '') }}
                         </label>
                     </section>
+                    <section>
+                        <label class="label">Галерея</label>
+                        <label class="input">
+                            {{ ExtForm::gallery('gallery','',array('id'=>'gallery-input-id')) }}
+                        </label>
+                    </section>
                     @endif
 
 					<section>

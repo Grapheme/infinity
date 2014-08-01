@@ -48,6 +48,13 @@
                         <li class="option"><a href="{{ link::to('reserve-parts-accessories') }}">Аксессуары</a>
                     </ul>
                 </div>
+                <div class="footer-block">
+                    <div class="title">Автомобили</div>
+                    <ul class="footer-ul">
+                        <li class="option"><a href="{{ link::to('сars-in-stock') }}">В наличии</a>
+                        <li class="option"><a href="{{ link::to('сars-for-sale') }}">С пробегом</a>
+                    </ul>
+                </div>
             </div>
             <div class="footer-right">
                 <adress class="contact-block">

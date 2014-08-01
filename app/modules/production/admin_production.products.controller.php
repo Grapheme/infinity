@@ -145,9 +145,7 @@ class AdminProductionProductsController extends BaseController {
 	public function getIndex(){
 
         $limit = 30;
-
         Allow::permission($this->module['group'], 'product_view');
-
         $category = ProductCategory::where('id', Input::get('cat'))->first();
         $categories = ProductCategory::all();
 
@@ -201,11 +199,6 @@ class AdminProductionProductsController extends BaseController {
             $categories[$category->id] = $category->title;
         endforeach;
 
-//        $related_products = $product->related_products()->get();
-//        print_r($related_products);
-//        exit;
-
-
         $locales = $this->locales;
 		return View::make($this->module['tpl'].'edit', compact('product', 'categories','locales'));
 	}
@@ -227,7 +220,6 @@ class AdminProductionProductsController extends BaseController {
 			$json_request['responseText'] = 'Неверно заполнены поля';
 			$json_request['responseErrorText'] = implode($validation->messages()->all(), '<br />');
 		endif;
-
 		return Response::json($json_request, 200);
 	}
 
