@@ -22,4 +22,9 @@ class ProductAccessory extends BaseModel {
     public function accessibility(){
         return $this->hasOne('ProductAccessoryAccessibility','id','accessibility_id');
     }
+
+    public function product(){
+
+        return $this->belongsTo('Product');
+    }
 }

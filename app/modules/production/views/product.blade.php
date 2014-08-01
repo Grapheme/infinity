@@ -33,7 +33,7 @@
             <div class="auto-info">
                 <div class="title">{{ $product->meta->first()->title }}</div>
                 <div class="text">{{ $product->meta->first()->preview }}</div>
-                <div class="price">{{ $product->meta->first()->price }} руб</div>
+                <div class="price">{{ $product->meta->first()->price }}</div>
                 <div class="text"></div>
                 <a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive">
                     <span class="icon icon-wheel"></span> Записаться на тестдрайв

@@ -37,7 +37,6 @@
                     <ul class="footer-ul">
                         <li class="option"><a href="{{ link::to('services-warranty') }}">Гарантия</a>
                         <li class="option"><a href="{{ link::to('services-maintenance-program') }}">Программы ТО</a>
-                        <li class="option"><a href="{{ link::to('services-accessories') }}">Аксессуары</a>
                     </ul>
                 </div>
                 <div class="footer-block">

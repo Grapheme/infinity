@@ -26,7 +26,7 @@
                             </div>
                             @if(!empty($accessory->price))
                             <div class="price">
-                                {{ $accessory->price }} руб.
+                                {{ $accessory->price }}
                             </div>
                             @endif
                             <div class="availability">

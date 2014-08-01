@@ -71,7 +71,7 @@
                             {{ $product->meta->first()->title }}
                         </td>
                         <td>
-                            {{ $product->meta->first()->price }} руб.
+                            {{ $product->meta->first()->price }}
                         </td>
     					<td class="text-center" style="white-space:nowrap;">
     					    @if(Allow::action($module['group'], 'product_edit'))

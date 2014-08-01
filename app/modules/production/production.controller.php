@@ -190,12 +190,12 @@ class ProductionController extends BaseController {
 
         if (!@$url) $url = Input::get('url');
         $products = Product::with(array('meta' => function ($query) use ($url) {
-                $query->where('seo_url', $url);
-            }))->with(array('accessories'=>function($query){
-                    $query->with('images');
-                    $query->with('category');
-                    $query->with('accessibility');
-                }))->get();
+            $query->where('seo_url', $url);
+        }))->with(array('accessories'=>function($query){
+            $query->with('images');
+            $query->with('category');
+            $query->with('accessibility');
+        }))->get();
         $product = NULL;
         foreach ($products as $product_info):
             if (!is_null($product_info->meta->first()) && $product_info->meta->first()->seo_url == $url):
