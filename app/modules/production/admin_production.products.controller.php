@@ -126,11 +126,6 @@ class AdminProductionProductsController extends BaseController {
     protected $product;
     public $locales;
 
-    public function getVideo(){
-        print_r(12312313);
-        exit;
-    }
-
 	public function __construct(Product $product){
 
         $this->product = $product;
@@ -205,6 +200,12 @@ class AdminProductionProductsController extends BaseController {
         foreach (ProductCategory::all() as $category):
             $categories[$category->id] = $category->title;
         endforeach;
+
+//        $related_products = $product->related_products()->get();
+//        print_r($related_products);
+//        exit;
+
+
         $locales = $this->locales;
 		return View::make($this->module['tpl'].'edit', compact('product', 'categories','locales'));
 	}
@@ -274,10 +275,11 @@ class AdminProductionProductsController extends BaseController {
             File::delete(public_path($product->brochure));
             $product->brochure = $newFileName;
         endif;
-
         ## Сохраняем в БД
         $product->save();
         $product->touch();
+
+        $product->related_products()->sync(Input::get('related'));
 
         $this->product = $product;
         return TRUE;

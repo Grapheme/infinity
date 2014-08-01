@@ -50,6 +50,10 @@ class Product extends BaseModel {
         return $this->hasMany('ProductVideos','product_id');
     }
 
+    public function related_products(){
+        return $this->belongsToMany('Product','related_production','product_id','related_product_id');
+    }
+
     /*
 	public function group(){
 		return $this->hasOne('Group', 'group_id', 'id');

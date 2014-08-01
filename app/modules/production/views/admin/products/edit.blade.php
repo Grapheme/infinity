@@ -101,6 +101,37 @@
                                     <i></i>Показывать товар в главном меню
                                 </label>
                             </section>
+                            <?php
+                                $product_id = $product->id;
+                                $models = ProductCategory::orderby('id')->with(array('product'=>function($query_product) use ($product_id){
+                                    $query_product->where('id','!=',$product_id);
+                                    $query_product->with(array('meta'=>function($query_product_meta){
+                                        $query_product_meta->orderBy('title');
+                                    }));
+                                }))->get();
+
+                                if($related_products = $product->related_products()->get()):
+                                    $related_products = BaseController::getValueInObject($related_products);
+                                else:
+                                    $related_products = array();
+                                endif;
+                            ?>
+                            @if($models->count())
+                            <section>
+                                <label for="h-input">Связанные продукты</label>
+                                <select style="width:100%" name="related[]" class="related-production" multiple>
+                                @foreach($models as $model_category)
+                                    @if($model_category->product->count())
+                                    <optgroup label="{{ $model_category->title }}">
+                                    @foreach($model_category->product as $related_product)
+                                    <option {{ in_array($related_product->id,$related_products) ? 'selected' : '' }} value="{{ $related_product->id }}">{{ $related_product->meta->first()->short_title }}</option>
+                                    @endforeach
+                                    </optgroup>
+                                    @endif
+                                @endforeach
+                                </select>
+                            </section>
+                            @endif
                         </fieldset>
                     </div>
                 </section>
@@ -149,8 +180,14 @@
     </script>
 
     {{ HTML::script('js/modules/standard.js') }}
+    {{ HTML::script('js/plugin/select2/select2.min.js') }}
 
 	<script type="text/javascript">
+
+	    $(".related-production").select2({
+            placeholder: "Выбирите модель",
+        });
+
 		if(typeof pageSetUp === 'function'){pageSetUp();}
 		if(typeof runFormValidation === 'function'){
 			loadScript("{{ asset('js/vendor/jquery-form.min.js') }}", runFormValidation);

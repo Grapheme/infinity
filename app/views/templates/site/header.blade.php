@@ -6,6 +6,12 @@
         }));
         $query_product->with('images');
         $query_product->with('menu_image');
+        $query_product->with(array('related_products'=>function($query_related_product){
+            $query_related_product->with(array('meta'=>function($query_related_product_meta){
+                $query_related_product_meta->orderBy('title');
+            }));
+            $query_related_product->with('menu_image');
+        }));
     }))->get();
 ?>
 
@@ -65,22 +71,29 @@
     @foreach($product_category->product as $product)
     <div class="car-tooltip js-tooltip-block" data-tooltip="model-{{ $product->id }}">
         <i class="tool-triangle"></i>
+        @if($product->related_products->count())
         <div class="left-block">
             <ul class="car-ul js-smartabs">
+                 <li>
+                    @if(!is_null($product->menu_image) && File::exists(public_path('uploads/galleries/'.$product->menu_image->name)))
+                       <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->menu_image->name) }})"></div>
+                    @endif
+                        <div class="car-name">{{ $product->meta->first()->title }}</div>
+            @foreach($product->related_products as $related_product)
                 <li>
-                    <div class="car-photo" style="background-image: url(theme/img/tooltip_car_min.png)"></div>
-                    <div class="car-name">Q60 CUPE</div>
-
-                <li>
-                    <div class="car-photo" style="background-image: url(theme/img/tooltip_car_min.png)"></div>
-                    <div class="car-name">Q60 CUPE</div>
+                @if(!is_null($related_product->menu_image) && File::exists(public_path('uploads/galleries/'.$related_product->menu_image->name)))
+                   <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/'.$related_product->menu_image->name) }})"></div>
+                @endif
+                    <div class="car-name">{{ $related_product->meta->first()->title }}</div>
+            @endforeach
             </ul>
         </div><!--
-        --><div class="main-blocks">
+        --> @endif
+        <div class="main-blocks">
             @if(!is_null($product->menu_image) && File::exists(public_path('uploads/galleries/'.$product->menu_image->name)))
-               <div class="main-block" style="background-image: url({{ asset('uploads/galleries/'.$product->menu_image->name) }})">
+            <div class="main-block" style="background-image: url({{ asset('uploads/galleries/'.$product->menu_image->name) }})">
             @else
-                <div class="main-block">
+            <div class="main-block">
             @endif
                 <div class="car-name">{{ $product->meta->first()->title }}</div>
                 {{ $product->meta->first()->preview }}
@@ -92,6 +105,23 @@
                     @endif
                 </div>
             </div>
+        @foreach($product->related_products as $related_product)
+            @if(!is_null($related_product->menu_image) && File::exists(public_path('uploads/galleries/'.$related_product->menu_image->name)))
+            <div class="main-block" style="background-image: url({{ asset('uploads/galleries/'.$related_product->menu_image->name) }})">
+            @else
+            <div class="main-block">
+            @endif
+                <div class="car-name">{{ $related_product->meta->first()->title }}</div>
+            {{ $related_product->meta->first()->preview }}
+                <a href="{{ link::to(ProductionController::$prefix_url.'/'.$related_product->meta->first()->seo_url) }}" class="car-link"><span class="icon icon-page"></span>Подробнее</a>
+                <div class="car-btns">
+                    <a href="javascript:void(0);" class="drive-btn"><span class="icon icon-wheel"></span>Записться на тестдрайв</a>
+                    @if(!empty($related_product->brochure) && File::exists(public_path($related_product->brochure)))
+                    <a class="drive-btn" target="_blank" href="{{ asset($related_product->brochure) }}"><span class="icon icon-bricks"></span>Брошюра</a>
+                    @endif
+                </div>
+            </div>
+        @endforeach
         </div>
     </div>
     @endforeach
