@@ -40,4 +40,7 @@
 @endif
 @stop
 @section('scripts')
+    <script>
+        $('.gallery').galleryAnim();
+    </script>
 @stop
