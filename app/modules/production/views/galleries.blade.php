@@ -25,8 +25,8 @@
         </div>
     </section>
         @endif
-</div>
 @endforeach
+</div>
 @endif
 @if($product->videos->count())
 <section class="gallery-block gallery-top">
