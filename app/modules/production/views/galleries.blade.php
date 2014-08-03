@@ -1,5 +1,10 @@
 @extends(Helper::layout())
 
+<?php
+    print_r(Helper::layout());
+    exit;
+?>
+
 @section('style')
 @stop
 
