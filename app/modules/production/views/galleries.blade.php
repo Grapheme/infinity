@@ -1,10 +1,5 @@
 @extends(Helper::layout())
 
-<?php
-    print_r(Helper::layout());
-    exit;
-?>
-
 @section('style')
 @stop
 
@@ -44,7 +39,7 @@
 </section>
 @endif
 @stop
-@section('scripts')
+@section('page_script')
     <script>
         $('.gallery').galleryAnim();
     </script>
