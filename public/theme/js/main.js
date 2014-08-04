@@ -241,7 +241,7 @@ var Popup = (function(){
 	});
 
 	$(document).on('click', '.pop-window', function(e){
-		e.preventDefault();
+		//e.preventDefault();
 		e.stopPropagation();
 	});
 
