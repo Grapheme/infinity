@@ -196,11 +196,15 @@ var Popup = (function(){
 
 	allow = true;
 	opened = false;
-	var show = function(popup) {
+	var show = function(popup, model) {
 		if(!allow) return;
-		$('.overlay').addClass('active').css('z-index', 99);
-		$('.pop-window[data-popup=' + popup + ']').removeClass('closed');
+		var popup = $('.pop-window[data-popup=' + popup + ']');
+		$('.overlay').addClass('active').css('z-index', 1000);
+		popup.removeClass('closed');
 		$('html').css('overflow', 'hidden');
+		if(model) {
+			$(popup.find('.hidden-model').val(model));
+		}
 		opened = popup;
 	}
 
@@ -210,7 +214,7 @@ var Popup = (function(){
 		$('html').removeAttr('style');
 		setTimeout(function(){
 			$('.overlay').css('z-index', -1);
-			$('.pop-window[data-popup=' + popup + ']').addClass('closed');
+			popup.addClass('closed');
 			allow = true;
 			opened = false;
 		}, 500);
@@ -225,7 +229,7 @@ var Popup = (function(){
 
 	$(document).on('click', '.js-pop-show', function(){
 		if(!opened) {
-			show($(this).attr('data-popup'));
+			show($(this).attr('data-popup'), $(this).attr('data-model'));
 		}
 		return false;
 	});
@@ -313,7 +317,11 @@ jQuery.fn.galleryAnim = function() {
 		fade_time = 1000;
 
 	block.eq(0).addClass('active').siblings().addClass('fadeOut');
-	block.addClass('transition');
+	setTimeout(function(){
+		block.addClass('transition');
+	}, 5);
+
+	if(slides_length == 1 || $('html').hasClass('touch')) return;
 	
 	$(window).scrollTop(0);
 
@@ -327,10 +335,23 @@ jQuery.fn.galleryAnim = function() {
 			$(window).scrollTop($('.gallery').offset().top);
 			$('html').addClass('scroll-blocked');
 		}
+
+		if($('html').hasClass('scroll-blocked')) {
+			$(window).scrollTop($('.gallery').offset().top);
+			return false;
+		}
 	});
 
-	$(document).on('mousewheel', function(event) {
-		var delta = event.originalEvent.wheelDelta;
+	$(document).bind('mousewheel DOMMouseScroll', function(event) {
+		var delta;
+
+		if (event.type == 'mousewheel') {
+			delta = event.originalEvent.wheelDelta;
+		} else
+
+		if (event.type == 'DOMMouseScroll') {
+			delta = -1 * event.originalEvent.detail;
+		}
 
 		if(delta > 0 && allow_scroll == 'top') {
 			$('html').removeClass('scroll-blocked');

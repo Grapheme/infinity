@@ -64,6 +64,25 @@
     </div>
 </header>
 
+<section class="overlay">
+    <div class="pop-window pop-dtest" data-popup="test-drive">
+        <i class="js-pop-close">&#x2715;</i>
+        <div class="dtest-in">
+            <div class="title">Заявка<br>на тест-драйв</div>
+            <div class="dtest-form">
+                <form>
+                    <input type="text" class="dtest-input" placeholder="Ф.И.О.">
+                    <input type="text" class="dtest-input" placeholder="Телефон">
+                    <input type="text" class="dtest-input" placeholder="Email">
+                    <input type="hidden" class="hidden-model" value="">
+                    <button type="submit" class="btn fl-r">Отправить</button>
+                </form>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
 @if($header_models->count())
 <div class="tooltip-cont">
 @foreach($header_models as $product_category)
@@ -98,7 +117,7 @@
                 {{ $product->meta->first()->in_menu_content }}
                 <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="car-link"><span class="icon icon-page"></span>Подробнее</a>
                 <div class="car-btns">
-                    <a href="javascript:void(0);" class="drive-btn"><span class="icon icon-wheel"></span>Записться на тестдрайв</a>
+                    <a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive" data-model="{{ $product->meta->first()->title }}"><span class="icon icon-wheel"></span>Записться на тестдрайв</a>
                     @if(!empty($product->brochure) && File::exists(public_path($product->brochure)))
                     <a class="drive-btn" target="_blank" href="{{ asset($product->brochure) }}"><span class="icon icon-bricks"></span>Брошюра</a>
                     @endif
@@ -114,7 +133,7 @@
             {{ $related_product->meta->first()->in_menu_content }}
                 <a href="{{ link::to(ProductionController::$prefix_url.'/'.$related_product->meta->first()->seo_url) }}" class="car-link"><span class="icon icon-page"></span>Подробнее</a>
                 <div class="car-btns">
-                    <a href="javascript:void(0);" class="drive-btn"><span class="icon icon-wheel"></span>Записться на тестдрайв</a>
+                    <a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive" data-model="{{ $product->meta->first()->title }}"><span class="icon icon-wheel"></span>Записться на тестдрайв</a>
                     @if(!empty($related_product->brochure) && File::exists(public_path($related_product->brochure)))
                     <a class="drive-btn" target="_blank" href="{{ asset($related_product->brochure) }}"><span class="icon icon-bricks"></span>Брошюра</a>
                     @endif
