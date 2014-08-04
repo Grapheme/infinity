@@ -6,19 +6,22 @@ class EventsController extends \BaseController {
     public static $group = 'events';
 
     public static $prefix_url = 'event';
+    #public static $prefix_url = false;
 
     public static function returnRoutes($prefix = null) {
+
+        $self = __CLASS__;
 
         if (self::$prefix_url !== FALSE):
             if (is_array(Config::get('app.locales')) && count(Config::get('app.locales'))) {
                 foreach(Config::get('app.locales') as $locale) {
-                    Route::group(array('before' => 'i18n_url', 'prefix' => $locale), function(){
-                        Route::get('/'.self::$prefix_url.'/{url}', array('as' => 'events_full', 'uses' => __CLASS__.'@showFullByUrl'));
+                    Route::group(array('before' => 'i18n_url', 'prefix' => $locale), function() use ($self){
+                        Route::get('/'.$self::$prefix_url.'/{url}', array('as' => 'events_full', 'uses' => __CLASS__.'@showFullByUrl'));
                     });
                 }
             }
-            Route::group(array('before' => 'i18n_url'), function(){
-                Route::get('/'.self::$prefix_url.'/{url}', array('as' => 'events_full', 'uses' => __CLASS__.'@showFullByUrl'));
+            Route::group(array('before' => 'i18n_url'), function() use ($self){
+                Route::get('/'.$self::$prefix_url.'/{url}', array('as' => 'events_full', 'uses' => __CLASS__.'@showFullByUrl'));
             });
         else:
             return NULL;
