@@ -24,11 +24,16 @@
         ?>
     @if(count($products))
         <div class="cars-filter">
-            <select class="customSelect selectModel">
+            <select name="model" class="customSelect selectModel">
                 <option value="0">Все модели</option>
             @foreach($products as $product_id => $product_title)
                 <option value="{{ $product_id }}">{{ $product_title }}</option>
             @endforeach
+            </select>
+            <select name="year" class="customSelect selectYear">
+            @for($i = (int)date("Y"); $i >= 1960; $i--)
+                <option value="{{ $i }}">{{ $i }}</option>
+            @endfor
             </select>
             <div class="founded">
                 Найдено результатов: <span id="count-results">{{ $cars->count() }}</span>
@@ -43,5 +48,6 @@
 {{ HTML::script("theme/js/vendor/jquery.sumoselect.min.js") }}
 <script>
     $('.customSelect.selectModel').SumoSelect({placeholder: 'Модель'});
+    $('.customSelect.selectYear').SumoSelect({placeholder: 'Год'});
 </script>
 @stop

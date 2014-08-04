@@ -24,6 +24,8 @@ class CreateChannelsTables extends Migration {
                 $table->integer('product_id')->default(0)->unsigned()->nullable();
                 $table->string('template',100)->nullable();
                 $table->string('title', 128)->nullable();
+                $table->string('price', 64)->nullable();
+                $table->string('year', 64)->nullable();
                 $table->string('link', 256)->nullable();
                 $table->text('short')->nullable();
                 $table->text('desc')->nullable();

@@ -7,8 +7,8 @@
 <section class="used-car sect-wrapper">
     <header>
         <h1>{{ $element->channel->first()->title }}</h1>
-        <div class="year"></div>
-        <div class="price"></div>
+        <div class="year">{{ $element->channel->first()->year }}</div>
+        <div class="price">{{ $element->channel->first()->price }}</div>
     </header>
 </section>
 
