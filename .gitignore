@@ -4,8 +4,8 @@ composer.phar
 composer.lock
 /.htaccess
 
-public/uploads/galleries
-public/uploads/galleries/thumbs
+public/uploads/galleries/thumbnail/*.gpg
+public/uploads/galleries/thumbnail/*.png
 
 public/uploads/galleries/*.jpg
 public/uploads/galleries/thumbs/*.jpg
