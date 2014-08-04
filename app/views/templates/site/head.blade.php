@@ -6,6 +6,6 @@
 {{ HTML::style('theme/css/main.css') }}
 {{ HTML::style('theme/css/sumoselect.css') }}
 @if(Config::get("app.use_googlefonts"))
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
 @endif
 {{ HTML::script('js/vendor/modernizr-2.6.2.min.js') }}

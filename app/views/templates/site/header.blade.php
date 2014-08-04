@@ -86,37 +86,24 @@
         <div class="dtest-in">
             <div class="title">Заявка<br>на тест-драйв</div>
             <div class="dtest-form">
-                {{ Form::open(array('url'=>URL::route('order_textdrive_call'),'role'=>'form','class'=>'smart-form','id'=>'order-testdrive-form','method'=>'post')) }}
-                <fieldset>
-                    <section>
-                        <input type="text" class="dtest-input" placeholder="Ф.И.О.">
-                    </section>
-                    <section>
-                        <input type="text" class="dtest-input" placeholder="Телефон">
-                    </section>
-                    <section>
-                        <input type="text" class="dtest-input" placeholder="Email">
-                    </section>
-                    <section>
-                        <select name="product_id" autoconplete="off" class="testSelect">
-            @foreach($header_models as $product_category)
-                @if($product_category->product->count())
-                            <option value="0">Выбирите модель</option>
-                    @foreach($product_category->product as $product)
-                        @if($product->in_menu == 1)
-                            <option value="{{ $product->id }}">{{ $product->meta->first()->title  }}</option>
-                        @endif
-                    @endforeach
-                @endif
-            @endforeach
-                        </select>
-                    </section>
-                    <footer>
-                        <button type="submit" autocomplete="off" class="btn fl-r btn-form-submit">
-                            <i class="fa fa-spinner fa-spin hidden"></i> <span class="btn-response-text">Отправить</span>
-                        </button>
-                    </footer>
-                 {{ Form::close() }}
+                <form>
+                    <input type="text" class="dtest-input" placeholder="Ф.И.О.">
+                    <input type="text" class="dtest-input" placeholder="Телефон">
+                    <input type="text" class="dtest-input" placeholder="Email">
+                    <select class="testSelect">
+                        @foreach($header_models as $product_category)
+                            @if($product_category->product->count())
+                                @foreach($product_category->product as $product)
+                                    @if($product->in_menu == 1)
+                                        <option>{{ $product->meta->first()->short_title  }}</option>
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endforeach
+                    </select>
+                    <input type="text" class="dtest-input" placeholder="Комментарий">
+                    <button type="submit" class="btn fl-r">Отправить</button>
+                </form>
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -160,22 +147,12 @@
             <div class="title">Заказать<br>звонок</div>
             <div class="dtest-form">
                 {{ Form::open(array('url'=>URL::route('index_order_call'),'role'=>'form','class'=>'smart-form','id'=>'index-order-call-form','method'=>'post')) }}
-                <fieldset>
-                    <section>
-                        <input type="text" class="dtest-input" name="fio" placeholder="Ф.И.О.">
-                    </section>
-                    <section>
-                        <input type="text" class="dtest-input" name="phone" placeholder="Телефон">
-                    </section>
-                    <section>
+                    <input type="text" class="dtest-input" name="fio" placeholder="Ф.И.О.">
+                    <input type="text" class="dtest-input" name="phone" placeholder="Телефон">
                     <input type="text" class="dtest-input" name="datetime" placeholder="Удобное время для звонка">
-                    </section>
-                </fieldset>
-                <footer>
                     <button type="submit" autocomplete="off" class="btn fl-r btn-form-submit">
                         <i class="fa fa-spinner fa-spin hidden"></i> <span class="btn-response-text">Отправить</span>
                     </button>
-                </footer>
                 {{ Form::close() }}
                 <div class="clearfix"></div>
             </div>
