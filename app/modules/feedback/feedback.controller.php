@@ -10,9 +10,7 @@ class FeedbackController extends BaseController {
     ## Routing rules of module
     public static function returnRoutes($prefix = null) {
         $class = __CLASS__;
-    	Route::get( "/feedback", $class."@getFeedback");
-    	Route::post("/feedback", $class."@postFeedback");
-    	Route::post("/feedback/send", $class."@postSendmessage");
+    	Route::post("/contacts/feedback",array('as' => 'contact_feedback','uses' => $class."@postContactFeedback"));
     }
 
     /****************************************************************************/
@@ -29,95 +27,29 @@ class FeedbackController extends BaseController {
         View::share('module', $this->module);
 	}
 
-    public function getFeedback() {
+    public function postContactFeedback() {
 
-        #Helper::d( Input::all() );
-        
-        return View::make($this->module['gtpl'].'form', array());
-    }
-    
-    public function postFeedback() {
-
-        $name = Input::get('name');
-        $email = Input::get('email');
-        $message = Input::get('message');
-        
-        $data = array(
-            'name'    => $name,
-            'email'   => $email,
-            'message' => $message,
-        );
-
-        $sended = $this->postSendmessage($name, $email, $message);
-        
-        if ($sended) {
-
-            return View::make($this->module['gtpl'].'form', $data);
-            #Redirect("/feedback?send=" . (int)$sended);
-            
-        } else {
-
-            #Helper::d("ERROR");
-
-            $data['error_messages'] = implode($validator->messages()->all(), '<br />');
-            #Helper::d($data);
-        	#Redirect::to('/feedback')->withErrors($validator);
-            return View::make($this->module['gtpl'].'form', $data);
-        }
-        
-    }
-    
-    public function postSendmessage($name = false, $email = false, $message = false) {
-
-        $sended = false;
-		$json_request = array('status'=>FALSE, 'responseText'=>'', 'responseErrorText'=>'', 'redirect'=>FALSE);
-
-        /* !!! */
-        $name = Input::get('name');
-        $email = Input::get('email');
-        $message = Input::get('message');
-
-        $data = array(
-            'name'    => $name,
-            'email'   => $email,
-            'content' => $message,
-        );
-
-        #$json_request['responseErrorText'] = print_r($data, 1);
-        #return Response::json($json_request, 200);
-        
-        $rules = array(
-            'name'    => 'required',
-            'email'   => 'required|email',
-            'content' => 'required',
-        );
-        
-        $validator = Validator::make($data, $rules);
-
-        if ($validator->passes()) {
-
-            #Helper::d("ALL OK");
-            
-            // Переданные данные успешно прошли проверку.
-            $sended = Mail::send($this->module['gtpl'].'feedback', $data, function ($message) use ($email, $name) {
-                $message->from($email, $name);
-                $message->to( Config::get('mail.for_feedback') );
-            });
-
-			#$json_request['responseText'] = 'Страница создана';
-			#$json_request['redirect'] = link::auth('pages');
-			$json_request['status'] = TRUE;
-            
-        } else {
-
-            $json_request['responseErrorText'] = print_r($data, 1) . " | " . $validator->messages()->all();
-
-        }
-
+        if(!Request::ajax()) return App::abort(404);
+        $json_request = array('status'=>FALSE, 'responseText'=>'','responseErrorText'=>'','redirect'=>FALSE);
+        $validation = Validator::make(Input::all(), array('fio'=>'required', 'email'=>'required|email', 'phone'=>'required', 'content'=>'required'));
+        if($validation->passes()):
+            $this->postSendmessage(Input::get('email'), array('subject'=>'Форма обратной связи','email'=>Input::get('email'),'name'=>Input::get('fio'),'content'=>Input::get('content')));
+            $json_request['responseText'] = 'Сообщение отправлено';
+            $json_request['status'] = TRUE;
+        else:
+            $json_request['responseText'] = 'Неверно заполнены поля';
+            $json_request['responseErrorText'] = implode($validation->messages()->all(), '<br />');
+        endif;
         return Response::json($json_request, 200);
-
     }
     
+    public function postSendmessage($email = null, $data = null, $template = 'feedback') {
+
+        return  Mail::send($this->module['gtpl'].$template,$data, function ($message) use ($email, $data) {
+            $message->from($email, @$data['name']);
+            $message->to(Config::get('mail.feedback_mail'), Config::get('mail.feedback_name'))->subject(@$data['subject']);
+        });
+    }
 }
 
 

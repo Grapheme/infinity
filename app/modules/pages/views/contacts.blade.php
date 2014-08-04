@@ -50,28 +50,31 @@
             </div>
             <div class="right">
                 <h2>Форма обратной связи</h2>
-                <form>
+                {{ Form::open(array('url'=>URL::route('contact_feedback'),'role'=>'form','class'=>'smart-form','id'=>'contact-feedback-form','method'=>'post')) }}
                     <fieldset>
                         <section>
-                            <input class="input" type="text" placeholder="Ф.И.О.">
+                            <input class="input" type="text" name="fio" placeholder="Ф.И.О.">
                         </section>
                         <section>
-                            <input class="input" type="text" placeholder="Email">
+                            <input class="input" type="text" name="email" placeholder="Email">
                         </section>
                         <section>
-                            <input class="input" type="text" placeholder="Телефон">
+                            <input class="input" type="text" name="phone" placeholder="Телефон">
                         </section>
                         <section>
-                            <textarea class="textarea" placeholder="Ваш вопрос"></textarea>
+                            <textarea class="textarea" name="content" placeholder="Ваш вопрос"></textarea>
                         </section>
                     </fieldset>
                     <footer>
-                        <button type="submit" class="btn medium">Отправить</button>
+                        <button type="submit" autocomplete="off" class="btn medium btn-form-submit">
+                            <i class="fa fa-spinner fa-spin hidden"></i> <span class="btn-response-text">Отправить</span>
+                        </button>
                     </footer>
-                </form>
+                {{ Form::close() }}
             </div>
         </div>
     </section>
 @stop
 @section('scripts')
+
 @stop

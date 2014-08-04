@@ -1,24 +1,46 @@
-// Avoid `console` errors in browsers that lack a console.
-(function() {
-    var method;
-    var noop = function () {};
-    var methods = [
-        'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-        'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-        'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-        'timeStamp', 'trace', 'warn'
-    ];
-    var length = methods.length;
-    var console = (window.console = window.console || {});
+/*  Author: Grapheme Group
+ *  http://grapheme.ru/
+ */
 
-    while (length--) {
-        method = methods[length];
+$(function(){
 
-        // Only stub undefined methods.
-        if (!console[method]) {
-            console[method] = noop;
+});
+
+
+function runFormValidation() {
+
+    var news = $("#contact-feedback-form").validate({
+        rules:{
+            fio: {required : true},
+            email: {required : true, email : true},
+            phone: {required : true},
+            content: {required : true}
+        },
+        messages : {
+            fio : {required : 'Укажите Ваше полное имя'},
+            email : {required : 'Укажите адрес электронной почты'},
+            phone : {required : 'Укажите контактный номер телефона'},
+            content : {required : 'Укажите текст вопроса'}
+        },
+        errorPlacement : function(error, element){error.insertAfter(element.parent());},
+        submitHandler: function(form) {
+            var options = {target: null,dataType:'json',type:'post'};
+            options.beforeSubmit = function(formData,jqForm,options){
+                $(form).find('.btn-form-submit').elementDisabled(true);
+            },
+                options.success = function(response,status,xhr,jqForm){
+                    $(form).find('.btn-form-submit').elementDisabled(false);
+                    if(response.status){
+                        if(response.redirect !== false){
+                            BASIC.RedirectTO(response.redirect);
+                        }
+                        $(form).replaceWith(response.responseText);
+                    }else{
+                        showMessage.constructor(response.responseText,response.responseErrorText);
+                        showMessage.smallError();
+                    }
+                }
+            $(form).ajaxSubmit(options);
         }
-    }
-}());
-
-// Place any jQuery/helper plugins in here.
+    });
+}
