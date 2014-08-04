@@ -3,5 +3,12 @@
 composer.phar
 composer.lock
 /.htaccess
-/public/uploads/galleries/*.jpg
-/public/uploads/galleries/thumbs/*.jpg
+
+public/uploads/galleries
+public/uploads/galleries/thumbs
+
+public/uploads/galleries/*.jpg
+public/uploads/galleries/thumbs/*.jpg
+
+public/uploads/galleries/*.png
+public/uploads/galleries/thumbs/*.png
