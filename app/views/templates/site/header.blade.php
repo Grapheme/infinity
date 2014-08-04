@@ -101,7 +101,7 @@
                             <select name="product_id" autoconplete="off" class="testSelect">
                 @foreach($header_models as $product_category)
                     @if($product_category->product->count())
-                                <option>Выбирите модель</option>
+                                <option value="">Выбирите модель</option>
                         @foreach($product_category->product as $product)
                             @if($product->in_menu == 1)
                                 <option value="{{ $product->id }}">{{ $product->meta->first()->title  }}</option>

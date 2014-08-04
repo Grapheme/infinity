@@ -72,12 +72,17 @@ class FeedbackController extends BaseController {
 
         if(!Request::ajax()) return App::abort(404);
         $json_request = array('status'=>FALSE, 'responseText'=>'','responseErrorText'=>'','redirect'=>FALSE);
-        $validation = Validator::make(Input::all(), array('fio'=>'required', 'phone'=>'required', 'datetime'=>'required'));
+        $validation = Validator::make(Input::all(), array('fio'=>'required', 'phone'=>'required', 'email'=>'required|email','product_id'=>'required'));
         if($validation->passes()):
+
+            $product_title = 'Не определено';
+            if($product = Product::where('id',Input::get('product_id'))->with('meta')->first()):
+                $product_title = $product->meta->first()->title;
+            endif;
             $this->postSendmessage(
-                NULL,
-                array('subject'=>'Заказ звонка','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'datetime'=>Input::get('datetime')),
-                'order_call'
+                Input::get('email'),
+                array('subject'=>'Заказ звонка','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'product'=>$product_title),
+                'order_test_drive'
             );
             $json_request['responseText'] = 'Сообщение отправлено';
             $json_request['status'] = TRUE;
