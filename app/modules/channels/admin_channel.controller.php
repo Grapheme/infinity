@@ -176,6 +176,7 @@ class AdminChannelController extends BaseController {
         $channel->title = Input::get('title');
         $channel->link = BaseController::stringTranslite(Input::get('link'));
         $channel->category_id = Input::get('category_id');
+        $channel->product_id = Input::get('product_id');
         $channel->short = Input::get('short');
         $channel->desc = Input::get('desc');
         $channel->template = Input::get('template');

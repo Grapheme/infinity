@@ -37,6 +37,27 @@
 							{{ Form::select('category_id', $categories) }}
 						</label>
 					</section>
+
+					<?php
+                       $products = array();
+                       if($all_products = Product::with('meta')->get()):
+                           foreach($all_products as $product):
+                               $products[$product->id] = $product->meta->first()->title;
+                           endforeach;
+                       endif;
+                    ?>
+                    <section>
+                        <label class="label">Связан с продуктом</label>
+                        <label class="select">
+                            <select name="product_id" class="customSelect selectModel">
+                                <option value="0">Без модели</option>
+                            @foreach($products as $product_id => $product_title)
+                                <option {{ $channel->product_id == $product_id ? 'selected' : '' }} value="{{ $product_id }}">{{ $product_title }}</option>
+                            @endforeach
+                            </select>
+                        </label>
+                    </section>
+
                     @if(Allow::module('templates') || 1)
                     <section>
                         <label class="label">Шаблон:</label>

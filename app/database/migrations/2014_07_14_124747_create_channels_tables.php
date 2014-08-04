@@ -21,6 +21,7 @@ class CreateChannelsTables extends Migration {
             Schema::create('channels', function(Blueprint $table) {
                 $table->increments('id');
                 $table->integer('category_id')->default(0)->unsigned()->nullable();
+                $table->integer('product_id')->default(0)->unsigned()->nullable();
                 $table->string('template',100)->nullable();
                 $table->string('title', 128)->nullable();
                 $table->string('link', 256)->nullable();
