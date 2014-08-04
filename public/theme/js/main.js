@@ -196,10 +196,9 @@ var Popup = (function(){
 
 	allow = true;
 	opened = false;
-	var show = function(popup, model) {
-		console.log(popup);
+	var show = function(data_popup, model) {
 		if(!allow) return;
-		var popup = $('.pop-window[data-popup=' + popup + ']');
+		var popup = $('.pop-window[data-popup="' + data_popup + '"]');
 		$('.overlay').addClass('active').css('z-index', 1000);
 		popup.removeClass('closed');
 		$('html').css('overflow', 'hidden');
@@ -210,7 +209,6 @@ var Popup = (function(){
 	}
 
 	var close = function(popup) {
-		console.log(popup);
 		allow = false;
 		$('.overlay').removeClass('active');
 		$('html').removeAttr('style');

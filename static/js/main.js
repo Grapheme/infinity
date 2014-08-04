@@ -198,7 +198,7 @@ var Popup = (function(){
 	opened = false;
 	var show = function(popup, model) {
 		if(!allow) return;
-		var popup = $('.pop-window[data-popup=' + popup + ']');
+		var popup = $('.pop-window[data-popup="' + popup + '"]');
 		$('.overlay').addClass('active').css('z-index', 1000);
 		popup.removeClass('closed');
 		$('html').css('overflow', 'hidden');
@@ -467,6 +467,7 @@ var smart_tabs = (function() {
 	});
 })();
 
+$('.testSelect').SumoSelect();
 $('.cars-tooltip').carsHover();
 
 //Click events

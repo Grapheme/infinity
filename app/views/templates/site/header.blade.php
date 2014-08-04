@@ -65,7 +65,7 @@
 </header>
 
 <section class="overlay">
-    <div class="pop-window pop-dtest" data-popup="test-drive">
+    <div class="pop-window pop-dtest closed" data-popup="test-drive">
         <i class="js-pop-close">&#x2715;</i>
         <div class="dtest-in">
             <div class="title">Заявка<br>на тест-драйв</div>
@@ -75,6 +75,72 @@
                     <input type="text" class="dtest-input" placeholder="Телефон">
                     <input type="text" class="dtest-input" placeholder="Email">
                     <input type="hidden" class="hidden-model" value="">
+                    <button type="submit" class="btn fl-r">Отправить</button>
+                </form>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="pop-window pop-dtest closed" data-popup="test-drive-models">
+        <i class="js-pop-close">&#x2715;</i>
+        <div class="dtest-in">
+            <div class="title">Заявка<br>на тест-драйв</div>
+            <div class="dtest-form">
+                <form>
+                    <input type="text" class="dtest-input" placeholder="Ф.И.О.">
+                    <input type="text" class="dtest-input" placeholder="Телефон">
+                    <input type="text" class="dtest-input" placeholder="Email">
+                    <input type="text" class="dtest-input" placeholder="Модель">
+                    <input type="text" class="dtest-input" placeholder="Комментарий">
+                    <button type="submit" class="btn fl-r">Отправить</button>
+                </form>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="pop-window pop-dtest closed" data-popup="recover">
+        <i class="js-pop-close">&#x2715;</i>
+        <div class="dtest-in">
+            <div class="title">Запись<br>на сервис</div>
+            <div class="dtest-form">
+                <form>
+                    <input type="text" class="dtest-input" placeholder="Ф.И.О.">
+                    <input type="text" class="dtest-input" placeholder="Телефон">
+                    <input type="text" class="dtest-input" placeholder="Email">
+                    <input type="text" class="dtest-input" placeholder="Модель">
+                    <input type="text" class="dtest-input" placeholder="Комментарий">
+                    <button type="submit" class="btn fl-r">Отправить</button>
+                </form>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="pop-window pop-dtest closed" data-popup="items">
+        <i class="js-pop-close">&#x2715;</i>
+        <div class="dtest-in">
+            <div class="title">Заказ<br>запчастей</div>
+            <div class="dtest-form">
+                <form>
+                    <input type="text" class="dtest-input" placeholder="Ф.И.О.">
+                    <input type="text" class="dtest-input" placeholder="Телефон">
+                    <input type="text" class="dtest-input" placeholder="Email">
+                    <input type="text" class="dtest-input" placeholder="Модель">
+                    <input type="text" class="dtest-input" placeholder="Комментарий">
+                    <button type="submit" class="btn fl-r">Отправить</button>
+                </form>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="pop-window pop-dtest closed" data-popup="call">
+        <i class="js-pop-close">&#x2715;</i>
+        <div class="dtest-in">
+            <div class="title">Заказать<br>звонок</div>
+            <div class="dtest-form">
+                <form>
+                    <input type="text" class="dtest-input" placeholder="Ф.И.О.">
+                    <input type="text" class="dtest-input" placeholder="Телефон">
+                    <input type="text" class="dtest-input" placeholder="Удобное время для звонка">
                     <button type="submit" class="btn fl-r">Отправить</button>
                 </form>
                 <div class="clearfix"></div>
