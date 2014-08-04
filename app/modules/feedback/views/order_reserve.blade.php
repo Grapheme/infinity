@@ -9,8 +9,7 @@
             Сообщение от: {{ $name }} <{{ $email }}>
             <br>Телефон: {{ $phone }}
             <hr/>
-			{{ $content }}
-            <hr/>
+            {{ $content }}
 		</p>
 	</div>
 </body>

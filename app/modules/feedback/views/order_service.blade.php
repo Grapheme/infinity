@@ -8,9 +8,9 @@
 		<p>
             Сообщение от: {{ $name }} <{{ $email }}>
             <br>Телефон: {{ $phone }}
+            <br>Название модели: {{ $product }}
             <hr/>
-			{{ $content }}
-            <hr/>
+            {{ $content }}
 		</p>
 	</div>
 </body>

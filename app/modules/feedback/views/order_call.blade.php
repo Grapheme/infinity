@@ -6,11 +6,9 @@
 <body>
 	<div>
 		<p>
-            Сообщение от: {{ $name }} <{{ $email }}>
+            Сообщение от: {{ $name }}
             <br>Телефон: {{ $phone }}
-            <hr/>
-			{{ $content }}
-            <hr/>
+            <br>Удобное время для звонка: {{ $datetime }}
 		</p>
 	</div>
 </body>
