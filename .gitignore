@@ -4,6 +4,8 @@ composer.phar
 composer.lock
 /.htaccess
 
+/var/www/test.grapheme.ru/infinity/public/uploads
+
 public/uploads/galleries/thumbnail/*.gpg
 public/uploads/galleries/thumbnail/*.png
 
