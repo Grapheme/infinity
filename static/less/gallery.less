@@ -1,7 +1,3 @@
-html.scroll-blocked {
-	overflow: hidden;
-}
-
 .gallery {
 	position: relative;
 	height: 100vh;
@@ -11,6 +7,7 @@ html.scroll-blocked {
 .gallery-block {
 	position: absolute;
 	top: 0; left: 0; right: 0; bottom: 0;
+	z-index: 2;
 
 	&.fadeOut {
 		.transform(translateY(100%));

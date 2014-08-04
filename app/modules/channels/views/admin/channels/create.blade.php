@@ -23,7 +23,6 @@
 							{{ Form::text('title', '') }}
 						</label>
 					</section>
-
                     <section>
 						<label class="label">Ссылка</label>
 						<label class="input">
@@ -58,7 +57,18 @@
                             </select>
                         </label>
                     </section>
-
+                     <section>
+                        <label class="label">Цена</label>
+                        <label class="input">
+                            {{ Form::text('price', '') }}
+                        </label>
+                    </section>
+                    <section>
+                        <label class="label">Год выпуска</label>
+                        <label class="input">
+                            {{ Form::text('year', '') }}
+                        </label>
+                    </section>
                     @if(Allow::module('templates') || 1)
                     <section>
                         <label class="label">Шаблон:</label>

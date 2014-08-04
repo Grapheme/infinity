@@ -2,7 +2,7 @@
 	.transition(opacity);
 	position: fixed;
 	top: 0; left: 0; right: 0; bottom: 0;
-	z-index: 99;
+	z-index: 1000;
 	text-align: center;
 	opacity: 0;
 	z-index: -1;
@@ -82,6 +82,22 @@
 			padding: 0 25rem / @htmlFontSize;
 			height: 55rem / @htmlFontSize;
 			line-height: 55rem / @htmlFontSize;
+		}
+
+		.SumoSelect {
+			width: 100%;
+			margin-bottom: 15rem / @htmlFontSize;
+
+			& > .CaptionCont {
+				.box-sizing;
+				width: 100%;
+				font-weight: 300;
+				line-height: 40rem / @htmlFontSize;
+				height: 40rem / @htmlFontSize;
+				padding: 0 10rem / @htmlFontSize;
+				border-color: #9f9f9f;
+				background: transparent;
+			}
 		}
 	}
 }

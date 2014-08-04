@@ -14,10 +14,10 @@
         </div>
     @endforeach
         <ul class="index-nav">
-            <li class="option"><a href="{{ link::to() }}">Заказать<br>звонок</a>
-            <li class="option"><a href="{{ link::to() }}">Запись<br>на тест-драйв</a>
-            <li class="option"><a href="{{ link::to() }}">Запись<br>на сервис</a>
-            <li class="option"><a href="{{ link::to() }}">Заказ<br>запчастей</a>
+            <li class="option"><a href="#" class="js-pop-show" data-popup="call">Заказать<br>звонок</a>
+            <li class="option"><a href="#" class="js-pop-show" data-popup="test-drive-models">Запись<br>на тест-драйв</a>
+            <li class="option"><a href="#" class="js-pop-show" data-popup="recover">Запись<br>на сервис</a>
+            <li class="option"><a href="#" class="js-pop-show" data-popup="items">Заказ<br>запчастей</a>
         </ul>
     </div>
     <div class="js-slider-nav">
