@@ -146,12 +146,14 @@
         <div class="dtest-in">
             <div class="title">Заказать<br>звонок</div>
             <div class="dtest-form">
-                <form>
-                    <input type="text" class="dtest-input" placeholder="Ф.И.О.">
-                    <input type="text" class="dtest-input" placeholder="Телефон">
-                    <input type="text" class="dtest-input" placeholder="Удобное время для звонка">
-                    <button type="submit" class="btn fl-r">Отправить</button>
-                </form>
+                {{ Form::open(array('url'=>URL::route('index_order_call'),'role'=>'form','class'=>'smart-form','id'=>'index-order-call-form','method'=>'post')) }}
+                    <input type="text" class="dtest-input" name="fio" placeholder="Ф.И.О.">
+                    <input type="text" class="dtest-input" name="phone" placeholder="Телефон">
+                    <input type="text" class="dtest-input" name="datetime" placeholder="Удобное время для звонка">
+                    <button type="submit" autocomplete="off" class="btn fl-r btn-form-submit">
+                        <i class="fa fa-spinner fa-spin hidden"></i> <span class="btn-response-text">Отправить</span>
+                    </button>
+                {{ Form::close() }}
                 <div class="clearfix"></div>
             </div>
         </div>
