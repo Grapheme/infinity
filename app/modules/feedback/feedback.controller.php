@@ -12,6 +12,7 @@ class FeedbackController extends BaseController {
         $class = __CLASS__;
     	Route::post("/contacts/feedback",array('as' => 'contact_feedback','uses' => $class."@postContactFeedback"));
     	Route::post("/index/order-call",array('as' => 'index_order_call','uses' => $class."@postIndexOrderCall"));
+    	Route::post("/order-test-drive",array('as' => 'order_textdrive_call','uses' => $class."@postOrderTestDrive"));
     }
 
     /****************************************************************************/
@@ -54,7 +55,27 @@ class FeedbackController extends BaseController {
         $validation = Validator::make(Input::all(), array('fio'=>'required', 'phone'=>'required', 'datetime'=>'required'));
         if($validation->passes()):
             $this->postSendmessage(
-                Input::get('email'),
+                NULL,
+                array('subject'=>'Заказ звонка','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'datetime'=>Input::get('datetime')),
+                'order_call'
+            );
+            $json_request['responseText'] = 'Сообщение отправлено';
+            $json_request['status'] = TRUE;
+        else:
+            $json_request['responseText'] = 'Неверно заполнены поля';
+            $json_request['responseErrorText'] = implode($validation->messages()->all(), '<br />');
+        endif;
+        return Response::json($json_request, 200);
+    }
+
+    public function postOrderTestDrive() {
+
+        if(!Request::ajax()) return App::abort(404);
+        $json_request = array('status'=>FALSE, 'responseText'=>'','responseErrorText'=>'','redirect'=>FALSE);
+        $validation = Validator::make(Input::all(), array('fio'=>'required', 'phone'=>'required', 'datetime'=>'required'));
+        if($validation->passes()):
+            $this->postSendmessage(
+                NULL,
                 array('subject'=>'Заказ звонка','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'datetime'=>Input::get('datetime')),
                 'order_call'
             );
@@ -70,7 +91,9 @@ class FeedbackController extends BaseController {
     public function postSendmessage($email = null, $data = null, $template = 'feedback') {
 
         return  Mail::send($this->module['gtpl'].$template,$data, function ($message) use ($email, $data) {
-            $message->from($email, @$data['name']);
+            if(!is_null($email)):
+                $message->from($email, @$data['name']);
+            endif;
             $message->to(Config::get('mail.feedback_mail'), Config::get('mail.feedback_name'))->subject(@$data['subject']);
         });
     }
