@@ -3,7 +3,7 @@
 	width: 100%;
 
 	td, th {
-		padding: 25rem / @htmlFontSize 0 25rem / @htmlFontSize 25rem / @htmlFontSize;
+		padding: 30rem / @htmlFontSize 15rem / @htmlFontSize 30rem / @htmlFontSize;
 	}
 
 	thead {
@@ -17,12 +17,35 @@
 		}
 	}
 
+	.car-name {
+		color: #1c1c1c;
+		font-size: 23rem / @htmlFontSize;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+
 	.car-desc {
 		color: #1c1c1c;
-		font-size: 15px;
-		font-weight: 300;
-		line-height: 21px;
-		width: 127px;
-		height: 57px;
+		font-size: 15rem / @htmlFontSize;
+		font-weight: 400;
+
+		&.missed {
+			color: rgba(28, 28, 28, 0.5);
+		}
+	}
+
+	.car-price {
+		color: #1c1c1c;
+		font-size: 18rem / @htmlFontSize;
+		font-weight: 600;
+	}
+
+	.car-photo {
+		display: inline-block;
+		width: 270rem / @htmlFontSize;
+		height: 100%;
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
 	}
 }
