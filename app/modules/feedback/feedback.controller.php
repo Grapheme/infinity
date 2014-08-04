@@ -13,6 +13,8 @@ class FeedbackController extends BaseController {
     	Route::post("/contacts/feedback",array('as' => 'contact_feedback','uses' => $class."@postContactFeedback"));
     	Route::post("/index/order-call",array('as' => 'index_order_call','uses' => $class."@postIndexOrderCall"));
     	Route::post("/order-test-drive",array('as' => 'order_textdrive_call','uses' => $class."@postOrderTestDrive"));
+    	Route::post("/order-service",array('as' => 'order_service','uses' => $class."@postOrderService"));
+    	Route::post("/order_reserve",array('as' => 'order_reserve','uses' => $class."@postOrderReserve"));
     }
 
     /****************************************************************************/
@@ -81,8 +83,48 @@ class FeedbackController extends BaseController {
             endif;
             $this->postSendmessage(
                 Input::get('email'),
-                array('subject'=>'Заказ звонка','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'product'=>$product_title),
+                array('subject'=>'Заявка на тест-драйв','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'email'=>Input::get('email'),'product'=>$product_title),
                 'order_test_drive'
+            );
+            $json_request['responseText'] = 'Сообщение отправлено';
+            $json_request['status'] = TRUE;
+        else:
+            $json_request['responseText'] = 'Неверно заполнены поля';
+            $json_request['responseErrorText'] = implode($validation->messages()->all(), '<br />');
+        endif;
+        return Response::json($json_request, 200);
+    }
+
+    public function postOrderService() {
+
+        if(!Request::ajax()) return App::abort(404);
+        $json_request = array('status'=>FALSE, 'responseText'=>'','responseErrorText'=>'','redirect'=>FALSE);
+        $validation = Validator::make(Input::all(), array('fio'=>'required', 'phone'=>'required', 'email'=>'required|email','product'=>'required'));
+        if($validation->passes()):
+            $this->postSendmessage(
+                Input::get('email'),
+                array('subject'=>'Запись на сервис','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'product'=>Input::get('product'),'email'=>Input::get('email'),'content'=>Input::get('content')),
+                'order_service'
+            );
+            $json_request['responseText'] = 'Сообщение отправлено';
+            $json_request['status'] = TRUE;
+        else:
+            $json_request['responseText'] = 'Неверно заполнены поля';
+            $json_request['responseErrorText'] = implode($validation->messages()->all(), '<br />');
+        endif;
+        return Response::json($json_request, 200);
+    }
+
+    public function postOrderReserve() {
+
+        if(!Request::ajax()) return App::abort(404);
+        $json_request = array('status'=>FALSE, 'responseText'=>'','responseErrorText'=>'','redirect'=>FALSE);
+        $validation = Validator::make(Input::all(), array('fio'=>'required', 'phone'=>'required', 'email'=>'required|email'));
+        if($validation->passes()):
+            $this->postSendmessage(
+                Input::get('email'),
+                array('subject'=>'Заказ запчастей','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'email'=>Input::get('email'),'content'=>Input::get('content')),
+                'order_reserve'
             );
             $json_request['responseText'] = 'Сообщение отправлено';
             $json_request['status'] = TRUE;

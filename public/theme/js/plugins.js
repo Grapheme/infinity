@@ -111,4 +111,72 @@ function runFormValidation() {
             $(form).ajaxSubmit(options);
         }
     });
+
+    var order_service = $("#order-service-form").validate({
+        rules:{
+            fio: {required : true},
+            phone: {required : true},
+            email: {required : true, email : true},
+            product: {required : true}
+        },
+        messages : {
+            fio : {required : 'Укажите Ваше полное имя'},
+            phone : {required : 'Укажите контактный номер телефона'},
+            email : {required : 'Укажите адрес электронной почты'},
+            product : {required : 'Укажите модель'}
+        },
+        errorPlacement : function(error, element){error.insertAfter(element.parent());},
+        submitHandler: function(form) {
+            var options = {target: null,dataType:'json',type:'post'};
+            options.beforeSubmit = function(formData,jqForm,options){
+                $(form).find('.btn-form-submit').elementDisabled(true);
+            },
+                options.success = function(response,status,xhr,jqForm){
+                    $(form).find('.btn-form-submit').elementDisabled(false);
+                    if(response.status){
+                        if(response.redirect !== false){
+                            BASIC.RedirectTO(response.redirect);
+                        }
+                        $(form).replaceWith(response.responseText);
+                    }else{
+                        showMessage.constructor(response.responseText,response.responseErrorText);
+                        showMessage.smallError();
+                    }
+                }
+            $(form).ajaxSubmit(options);
+        }
+    });
+
+    var order_reserve = $("#order-reserve-form").validate({
+        rules:{
+            fio: {required : true},
+            phone: {required : true},
+            email: {required : true, email : true},
+        },
+        messages : {
+            fio : {required : 'Укажите Ваше полное имя'},
+            phone : {required : 'Укажите контактный номер телефона'},
+            email : {required : 'Укажите адрес электронной почты'},
+        },
+        errorPlacement : function(error, element){error.insertAfter(element.parent());},
+        submitHandler: function(form) {
+            var options = {target: null,dataType:'json',type:'post'};
+            options.beforeSubmit = function(formData,jqForm,options){
+                $(form).find('.btn-form-submit').elementDisabled(true);
+            },
+                options.success = function(response,status,xhr,jqForm){
+                    $(form).find('.btn-form-submit').elementDisabled(false);
+                    if(response.status){
+                        if(response.redirect !== false){
+                            BASIC.RedirectTO(response.redirect);
+                        }
+                        $(form).replaceWith(response.responseText);
+                    }else{
+                        showMessage.constructor(response.responseText,response.responseErrorText);
+                        showMessage.smallError();
+                    }
+                }
+            $(form).ajaxSubmit(options);
+        }
+    });
 }
