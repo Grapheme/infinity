@@ -19,6 +19,7 @@
     @include('templates.site.footer')
     @include('templates.site.scripts')
     @yield('scripts')
+    {{ HTML::script('theme/js/vendor/jquery.sumoselect.min.js') }}
     {{ HTML::script('theme/js/main.js') }}
     {{ HTML::script('theme/js/plugins.js'); }}
     @yield('page_script')

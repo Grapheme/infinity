@@ -90,7 +90,17 @@
                     <input type="text" class="dtest-input" placeholder="Ф.И.О.">
                     <input type="text" class="dtest-input" placeholder="Телефон">
                     <input type="text" class="dtest-input" placeholder="Email">
-                    <input type="text" class="dtest-input" placeholder="Модель">
+                    <select class="testSelect">
+                        @foreach($header_models as $product_category)
+                            @if($product_category->product->count())
+                                @foreach($product_category->product as $product)
+                                    @if($product->in_menu == 1)
+                                        <option>{{ $product->meta->first()->short_title  }}</option>
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endforeach
+                    </select>
                     <input type="text" class="dtest-input" placeholder="Комментарий">
                     <button type="submit" class="btn fl-r">Отправить</button>
                 </form>
@@ -124,7 +134,6 @@
                     <input type="text" class="dtest-input" placeholder="Ф.И.О.">
                     <input type="text" class="dtest-input" placeholder="Телефон">
                     <input type="text" class="dtest-input" placeholder="Email">
-                    <input type="text" class="dtest-input" placeholder="Модель">
                     <input type="text" class="dtest-input" placeholder="Комментарий">
                     <button type="submit" class="btn fl-r">Отправить</button>
                 </form>
