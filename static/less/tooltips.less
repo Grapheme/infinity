@@ -18,20 +18,15 @@
 }
 
 .car-tooltip {
-	.transition;
-	.transform(translateY(20px));
-	opacity: 0;
+	//.transition;
+	//opacity: 0;
+	display: none;
 	position: absolute;
 	z-index: 99;
 	top: 0;
 	left: 0;
 	color: #000;
 	background: #fff;
-
-	&.fadeIn {
-		.transform(translateY(0));
-		opacity: 1;
-	}
 
 	.tool-triangle {
 		//left: 290rem / @htmlFontSize;
@@ -140,9 +135,9 @@
 }
 
 .cars-tooltip {
-	.transition;
-	.transform(translateY(20px));
-	opacity: 0;
+	//.transition;
+	//opacity: 0;
+	display: none;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -151,11 +146,6 @@
 	background: #fff;
 	width: 770rem / @htmlFontSize;
 	padding: 35rem / @htmlFontSize 35rem / @htmlFontSize 0 35rem / @htmlFontSize;
-
-	&.fadeIn {
-		.transform(translateY(0));
-		opacity: 1;
-	}
 
 	.tool-triangle {
 		left: 430rem / @htmlFontSize;

@@ -467,7 +467,7 @@ var smart_tabs = (function() {
 	});
 })();
 
-$('.testSelect').SumoSelect();
+//$('.testSelect').SumoSelect();
 $('.cars-tooltip').carsHover();
 
 //Click events
