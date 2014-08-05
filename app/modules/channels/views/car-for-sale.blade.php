@@ -17,8 +17,7 @@
     <div class="jcarousel">
         <ul><!--
         @foreach($element->channel->first()->gallery->photos as $photo)
-            --><li><!--
-            --><img src="{{ $photo->full() }}"><!--
+            --><li><img src="{{ $photo->full() }}"></li><!--
         @endforeach
         --></ul>
     </div>

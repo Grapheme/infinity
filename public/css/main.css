@@ -366,6 +366,14 @@ h3 {
   font-size: 15px;
   line-height: 29px;
 }
+.head-link {
+  -webkit-transition: border 0.5s ease;
+  transition: border 0.5s ease;
+  border-bottom: 1px solid transparent;
+}
+.head-link:hover {
+  border-color: rgba(255, 255, 255, 0.75);
+}
 .wrapper {
   position: relative;
   width: 100%;
@@ -489,6 +497,7 @@ html {
   margin: 0;
   list-style: none;
   margin: 0 0 9.25rem;
+  color: #000;
 }
 .news-ul .news-li {
   padding: 3.75rem 4.875rem;
@@ -601,10 +610,16 @@ html {
   margin-right: 0;
 }
 .main-header .header-cont .main-nav .option a {
+  -webkit-transition: border 0.5s ease;
+  transition: border 0.5s ease;
+  border-bottom: 1px solid transparent;
   color: #fff;
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 300;
+}
+.main-header .header-cont .main-nav .option a:hover {
+  border-color: rgba(255, 255, 255, 0.75);
 }
 .main-header .header-cont .head-models {
   margin-top: 0.9375rem;
@@ -625,12 +640,18 @@ html {
   margin-bottom: 0.4375rem;
 }
 .main-header .header-cont .head-models .items a {
+  -webkit-transition: border 0.5s ease;
+  transition: border 0.5s ease;
+  border-bottom: 1px solid transparent;
   font-size: 0.875rem;
   font-weight: 400;
   color: #fff;
   text-transform: uppercase;
   text-decoration: none;
   margin-right: 1.0625rem;
+}
+.main-header .header-cont .head-models .items a:hover {
+  border-color: rgba(255, 255, 255, 0.75);
 }
 .main-header .header-cont .head-models .items a:last-child {
   margin-right: 0;
@@ -652,12 +673,22 @@ html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.875rem;
+  padding: 0 1.5625rem 0 0.625rem;
   margin: 0;
   border: 0 none;
   background: rgba(255, 255, 255, 0.2);
   height: 1.4375rem;
   width: 9.0625rem;
+  color: #fff;
+}
+.main-header .header-right .search .search-input::-webkit-input-placeholder {
+  color: #fff;
+}
+.main-header .header-right .search .search-input:-moz-placeholder {
+  color: #fff;
 }
 .main-header .header-right .search .search-btn {
   position: absolute;
@@ -667,6 +698,7 @@ html {
   width: 1.875rem;
   background: url(../img/search-icon.png) no-repeat center center / 0.625rem 0.625rem;
   border: 0 none;
+  outline: 0 none;
 }
 .main-header .header-right .gedon-link {
   display: inline-block;
@@ -907,11 +939,11 @@ html {
   border-color: transparent transparent #ffffff transparent;
 }
 .tooltip-cont {
-  position: absolute;
-  width: 77.5rem;
-  top: 0;
-  left: 50%;
-  margin-left: -38.75rem;
+  /*position: absolute;
+	width: 1240rem / @htmlFontSize;
+	top: 0;
+	left: 50%;
+	margin-left: -1240rem / 2 / @htmlFontSize;*/
 }
 .car-tooltip {
   display: none;
@@ -1073,11 +1105,11 @@ html {
 .slider-container {
   position: relative;
   z-index: 1;
-  height: 60.625rem;
+  height: 50rem;
   background: #000;
 }
 .slider-container .slider-wrapper {
-  height: 60.625rem;
+  height: 100%;
   z-index: 2;
 }
 .slider-container .slider-img {
@@ -1118,21 +1150,22 @@ html {
 }
 .slider-container .slide-info {
   position: absolute;
-  top: 35.625rem;
+  top: 28.125rem;
   left: 0.9375rem;
   width: 31.25rem;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  display: none;
 }
 .slider-container .slide-info .title {
   color: #fff;
-  font-size: 1.4375rem;
+  font-size: 2rem;
   font-weight: 300;
   text-transform: uppercase;
   margin-bottom: 1.25rem;
 }
 .slider-container .slide-info .text {
   color: #fff;
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 300;
   width: 25.625rem;
   line-height: 1.25rem;
@@ -1143,7 +1176,7 @@ html {
 .slider-container .slider-nav-win {
   padding-top: 1.25rem;
   position: absolute;
-  top: 41.5625rem;
+  bottom: 13.125rem;
   right: 2.5rem;
   height: 4.5625rem;
   overflow: hidden;
