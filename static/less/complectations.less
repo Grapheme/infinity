@@ -109,6 +109,8 @@
 }
 
 .auto-slider {
+	position: relative;
+
 	.slider-nav-win {
 		position: relative;
 		height: 112rem / @htmlFontSize;
@@ -178,9 +180,11 @@
 	}
 
 	.slider-window {
-		position: relative;
-		background: #fff;
+		position: absolute;
+		background: transparent;
+		top: 0;
 		height: 695rem / @htmlFontSize;
+		width: 100%;
 
 		.wrapper {
 			height: 100%;
