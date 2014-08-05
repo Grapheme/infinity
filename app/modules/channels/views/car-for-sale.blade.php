@@ -15,14 +15,12 @@
 @if(!is_null($element->channel->first()->gallery) && $element->channel->first()->gallery->photos->count())
 <section class="jcarousel-wrapper">
     <div class="jcarousel">
-        <ul>
+        <ul><!--
         @foreach($element->channel->first()->gallery->photos as $photo)
-            <li>
-            @if(File::exists(public_path('uploads/galleries/thumbs/'.$photo->name)))
-                <img src="{{ $photo->full() }}">
-            @endif
+            --><li><!--
+            --><img src="{{ $photo->full() }}"><!--
         @endforeach
-        </ul>
+        --></ul>
     </div>
     <a href="#" class="jcarousel-control jcarousel-control-prev"><span class="icon icon-angle-left"></span></a>
     <a href="#" class="jcarousel-control jcarousel-control-next"><span class="icon icon-angle-right"></span></a>
