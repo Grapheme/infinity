@@ -53,7 +53,6 @@
 @if(!is_null($product->gallery) && $product->gallery->photos->count())
     <!--<div class="js-slider-nav">
     @foreach($product->gallery->photos as $image)
-        <img src="{{ asset('uploads/galleries/'.$image->name) }}">
         <i data-thumb="{{ asset('uploads/galleries/thumbs/'.$image->name) }}" data-img="{{ asset('uploads/galleries/'.$image->name) }}"></i>
     @endforeach
     </div>-->
@@ -72,7 +71,8 @@
             'fit': 'cover',
             'loop': true,
             'arrows': false,
-            'nav': 'thumbs'
+            'nav': 'thumbs',
+            'thumbheight': '112px'
         });
     </script>
 @stop
