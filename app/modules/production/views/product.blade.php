@@ -10,7 +10,7 @@
     <div class="model-fotorama">
         
         @foreach($product->gallery->photos as $image)
-            <?php print_r($image); echo "<br>"; ?>
+            <?php print_r($image->name); echo "<br>"; ?>
         @endforeach
         <?php exit;//print_r($product->gallery->photos->name); exit; 
         ?>
