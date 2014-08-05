@@ -15,6 +15,8 @@ class ProductionController extends BaseController {
     ## Routing rules of module
     public static function returnRoutes($prefix = null) {
 
+        $self = __CLASS__;
+
         ## УРЛЫ С ЯЗЫКОВЫМИ ПРЕФИКСАМИ ДОЛЖНЫ ИДТИ ПЕРЕД ОБЫЧНЫМИ!
         ## Если в конфиге прописано несколько языковых версий...
         if (is_array(Config::get('app.locales')) && count(Config::get('app.locales'))) {
@@ -22,24 +24,24 @@ class ProductionController extends BaseController {
             foreach(Config::get('app.locales') as $locale) {
                 ## ...генерим роуты с префиксом (первый сегмент), который будет указывать на текущую локаль.
                 ## Также указываем before-фильтр i18n_url, для выставления текущей локали.
-                Route::group(array('before' => 'i18n_url', 'prefix' => $locale), function(){
-                    Route::get('/'.self::$prefix_url.'/{url}', array('as' => 'single_product', 'uses' => __CLASS__.'@showProduct')); ## I18n Production
-                    Route::get('/'.self::$prefix_url.'/{url}/specifications', array('as' => 'specifications_product', 'uses' => __CLASS__.'@showProductSpecifications')); ## I18n Production
-                    Route::get('/'.self::$prefix_url.'/{url}/galleries', array('as' => 'galleries_product', 'uses' => __CLASS__.'@showProductGalleries')); ## I18n Production
-                    Route::get('/'.self::$prefix_url.'/{url}/complections', array('as' => 'complections_product', 'uses' => __CLASS__.'@showProductComplections')); ## I18n Production
-                    Route::get('/'.self::$prefix_url.'/{url}/accessories', array('as' => 'accessories_product', 'uses' => __CLASS__.'@showProductAccessories')); ## I18n Production
+                Route::group(array('before' => 'i18n_url', 'prefix' => $locale), function() use ($self){
+                    Route::get('/'.$self::$prefix_url.'/{url}', array('as' => 'single_product', 'uses' => __CLASS__.'@showProduct')); ## I18n Production
+                    Route::get('/'.$self::$prefix_url.'/{url}/specifications', array('as' => 'specifications_product', 'uses' => __CLASS__.'@showProductSpecifications')); ## I18n Production
+                    Route::get('/'.$self::$prefix_url.'/{url}/galleries', array('as' => 'galleries_product', 'uses' => __CLASS__.'@showProductGalleries')); ## I18n Production
+                    Route::get('/'.$self::$prefix_url.'/{url}/complections', array('as' => 'complections_product', 'uses' => __CLASS__.'@showProductComplections')); ## I18n Production
+                    Route::get('/'.$self::$prefix_url.'/{url}/accessories', array('as' => 'accessories_product', 'uses' => __CLASS__.'@showProductAccessories')); ## I18n Production
                 });
             }
         }
 
         ## Генерим роуты без префикса, и назначаем before-фильтр i18n_url.
         ## Это позволяет нам делать редирект на урл с префиксом только для этих роутов, не затрагивая, например, /admin и /login
-        Route::group(array('before' => 'i18n_url'), function(){
-            Route::get('/'.self::$prefix_url.'/{url}', array('as' => 'single_product', 'uses' => __CLASS__.'@showProduct'));
-            Route::get('/'.self::$prefix_url.'/{url}/specifications', array('as' => 'specifications_product', 'uses' => __CLASS__.'@showProductSpecifications'));
-            Route::get('/'.self::$prefix_url.'/{url}/galleries', array('as' => 'galleries_product', 'uses' => __CLASS__.'@showProductGalleries'));
-            Route::get('/'.self::$prefix_url.'/{url}/complections', array('as' => 'complections_product', 'uses' => __CLASS__.'@showProductComplections'));
-            Route::get('/'.self::$prefix_url.'/{url}/accessories', array('as' => 'accessories_product', 'uses' => __CLASS__.'@showProductAccessories'));
+        Route::group(array('before' => 'i18n_url'), function() use ($self){
+            Route::get('/'.$self::$prefix_url.'/{url}', array('as' => 'single_product', 'uses' => __CLASS__.'@showProduct'));
+            Route::get('/'.$self::$prefix_url.'/{url}/specifications', array('as' => 'specifications_product', 'uses' => __CLASS__.'@showProductSpecifications'));
+            Route::get('/'.$self::$prefix_url.'/{url}/galleries', array('as' => 'galleries_product', 'uses' => __CLASS__.'@showProductGalleries'));
+            Route::get('/'.$self::$prefix_url.'/{url}/complections', array('as' => 'complections_product', 'uses' => __CLASS__.'@showProductComplections'));
+            Route::get('/'.$self::$prefix_url.'/{url}/accessories', array('as' => 'accessories_product', 'uses' => __CLASS__.'@showProductAccessories'));
         });
     }
 

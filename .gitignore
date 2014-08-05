@@ -6,6 +6,11 @@ composer.lock
 
 /var/www/test.grapheme.ru/infinity/public/uploads
 
+public/uploads/*
+<<<<<<< HEAD
+
+=======
+>>>>>>> 645738a41813d01903990457fa2ca852960a7c55
 public/uploads/galleries/thumbnail/*.gpg
 public/uploads/galleries/thumbnail/*.png
 

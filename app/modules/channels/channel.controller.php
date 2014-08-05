@@ -12,21 +12,24 @@ class ChannelController extends BaseController {
      */
 
     public static $prefix_url = array('offer','car-for-sale'); # array of FALSE;
+    #public static $prefix_url = false; # array of FALSE;
 
     public static function returnRoutes($prefix = null) {
+
+        $self = __CLASS__;
 
         if (self::$prefix_url !== FALSE):
             if (is_array(Config::get('app.locales')) && count(Config::get('app.locales'))):
                 foreach(Config::get('app.locales') as $locale) :
-                    Route::group(array('before' => 'i18n_url', 'prefix' => $locale), function(){
-                    foreach (self::$prefix_url as $prefix):
+                    Route::group(array('before' => 'i18n_url', 'prefix' => $locale), function() use ($self){
+                    foreach ($self::$prefix_url as $prefix):
                         Route::get('/'.$prefix.'/{url}', array('as' => 'channel_full', 'uses' => __CLASS__.'@showFullByUrl'));
                     endforeach;
                     });
                 endforeach;
             endif;
-            Route::group(array('before' => 'i18n_url'), function(){
-            foreach (self::$prefix_url as $prefix):
+            Route::group(array('before' => 'i18n_url'), function() use ($self){
+            foreach ($self::$prefix_url as $prefix):
                 Route::get('/'.$prefix.'/{url}', array('as' => 'channel_full', 'uses' => __CLASS__.'@showFullByUrl'));
             endforeach;
             });

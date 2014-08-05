@@ -13,7 +13,8 @@ return array(
 	'template' => 'site',
 	'manifest' => storage_path('meta'),
 
-	'debug' => FALSE,
+
+	'debug' => false,
 	'url' => 'http://www.infiniti-gedon.ru/',
 	'timezone' => 'UTC',
 	'locale' => 'ru',
