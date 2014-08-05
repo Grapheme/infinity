@@ -495,7 +495,8 @@ $('.color-close').click( function() {
 	$('.colorWrapper').removeClass('active');
 });
 
-var colorNames = ['цвет1','цвет2','цвет3','цвет4','цвет5','цвет6','цвет7','цвет8','цвет9','цвет10'];
+//var colorNames = ['цвет1','цвет2','цвет3','цвет4','цвет5','цвет6','цвет7','цвет8','цвет9','цвет10'];
 
 $("ul#tabs").tabs("#tabContent");
-$(".colors-list").colorChange(colorNames);
+//$(".colors-list").colorChange(colorNames);
+
