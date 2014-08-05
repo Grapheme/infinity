@@ -52,6 +52,7 @@
 				}
 
 				a {
+					.head-link;
 					color: #fff;
 					text-decoration: none;
 					font-size: 14rem / @htmlFontSize;
@@ -83,6 +84,7 @@
 
 			.items {
 				a {
+					.head-link;
 					font-size: 14rem / @htmlFontSize;
 					font-weight: 400;
 					color: #fff;
@@ -113,12 +115,19 @@
 
 			.search-input {
 				.box-sizing;
-				padding: 0;
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 300;
+				font-size: 14rem / @htmlFontSize;
+				padding: 0 25rem / @htmlFontSize 0 10rem / @htmlFontSize;
 				margin: 0;
 				border: 0 none;
 				background: rgba(255, 255, 255, 0.2);
 				height: 23rem / @htmlFontSize;
 				width: 145rem / @htmlFontSize;
+				color: #fff;
+
+				&::-webkit-input-placeholder { color: #fff; }
+				&:-moz-placeholder { color: #fff; }
 			}
 
 			.search-btn {
@@ -129,6 +138,7 @@
 				width: 30rem / @htmlFontSize;
 				background: url(../img/search-icon.png) no-repeat center center e('/') 10rem / @htmlFontSize 10rem / @htmlFontSize;
 				border: 0 none;
+				outline: 0 none;
 			}
 		}
 

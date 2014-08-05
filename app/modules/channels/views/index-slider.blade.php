@@ -27,7 +27,7 @@
         @endif
     @endforeach
     </div>
-    <div class="slider-nav-win">
+    <div class="slider-nav-win" style="display: none;">
         <ul class="slider-nav"></ul>
     </div>
 </div>
