@@ -12,7 +12,7 @@
         @foreach($product->gallery->photos as $image)
             <img src="{{ asset('uploads/galleries/'.$image->name) }}">
         @endforeach
-        <?php exit;//print_r($product->gallery->photos->name); exit; 
+        <?php//print_r($product->gallery->photos->name); exit; 
         ?>
         @foreach($product->gallery->photos as $image)
             <img src="{{ asset('uploads/galleries/'.$image->name) }}">
