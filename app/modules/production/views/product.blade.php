@@ -1,6 +1,7 @@
 @extends(Helper::layout())
 
 @section('style')
+    {{HTML::style('theme/css/fotorama.css');}}
 @stop
 
 @section('content')
@@ -45,12 +46,17 @@
     </div>
     @endif
 @if(!is_null($product->gallery) && $product->gallery->photos->count())
-    <div class="js-slider-nav">
+    <!--<div class="js-slider-nav">
     @foreach($product->gallery->photos as $image)
         <img src="{{ asset('uploads/galleries/'.$image->name) }}">
-        <!--<i data-thumb="{{ asset('uploads/galleries/thumbs/'.$image->name) }}" data-img="{{ asset('uploads/galleries/'.$image->name) }}"></i>-->
+        <i data-thumb="{{ asset('uploads/galleries/thumbs/'.$image->name) }}" data-img="{{ asset('uploads/galleries/'.$image->name) }}"></i>
     @endforeach
-    </div>
+    </div>-->
+
+    @foreach($product->gallery->photos as $image)
+        <img src="{{ asset('uploads/galleries/'.$image->name) }}">
+        <i data-thumb="{{ asset('uploads/galleries/thumbs/'.$image->name) }}" data-img="{{ asset('uploads/galleries/'.$image->name) }}"></i>
+    @endforeach
     <div class="slider-nav-win">
         <ul class="slider-nav"></ul>
     </div>
@@ -61,4 +67,5 @@
 </section>
 @stop
 @section('scripts')
+    {{HTML::script('theme/js/vendor/fotorama.js');}}
 @stop
