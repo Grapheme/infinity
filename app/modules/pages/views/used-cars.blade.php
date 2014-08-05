@@ -23,6 +23,8 @@
             #Helper::tad($all_products);
             if(count($all_products->channel)):
                 foreach($all_products->channel as $product):
+                    if (!$product->product)
+                        continue;
                     #$products[$product->id] = $product->meta->first()->title;
                     $products[$product->product->id] = $product->product->meta[0]->title;
                     $years[] = $product->year;
