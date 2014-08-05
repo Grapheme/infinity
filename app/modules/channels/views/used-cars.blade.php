@@ -1,3 +1,4 @@
+
 @if(!is_null($channelCategory) && $cars->count())
 <ul class="sub-offers-ul">
 @foreach($cars as $car)

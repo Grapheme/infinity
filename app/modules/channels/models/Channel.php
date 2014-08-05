@@ -26,4 +26,10 @@ class Channel extends BaseModel {
     public  function galleries(){
         return $this->hasMany('Rel_mod_gallery','unit_id');
     }
+
+
+    public function product(){
+        return $this->hasOne('Product', 'id', 'product_id');
+    }
+
 }

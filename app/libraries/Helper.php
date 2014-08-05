@@ -34,14 +34,28 @@ class Helper {
         die;
     }
 
+    public static function d_($array) {
+        return false;
+    }
+
     public static function dd_($array) {
         return false;
     }
 
+    public static function ta($object) {
+        self::d($object->toArray());
+    }
+
+    public static function tad($object) {
+        self::dd($object->toArray());
+    }
+
     public static function layout($file = '') {
         $layout = Config::get('app.template');
+        #Helper::dd(Config::get('app'));
         if (!$layout)
             $layout = 'default';
+        #Helper::dd("templates." . $layout . ($file ? '.'.$file : ''));
         return "templates." . $layout . ($file ? '.'.$file : '');
     }
 
@@ -94,7 +108,7 @@ class Helper {
         $temp = explode(" ", strip_tags($text));
 
         foreach ($temp as $t => $tmp) {
-            $tmp = trim($tmp, ".,?!-+/");
+            #$tmp = trim($tmp, ".,?!-+/");
             if (!$tmp)
                 continue;
             $words[] = $tmp;
@@ -110,16 +124,96 @@ class Helper {
         return $preview;
     }
 
-    public static function arrayForSelect($object, $key = 'id', $val = 'name') {
-        if (!isset($object) || !is_object($object))
+    public static function firstletter($text, $dot = true) {
+
+        return trim($text) ? mb_substr(trim($text), 0, 1) . ($dot ? '.' : '') : false;
+    }
+
+
+public static function arrayForSelect($object, $key = 'id', $val = 'name') {
+
+        if (!isset($object) || (!is_object($object) && !is_array($object)))
             return false;
+
+        #Helper::d($object); return false;
+
+        $array = array();
+        #$array[] = "Выберите...";
+        foreach ($object as $o => $obj) {
+            $array[@$obj->$key] = @$obj->$val;
+        }
+
+        #Helper::d($array); #return false;
+
+        return $array;
+    }
+
+    public static function valuesFromDic($object, $key = 'id') {
+
+        if (!isset($object) || (!is_object($object) && !is_array($object)))
+            return false;
+
+        #Helper::d($object); return false;
 
         $array = array();
         foreach ($object as $o => $obj) {
-            $array[@$obj->$key] = @$obj->$val; 
+            $array[] = is_object($obj) ? @$obj->$key : @$obj[$key];
         }
 
+        #Helper::d($array);
+
         return $array;
+    }
+
+    /**
+     * Изымает значение из массива по ключу, возвращая это значение. Работает по аналогии array_pop()
+     * @param $array
+     * @param $key
+     * @return mixed
+     */
+    public static function withdraw(&$array, $key) {
+        $val = @$array[$key];
+        unset($array[$key]);
+        return $val;
+    }
+
+    public static function classInfo($classname) {
+        echo "<pre>";
+        Reflection::export(new ReflectionClass($classname));
+        echo "</pre>";
+    }
+
+    public static function nl2br($text) {
+        $text = preg_replace("~[\r\n]+~is", "\n<br/>\n", $text);
+        return $text;
+    }
+
+    /**************************************************************************************/
+
+    public static function cookie_set($name = false, $value = false, $lifetime = 86400) {
+        if(is_object($value) || is_array($value))
+            $value = json_encode($value);
+
+        #Helper::dd($value);
+
+        setcookie($name, $value, time()+$lifetime, "/");
+        if ($lifetime > 0)
+            $_COOKIE[$name] = $value;
+    }
+
+    public static function cookie_get($name = false) {
+        #Helper::dd($_COOKIE);
+        $return = @isset($_COOKIE[$name]) ? $_COOKIE[$name] : false;
+        $return2 = @json_decode($return, 1);
+        #Helper::dd($return2);
+        if (is_array($return2))
+            $return = $return2;
+        return $return;
+    }
+
+    public static function cookie_drop($name = false) {
+        self::cookie_set($name, false, 0);
+        $_COOKIE[$name] = false;
     }
 
 }
