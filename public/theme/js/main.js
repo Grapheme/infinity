@@ -24,6 +24,7 @@ $.fn.slider = function(option) {
 			$(this).attr('data-id', j);
 			img[j] = $(this).attr('data-img');
 			thumb[j] = $(this).attr('data-thumb');
+			$('body').append('<img src="' + img[j] + '" alt="" style="display: none;">');
 			j++;
 		});
 		j = 0;
@@ -50,9 +51,11 @@ $.fn.slider = function(option) {
 			//slider.find('.slider-nav').css('width', slider_nav.find('.thumb').outerWidth(true) * (max + 1));
 		}
 
-		setTimeout(function(){
-			auto(auto_time);
-		}, auto_time);
+		$(window).on('load', function(){
+			setTimeout(function(){
+				auto(auto_time);
+			}, auto_time);
+		});
 	}
 
 	var thumb_rm = function(del, out, i) {
