@@ -7,10 +7,12 @@
 @section('content')
 @include('production/views/accepts/product-menu')
  <section class="auto-slider">
-    <div class="model-fotorama">
-        @foreach($product->gallery->photos as $image)
-            <img src="{{ asset('uploads/galleries/'.$image->name) }}">
-        @endforeach
+    <div class="fotorama-cont">
+        <div class="model-fotorama">
+            @foreach($product->gallery->photos as $image)
+                <img src="{{ asset('uploads/galleries/'.$image->name) }}">
+            @endforeach
+        </div>
     </div>
     @if(!is_null($product->images))
         @if(File::exists(public_path('uploads/galleries/'.$product->images->name)))
@@ -67,7 +69,7 @@
     <script>
         $('.model-fotorama').fotorama({
             'width': '100%',
-            'height': '850px',
+            'height': '100%',
             'fit': 'cover',
             'loop': true,
             'arrows': false,
