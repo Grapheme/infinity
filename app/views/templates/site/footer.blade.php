@@ -51,7 +51,7 @@
                 <div class="footer-block">
                     <div class="title">Автомобили</div>
                     <ul class="footer-ul">
-                        <li class="option"><a href="{{ link::to('сars-in-stock') }}">В наличии</a>
+                        <li class="option"><a href="{{ link::to('cars-in-stock') }}">В наличии</a>
                         <li class="option"><a href="{{ link::to('cars-for-sale') }}">С пробегом</a>
                     </ul>
                 </div>
