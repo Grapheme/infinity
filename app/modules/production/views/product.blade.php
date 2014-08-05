@@ -52,13 +52,10 @@
         <i data-thumb="{{ asset('uploads/galleries/thumbs/'.$image->name) }}" data-img="{{ asset('uploads/galleries/'.$image->name) }}"></i>
     @endforeach
     </div>-->
-
-    @foreach($product->gallery->photos as $image)
-        <img src="{{ asset('uploads/galleries/'.$image->name) }}">
-        <i data-thumb="{{ asset('uploads/galleries/thumbs/'.$image->name) }}" data-img="{{ asset('uploads/galleries/'.$image->name) }}"></i>
-    @endforeach
-    <div class="slider-nav-win">
-        <ul class="slider-nav"></ul>
+    <div class="model-fotorama">
+        @foreach($product->gallery->photos as $image)
+            <img src="{{ asset('uploads/galleries/'.$image->name) }}">
+        @endforeach
     </div>
 @endif
 </section>
@@ -68,4 +65,7 @@
 @stop
 @section('scripts')
     {{HTML::script('theme/js/vendor/fotorama.js');}}
+    <script>
+        $('.model-fotorama').fotorama();
+    </script>
 @stop
