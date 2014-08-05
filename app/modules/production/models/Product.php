@@ -34,6 +34,11 @@ class Product extends BaseModel {
     public  function complections(){
         return $this->hasMany('ProductComplections','product_id');
     }
+
+    public  function instocks(){
+        return $this->hasMany('ProductInstock','product_id');
+    }
+
     public  function accessories(){
         return $this->hasMany('ProductAccessory','product_id');
     }

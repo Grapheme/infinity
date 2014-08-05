@@ -75,6 +75,7 @@
                         </td>
     					<td class="text-center" style="white-space:nowrap;">
     					    @if(Allow::action($module['group'], 'product_edit'))
+                            <a href="{{ URL::route('instock.index', array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">В наличии</a>
                             <a href="{{ URL::route('product_accessory_index',array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">Аксессуары</a>
                             <a href="{{ URL::route('product_complection_index',array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">Комплектации и цены</a>
                             <a href="{{ URL::route('product_color_index',array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">Цвета</a>
