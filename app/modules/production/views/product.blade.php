@@ -11,6 +11,7 @@
         @foreach($product->gallery->photos as $image)
             <img src="{{ asset('uploads/galleries/'.$image->name) }}">
         @endforeach
+        <?php exit; ?>
     </div>
     @if(!is_null($product->images))
         @if(File::exists(public_path('uploads/galleries/'.$product->images->name)))
@@ -50,13 +51,11 @@
         </div>
     </div>
     @endif
-@if(!is_null($product->gallery) && $product->gallery->photos->count())
     <!--<div class="js-slider-nav">
     @foreach($product->gallery->photos as $image)
         <i data-thumb="{{ asset('uploads/galleries/thumbs/'.$image->name) }}" data-img="{{ asset('uploads/galleries/'.$image->name) }}"></i>
     @endforeach
     </div>-->
-@endif
 </section>
 <section class="model-sect">
     {{ $product->meta->first()->content }}
