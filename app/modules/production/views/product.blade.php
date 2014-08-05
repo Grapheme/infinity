@@ -10,7 +10,7 @@
     <div class="model-fotorama">
         
         @foreach($product->gallery->photos as $image)
-            <?php echo $image->name; echo "<br>"; ?>
+            <img src="{{ asset('uploads/galleries/'.$image->name) }}">
         @endforeach
         <?php exit;//print_r($product->gallery->photos->name); exit; 
         ?>
