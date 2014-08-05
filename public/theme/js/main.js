@@ -24,6 +24,7 @@ $.fn.slider = function(option) {
 			$(this).attr('data-id', j);
 			img[j] = $(this).attr('data-img');
 			thumb[j] = $(this).attr('data-thumb');
+			$('body').append('<img src="' + img[j] + '" alt="" style="display: none;">');
 			j++;
 		});
 		j = 0;
