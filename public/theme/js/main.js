@@ -51,9 +51,11 @@ $.fn.slider = function(option) {
 			//slider.find('.slider-nav').css('width', slider_nav.find('.thumb').outerWidth(true) * (max + 1));
 		}
 
-		setTimeout(function(){
-			auto(auto_time);
-		}, auto_time);
+		$(window).on('load', function(){
+			setTimeout(function(){
+				auto(auto_time);
+			}, auto_time);
+		});
 	}
 
 	var thumb_rm = function(del, out, i) {
