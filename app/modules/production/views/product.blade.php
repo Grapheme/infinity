@@ -7,9 +7,14 @@
 @section('content')
 @include('production/views/accepts/product-menu')
  <section class="auto-slider">
+    <div class="model-fotorama">
+        @foreach($product->gallery->photos as $image)
+            <img src="{{ asset('uploads/galleries/'.$image->name) }}">
+        @endforeach
+    </div>
     @if(!is_null($product->images))
         @if(File::exists(public_path('uploads/galleries/'.$product->images->name)))
-        <div class="slider-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->images->name) }});"></div>
+        <!--<div class="slider-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->images->name) }});"></div>-->
         @endif
     @endif
     @if($product->colors->count())
@@ -52,11 +57,6 @@
         <i data-thumb="{{ asset('uploads/galleries/thumbs/'.$image->name) }}" data-img="{{ asset('uploads/galleries/'.$image->name) }}"></i>
     @endforeach
     </div>-->
-    <div class="model-fotorama">
-        @foreach($product->gallery->photos as $image)
-            <img src="{{ asset('uploads/galleries/'.$image->name) }}">
-        @endforeach
-    </div>
 @endif
 </section>
 <section class="model-sect">
@@ -66,6 +66,11 @@
 @section('scripts')
     {{HTML::script('theme/js/vendor/fotorama.js');}}
     <script>
-        $('.model-fotorama').fotorama();
+        $('.model-fotorama').fotorama({
+            'width': '100%',
+            'height': '750px',
+            'fit': 'cover'
+
+        });
     </script>
 @stop
