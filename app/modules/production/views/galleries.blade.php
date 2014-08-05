@@ -1,6 +1,7 @@
 @extends(Helper::layout())
 
 @section('style')
+    {{ HTML::style('theme/css/fotorama.css') }}
 @stop
 
 @section('content')
@@ -20,7 +21,7 @@
         </div>
         <div class="gallery-photo">
             @foreach($slider->photos as $photo)
-            <div class="gallery-img" style="background-image: url({{ asset('uploads/galleries/'.$photo->name) }})"></div>
+            <img src="{{ asset('uploads/galleries/'.$photo->name) }}" alt="">
             @endforeach
         </div>
     </section>
@@ -39,8 +40,29 @@
 </section>
 @endif
 @stop
+@section('scripts')
+    {{ HTML::script('theme/js/vendor/fotorama.js') }}
+@stop
 @section('page_script')
     <script>
         $('.gallery').galleryAnim();
+        $('.gallery-photo').each(function(){
+            var $fotoramaDiv = $(this).fotorama({
+                'fit': 'cover',
+                'nav': false,
+                'width': '100%',
+                'height': '100%',
+                'loop': true,
+                'arrows': false
+            });
+            var fotorama = $fotoramaDiv.data('fotorama');
+
+            $(this).parent().find('.gal-prev').on('click', function(){
+                fotorama.show('<');
+            });
+            $(this).parent().find('.gal-next').on('click', function(){
+                fotorama.show('>');
+            });
+        });
     </script>
 @stop

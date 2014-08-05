@@ -408,14 +408,21 @@ var tooltips = (function(){
 	$('.js-tooltip-block').hide();
 	var timeout = false;
 	var timeout_trans = false;
+	var opened = false;
 	var pos_y = $('.main-header').height();
 
-	$(document).on('mouseover', '.js-tooltip, .js-tooltip-block', function(){
-		show($('.js-tooltip-block[data-tooltip="' + $(this).attr('data-tooltip') + '"]'));
+	$(document).on('mouseover', '.js-tooltip-block', function(){
+		clearTimeout(timeout);
 	});
 	$(document).on('mouseover', '.js-tooltip', function(){
-		if($(this).attr('data-tooltip') != $('.js-tooltip-block.fadeIn').attr('data-tooltip')) {
-			$('.js-tooltip-block.fadeIn').hide().removeClass('fadeIn');
+		var block = $('.js-tooltip-block[data-tooltip="' + $(this).attr('data-tooltip') + '"]');
+		
+		if(opened) {
+			if($(this).attr('data-tooltip') != $('.js-tooltip-block.active').attr('data-tooltip')) {
+				
+			}
+		} else {
+			show(block);
 		}
 	});
 	$(document).on('mouseout', '.js-tooltip, .js-tooltip-block', function(){
@@ -423,29 +430,30 @@ var tooltips = (function(){
 	});
 
 	function show(cont) {
-		cont.css('z-index', 999);
-		var this_tool = $('.js-tooltip[data-tooltip="' + cont.attr('data-tooltip') + '"]');
-		cont.css({
-			'top': pos_y
-		});
-		cont.show();
-		var tr_x = this_tool.offset().left - cont.offset().left + this_tool.width()/2 - 15/2;
-		cont.find('.tool-triangle').css('left', tr_x);
-		setTimeout(function(){
-			cont.addClass('fadeIn');
-		}, 1);
-		clearTimeout(timeout);
-		clearTimeout(timeout_trans);
+		//if(opened) {
+			/*clearTimeout(timeout);
+			clearTimeout(timeout_trans);*/
+			opened = true;
+		//} else {
+			var time = 1;
+			cont.css('z-index', 999);
+			var this_tool = $('.js-tooltip[data-tooltip="' + cont.attr('data-tooltip') + '"]');
+			cont.css({
+				'top': pos_y,
+				'left': $('.header-cont').offset().left - 200
+			});
+			cont.addClass('active').show();
+			var tr_x = this_tool.offset().left - cont.offset().left + this_tool.width()/2 - 15/2;
+			cont.find('.tool-triangle').css('left', tr_x);
+			opened = true;
+		//}	
 	}
 
 	function close(cont) {
 		cont.css('z-index', 5);
 		timeout = setTimeout(function(){
-			cont.removeClass('fadeIn');
-			timeout_trans = setTimeout(function(){
-				cont.hide();
-				//cont.find('.cars-ul li').removeClass('fadeOut');
-			}, 500);
+			cont.removeClass('active').hide();				
+			opened = false;
 		}, 1000);
 	}
 
