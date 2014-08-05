@@ -69,10 +69,14 @@
                         </label>
                     </section>
 
+                    <?
+                    #Helper::dd( ChannelCategory::where('slug', 'offer')->first()->channel->lists('title', 'id') );
+                    ?>
+
                     <section>
                         <label class="label">Акция</label>
                         <label class="select">
-                            {{ Form::select('action_id', array('Выберите...')+Config::get('site.instock_statuses')) }}
+                            {{ Form::select('action_id', array('Выберите...')+ChannelCategory::where('slug', 'offer')->first()->channel->lists('title', 'id')) }}
                         </label>
                     </section>
 

@@ -381,6 +381,7 @@ h3 {
   margin: 0 auto;
 }
 .colorWrapper {
+  display: none;
   color: #000;
   position: relative;
   width: 100%;
@@ -391,31 +392,8 @@ h3 {
   background-repeat: no-repeat;
   background-color: #fff;
 }
-.colorWrapper[data-color="1"] {
-  background-image: url("../img/fx35.jpg");
-}
-.colorWrapper[data-color="2"] {
-  background-image: url("../img/fx35.jpg");
-}
-.colorWrapper[data-color="3"] {
-  background-image: url("../img/fx35.jpg");
-}
-.colorWrapper[data-color="4"] {
-  background-image: url("../img/fx35.jpg");
-}
-.colorWrapper[data-color="5"] {
-  background-image: url("../img/fx35.jpg");
-}
-.colorWrapper[data-color="6"] {
-  background-image: url("../img/fx35.jpg");
-}
-.colorWrapper[data-color="7"] {
-  background-image: url("../img/fx35.jpg");
-}
-.colorWrapper[data-color="8"] {
-  background-image: url("../img/fx35.jpg");
-}
 .colorWrapper.active {
+  display: block;
   z-index: 3;
 }
 .colorWrapper .color-head {
@@ -488,7 +466,7 @@ h3 {
   float: right;
 }
 html {
-  min-width: 80rem;
+  min-width: 77.5rem;
   color: #fff;
   font-family: 'Open Sans', sans-serif;
 }
