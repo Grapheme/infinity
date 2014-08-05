@@ -19,7 +19,7 @@
         @foreach($element->channel->first()->gallery->photos as $photo)
             <li>
             @if(File::exists(public_path('uploads/galleries/thumbs/'.$photo->name)))
-                <img src="{{ asset('uploads/galleries/thumbs/'.$photo->name) }}">
+                <img src="{{ $photo->full() }}">
             @endif
         @endforeach
         </ul>
