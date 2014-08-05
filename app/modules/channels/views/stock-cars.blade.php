@@ -2,13 +2,25 @@
 $instocks = ProductInstock::orderBy('updated_at', 'DESC')
     ->with('image')
     ->with(array('product' => function($query){
-            #$query->with('meta');
+            $query->with('meta');
         }))
     ->with('color')
     ->with('action')
     ->get();
 
-#Helper::ta($instocks);
+#Helper::tad($instocks);
+
+$models = array();
+
+if (count($instocks)) {
+    foreach ($instocks as $instock) {
+        if (is_object($instock->product))
+            $models[$instock->product->id] = $instock->product->meta[0]->title;
+    }
+}
+
+#Helper::dd($models);
+
 ?>
 <main>
     <section class="buy-offer used">
@@ -21,16 +33,14 @@ $instocks = ProductInstock::orderBy('updated_at', 'DESC')
 
             <div class="cars-filter">
                 <select class="customSelect selectModel">
-                    <option>Модель</option>
-                    <option>The Shawshank Redemption</option>
-                    <option>The Godfather</option>
-                    <option>Pulp Fiction</option>
-                    <option>The Good, the Bad and the Ugly</option>
-                    <option>12 Angry Men</option>
+                    <option>Все модели</option>
+                    @foreach ($models as $m => $model)
+                    <option value="{{ $m }}">{{ $model }}</option>
+                    @endforeach
                 </select>
 
                 <div class="founded">
-                    Найдено результатов: <span>6</span>
+                    Найдено результатов: <span>{{ count($instocks) }}</span>
                 </div>
             </div>
 

@@ -769,6 +769,9 @@ html {
   position: absolute;
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
@@ -1103,7 +1106,7 @@ html {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 2;
   height: 19rem;
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000000 66%, #000000 91%, #000000 100%);
   /* FF3.6+ */

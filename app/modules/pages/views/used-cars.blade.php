@@ -1,6 +1,5 @@
 @extends(Helper::layout())
 @section('style')
-{{ HTML::style('theme/css/sumoselect.css') }}
 @stop
 
 @section('content')
@@ -61,10 +60,6 @@
     </section>
 </section>
 @stop
+
 @section('scripts')
-{{ HTML::script("theme/js/vendor/jquery.sumoselect.min.js") }}
-<script>
-    $('.customSelect.selectModel').SumoSelect({placeholder: 'Модель'});
-    $('.customSelect.selectYear').SumoSelect({placeholder: 'Год'});
-</script>
 @stop

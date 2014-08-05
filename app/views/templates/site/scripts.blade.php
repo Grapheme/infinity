@@ -18,5 +18,13 @@
 		}
 	</script>
 
+
+    {{ HTML::script("theme/js/vendor/jquery.sumoselect.min.js") }}
+    <script>
+        $('.customSelect.selectModel').SumoSelect({placeholder: 'Модель'});
+        $('.customSelect.selectYear').SumoSelect({placeholder: 'Год'});
+    </script>
+
+
 	{{HTML::script('theme/js/app.js');}}
 
