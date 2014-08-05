@@ -8,7 +8,7 @@
 @include('production/views/accepts/product-menu')
  <section class="auto-slider">
     <div class="model-fotorama">
-        <?php print_r($product->gallery->photos); exit; ?>
+        <?php print_r($product->gallery->photos[0]); exit; ?>
         @foreach($product->gallery->photos as $image)
             <img src="{{ asset('uploads/galleries/'.$image->name) }}">
         @endforeach
