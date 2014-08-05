@@ -1,11 +1,11 @@
 .slider-container {
 	position: relative;
 	z-index: 1;
-	height: 970rem / @htmlFontSize;
+	height: 50rem;
 	background: #000;
 
 	.slider-wrapper {
-		height: 970rem / @htmlFontSize;
+		height: 100%;
 		z-index: 2;
 	}
 
@@ -42,14 +42,15 @@
 
 	.slide-info {
 		position: absolute;
-		top: 570rem / @htmlFontSize;
+		top: 450rem / @htmlFontSize;
 		left: 15rem / @htmlFontSize;
 		width: 500rem / @htmlFontSize;
 		text-shadow: 3px 3px 5px rgba(0, 0, 0, .5);
+		display: none;
 
 		.title {
 			color: #fff;
-			font-size: 23rem / @htmlFontSize;
+			font-size: 32rem / @htmlFontSize;
 			font-weight: 300;
 			text-transform: uppercase;
 			margin-bottom: 20rem / @htmlFontSize;
@@ -57,7 +58,7 @@
 
 		.text {
 			color: #fff;
-			font-size: 12rem / @htmlFontSize;
+			font-size: 16rem / @htmlFontSize;
 			font-weight: 300;
 			width: 410rem / @htmlFontSize;
 			line-height: 20rem / @htmlFontSize;
@@ -71,7 +72,7 @@
 	.slider-nav-win {
 		padding-top: 20rem / @htmlFontSize;
 		position: absolute;
-		top: 665rem / @htmlFontSize;
+		bottom: 210rem / @htmlFontSize;
 		right: 2.5rem;
 		height: 73rem / @htmlFontSize;
 		overflow: hidden;
