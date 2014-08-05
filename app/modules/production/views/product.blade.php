@@ -67,12 +67,13 @@
     <script>
         $('.model-fotorama').fotorama({
             'width': '100%',
-            'height': '750px',
+            'height': '850px',
             'fit': 'cover',
             'loop': true,
             'arrows': false,
             'nav': 'thumbs',
-            'thumbheight': '112px'
+            'thumbheight': '112px',
+            'thumbwidth': '215px'
         });
     </script>
 @stop
