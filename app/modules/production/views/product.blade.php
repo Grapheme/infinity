@@ -25,11 +25,11 @@
                 </ul>
             </div>
             <a class="drive-btn colorView" href="javascript:void(0);"><span class="icon icon-circle"></span> Выбор цвета</a>
-        @foreach($product->colors as $product_color)
-            @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
-                <div class="slider-photo" style="background-image: url({{ asset('uploads/galleries/'.$product_color->images->name) }});"></div>
-            @endif
-        @endforeach
+            @foreach($product->colors as $product_color)
+                @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
+                    <div class="slider-photo" style="background-image: url({{ asset('uploads/galleries/'.$product_color->images->name) }});"></div>
+                @endif
+            @endforeach
             <div class="auto-info">
                 <div class="title">{{ $product->meta->first()->title }}</div>
                 <div class="text">{{ $product->meta->first()->preview }}</div>
