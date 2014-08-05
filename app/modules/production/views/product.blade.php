@@ -20,12 +20,12 @@
                 <div class="color-name"></div>
                 <ul class="colors-list">
                 @foreach($product->colors as $product_color)
-                    <li class="color-item" data-color="{{ $product_color->color }}" data-color-title="{{ $product_color->title }}"></li>
+                    <li class="color-item" data-color="{{ $product_color->color }}" data-color-title="{{ $product_color->title }}" title="{{ $product_color->title }}"></li>
                 @endforeach
                 </ul>
             </div>
             <a class="drive-btn colorView" href="javascript:void(0);"><span class="icon icon-circle"></span> Выбор цвета</a>
-            @if (0)
+            @if (1)
             @foreach($product->colors as $product_color)
                 @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
                     <div class="slider-photo" style="background-image: url({{ asset('uploads/galleries/'.$product_color->images->name) }});"></div>
