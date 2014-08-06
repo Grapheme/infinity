@@ -310,7 +310,7 @@ jQuery.fn.tabs = function(control) {
 	return this;
 };
 
-jQuery.fn.colorChange = function(colorNames) {
+/*jQuery.fn.colorChange = function(colorNames) {
 	var element = $(this);
 
 	element.delegate('li', 'click', function(){
@@ -325,7 +325,7 @@ jQuery.fn.colorChange = function(colorNames) {
 
 	element.prev().html(colorNames[0]);
 	element.parent().attr('data-color', 1);
-};
+};*/
 
 jQuery.fn.galleryAnim = function() {
 
@@ -484,16 +484,25 @@ var smart_tabs = (function() {
 	});
 })();
 
+var color = (function(){
+	$(document).on('click', '.colorView', function(){
+		$('.auto-slider').addClass('color-slider');
+	});
+	$(document).on('click', '.color-close', function(){
+		$('.auto-slider').removeClass('color-slider');
+	});
+})();
+
 $('.testSelect').SumoSelect();
 $('.cars-tooltip').carsHover();
 
 //Click events
-$('.colorView').click( function() {
+/*$('.colorView').click( function() {
 	$('.colorWrapper').addClass('active');
 });
 $('.color-close').click( function() {
 	$('.colorWrapper').removeClass('active');
-});
+});*/
 
 //var colorNames = ['цвет1','цвет2','цвет3','цвет4','цвет5','цвет6','цвет7','цвет8','цвет9','цвет10'];
 

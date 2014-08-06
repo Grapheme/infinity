@@ -44,7 +44,8 @@
     @endif
     @if($product->colors->count())
     <div class="slider-window">
-            <a class="drive-btn colorView" href="javascript:void(0);"><span class="icon icon-circle"></span> Выбор цвета</a>
+        <div class="wrapper">
+            <a class="drive-btn colorView" href="#"><span class="icon icon-circle"></span> Выбор цвета</a>
             <div class="auto-info">
                 <div class="title">{{ $product->meta->first()->title }}</div>
                 <div class="text">{{ $product->meta->first()->preview }}</div>
