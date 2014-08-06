@@ -91,8 +91,22 @@
                 'thumbwidth': '215px',
                 'click': false
             });
-            var $fotoramaDiv = $('.color-fotorama').fotorama();
-            console.log($fotoramaDiv.data('fotorama'));
+            var $fotoramaDiv = $('.color-fotorama').fotorama({
+                'width': '100%',
+                'height': '750px',
+                'fit': 'cover',
+                'arrows': false,
+                'nav': false,
+                'thumbheight': '112px',
+                'thumbwidth': '215px',
+                'click': false,
+                'swipe': false,
+                'trackpad': false,
+                'transition': 'crossfade'
+            });
+            setTimeout(function(){
+                console.log($('.color-fotorama').data('fotorama'));
+            }, 100);
             /*var color_fotorama = $fotoramaDiv.data('fotorama');
             console.log(color_fotorama);*/
             /*function setCName(id) {
