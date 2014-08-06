@@ -102,7 +102,7 @@
                 'trackpad': false,
                 'transition': 'crossfade'
             });
-            console.log($fotoramaDiv);
+            console.log($fotoramaDiv.data('fotorama'));
             /*var color_fotorama = $fotoramaDiv.data('fotorama');
             console.log(color_fotorama);*/
             /*function setCName(id) {
