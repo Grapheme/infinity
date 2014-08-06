@@ -102,8 +102,9 @@
                 'trackpad': false,
                 'transition': 'crossfade'
             });
-            var color_fotorama = $fotoramaDiv.data('fotorama');
-            console.log(color_fotorama);
+            console.log($fotoramaDiv);
+            /*var color_fotorama = $fotoramaDiv.data('fotorama');
+            console.log(color_fotorama);*/
             /*function setCName(id) {
                 $('.color-name').text($('.color-item').eq(id).attr('data-color-title'));
             }
