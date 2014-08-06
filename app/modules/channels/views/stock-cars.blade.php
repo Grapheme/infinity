@@ -47,11 +47,11 @@ if (count($instocks)) {
             <table class="exist-table">
                 <thead>
                 <tr>
-                    <th colspan="2">Модель</th>
-                    <th>Двигатель / КПП</th>
-                    <th>Статус</th>
-                    <th>Акции</th>
-                    <th>Цена</th>
+                    <td colspan="2">Модель</td>
+                    <td>Двигатель / КПП</td>
+                    <td>Статус</td>
+                    <td>Акции</td>
+                    <td>Цена</td>
                 </tr>
                 </thead>
                 <tbody>
