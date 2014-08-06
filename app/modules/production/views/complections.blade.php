@@ -5,31 +5,6 @@
 
 @section('content')
 @include('production/views/accepts/product-menu')
-<section class="auto-slider">
-    @if(!is_null($product->images))
-    <div class="slider-window">
-        <div class="wrapper">
-            @if(File::exists(public_path('uploads/galleries/'.$product->images->name)))
-                 <div class="slider-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->images->name) }});"></div>
-            @endif
-            <div class="auto-info">
-                <div class="title">{{ $product->meta->first()->title }}</div>
-                <div class="text">{{ $product->meta->first()->preview }}</div>
-                <div class="price">{{ $product->meta->first()->price }}</div>
-                <div class="text"></div>
-                <a href="javascript:void(0);" class="drive-btn">Записаться на тестдрайв</a>
-            </div>
-        </div>
-    </div>
-    @endif
-@if(!is_null($product->gallery) && $product->gallery->photos->count())
-   <ul class="slider-nav">
-    @foreach($product->gallery->photos as $image)
-         <li class="thumb" style="background-image: url({{ asset('uploads/galleries/thumbs/'.$image->name) }});">
-    @endforeach
-    </ul>
-@endif
-</section>
 @if($product->complections->count())
 <section class="complectations">
     <header class="clearfix">
