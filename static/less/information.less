@@ -5,6 +5,17 @@
 	padding: 0 70rem / @htmlFontSize;
 	color: #000;
 
+	a {
+		.transition(border);
+		color: #8e65aa;
+		text-decoration: none;
+		border-bottom: 1px solid;
+
+		&:hover {
+			border-color: transparent;
+		}
+	}
+
 	h2 {
 		font-size: 34.5em / @htmlFontSize;
 		font-family: 'MetaPro', sans-serif;
