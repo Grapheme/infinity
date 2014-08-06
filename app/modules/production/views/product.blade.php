@@ -114,7 +114,6 @@
                 var id = $(this).index();
                 setCName(id);
                 color_fotorama.show(id);
-                alert(id);
             });
         });
 
