@@ -76,6 +76,8 @@
 @stop
 @section('scripts')
     {{HTML::script('theme/js/vendor/fotorama.js');}}
+@stop
+@section('page_script')
     <script>
         $(function(){
             $('.model-fotorama').fotorama({
