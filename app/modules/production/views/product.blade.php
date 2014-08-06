@@ -14,6 +14,15 @@
             @endforeach
         @endif
     </div>
+    <div class="color-fotorama">
+        @foreach($product->colors as $product_color)
+            @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
+                <img style="background-image: url({{ asset('uploads/galleries/'.$product_color->images->name) }});" alt="">
+            @endif
+        @endforeach
+    </div>
+
+
     @if(!is_null($product->images))
         @if(File::exists(public_path('uploads/galleries/'.$product->images->name)))
         <!--<div class="slider-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->images->name) }});"></div>-->
@@ -33,13 +42,6 @@
                 </ul>
             </div>
             <a class="drive-btn colorView" href="javascript:void(0);"><span class="icon icon-circle"></span> Выбор цвета</a>
-            @if (1)
-            @foreach($product->colors as $product_color)
-                @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
-                    <div class="slider-photo" style="background-image: url({{ asset('uploads/galleries/'.$product_color->images->name) }});"></div>
-                @endif
-            @endforeach
-            @endif
             <div class="auto-info">
                 <div class="title">{{ $product->meta->first()->title }}</div>
                 <div class="text">{{ $product->meta->first()->preview }}</div>
