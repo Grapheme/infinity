@@ -10,6 +10,7 @@ $instocks = ProductInstock::orderBy('updated_at', 'DESC')
 
 $models = array();
 
+
 if (count($instocks)) {
     foreach ($instocks as $instock) {
         if (is_object($instock->product))
