@@ -9,9 +9,9 @@
  <section class="auto-slider">
     <div class="model-fotorama">
         @if (is_object($product->gallery))
-        @foreach($product->gallery->photos as $image)
-            <img src="{{ asset('uploads/galleries/'.$image->name) }}">
-        @endforeach
+            @foreach($product->gallery->photos as $image)
+                <img src="{{ asset('uploads/galleries/'.$image->name) }}">
+            @endforeach
         @endif
     </div>
     @if(!is_null($product->images))
@@ -28,7 +28,7 @@
                 <div class="color-name"></div>
                 <ul class="colors-list">
                 @foreach($product->colors as $product_color)
-                    <li class="color-item" data-color="{{ $product_color->color }}" data-color-title="{{ $product_color->title }}" title="{{ $product_color->title }}"></li>
+                    <li class="color-item" style="background-color: {{ $product_color->color }};" data-color="{{ $product_color->color }}" data-color-title="{{ $product_color->title }}" title="{{ $product_color->title }}"></li>
                 @endforeach
                 </ul>
             </div>
