@@ -81,8 +81,8 @@
     <script>
         $(window).on('load', function(){
             $('.model-fotorama').fotorama({
-                'width': '100%',
-                'height': '750px',
+                'width': '1240px',
+                'height': '640px',
                 'fit': 'cover',
                 'loop': true,
                 'arrows': false,
@@ -93,7 +93,7 @@
             });
             var $fotoramaDiv = $('.color-fotorama').fotorama({
                 'width': '100%',
-                'height': '750px',
+                'height': '640px',
                 'fit': 'cover',
                 'arrows': false,
                 'nav': false,
