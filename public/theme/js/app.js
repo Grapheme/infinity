@@ -22,8 +22,12 @@ function applyFilters($this) {
     filter_model_id = $('.filterSelectModel').find(':selected').val()*1;
     filter_year = $('.filterSelectYear').find(':selected').val()*1;
 
+    //console.log(selector);
 
     $(selector).children().each(function() {
+
+        //console.log($(this));
+
         var current_model_id = $(this).data('model-id')*1;
         var current_year = $(this).data('model-year')*1;
 
@@ -39,7 +43,7 @@ function applyFilters($this) {
 
     var count_results = $(selector).children().not('.hidden').length;
 
-    $('#count-results').text( count_results );
+    $('.count-results').text( count_results );
 
     if ( count_results )
         $('.filterNoResults').addClass('hidden');

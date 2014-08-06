@@ -1,10 +1,8 @@
 <?
 $instocks = ProductInstock::orderBy('updated_at', 'DESC')
     ->with('image')
-    ->with(array('product' => function($query){
-            $query->with('meta');
-        }))
-    ->with('color')
+    ->with('product.meta')
+    ->with('color.images')
     ->with('action')
     ->get();
 
@@ -32,7 +30,7 @@ if (count($instocks)) {
             </header>
 
             <div class="cars-filter">
-                <select class="customSelect selectModel">
+                <select class="customSelect selectModel filterSelectModel" data-filter-object-selector=".exist-table tbody">
                     <option>Все модели</option>
                     @foreach ($models as $m => $model)
                     <option value="{{ $m }}">{{ $model }}</option>
@@ -40,7 +38,7 @@ if (count($instocks)) {
                 </select>
 
                 <div class="founded">
-                    Найдено результатов: <span>{{ count($instocks) }}</span>
+                    Найдено результатов: <span class="count-results">{{ count($instocks) }}</span>
                 </div>
             </div>
 
@@ -64,17 +62,30 @@ if ($instock->status_id) {
     $statuses = Config::get('site.instock_statuses');
     $status = @$statuses[$instock->status_id];
 }
+$image = false;
+if (is_object($instock->image))
+    $image = $instock->image;
+else if (is_object($instock->color->images))
+    $image = $instock->color->images;
 ?>
-                <tr>
+                <tr data-model-id="{{ is_object($instock->product) ? $instock->product->id : '' }}">
                     <td>
-                        <div class="car-photo" style="width:300px; height:200px; background-image: url({{ $instock->image->thumb() }})"></div>
+                        <div class="car-photo" style="width:300px; height:200px; background-image: url({{ is_object($image) ? $image->thumb() : '' }})"></div>
                     </td>
                     <td>
-                        <a  href="#" class="car-name">Infiniti Q50</a>
+                        <a href="{{ link::to(ProductionController::$prefix_url.'/'.$instock->product->meta->first()->seo_url) }}" class="car-name">
+                            {{ $instock->title }}
+                        </a>
                         <div class="car-desc">
+                            @if (is_object($instock->color))
                             Цвет: {{ $instock->color->title }}<br>
+                            @endif
+                            @if ($instock->interior)
                             Салон: {{ $instock->interior }}<br>
+                            @endif
+                            @if ($instock->year)
                             Год: {{ $instock->year }} г.
+                            @endif
                         </div>
                     </td>
                     <td>
@@ -98,6 +109,9 @@ if ($instock->status_id) {
                     <td>
                         <div class="car-price">
                             {{ $instock->price }}
+                            @if (is_numeric($instock->price))
+                            руб.
+                            @endif
                         </div>
                     </td>
                 </tr>

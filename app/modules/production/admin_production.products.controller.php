@@ -150,7 +150,7 @@ class AdminProductionProductsController extends BaseController {
         $categories = ProductCategory::all();
 
         $cat = Input::get('cat');
-        $products = is_numeric($cat) ? $this->product->where('category_id', $cat)->with('meta')->paginate($limit) : $this->product->with('meta')->paginate($limit);
+        $products = is_numeric($cat) ? $this->product->where('category_id', $cat)->with('meta')->with('instocks')->paginate($limit) : $this->product->with('meta')->with('instocks')->paginate($limit);
 		return View::make($this->module['tpl'].'index', compact('products', 'categories', 'cat', 'category'));
 	}
 

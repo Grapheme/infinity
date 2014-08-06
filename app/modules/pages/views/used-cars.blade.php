@@ -48,7 +48,7 @@
                 @endforeach
                 </select>
                 <div class="founded">
-                    Найдено результатов: <span id="count-results">{{ $cars->count() }}</span>
+                    Найдено результатов: <span class="count-results">{{ $cars->count() }}</span>
                 </div>
             </div>
         @endif
