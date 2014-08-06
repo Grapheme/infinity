@@ -35,12 +35,14 @@
         ?>
         @if(count($products))
             <div class="cars-filter">
+                @if (0)
                 <select name="model" class="customSelect selectModel filterSelectModel" data-filter-object-selector=".sub-offers-ul">
                     <option value="0">Все модели</option>
                     @foreach($products as $product_id => $product_title)
                         <option value="{{ $product_id }}">{{ $product_title }}</option>
                     @endforeach
                 </select>
+                @endif
                 <select name="year" class="customSelect selectYear filterSelectYear" data-filter-object-selector=".sub-offers-ul">
                     <option value="0">Все года</option>
                 @foreach($years as $year)
@@ -53,7 +55,7 @@
             </div>
         @endif
         @include('channels/views/used-cars', compact('channelCategory', 'cars'))
-        <div class="filterNoResults" style="padding: 10px 0px 40px;">
+        <div class="filterNoResults @if(count($products)) hidden @endif" style="padding: 10px 0px 40px;">
             Автомобилей с такими параметрами не найдено.
         </div>
         </section>
