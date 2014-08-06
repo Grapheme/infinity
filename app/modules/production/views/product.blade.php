@@ -113,7 +113,7 @@
             $(document).on('click', '.color-item', function(){
                 var id = $(this).index();
                 setCName(id);
-                fotorama.show(id);
+                color_fotorama.show(id);
                 alert(id);
             });
         });
