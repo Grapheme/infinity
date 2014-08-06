@@ -34,7 +34,7 @@ if (count($instocks)) {
                 <select class="customSelect selectModel filterSelectModel" data-filter-object-selector=".exist-table tbody">
                     <option>Все модели</option>
                     @foreach ($models as $m => $model)
-                    <option value="{{ $m }}">{{ $model }}</option>
+                    <option value="{{ $m }}" @if (Input::get('model') == $m) selected="selected" @endif)>{{ $model }}</option>
                     @endforeach
                 </select>
 

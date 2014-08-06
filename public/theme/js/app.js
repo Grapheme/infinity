@@ -15,6 +15,8 @@ $('.filterSelectYear').change(function(){
     applyFilters(this);
 });
 
+applyFilters('.filterSelectModel');
+
 function applyFilters($this) {
 
     var selector = $($this).data('filter-object-selector') || default_selector;
@@ -50,3 +52,10 @@ function applyFilters($this) {
     else
         $('.filterNoResults').removeClass('hidden');
 }
+
+function filterModel(model_id) {
+    $(".filterSelectModel option[value=" + model_id + "]").attr("selected", "selected");
+    //$(".filterSelectModel option[value=" + model_id + "]").trigger('click');
+    //alert(model_id);
+}
+//filterModel(model_id);

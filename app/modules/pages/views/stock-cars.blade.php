@@ -13,5 +13,9 @@
 
 
 @section('scripts')
-
+@if (Input::get('model') && is_numeric(Input::get('model')))
+<script>
+    //filterModel({{ Input::get('model') }});
+</script>
+@endif
 @stop
