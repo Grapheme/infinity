@@ -141,6 +141,8 @@ class PagesController extends BaseController {
             $page = I18nPage::where('start_page', '1')->where('publication', 1)->with('metas')->first();
         endif;
 
+        Config::set('page.slug', $url);
+
         return View::make(
 		    $this->tpl.$page->template,
 		    array(
@@ -151,7 +153,8 @@ class PagesController extends BaseController {
 				'page_author' => '',
 				'page_h1' => $page->metas->first()->seo_h1,
 				'menu' => I18nPage::getMenu($page->template),
-				'content' => self::content_render($page->metas->first()->content)
+				'content' => self::content_render($page->metas->first()->content),
+                'url' => $url,
 			)
         );
 	}

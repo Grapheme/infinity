@@ -87,6 +87,9 @@ class ProductionController extends BaseController {
         if(is_null($product)):
             return App::abort(404);
         endif;
+
+        Config::set('page.slug', $url);
+
         return View::make($this->tpl.$this->template,
             array(
                 'product' => $product,

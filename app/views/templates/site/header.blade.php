@@ -13,7 +13,20 @@
             $query_related_product->with('menu_image');
         }));
     }))->get();
+
+    #$page_slug = Route::currentRouteName() == 'page' ? Config::get('page.slug') : false;
+    $route = Route::currentRouteName();
+    $page_slug = Config::get('page.slug');
+
+
 ?>
+
+@if (0)
+<span style="color:#000">
+    {{ Route::currentRouteName() }} <br/>
+    {{ Config::get('page.slug') }}
+</span>
+@endif
 
 <header class="main-header{{ Request::is('/') ? '' : ' static-header' }}">
     @if(!Request::is('/'))
@@ -24,10 +37,10 @@
     <div class="header-cont">
         <nav class="main-nav">
             <ul class="list-unstyled">
-                <li class="option"><a href="{{ link::to('about') }}">О компании</a>
-                <li class="option"><a href="{{ link::to('reserve-parts') }}">Сервис и запчасти</a>
-                <li class="option"><a href="{{ link::to('offers') }}">Спецпредложения</a>
-                <li class="option"><a href="{{ link::to('services') }}">Услуги</a>
+                <li class="option"><a href="{{ link::to('about') }}" class="@if($page_slug == 'about') active @endif">О компании</a>
+                <li class="option"><a href="{{ link::to('reserve-parts') }}" class="@if($page_slug == 'reserve-parts') active @endif">Сервис и запчасти</a>
+                <li class="option"><a href="{{ link::to('offers') }}" class="@if($page_slug == 'offers') active @endif">Спецпредложения</a>
+                <li class="option"><a href="{{ link::to('services') }}" class="@if($page_slug == 'services') active @endif">Услуги</a>
             </ul>
         </nav>
         <div class="head-models">
@@ -38,7 +51,7 @@
                 <div class="items">
                 @foreach($product_category->product as $product)
                     @if($product->in_menu == 1)
-                    <a class="js-tooltip" data-tooltip="model-{{ $product->id }}" href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->meta->first()->short_title  }}</a>
+                    <a class="js-tooltip @if($page_slug == $product->meta->first()->seo_url) active @endif" data-tooltip="model-{{ $product->id }}" href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->meta->first()->short_title  }}</a>
                     @endif
                 @endforeach
                 </div>
