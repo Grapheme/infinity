@@ -5,7 +5,7 @@ return array(
 	'use_typekit' => TRUE,
 	'use_analyrics' => TRUE,
 	'use_googleapis' => TRUE,
-	'use_googlefonts' => FALSE,
+	'use_googlefonts' => TRUE,
 	'use_css_local' => FALSE,
 	'use_scripts_local' => FALSE,
 	
