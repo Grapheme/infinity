@@ -305,7 +305,7 @@ jQuery.fn.tabs = function(control) {
 	});
 
 	//Активация первой вкладки
-	var garant = element.find('li:first').attr('data-tab');
+    var garant = window.location.hash.slice(1) || element.find('li:first').attr('data-tab');
 	element.trigger('change.tabs', garant);
 	return this;
 };

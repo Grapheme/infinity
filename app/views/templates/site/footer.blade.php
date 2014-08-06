@@ -24,10 +24,14 @@
                 <div class="footer-block">
                     <div class="title">О компании</div>
                     <ul class="footer-ul">
+                        {{--
                         <li class="option"><a href="{{ link::to('persons-of-the-company') }}">Лица компании</a>
                         <li class="option"><a href="{{ link::to('vacancies') }}">Вакансии</a>
-                        <li class="option"><a href="{{ link::to('news') }}">Новости</a>
                         <li class="option"><a href="{{ link::to('club') }}">Клуб</a>
+                        --}}
+
+                        <li class="option"><a href="{{ link::to('about') }}">Компания</a>
+                        <li class="option"><a href="{{ link::to('news') }}">Новости</a>
                         <li class="option"><a href="{{ link::to('history') }}">История</a>
                         <li class="option"><a href="{{ link::to('contacts') }}">Контакты</a>
                     </ul>
@@ -35,17 +39,32 @@
                 <div class="footer-block">
                     <div class="title">Услуги</div>
                     <ul class="footer-ul">
+                        {{--
                         <li class="option"><a href="{{ link::to('services-warranty') }}">Гарантия</a>
                         <li class="option"><a href="{{ link::to('services-maintenance-program') }}">Программы ТО</a>
+                        --}}
+
+                        <li class="option"><a href="{{ link::to('services#finance') }}">Автокредитование</a>
+                        <li class="option"><a href="{{ link::to('services#insurance') }}">Страхование</a>
+                        <li class="option"><a href="{{ link::to('services#tradein') }}">Trade-in</a>
+
                     </ul>
                 </div>
                 <div class="footer-block">
                     <div class="title">Сервис и запчасти</div>
                     <ul class="footer-ul">
+                        {{--
                         <li class="option"><a href="{{ link::to('reserve-parts-warranty') }}">Гарантия</a>
                         <li class="option"><a href="{{ link::to('reserve-parts-maintenance-program') }}">Программы ТО</a>
                         <li class="option"><a href="{{ link::to('reserve-parts') }}">Запчасти</a>
                         <li class="option"><a href="{{ link::to('reserve-parts-accessories') }}">Аксессуары</a>
+                        --}}
+
+                        <li class="option"><a href="{{ link::to('reserve-parts#service') }}">Сервис</a>
+                        <li class="option"><a href="{{ link::to('reserve-parts#spares') }}">Запчасти</a>
+                        <li class="option"><a href="{{ link::to('reserve-parts#guarantee') }}">Гарантия</a>
+                        <li class="option"><a href="{{ link::to('reserve-parts-accessories') }}">Аксессуары</a>
+
                     </ul>
                 </div>
                 <div class="footer-block">

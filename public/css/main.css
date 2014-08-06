@@ -1579,6 +1579,10 @@ html {
   font-size: 0.875em;
   line-height: 1.71428571em;
 }
+.color-fotorama {
+  position: absolute;
+  top: 0;
+}
 .auto-slider {
   position: relative;
   height: 46.875rem;
