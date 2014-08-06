@@ -90,7 +90,10 @@
             'nav': false,
             'thumbheight': '112px',
             'thumbwidth': '215px',
-            'click': false
+            'click': false,
+            'swipe': false,
+            'trackpad': false,
+            'transition': 'crossfade'
         });
     </script>
 @stop
