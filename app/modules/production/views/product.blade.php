@@ -83,7 +83,7 @@
             $('.model-fotorama').fotorama({
                 'width': '100%',
                 'height': '750px',
-                'fit': 'cover',
+                'fit': 'contain',
                 'loop': true,
                 'arrows': false,
                 'nav': 'thumbs',
