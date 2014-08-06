@@ -52,7 +52,11 @@
             <div class="color-name"></div>
             <ul class="colors-list">
             @foreach($product->colors as $product_color)
-                <li class="color-item" style="background-color: {{ $product_color->color }};" data-color="{{ $product_color->color }}" data-color-title="{{ $product_color->title }}" title="{{ $product_color->title }}"></li>
+                @if (is_object($product_color->images))
+                    @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
+                        <li class="color-item" style="background-color: {{ $product_color->color }};" data-color="{{ $product_color->color }}" data-color-title="{{ $product_color->title }}" title="{{ $product_color->title }}"></li>
+                    @endif
+                @endif
             @endforeach
             </ul>
         </div>
@@ -84,7 +88,7 @@
             'thumbwidth': '215px',
             'click': false
         });
-        $('.color-fotorama').fotorama({
+        var $fotoramaDiv = $('.color-fotorama').fotorama({
             'width': '100%',
             'height': '750px',
             'fit': 'cover',
@@ -97,5 +101,16 @@
             'trackpad': false,
             'transition': 'crossfade'
         });
+        var fotorama = $fotoramaDiv.data('fotorama');
+        function setCName(id) {
+            $('.color-name').text($('.color-item').eq(id).attr('data-color-title'));
+        }
+        setCName(0);
+        $(document).on('click', '.color-item', function(){
+            var id = $(this).index();
+            setCName(id);
+            fotorama.show(id);
+        });
+
     </script>
 @stop
