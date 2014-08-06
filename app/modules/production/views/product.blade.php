@@ -102,7 +102,8 @@
             'transition': 'crossfade'
         });
         var fotorama = $fotoramaDiv.data('fotorama');
-        function setCName(id) {
+        console.log(fotorama);
+        /*function setCName(id) {
             $('.color-name').text($('.color-item').eq(id).attr('data-color-title'));
         }
         setCName(0);
@@ -111,7 +112,7 @@
             setCName(id);
             fotorama.show(id);
             alert(id);
-        });
+        });*/
 
     </script>
 @stop
