@@ -488,7 +488,6 @@ var color = (function(){
 	$(document).on('click', '.colorView', function(){
 		$('.slider-window').addClass('window-tocolor');
 		$('.color-container').addClass('active');
-		console.log($('.color-fotorama').data('fotorama'));
 		return false;
 	});
 	$(document).on('click', '.color-close', function(){

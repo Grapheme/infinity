@@ -105,7 +105,7 @@
                 'transition': 'crossfade'
             });
             var color_fotorama = $fotoramaDiv.data('fotorama');
-            $fotoramaDiv.hide();
+            //$fotoramaDiv.hide();
             function setCName(id) {
                 $('.color-name').text($('.color-item').eq(id).attr('data-color-title'));
             }
