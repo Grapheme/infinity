@@ -11,10 +11,10 @@
         <h1>Комплектации и цены</h1>
         <div class="filter">
             <ul class="filter-ul">
-                <li class="filter-li"><a href="javascript:void(0);">Описание</a>
-                <li class="filter-li"><a href="javascript:void(0);">Динамика</a>
-                <li class="filter-li"><a href="javascript:void(0);">Экстерьер</a>
-                <li class="filter-li"><a href="javascript:void(0);">Интерьер</a>
+                <li class="filter-li"><a href="#" class="js-comlink" data-type="desc">Описание</a>
+                <li class="filter-li"><a href="#" class="js-comlink" data-type="dynam">Динамика</a>
+                <li class="filter-li"><a href="#" class="js-comlink" data-type="exter">Экстерьер</a>
+                <li class="filter-li"><a href="#" class="js-comlink" data-type="inter">Интерьер</a>
             </ul>
         </div>
     </header>
@@ -38,13 +38,18 @@
                     <a class="" href="javascript:void(0);"><span class="icon icon-page"></span> Подробнее</a>
                 --}}
                 </div>
-                {{ $complection->description }}
-                <hr />
-                {{ $complection->dynamics }}
-                <hr />
-                {{ $complection->exterior }}
-                <hr />
-                {{ $complection->interior }}
+                <div class="js-comtab" data-type="desc">
+                    {{ $complection->description }}
+                </div>
+                <div class="js-comtab" data-type="dynam">
+                    {{ $complection->dynamics }}
+                </div>
+                <div class="js-comtab" data-type="exter">
+                    {{ $complection->exterior }}
+                </div>
+                <div class="js-comtab" data-type="inter">
+                    {{ $complection->interior }}
+                </div>
             </div>
         </li>
     @endforeach
@@ -52,5 +57,19 @@
 </section>
 @endif
 @stop
-@section('scripts')
+@section('page_script')
+    <script>
+        var comtabs = (function(){
+            function init() {
+                $('.js-comtab').first().siblings().hide();
+                $('.js-comlink').first().addClass('active');
+            }
+            $('.js-comlink').on('click', function(){
+                $(this).addClass('active').parent().siblings().find('a').removeClass('active');
+                $('.js-comtab[data-type="' + $(this).attr('data-type') + '"]').show().siblings().hide();
+                return false;
+            });
+            init();
+        })();
+    </script>
 @stop
