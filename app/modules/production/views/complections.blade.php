@@ -33,8 +33,10 @@
                 @if(!empty($complection->brochure) && File::exists(public_path($complection->brochure)))
                      <a target="_blank" class="" href="{{ asset($complection->brochure) }}"><span class="icon icon-bricks"></span> Брошюра</a>
                 @endif
+                {{--
                     <a class="" href="javascript:void(0);"><span class="icon icon-wheel"></span> Записаться на тест-драйв</a>
                     <a class="" href="javascript:void(0);"><span class="icon icon-page"></span> Подробнее</a>
+                --}}
                 </div>
                 {{ $complection->description }}
                 <hr />

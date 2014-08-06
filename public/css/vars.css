@@ -221,8 +221,9 @@ h3 {
   list-style: none;
   list-style-type: disc;
   list-style-position: inside;
-  font-size: 15px;
-  line-height: 29px;
+  font-size: 0.9375em;
+  line-height: 1.8125em;
+  margin-top: 0.5em;
 }
 .head-link {
   -webkit-transition: border 0.5s ease;
