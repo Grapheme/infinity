@@ -8,9 +8,11 @@
 @include('production/views/accepts/product-menu')
  <section class="auto-slider">
     <div class="model-fotorama">
+        @if (is_object($product->gallery))
         @foreach($product->gallery->photos as $image)
             <img src="{{ asset('uploads/galleries/'.$image->name) }}">
         @endforeach
+        @endif
     </div>
     @if(!is_null($product->images))
         @if(File::exists(public_path('uploads/galleries/'.$product->images->name)))
