@@ -7,7 +7,7 @@
 @section('content')
 @include('production/views/accepts/product-menu')
  <section class="auto-slider">
-    <div class="model-fotorama">
+    <div class="model-container">
         <div class="wrapper">
             <a class="drive-btn colorView" href="#"><span class="icon icon-circle"></span> Выбор цвета</a>
             <div class="auto-info">
@@ -20,11 +20,13 @@
                 </a>
             </div>
         </div>
-        @if (is_object($product->gallery))
-            @foreach($product->gallery->photos as $image)
-                <img src="{{ asset('uploads/galleries/'.$image->name) }}">
-            @endforeach
-        @endif
+        <div class="model-fotorama">
+            @if (is_object($product->gallery))
+                @foreach($product->gallery->photos as $image)
+                    <img src="{{ asset('uploads/galleries/'.$image->name) }}">
+                @endforeach
+            @endif
+        </div>
     </div>
     <div class="color-container">
         <div class="color-fotorama">
