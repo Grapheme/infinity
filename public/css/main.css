@@ -1586,6 +1586,9 @@ html {
   background: #1e1e1c;
   text-align: center;
 }
+.auto-slider .fotorama__nav--thumbs {
+  background: #1e1e1c;
+}
 .auto-slider .colorView {
   position: absolute;
   bottom: 0.9375rem;
