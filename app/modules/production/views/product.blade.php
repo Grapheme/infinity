@@ -14,14 +14,16 @@
             @endforeach
         @endif
     </div>
-    <div class="color-fotorama">
-        @foreach($product->colors as $product_color)
-            @if (is_object($product_color->images))
-                @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
-                    <img src="{{ $product_color->images->full() }}" alt="">
+    <div class="color-container">
+        <div class="color-fotorama">
+            @foreach($product->colors as $product_color)
+                @if (is_object($product_color->images))
+                    @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
+                        <img src="{{ $product_color->images->full() }}" alt="">
+                    @endif
                 @endif
-            @endif
-        @endforeach
+            @endforeach
+        </div>
     </div>
 
 
