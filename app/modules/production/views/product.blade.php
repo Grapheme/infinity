@@ -7,26 +7,12 @@
 @section('content')
 @include('production/views/accepts/product-menu')
  <section class="auto-slider">
-    <div class="model-container">
-        <div class="wrapper">
-            <a class="drive-btn colorView" href="#"><span class="icon icon-circle"></span> Выбор цвета</a>
-            <div class="auto-info">
-                <div class="title">{{ $product->meta->first()->title }}</div>
-                <div class="text">{{ $product->meta->first()->preview }}</div>
-                <div class="price">{{ $product->meta->first()->price }}</div>
-                <div class="text"></div>
-                <a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive">
-                    <span class="icon icon-wheel"></span> Записаться на тестдрайв
-                </a>
-            </div>
-        </div>
-        <div class="model-fotorama">
-            @if (is_object($product->gallery))
-                @foreach($product->gallery->photos as $image)
-                    <img src="{{ asset('uploads/galleries/'.$image->name) }}">
-                @endforeach
-            @endif
-        </div>
+    <div class="model-fotorama">
+        @if (is_object($product->gallery))
+            @foreach($product->gallery->photos as $image)
+                <img src="{{ asset('uploads/galleries/'.$image->name) }}">
+            @endforeach
+        @endif
     </div>
     <div class="color-container">
         <div class="color-fotorama">
@@ -38,16 +24,6 @@
                 @endif
             @endforeach
         </div>
-        <div class="colorWrapper">
-            <div class="color-head">Подбор цвета</div>
-            <div class="color-close">✕</div>
-            <div class="color-name"></div>
-            <ul class="colors-list">
-            @foreach($product->colors as $product_color)
-                <li class="color-item" style="background-color: {{ $product_color->color }};" data-color="{{ $product_color->color }}" data-color-title="{{ $product_color->title }}" title="{{ $product_color->title }}"></li>
-            @endforeach
-            </ul>
-        </div>
     </div>
 
 
@@ -58,6 +34,28 @@
     @endif
     @if($product->colors->count())
     <div class="slider-window">
+        <div class="wrapper model-cont">
+            <a class="drive-btn colorView" href="#"><span class="icon icon-circle"></span> Выбор цвета</a>
+            <div class="auto-info">
+                <div class="title">{{ $product->meta->first()->title }}</div>
+                <div class="text">{{ $product->meta->first()->preview }}</div>
+                <div class="price">{{ $product->meta->first()->price }}</div>
+                <div class="text"></div>
+                <a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive">
+                    <span class="icon icon-wheel"></span> Записаться на тестдрайв
+                </a>
+            </div>
+        </div>
+        <div class="color-cont">
+            <div class="color-head">Подбор цвета</div>
+            <div class="color-close">✕</div>
+            <div class="color-name"></div>
+            <ul class="colors-list">
+            @foreach($product->colors as $product_color)
+                <li class="color-item" style="background-color: {{ $product_color->color }};" data-color="{{ $product_color->color }}" data-color-title="{{ $product_color->title }}" title="{{ $product_color->title }}"></li>
+            @endforeach
+            </ul>
+        </div>
     </div>
     @endif
 @if(!is_null($product->gallery) && $product->gallery->photos->count())

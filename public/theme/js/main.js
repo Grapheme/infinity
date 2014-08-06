@@ -486,10 +486,14 @@ var smart_tabs = (function() {
 
 var color = (function(){
 	$(document).on('click', '.colorView', function(){
-		$('.auto-slider').addClass('color-slider');
+		$('.slider-window').addClass('window-tocolor');
+		$('.color-container').addClass('active');
+		return false;
 	});
 	$(document).on('click', '.color-close', function(){
-		$('.auto-slider').removeClass('color-slider');
+		$('.slider-window').removeClass('window-tocolor');
+		$('.color-container').removeClass('active');
+		return false;
 	});
 })();
 

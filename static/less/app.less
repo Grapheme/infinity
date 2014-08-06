@@ -5,9 +5,37 @@
 	margin: 0 auto;
 }
 
-.colorWrapper {
-	color: #000;
+.slider-window {
+	.color-cont {
+		display: none;
+	}
+
+	&.window-tocolor {
+		.model-cont {
+			display: none;
+		}
+		.color-cont {
+			display: block;
+		}
+	}
+}
+
+.color-container {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 750rem / @htmlFontSize;
+	display: none;
+
+	&.active {
+		display: block;
+		z-index: 3;
+	}
+}
+
+.color-cont {
 	.wrapper;
+	color: #000;
 	height: 100%;
 
 	&.active {
