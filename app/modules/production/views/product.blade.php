@@ -24,6 +24,16 @@
                 @endif
             @endforeach
         </div>
+        <div class="colorWrapper">
+            <div class="color-head">Подбор цвета</div>
+            <div class="color-close">✕</div>
+            <div class="color-name"></div>
+            <ul class="colors-list">
+            @foreach($product->colors as $product_color)
+                <li class="color-item" style="background-color: {{ $product_color->color }};" data-color="{{ $product_color->color }}" data-color-title="{{ $product_color->title }}" title="{{ $product_color->title }}"></li>
+            @endforeach
+            </ul>
+        </div>
     </div>
 
 
@@ -34,17 +44,6 @@
     @endif
     @if($product->colors->count())
     <div class="slider-window">
-        <div class="wrapper">
-            <div class="colorWrapper">
-                <div class="color-head">Подбор цвета</div>
-                <div class="color-close">✕</div>
-                <div class="color-name"></div>
-                <ul class="colors-list">
-                @foreach($product->colors as $product_color)
-                    <li class="color-item" style="background-color: {{ $product_color->color }};" data-color="{{ $product_color->color }}" data-color-title="{{ $product_color->title }}" title="{{ $product_color->title }}"></li>
-                @endforeach
-                </ul>
-            </div>
             <a class="drive-btn colorView" href="javascript:void(0);"><span class="icon icon-circle"></span> Выбор цвета</a>
             <div class="auto-info">
                 <div class="title">{{ $product->meta->first()->title }}</div>
