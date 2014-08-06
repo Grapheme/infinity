@@ -110,6 +110,7 @@
             var id = $(this).index();
             setCName(id);
             fotorama.show(id);
+            alert(id);
         });
 
     </script>
