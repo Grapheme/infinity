@@ -18,7 +18,7 @@
         @foreach($product->colors as $product_color)
             @if (is_object($product_color->images))
             @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
-                <img style="background-image: url({{ $product_color->images->full()) }});" alt="">
+                <img style="background-image: url({{ $product_color->images->full() }});" alt="">
             @endif
             @endif
         @endforeach
