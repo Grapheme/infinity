@@ -72,7 +72,9 @@
             'loop': true,
             'arrows': false,
             'nav': 'thumbs',
-            'thumbheight': '112px'
+            'thumbheight': '112px',
+            'thumbwidth': '215px',
+            'click': false
         });
     </script>
 @stop
