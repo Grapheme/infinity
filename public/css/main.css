@@ -393,7 +393,7 @@ h3 {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 46.875rem;
+  height: 40rem;
   z-index: -1;
   background: #fff;
 }
@@ -1571,7 +1571,7 @@ html {
 }
 .auto-slider {
   position: relative;
-  height: 46.875rem;
+  height: 40rem;
 }
 .auto-slider .slider-nav-win {
   position: relative;
@@ -1584,7 +1584,7 @@ html {
   width: 100%;
   top: 0;
   z-index: 1;
-  height: 46.875rem;
+  height: 40rem;
 }
 .auto-slider .fotorama__nav--thumbs {
   background: #1e1e1c;
@@ -1638,7 +1638,7 @@ html {
   position: absolute;
   background: transparent;
   top: 0;
-  height: 46.875rem;
+  height: 40rem;
   width: 100%;
 }
 .auto-slider .slider-window .wrapper {

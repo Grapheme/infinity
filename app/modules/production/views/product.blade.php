@@ -32,10 +32,12 @@
         <!--<div class="slider-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->images->name) }});"></div>-->
         @endif
     @endif
-    @if($product->colors->count())
+
     <div class="slider-window">
         <div class="wrapper model-cont">
+            @if($product->colors->count())
             <a class="drive-btn colorView" href="#"><span class="icon icon-circle"></span> Выбор цвета</a>
+            @endif
             <div class="auto-info">
                 <div class="title">{{ $product->meta->first()->title }}</div>
                 <div class="text">{{ $product->meta->first()->preview }}</div>
@@ -46,6 +48,8 @@
                 </a>
             </div>
         </div>
+
+        @if($product->colors->count())
         <div class="color-cont">
             <div class="color-head">Подбор цвета</div>
             <div class="color-close">✕</div>
@@ -60,23 +64,30 @@
             @endforeach
             </ul>
         </div>
+        @endif
+
     </div>
+
+    @if(!is_null($product->gallery) && $product->gallery->photos->count())
+        <!--<div class="js-slider-nav">
+        @foreach($product->gallery->photos as $image)
+            <i data-thumb="{{ asset('uploads/galleries/thumbs/'.$image->name) }}" data-img="{{ asset('uploads/galleries/'.$image->name) }}"></i>
+        @endforeach
+        </div>-->
     @endif
-@if(!is_null($product->gallery) && $product->gallery->photos->count())
-    <!--<div class="js-slider-nav">
-    @foreach($product->gallery->photos as $image)
-        <i data-thumb="{{ asset('uploads/galleries/thumbs/'.$image->name) }}" data-img="{{ asset('uploads/galleries/'.$image->name) }}"></i>
-    @endforeach
-    </div>-->
-@endif
+
 </section>
 <section class="model-sect">
     {{ $product->meta->first()->content }}
 </section>
 @stop
+
+
 @section('scripts')
     {{HTML::script('theme/js/vendor/fotorama.js');}}
 @stop
+
+
 @section('page_script')
     <script>
         $(window).on('load', function(){

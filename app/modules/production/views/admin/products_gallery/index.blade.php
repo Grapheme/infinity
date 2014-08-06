@@ -1,4 +1,6 @@
 @extends(Helper::acclayout())
+
+
 @section('content')
 <h1>Продукция: Галереи ({{ $product->meta->first()->title }})</h1>
 {{ Form::model($galleries,array('url'=>URL::route('product_gallery_store',array('product_id'=>$product->id)), 'role'=>'form', 'class'=>'smart-form', 'id'=>'product-gallery-form', 'method'=>'post')) }}
@@ -7,17 +9,17 @@
             <div class="well">
                 <header>К товару можно добавить 5 галерей:</header>
                 <fieldset>
-            @if (Allow::module('galleries'))
-                @for($i=0;$i<5;$i++)
+                @if (Allow::module('galleries'))
+                    @for($i=0;$i<5;$i++)
 
-                <section>
-                    <label class="label">Галерея №{{ $i+1 }}</label>
-                    <label class="textarea">
-                        {{ ExtForm::gallery('gallery_'.($i),@$galleries[$i],array('id'=>'gallery-input-'.($i))) }}
-                    </label>
-                </section>
-                 @endfor
-            @endif
+                    <section>
+                        <label class="label">Галерея №{{ $i+1 }}</label>
+                        <label class="textarea">
+                            {{ ExtForm::gallery('gallery_'.($i),@$galleries[$i],array('id'=>'gallery-input-'.($i))) }}
+                        </label>
+                    </section>
+                     @endfor
+                @endif
                 </fieldset>
             </div>
         </section>
@@ -34,6 +36,7 @@
     </section>
 {{ Form::close() }}
 @stop
+
 
 @section('scripts')
 <script>
@@ -53,5 +56,6 @@
 			loadScript("{{ asset('js/vendor/jquery-form.min.js') }}");
 		}
 	</script>
+
 	 {{ HTML::script('js/modules/gallery.js') }}
 @stop
