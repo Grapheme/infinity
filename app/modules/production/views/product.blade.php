@@ -17,9 +17,9 @@
     <div class="color-fotorama">
         @foreach($product->colors as $product_color)
             @if (is_object($product_color->images))
-            @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
-                <img style="background-image: url({{ $product_color->images->full() }});" alt="">
-            @endif
+                @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
+                    <img src="{{ $product_color->images->full() }}" alt="">
+                @endif
             @endif
         @endforeach
     </div>
@@ -90,7 +90,10 @@
             'nav': false,
             'thumbheight': '112px',
             'thumbwidth': '215px',
-            'click': false
+            'click': false,
+            'swipe': false,
+            'trackpad': false,
+            'transition': 'crossfade'
         });
     </script>
 @stop
