@@ -8,6 +8,18 @@
 @include('production/views/accepts/product-menu')
  <section class="auto-slider">
     <div class="model-fotorama">
+        <div class="wrapper">
+            <a class="drive-btn colorView" href="#"><span class="icon icon-circle"></span> Выбор цвета</a>
+            <div class="auto-info">
+                <div class="title">{{ $product->meta->first()->title }}</div>
+                <div class="text">{{ $product->meta->first()->preview }}</div>
+                <div class="price">{{ $product->meta->first()->price }}</div>
+                <div class="text"></div>
+                <a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive">
+                    <span class="icon icon-wheel"></span> Записаться на тестдрайв
+                </a>
+            </div>
+        </div>
         @if (is_object($product->gallery))
             @foreach($product->gallery->photos as $image)
                 <img src="{{ asset('uploads/galleries/'.$image->name) }}">
@@ -44,18 +56,6 @@
     @endif
     @if($product->colors->count())
     <div class="slider-window">
-        <div class="wrapper">
-            <a class="drive-btn colorView" href="#"><span class="icon icon-circle"></span> Выбор цвета</a>
-            <div class="auto-info">
-                <div class="title">{{ $product->meta->first()->title }}</div>
-                <div class="text">{{ $product->meta->first()->preview }}</div>
-                <div class="price">{{ $product->meta->first()->price }}</div>
-                <div class="text"></div>
-                <a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive">
-                    <span class="icon icon-wheel"></span> Записаться на тестдрайв
-                </a>
-            </div>
-        </div>
     </div>
     @endif
 @if(!is_null($product->gallery) && $product->gallery->photos->count())
