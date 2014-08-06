@@ -83,7 +83,7 @@ class FeedbackController extends BaseController {
             endif;
             $this->postSendmessage(
                 Input::get('email'),
-                array('subject'=>'Заявка на тест-драйв','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'email'=>Input::get('email'),'product'=>$product_title),
+                array('subject'=>'Заявка на тест-драйв', 'name'=>Input::get('fio'), 'phone'=>Input::get('phone'), 'email'=>Input::get('email'), 'product'=>$product_title),
                 'order_test_drive'
             );
             $json_request['responseText'] = 'Сообщение отправлено';
