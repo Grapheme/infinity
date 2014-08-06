@@ -24,7 +24,7 @@ class Product extends BaseModel {
     }
 
     public  function gallery(){
-        return $this->belongsTo('Gallery','gallery_id');
+        return $this->belongsTo('Gallery', 'gallery_id');
     }
 
     public  function colors(){
@@ -45,6 +45,10 @@ class Product extends BaseModel {
 
     public  function galleries(){
         return $this->hasMany('Rel_mod_gallery','unit_id');
+    }
+
+    public  function product_galleries(){
+        return $this->hasMany('ProductGallery', 'product_id');
     }
 
     public  function meta(){

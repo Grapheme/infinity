@@ -164,11 +164,17 @@ class ProductionController extends BaseController {
 
         if (!@$url) $url = Input::get('url');
         $products = Product::with(array('meta' => function ($query) use ($url) {
-            $query->where('seo_url', $url);
-        }))->with(array('galleries'=>function($query){
-            $query->where('module','products');
-            $query->with('photos');
-        }))->get();
+                $query->where('seo_url', $url);
+            }))
+            ->with(array('galleries'=>function($query){
+                $query->where('module','products');
+                $query->with('photos');
+            }))
+            ->with('product_galleries.gallery.photos')
+            ->get();
+
+        #Helper::tad($products);
+
         $product = NULL;
         foreach ($products as $product_info):
             if (!is_null($product_info->meta->first()) && $product_info->meta->first()->seo_url == $url):

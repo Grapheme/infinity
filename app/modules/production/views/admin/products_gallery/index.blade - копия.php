@@ -3,39 +3,31 @@
 
 @section('content')
 <h1>Продукция: Галереи ({{ $product->meta->first()->title }})</h1>
-{{ Form::open(array('url' => URL::route('product_gallery_store', array('product_id' => $product->id)), 'role'=>'form', 'class' => 'smart-form', 'id' => 'product-gallery-form', 'method' => 'post')) }}
+{{ Form::model($galleries, array('url' => URL::route('product_gallery_store', array('product_id' => $product->id)), 'role'=>'form', 'class' => 'smart-form', 'id' => 'product-gallery-form', 'method' => 'post')) }}
     <div class="row margin-top-10">
         <section class="col col-6">
             <div class="well">
                 <header>К товару можно добавить 5 галерей:</header>
                 <fieldset>
                 @if (Allow::module('galleries'))
-
                     @for($i=0;$i<5;$i++)
-
-                    <?
-                    $gallery = isset($product_galleries[$i]) && is_object($product_galleries[$i]) && is_object($product_galleries[$i]->gallery)
-                        ? $product_galleries[$i]
-                        : new ProductGallery;
-                    ?>
 
                     <section>
                         <label class="label">Галерея №{{ $i+1 }}</label>
                         <label class="textarea">
-                            {{ ExtForm::gallery('gallery[' . $i . ']', $gallery->gallery, array('tpl' => 'extform_gallery_product')) }}
+                            {{ ExtForm::gallery('gallery_'.($i), @$galleries[$i], array('id'=>'gallery-input-'.($i))) }}
                         </label>
                         <label class="input">
-                            {{ Form::text('title[' . $i . ']', $gallery->title, array('placeholder' => 'Заголовок')) }}
+                            {{ Form::text('title[' . $i . ']', null, array('placeholder' => 'Заголовок')) }}
                         </label>
                         <label class="textarea">
-                            {{ Form::textarea('desc[' . $i . ']', $gallery->desc, array('placeholder' => 'Описание')) }}
+                            {{ Form::textarea('desc[' . $i . ']', null, array('placeholder' => 'Описание')) }}
                         </label>
                     </section>
 
                     <br/><br/>
 
-                    @endfor
-
+                     @endfor
                 @endif
                 </fieldset>
             </div>

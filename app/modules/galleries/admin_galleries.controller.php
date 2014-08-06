@@ -55,6 +55,9 @@ class AdminGalleriesController extends BaseController {
                     unset($params['tpl']);
                 }
                 $gallery = $value;
+
+                #Helper::tad($value);
+
                 ## return view with form element
                 return View::make($mod_tpl.$tpl, compact('name', 'gallery', 'params'));                
     	    },
@@ -71,6 +74,8 @@ class AdminGalleriesController extends BaseController {
                 $uploaded_images = isset($gallery['uploaded_images']) ? $gallery['uploaded_images'] : array();
                 $module = (string)trim($module);
                 $unit_id = (int)trim($unit_id);
+
+                #Helper::d($gallery_id);
 
                 ## Perform all actions for adding photos to the gallery & bind gallery to the unit_id of module
                 return $class::imagesToUnit($uploaded_images, $module, $unit_id, $gallery_id);
@@ -497,7 +502,7 @@ class AdminGalleriesController extends BaseController {
 			!isset($images) || !is_array($images) || !count($images)
 			|| !@$module || !$unit_id
 		)
-			return false;
+			return $gallery_id;
 
 		$gallery_id = self::moveImagesToGallery($images, $gallery_id);
         self::relModuleUnitGallery($module, (int)$unit_id, $gallery_id);
