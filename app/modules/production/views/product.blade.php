@@ -80,5 +80,15 @@
             'thumbwidth': '215px',
             'click': false
         });
+        $('.color-fotorama').fotorama({
+            'width': '100%',
+            'height': '750px',
+            'fit': 'cover',
+            'arrows': false,
+            'nav': false,
+            'thumbheight': '112px',
+            'thumbwidth': '215px',
+            'click': false
+        });
     </script>
 @stop
