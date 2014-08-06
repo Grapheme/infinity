@@ -7,7 +7,7 @@
 	h1 {
 		display: inline-block;
 		margin: 0 99rem / @htmlFontSize 0 0;
-
+		padding-top: 4rem;
 		font-size: 34.5em / @htmlFontSize;
 		font-family: 'MetaPro', sans-serif;
 		line-height: 37 / 34.5;
@@ -43,6 +43,10 @@
 		a {
 			.typical-link;
 			font-weight: 300;
+
+			&.active {
+				border-color: transparent;
+			}
 		}
 	}
 }
@@ -110,7 +114,7 @@
 
 .auto-slider {
 	position: relative;
-	height: 640rem / @htmlFontSize;
+	min-height: 640rem / @htmlFontSize;
 
 	.model-fotorama, .color-fotorama {
 		.fotorama__wrap {
