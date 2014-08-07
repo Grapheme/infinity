@@ -51,7 +51,7 @@
 
         @if($product->colors->count())
         <div class="color-cont">
-            <div class="color-head">Подбор цвета</div>
+            <div class="color-head">Выбор цвета</div>
             <div class="color-close">✕</div>
             <div class="color-name"></div>
             <ul class="colors-list">
