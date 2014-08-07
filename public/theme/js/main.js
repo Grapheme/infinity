@@ -310,23 +310,6 @@ jQuery.fn.tabs = function(control) {
 	return this;
 };
 
-/*jQuery.fn.colorChange = function(colorNames) {
-	var element = $(this);
-
-	element.delegate('li', 'click', function(){
-		var colorNum = $(this).data('color');
-		element.trigger("change.color", colorNum);
-	});
-
-	element.bind('change.color', function(e, colorNum) {
-		element.parent().attr('data-color', colorNum);
-		element.prev().html(colorNames[--colorNum]);
-	});
-
-	element.prev().html(colorNames[0]);
-	element.parent().attr('data-color', 1);
-};*/
-
 jQuery.fn.galleryAnim = function() {
 
 	var cont = $(this);

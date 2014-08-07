@@ -55,7 +55,7 @@
 	.color-name {
 		font-size: 11em / @htmlFontSize;
 		line-height: 13em / 11;
-		padding: 8rem / @htmlFontSize 14rem / @htmlFontSize;
+		padding: 1rem 0;
 		color: #1c1c1c;
 	}
 
@@ -79,11 +79,18 @@
 		width: 144rem / @htmlFontSize;
 
 		.color-item {
+			.transition(border);
+			.box-sizing;
 			float: left;
 			width: 30rem / @htmlFontSize;
 			height: 30rem / @htmlFontSize;
 			margin: 0 6rem / @htmlFontSize 38rem / @htmlFontSize 0;
 			cursor: pointer;
+			border: 1px solid transparent;
+
+			&.active {
+				border: 1px solid #000;
+			}
 		}
 	}
 }
