@@ -332,10 +332,6 @@ jQuery.fn.galleryAnim = function() {
 		if(allow_scroll != 'bottom' && $(window).scrollTop() > $('.gallery').offset().top) {
 			$(window).scrollTop($('.gallery').offset().top);
 			$('html').addClass('scroll-blocked');
-			fade_allow = false;
-			setTimeout(function(){
-				fade_allow = true;
-			}, 500);
 		}
 
 		if(allow_scroll == 'bottom' && $(window).scrollTop() + $(window).height() < $('.gallery').offset().top + $('.gallery').height()) {
