@@ -461,7 +461,7 @@ var smart_tabs = (function() {
 		});
 	}
 
-	$(document).on('mouseover', '.js-smartabs li', function(){
+	$(document).on('mouseover touchstart', '.js-smartabs li', function(){
 		$(this).addClass('active').siblings().removeClass('active');
 		var parent = $(this).parent().parent().parent();
 		parent.find('.main-block').eq($(this).index()).show().siblings().hide();
