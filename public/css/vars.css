@@ -110,6 +110,27 @@
   text-transform: uppercase;
   font-size: 0.9375rem;
 }
+.us-btn {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  display: inline-block;
+  background: #633e7c;
+  color: #fff !important;
+  border: 2px solid transparent;
+  padding: 0 .9375rem;
+  height: 3.4375rem;
+  line-height: 3.3125rem;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.us-btn:hover {
+  background: #fff;
+  color: #633e7c !important;
+  border: 2px solid #633e7c;
+}
 .drive-btn {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -206,7 +227,7 @@ h3 {
   text-transform: uppercase;
 }
 .desc {
-  font-size: 0.9375em;
+  font-size: 1em;
   line-height: 1.4em;
 }
 .margin-bottom-60 {
@@ -221,7 +242,7 @@ h3 {
   list-style: none;
   list-style-type: disc;
   list-style-position: inside;
-  font-size: 0.9375em;
+  font-size: .875rem;
   line-height: 1.8125em;
   margin-top: 0.5em;
 }

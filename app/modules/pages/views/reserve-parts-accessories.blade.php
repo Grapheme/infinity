@@ -39,7 +39,7 @@
         @endforeach
         </select>
         <div class="founded">
-            Найдено результатов: <span id="count-results">{{ $all_accessories->count() }}</span>
+            Найдено результатов: <span id="count-results" class="count-results">{{ $all_accessories->count() }}</span>
         </div>
     </div>
 @endif
