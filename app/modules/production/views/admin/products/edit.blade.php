@@ -67,7 +67,7 @@
                             <section>
                                 <label class="label">Галерея</label>
                                 <label class="input">
-                                    {{ ExtForm::gallery('gallery',@$product->gallery,array('id'=>'gallery-input-id')) }}
+                                    {{ ExtForm::gallery('gallery', @$product->gallery, array('id'=>'gallery-input-id', 'tpl' => 'extform_gallery_product')) }}
                                 </label>
                             </section>
                             @endif

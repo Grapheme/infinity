@@ -193,29 +193,48 @@ class AdminProductionProductsController extends BaseController {
 	public function getEdit($id){
 
         Allow::permission($this->module['group'], 'product_edit');
-        $product = $this->product->where('id',$id)->with('meta')->with('images')->with('menu_image')->with('gallery')->first();
+
+        $product = $this->product->where('id', $id)
+            ->with('meta')
+            ->with('images')
+            ->with('menu_image')
+            ->with('gallery')
+            ->first();
+
+        #Helper::tad($product);
+
         $categories = array('Выберите категорию');
         foreach (ProductCategory::all() as $category):
             $categories[$category->id] = $category->title;
         endforeach;
 
         $locales = $this->locales;
+
 		return View::make($this->module['tpl'].'edit', compact('product', 'categories','locales'));
 	}
 
 	public function postUpdate($id){
 
-        if(!Request::ajax()) return App::abort(404);
+        if(!Request::ajax())
+            return App::abort(404);
+
         Allow::permission($this->module['group'], 'product_edit');
+
 		$json_request = array('status'=>FALSE, 'responseText'=>'', 'responseErrorText'=>'', 'redirect'=>FALSE, 'gallery'=>0);
-		$validation = Validator::make(Input::all(), Product::$rules);
+
+        #$json_request['responseText'] = '<pre>' . print_r(Input::get(), 1) . '</pre>';
+        #return Response::json($json_request, 200);
+
+        $validation = Validator::make(Input::all(), Product::$rules);
 		if($validation->passes()):
+
             $product = $this->product->find($id);
             self::saveProductModel($product);
             self::saveProductsMetaModel();
             $json_request['gallery'] = self::saveProductsGallery();
 			$json_request['responseText'] = 'Продукт обновлен';
 			$json_request['status'] = TRUE;
+
 		else:
 			$json_request['responseText'] = 'Неверно заполнены поля';
 			$json_request['responseErrorText'] = implode($validation->messages()->all(), '<br />');
@@ -336,6 +355,7 @@ class AdminProductionProductsController extends BaseController {
     private function saveProductsGallery(){
 
         $gallery_id = FALSE;
+
         if(Allow::action('admin_galleries','edit')):
             $gallery_id = ExtForm::process('gallery', array(
                 'module'  => 'products',

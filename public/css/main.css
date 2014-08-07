@@ -1466,6 +1466,7 @@ html {
 .complectations h1 {
   display: inline-block;
   margin: 0 6.1875rem 0 0;
+  padding-top: 4rem;
   font-size: 2.15625em;
   font-family: 'MetaPro', sans-serif;
   line-height: 1.07246377;
@@ -1504,6 +1505,9 @@ html {
   font-weight: 300;
 }
 .filter .filter-li a:hover {
+  border-color: transparent;
+}
+.filter .filter-li a.active {
   border-color: transparent;
 }
 .car-list {
@@ -1564,7 +1568,7 @@ html {
 }
 .auto-slider {
   position: relative;
-  height: 40rem;
+  min-height: 40rem;
 }
 .auto-slider .model-fotorama .fotorama__wrap,
 .auto-slider .color-fotorama .fotorama__wrap {
@@ -1680,7 +1684,7 @@ html {
 }
 .model-sect h1 {
   margin: 0;
-  padding: 4rem 0;
+  padding: 7.5rem 0 4rem;
   font-family: 'MetaPro', sans-serif;
   font-size: 2.15625em;
   line-height: 1.07246377em;
