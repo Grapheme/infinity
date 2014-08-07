@@ -184,7 +184,7 @@
                         <section>
                             <input type="text" name="email" class="dtest-input" placeholder="Email">
                         </section>
-                         <section>
+                        <section>
                             <input type="text" name="content" class="dtest-input" placeholder="Комментарий">
                         </section>
                     </fieldset>
@@ -204,9 +204,15 @@
             <div class="title">Заказать<br>звонок</div>
             <div class="dtest-form">
                 {{ Form::open(array('url'=>URL::route('index_order_call'),'role'=>'form','class'=>'smart-form','id'=>'index-order-call-form','method'=>'post')) }}
-                    <input type="text" class="dtest-input" name="fio" placeholder="Ф.И.О.">
-                    <input type="text" class="dtest-input" name="phone" placeholder="Телефон">
-                    <input type="text" class="dtest-input" name="datetime" placeholder="Удобное время для звонка">
+                    <section>
+                        <input type="text" class="dtest-input" name="fio" placeholder="Ф.И.О.">
+                    </section>
+                    <section>
+                        <input type="text" class="dtest-input" name="phone" placeholder="Телефон">
+                    </section>
+                    <section>
+                        <input type="text" class="dtest-input" name="datetime" placeholder="Удобное время для звонка">
+                    </section>
                     <button type="submit" autocomplete="off" class="btn fl-r btn-form-submit">
                         <i class="fa fa-spinner fa-spin hidden"></i> <span class="btn-response-text">Отправить</span>
                     </button>
