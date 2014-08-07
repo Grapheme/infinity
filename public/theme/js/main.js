@@ -481,6 +481,13 @@ var color = (function(){
 	});
 })();
 
+var model_load = (function(){
+	$(window).on('load', function(){
+		if($('.model-fotorama').length != 0) $('.model-fotorama').addClass('loaded');
+		if($('.color-container').length != 0) $('.color-container').addClass('loaded');
+	});
+})();
+
 $('.testSelect').SumoSelect();
 $('.cars-tooltip').carsHover();
 
