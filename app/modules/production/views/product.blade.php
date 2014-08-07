@@ -26,13 +26,6 @@
         </div>
     </div>
 
-
-    @if(!is_null($product->images))
-        @if(File::exists(public_path('uploads/galleries/'.$product->images->name)))
-        <!--<div class="slider-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->images->name) }});"></div>-->
-        @endif
-    @endif
-
     <div class="slider-window">
         <div class="wrapper model-cont">
             @if($product->colors->count())
@@ -65,16 +58,7 @@
             </ul>
         </div>
         @endif
-
     </div>
-
-    @if(!is_null($product->gallery) && $product->gallery->photos->count())
-        <!--<div class="js-slider-nav">
-        @foreach($product->gallery->photos as $image)
-            <i data-thumb="{{ asset('uploads/galleries/thumbs/'.$image->name) }}" data-img="{{ asset('uploads/galleries/'.$image->name) }}"></i>
-        @endforeach
-        </div>-->
-    @endif
 
 </section>
 <section class="model-sect">
@@ -120,11 +104,18 @@
             function setCName(id) {
                 $('.color-name').text($('.color-item').eq(id).attr('data-color-title'));
             }
+            function setColor(id) {
+                setCName(id);
+                color_fotorama.show(id);
+            }
+            if($('.color-item').length != 0) {
+                $('.color-item').eq(0).addClass('active');
+            }
             setCName(0);
             $(document).on('click', '.color-item', function(){
                 var id = $(this).index();
-                setCName(id);
-                color_fotorama.show(id);
+                $(this).addClass('active').siblings().removeClass('active');
+                setColor(id);
             });
         });
 
