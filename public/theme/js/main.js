@@ -375,6 +375,8 @@ jQuery.fn.galleryAnim = function() {
 		}, fade_time);
 	}
 
+	$(document).on('click', '.gal-down', getdown)
+
 	$(document).bind('mousewheel DOMMouseScroll', function(event) {
 		var delta;
 
