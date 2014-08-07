@@ -43,7 +43,7 @@
 </section>
 @stop
 @section('page_script')
-    <script src="js/vendor/jcarousel.min.js"></script>
+    {{ HTML::script("theme/js/vendor/jcarousel.min.js") }}
     <script>
         $(function() {
             $('.jcarousel').jcarousel();
