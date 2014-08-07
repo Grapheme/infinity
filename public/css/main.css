@@ -375,6 +375,9 @@ h3 {
 .head-link:hover {
   border-color: rgba(255, 255, 255, 0.75);
 }
+.head-link.active {
+  border-color: rgba(255, 255, 255, 0.75);
+}
 .wrapper {
   position: relative;
   width: 100%;
@@ -525,7 +528,7 @@ html {
   border-color: #000;
 }
 .main-header {
-  font-family: 'Helvetica Neue', 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   position: absolute;
   z-index: 2;
   width: 100%;
@@ -589,6 +592,9 @@ html {
 .main-header .header-cont .main-nav .option a:hover {
   border-color: rgba(255, 255, 255, 0.75);
 }
+.main-header .header-cont .main-nav .option a.active {
+  border-color: rgba(255, 255, 255, 0.75);
+}
 .main-header .header-cont .head-models {
   margin-top: 0.9375rem;
 }
@@ -619,6 +625,9 @@ html {
   margin-right: 1.0625rem;
 }
 .main-header .header-cont .head-models .items a:hover {
+  border-color: rgba(255, 255, 255, 0.75);
+}
+.main-header .header-cont .head-models .items a.active {
   border-color: rgba(255, 255, 255, 0.75);
 }
 .main-header .header-cont .head-models .items a:last-child {
@@ -716,6 +725,9 @@ html {
   margin: 0 0.625rem;
 }
 .model-menu .model-option:hover {
+  border-bottom: 1px solid #fff;
+}
+.model-menu .model-option.active {
   border-bottom: 1px solid #fff;
 }
 .model-menu .model-exist,
@@ -893,33 +905,34 @@ html {
 }
 .tool-triangle {
   position: absolute;
-  top: -0.5rem;
+  top: -0.4375rem;
   width: 0;
   height: 0;
   border-style: solid;
   border-width: 0 0.46875rem 0.5rem 0.46875rem;
   border-color: transparent transparent #ffffff transparent;
-}
-.tooltip-cont {
-  /*position: absolute;
-	width: 1240rem / @htmlFontSize;
-	top: 0;
-	left: 50%;
-	margin-left: -1240rem / 2 / @htmlFontSize;*/
+  z-index: 4;
 }
 .car-tooltip {
   display: none;
   position: absolute;
   z-index: 99;
   top: 0;
-  left: 0;
   color: #000;
   background: #fff;
+  white-space: nowrap;
+  height: 22rem;
 }
 .car-tooltip .left-block {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   margin-right: -0.25rem;
   display: inline-block;
   vertical-align: top;
+  border: 1px solid #e0e0e0;
+  border-right: 0;
+  height: 100%;
 }
 .car-tooltip .left-block .car-ul {
   padding: 0;
@@ -957,6 +970,8 @@ html {
 }
 .car-tooltip .main-blocks {
   display: inline-block;
+  vertical-align: top;
+  height: 100%;
 }
 .car-tooltip .main-block {
   -webkit-box-sizing: border-box;
@@ -965,13 +980,14 @@ html {
   position: relative;
   display: inline-block;
   vertical-align: top;
-  border-left: 1px solid #e0e0e0;
-  width: 62.5rem;
+  border: 1px solid #e0e0e0;
+  width: 52.5rem;
   background-color: #fff;
   background-position: bottom right;
   background-repeat: no-repeat;
   background-size: 65% auto;
   padding: 1.875rem 0 2.1875rem 3.125rem;
+  min-height: 100%;
 }
 .car-tooltip .main-block .car-name {
   font-family: "MetaPro";
@@ -990,7 +1006,8 @@ html {
   line-height: 1.5625rem;
 }
 .car-tooltip .main-block .car-btns {
-  margin-top: 4.375rem;
+  position: absolute;
+  bottom: 2.5rem;
 }
 .car-tooltip .main-block .car-link {
   -webkit-transition: border 0.5s ease;
@@ -1009,6 +1026,9 @@ html {
   border-bottom: 1px solid;
 }
 .cars-tooltip {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   display: none;
   position: absolute;
   top: 0;
@@ -1016,11 +1036,9 @@ html {
   z-index: 99;
   color: #000;
   background: #fff;
-  width: 48.125rem;
   padding: 2.1875rem 2.1875rem 0 2.1875rem;
-}
-.cars-tooltip .tool-triangle {
-  left: 26.875rem;
+  width: 52.5rem;
+  border: 1px solid #e0e0e0;
 }
 .cars-tooltip .car-block {
   margin-bottom: 2.5rem;
@@ -1238,6 +1256,7 @@ html {
   font-size: 2.15625em;
   line-height: 1.07246377em;
   text-transform: uppercase;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.75);
 }
 .top-bg header .desc {
   font-size: 0.875em;
@@ -1452,10 +1471,16 @@ html {
 }
 .main-footer .footer-bottom {
   padding: 5.9375rem 0 1.5625rem;
+  color: #b4b4b4;
 }
 .main-footer .footer-bottom a {
-  color: #fff;
+  -webkit-transition: color 0.5s ease;
+  transition: color 0.5s ease;
+  color: #b4b4b4;
   text-decoration: none;
+}
+.main-footer .footer-bottom a:hover {
+  color: #fff;
 }
 .complectations {
   width: 66.5rem;
