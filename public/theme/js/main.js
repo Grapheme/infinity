@@ -345,6 +345,36 @@ jQuery.fn.galleryAnim = function() {
 		}
 	});
 
+	function gettop() {
+		var active = cont.find('.gallery-block.active');
+		if(active.index() == 0) {
+			allow_scroll = 'top';
+			return ;
+		}
+		fade_allow = false;
+		allow_scroll = false;
+		active.removeClass('active').addClass('fadeOut');
+		block.eq(active.index() - 1).addClass('active');
+		setTimeout(function(){
+			fade_allow = true;
+		}, fade_time);
+	}
+
+	function getdown() {
+		var active = cont.find('.gallery-block.active');
+		if(active.index() + 1 == slides_length) {
+			allow_scroll = 'bottom';
+			return ;
+		}
+		fade_allow = false;
+		allow_scroll = false;
+		active.removeClass('active');
+		block.eq(active.index() + 1).removeClass('fadeOut').addClass('active');
+		setTimeout(function(){
+			fade_allow = true;
+		}, fade_time);
+	}
+
 	$(document).bind('mousewheel DOMMouseScroll', function(event) {
 		var delta;
 
@@ -366,33 +396,11 @@ jQuery.fn.galleryAnim = function() {
 
 		if($('html').hasClass('scroll-blocked') && fade_allow) {
 			if(delta > 0) {
-				var active = cont.find('.gallery-block.active');
-				if(active.index() == 0) {
-					allow_scroll = 'top';
-					return ;
-				}
-				fade_allow = false;
-				allow_scroll = false;
-				active.removeClass('active').addClass('fadeOut');
-				block.eq(active.index() - 1).addClass('active');
-				setTimeout(function(){
-					fade_allow = true;
-				}, fade_time);
+				gettop();
 			} else
 
 			if(delta < 0) {
-				var active = cont.find('.gallery-block.active');
-				if(active.index() + 1 == slides_length) {
-					allow_scroll = 'bottom';
-					return ;
-				}
-				fade_allow = false;
-				allow_scroll = false;
-				active.removeClass('active');
-				block.eq(active.index() + 1).removeClass('fadeOut').addClass('active');
-				setTimeout(function(){
-					fade_allow = true;
-				}, fade_time);
+				getdown();
 			}
 		}
 	});

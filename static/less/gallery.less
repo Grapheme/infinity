@@ -146,11 +146,18 @@
 	}
 
 	.gal-down {
+		.transition(color);
+		cursor: pointer;
 		position: absolute;
 		left: 50%;
+		margin-left: -15rem / @htmlFontSize;
 		bottom: 5%;
-		color: #fff;
-		font-size: 25rem / @htmlFontSize;
+		color: rgba(255, 255, 255, .3);
+		font-size: 3rem;
+
+		&:hover {
+			color: rgba(255, 255, 255, .75);
+		}
 	}
 
 	.gal-half {
