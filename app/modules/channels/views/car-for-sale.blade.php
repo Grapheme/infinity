@@ -37,9 +37,6 @@
             </h2>
             <div class="desc">
                {{ $element->channel->first()->desc }}
-                <button class="btn small book-auto">
-                    <span class="icon icon-lock"></span> Забронировать автомобиль
-                </button>
             </div>
         </div>
     </div>

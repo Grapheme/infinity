@@ -464,7 +464,7 @@ var tooltips = (function(){
 		timeout = setTimeout(function(){
 			cont.removeClass('active').fadeOut(100);				
 			opened = false;
-		}, 1000);
+		}, 500);
 	}
 
 })();
