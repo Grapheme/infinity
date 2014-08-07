@@ -103,13 +103,13 @@
             //$fotoramaDiv.hide();
             function setCName(id) {
                 $('.color-name').text($('.color-item').eq(id).attr('data-color-title'));
-                if($('.color-item').length != 0) {
-                    $('.color-item').eq(0).addClass('active');
-                }
             }
             function setColor(id) {
                 setCName(id);
                 color_fotorama.show(id);
+            }
+            if($('.color-item').length != 0) {
+                $('.color-item').eq(0).addClass('active');
             }
             setCName(0);
             $(document).on('click', '.color-item', function(){
