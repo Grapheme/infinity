@@ -117,15 +117,17 @@
 	min-height: 640rem / @htmlFontSize;
 
 	.model-fotorama, .color-fotorama {
+		.fotorama__wrap {
+			margin: 0 auto;
+		}
+	}
+
+	.model-fotorama, .color-container {
 		.transition(opacity);
 		opacity: 0;
 
 		&.loaded {
 			opacity: 1;
-		}
-
-		.fotorama__wrap {
-			margin: 0 auto;
 		}
 	}
 
