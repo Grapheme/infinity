@@ -65,9 +65,11 @@
 
             $(this).parent().find('.gal-prev').on('click', function(){
                 fotorama.show('<');
+                return false;
             });
             $(this).parent().find('.gal-next').on('click', function(){
                 fotorama.show('>');
+                return false;
             });
         });
     </script>
