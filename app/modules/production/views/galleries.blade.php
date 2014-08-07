@@ -14,6 +14,7 @@
             @if($slider->gallery->photos->count() > 1)
             <a href="#" class="gal-prev"></a>
             <a href="#" class="gal-next"></a>
+            <a href="#" class="gal-down"><i class="fa fa-angle-double-down"></i></a>
             @endif
             <div class="wrapper">
                 <div class="gallery-info">

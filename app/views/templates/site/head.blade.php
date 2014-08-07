@@ -5,6 +5,7 @@
 {{ HTML::style('theme/css/normalize.css') }}
 {{ HTML::style('theme/css/main.css') }}
 {{ HTML::style('theme/css/sumoselect.css') }}
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 @if(Config::get("app.use_googlefonts"))
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
 @endif
