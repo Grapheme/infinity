@@ -56,11 +56,13 @@
                             <input class="input" type="text" name="fio" placeholder="Ф.И.О.">
                         </section>
                         <section>
-                            <input class="input" type="text" name="email" placeholder="Email">
+                            <input class="input" type="text" name="email" placeholder="Email или телефон">
                         </section>
+                        {{--
                         <section>
                             <input class="input" type="text" name="phone" placeholder="Телефон">
                         </section>
+                        --}}
                         <section>
                             <textarea class="textarea" name="content" placeholder="Ваш вопрос"></textarea>
                         </section>

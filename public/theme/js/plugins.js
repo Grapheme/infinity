@@ -13,7 +13,7 @@ function runFormValidation() {
         rules:{
             fio: {required : true},
             email: {required : true, email : true},
-            phone: {required : true},
+            //phone: {required : true},
             content: {required : true}
         },
         messages : {
@@ -81,7 +81,7 @@ function runFormValidation() {
         rules:{
             fio: {required : true},
             phone: {required : true},
-            email: {required : true, email : true},
+            //email: {required : true, email : true},
             product_id: {required : true}
         },
         messages : {
@@ -116,7 +116,7 @@ function runFormValidation() {
         rules:{
             fio: {required : true},
             phone: {required : true},
-            email: {required : true, email : true},
+            //email: {required : true, email : true},
             product: {required : true}
         },
         messages : {
@@ -151,7 +151,7 @@ function runFormValidation() {
         rules:{
             fio: {required : true},
             phone: {required : true},
-            email: {required : true, email : true},
+            //email: {required : true, email : true},
         },
         messages : {
             fio : {required : 'Укажите Ваше полное имя'},

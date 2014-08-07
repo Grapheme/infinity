@@ -28,3 +28,12 @@
 
 	{{HTML::script('theme/js/app.js');}}
 
+    <style>
+    .state-error input, .state-error select, .state-error textarea, .state-error .CaptionCont {
+        border: 1px solid #633E7C !important;
+        background-color: #E9D9F3 !important;
+    }
+    em.invalid {
+        display: none !important;
+    }
+    </style>
