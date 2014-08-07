@@ -255,12 +255,12 @@
             @endif
                 <div class="car-name">{{ $product->meta->first()->title }}</div>
                 {{ $product->meta->first()->in_menu_content }}
-                <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="car-link"><span class="icon icon-page"></span>Подробнее</a>
                 <div class="car-btns">
-                    <a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive" data-model="{{ $product->meta->first()->title }}"><span class="icon icon-wheel"></span>Записаться на тестдрайв</a>
+                    <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="drive-btn"><span class="icon icon-page"></span>Подробнее</a>
+                    <!--<a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive" data-model="{{ $product->meta->first()->title }}"><span class="icon icon-wheel"></span>Записаться на тестдрайв</a>
                     @if(!empty($product->brochure) && File::exists(public_path($product->brochure)))
                     <a class="drive-btn" target="_blank" href="{{ asset($product->brochure) }}"><span class="icon icon-bricks"></span>Брошюра</a>
-                    @endif
+                    @endif-->
                 </div>
             </div>
         @foreach($product->related_products as $related_product)
@@ -271,12 +271,12 @@
             @endif
                 <div class="car-name">{{ $related_product->meta->first()->title }}</div>
             {{ $related_product->meta->first()->in_menu_content }}
-                <a href="{{ link::to(ProductionController::$prefix_url.'/'.$related_product->meta->first()->seo_url) }}" class="car-link"><span class="icon icon-page"></span>Подробнее</a>
                 <div class="car-btns">
-                    <a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive" data-model="{{ $product->meta->first()->title }}"><span class="icon icon-wheel"></span>Записаться на тестдрайв</a>
+                    <a href="{{ link::to(ProductionController::$prefix_url.'/'.$related_product->meta->first()->seo_url) }}" class="drive-btn"><span class="icon icon-page"></span>Подробнее</a>
+                    <!--<a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive" data-model="{{ $product->meta->first()->title }}"><span class="icon icon-wheel"></span>Записаться на тестдрайв</a>
                     @if(!empty($related_product->brochure) && File::exists(public_path($related_product->brochure)))
                     <a class="drive-btn" target="_blank" href="{{ asset($related_product->brochure) }}"><span class="icon icon-bricks"></span>Брошюра</a>
-                    @endif
+                    @endif-->
                 </div>
             </div>
         @endforeach
