@@ -77,7 +77,7 @@ function runFormValidation() {
         }
     });
 
-    var order_testdrive_call = $("#order-testdrive-form").validate({
+    var order_testdrive_call = $("#order-testdrive-form, .order-testdrive-form").validate({
         rules:{
             fio: {required : true},
             phone: {required : true},

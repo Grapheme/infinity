@@ -83,13 +83,21 @@
         <div class="dtest-in">
             <div class="title">Заявка<br>на тест-драйв</div>
             <div class="dtest-form">
-                <form>
-                    <input type="text" class="dtest-input" placeholder="Ф.И.О.">
-                    <input type="text" class="dtest-input" placeholder="Телефон">
-                    <input type="text" class="dtest-input" placeholder="Email">
-                    <input type="hidden" class="hidden-model" value="">
+                {{ Form::open(array('url'=>URL::route('order_textdrive_call'),'role'=>'form','class'=>'smart-form order-testdrive-form','id'=>'order-testdrive-form0','method'=>'post')) }}
+                    <section>
+                        <input type="text" name="fio" class="dtest-input" placeholder="Ф.И.О.">
+                    </section>
+                    <section>
+                        <input type="text" name="phone" class="dtest-input" placeholder="Телефон">
+                    </section>
+                    <section>
+                        <input type="text" name="email" class="dtest-input" placeholder="Email">
+                    </section>
+                    <section>
+                        <input type="hidden" name="product_id" class="hidden-model" value="{{ is_object($product) ? $product->id : '' }}">
+                    </section>
                     <button type="submit" class="btn fl-r">Отправить</button>
-                </form>
+                {{ Form::close() }}
                 <div class="clearfix"></div>
             </div>
         </div>

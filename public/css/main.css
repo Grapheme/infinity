@@ -738,7 +738,6 @@ html {
   display: inline-block;
   vertical-align: top;
   height: 100%;
-  border-bottom: 1px solid #000;
   color: #fff;
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -1775,6 +1774,9 @@ html {
   text-transform: uppercase;
   font-size: 2.125rem;
   margin-bottom: 1.25rem;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.75);
+}
+.gallery-block .inf-text {
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.75);
 }
 .gallery-block .gallery-info {

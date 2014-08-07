@@ -35,11 +35,16 @@ class FeedbackController extends BaseController {
 
         if(!Request::ajax()) return App::abort(404);
         $json_request = array('status'=>FALSE, 'responseText'=>'','responseErrorText'=>'','redirect'=>FALSE);
-        $validation = Validator::make(Input::all(), array('fio'=>'required', 'email'=>'required|email', 'phone'=>'required', 'content'=>'required'));
+        $validation = Validator::make(Input::all(), array(
+            'fio'=>'required', 
+            'email'=>'required',  #|email
+            #'phone'=>'required',
+            'content'=>'required'
+        ));
         if($validation->passes()):
             $this->postSendmessage(
                 Input::get('email'),
-                array('subject'=>'Заказ звонка','email'=>Input::get('email'),'name'=>Input::get('fio'),'phone'=>Input::get('phone'),'content'=>Input::get('content'))
+                array('subject'=>'Заказ звонка', 'email'=>Input::get('email'), 'name'=>Input::get('fio'), 'phone'=>Input::get('phone'), 'content'=>Input::get('content'))
             );
             $json_request['responseText'] = 'Сообщение отправлено';
             $json_request['status'] = TRUE;
@@ -73,8 +78,16 @@ class FeedbackController extends BaseController {
     public function postOrderTestDrive() {
 
         if(!Request::ajax()) return App::abort(404);
+
         $json_request = array('status'=>FALSE, 'responseText'=>'','responseErrorText'=>'','redirect'=>FALSE);
-        $validation = Validator::make(Input::all(), array('fio'=>'required', 'phone'=>'required', 'email'=>'required|email','product_id'=>'required'));
+
+        $validation = Validator::make(Input::all(), array(
+            'fio'=>'required',
+            'phone'=>'required',
+            #'email'=>'required|email',
+            'product_id'=>'required')
+        );
+
         if($validation->passes()):
 
             $product_title = 'Не определено';
@@ -99,7 +112,12 @@ class FeedbackController extends BaseController {
 
         if(!Request::ajax()) return App::abort(404);
         $json_request = array('status'=>FALSE, 'responseText'=>'','responseErrorText'=>'','redirect'=>FALSE);
-        $validation = Validator::make(Input::all(), array('fio'=>'required', 'phone'=>'required', 'email'=>'required|email','product'=>'required'));
+        $validation = Validator::make(Input::all(), array(
+            'fio'=>'required', 
+            'phone'=>'required', 
+            #'email'=>'required|email',
+            'product'=>'required'
+        ));
         if($validation->passes()):
             $this->postSendmessage(
                 Input::get('email'),
@@ -119,7 +137,11 @@ class FeedbackController extends BaseController {
 
         if(!Request::ajax()) return App::abort(404);
         $json_request = array('status'=>FALSE, 'responseText'=>'','responseErrorText'=>'','redirect'=>FALSE);
-        $validation = Validator::make(Input::all(), array('fio'=>'required', 'phone'=>'required', 'email'=>'required|email'));
+        $validation = Validator::make(Input::all(), array(
+            'fio'=>'required',
+            'phone'=>'required',
+            #'email'=>'required|email'
+        ));
         if($validation->passes()):
             $this->postSendmessage(
                 Input::get('email'),
@@ -138,7 +160,7 @@ class FeedbackController extends BaseController {
     public function postSendmessage($email = null, $data = null, $template = 'feedback') {
 
         return  Mail::send($this->module['gtpl'].$template,$data, function ($message) use ($email, $data) {
-            if(!is_null($email)):
+            if(!is_null($email) && $email != ''):
                 $message->from($email, @$data['name']);
             endif;
             $message->to(Config::get('mail.feedback_mail'), Config::get('mail.feedback_name'))->subject(@$data['subject']);
