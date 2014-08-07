@@ -447,8 +447,9 @@ var tooltips = (function(){
 		cont.css('z-index', 999);
 		cont.addClass('active').show();
 		cont.css({
+			'display': 'inline-block',
 			'top': pos_y,
-			'left': $('.header-cont').offset().left - $('.header-cont').offset().left / 1.5
+			'right': $(window).width() - 840 - $('.header-cont').offset().left * 1/1.5 /*$(window).width() - $('.header-cont').offset().left - $('.header-cont').offset().left * 1.5*/
 		});
 
 		var tr_x = this_tool.offset().left - cont.offset().left + this_tool.width()/2 - 15/2;
