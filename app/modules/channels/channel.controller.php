@@ -145,13 +145,15 @@ class ChannelController extends BaseController {
             return App::abort(404);
         endif;
         try{
-            $element = ChannelCategory::where('slug', Request::segment(1))->with(array('channel' => function ($query) use ($url) {
-                $query->where('link', $url);
-                $query->with('images');
-                $query->with(array('gallery'=>function($query_gallery){
-                    $query_gallery->with('photos');
-                }));
-            }))->first();
+            $element = ChannelCategory::where('slug', Request::segment(1))
+                ->with(array('channel' => function ($query) use ($url) {
+                    $query->where('link', $url);
+                    $query->with('images');
+                    $query->with('gallery.photos');
+                }))
+                ->first();
+
+            #Helper::tad($element);
 
             if(!$element):
                 return App::abort(404);
@@ -169,7 +171,8 @@ class ChannelController extends BaseController {
                     'page_title' => $element->title.'. '.$element->channel->first()->title,'page_description' => '','page_keywords' => '','page_author' => '',
                     'page_h1' => $element->channel->first()->title,
                     'page_h1' => $element->channel->first()->title,
-                    'menu' => NULL,'element' => $element
+                    'menu' => NULL,
+                    'element' => $element
                 )
             );
         }catch (Exception $e){

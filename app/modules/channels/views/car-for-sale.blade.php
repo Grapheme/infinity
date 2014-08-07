@@ -12,7 +12,7 @@
     </header>
 </section>
 
-@if(!is_null($element->channel->first()->gallery) && $element->channel->first()->gallery->photos->count())
+@if(!is_null($element->channel[0]->gallery) && $element->channel[0]->gallery->photos->count())
 <section class="jcarousel-wrapper">
     <div class="jcarousel">
         <ul><!--
