@@ -15,9 +15,9 @@
     @endforeach
         <ul class="index-nav">
             <li class="option"><a href="#" class="js-pop-show" data-popup="call">Заказать<br>звонок</a>
-            <li class="option"><a href="#" class="js-pop-show" data-popup="test-drive-models">Запись<br>на тест-драйв</a>
-            <li class="option"><a href="#" class="js-pop-show" data-popup="recover">Запись<br>на сервис</a>
-            <li class="option"><a href="#" class="js-pop-show" data-popup="items">Заказ<br>запчастей</a>
+            <li class="option"><a href="#" class="js-pop-show" data-popup="test-drive-models">Записаться<br>на тест-драйв</a>
+            <li class="option"><a href="#" class="js-pop-show" data-popup="recover">Записаться<br>на сервис</a>
+            <li class="option"><a href="#" class="js-pop-show" data-popup="items">Заказать<br>запчасти</a>
         </ul>
     </div>
     <div class="js-slider-nav">
