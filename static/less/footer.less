@@ -97,10 +97,16 @@
 
 	.footer-bottom {
 		padding: 95rem / @htmlFontSize 0 25rem / @htmlFontSize;
+		color: #b4b4b4;
 
 		a {
-			color: #fff;
+			.transition(color);
+			color: #b4b4b4;
 			text-decoration: none;
+			
+			&:hover {
+				color: #fff;
+			}
 		}
 	}
 }

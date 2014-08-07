@@ -1,41 +1,33 @@
 .tool-triangle {
 	position: absolute;
 	//display: none;
-	top: -8rem / @htmlFontSize;
+	top: -7rem / @htmlFontSize;
 	width: 0;
 	height: 0;
 	border-style: solid;
 	border-width: 0 7.5rem / @htmlFontSize 8rem / @htmlFontSize 7.5rem / @htmlFontSize;
 	border-color: transparent transparent #ffffff transparent;
-}
-
-.tooltip-cont {
-	/*position: absolute;
-	width: 1240rem / @htmlFontSize;
-	top: 0;
-	left: 50%;
-	margin-left: -1240rem / 2 / @htmlFontSize;*/
+	z-index: 4;
 }
 
 .car-tooltip {
-	//.transition;
-	//opacity: 0;
 	display: none;
 	position: absolute;
 	z-index: 99;
 	top: 0;
-	left: 0;
 	color: #000;
 	background: #fff;
-
-	.tool-triangle {
-		//left: 290rem / @htmlFontSize;
-	}
+	white-space: nowrap;
+	height: 22rem;
 
 	.left-block {
+		.box-sizing;
 		margin-right: -4rem / @htmlFontSize;
 		display: inline-block;
 		vertical-align: top;
+		border: 1px solid #e0e0e0;
+		border-right: 0;
+		height: 100%;
 
 		.car-ul {
 			.list-unstyled;
@@ -78,6 +70,8 @@
 
 	.main-blocks {
 		display: inline-block;
+		vertical-align: top;
+		height: 100%;
 	}
 
 	.main-block {
@@ -85,13 +79,14 @@
 		position: relative;
 		display: inline-block;
 		vertical-align: top;
-		border-left: 1px solid #e0e0e0;
-		width: 1000rem / @htmlFontSize;
+		border: 1px solid #e0e0e0;
+		width: 840rem / @htmlFontSize;
 		background-color: #fff;
 		background-position: bottom right;
 		background-repeat: no-repeat;
 		background-size: 65% auto;
 		padding: 30rem / @htmlFontSize 0 35rem / @htmlFontSize 50rem / @htmlFontSize;
+		min-height: 100%;
 
 		.car-name {
 			.inf-title;
@@ -111,7 +106,8 @@
 		}
 
 		.car-btns {
-			margin-top: 70rem / @htmlFontSize;
+			position: absolute;
+			bottom: 40rem / @htmlFontSize;
 		}
 
 		.car-link {
@@ -135,8 +131,7 @@
 }
 
 .cars-tooltip {
-	//.transition;
-	//opacity: 0;
+	.box-sizing;
 	display: none;
 	position: absolute;
 	top: 0;
@@ -144,12 +139,9 @@
 	z-index: 99;
 	color: #000;
 	background: #fff;
-	width: 770rem / @htmlFontSize;
 	padding: 35rem / @htmlFontSize 35rem / @htmlFontSize 0 35rem / @htmlFontSize;
-
-	.tool-triangle {
-		left: 430rem / @htmlFontSize;
-	}
+	width: 840rem / @htmlFontSize;
+	border: 1px solid #e0e0e0;
 
 	.car-block {
 		margin-bottom: 40rem / @htmlFontSize;
