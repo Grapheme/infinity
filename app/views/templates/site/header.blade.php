@@ -81,7 +81,7 @@
     <div class="pop-window pop-dtest closed" data-popup="test-drive">
         <i class="js-pop-close">&#x2715;</i>
         <div class="dtest-in">
-            <div class="title">Заявка<br>на тест-драйв</div>
+            <div class="title">Запись<br>на тест-драйв</div>
             <div class="dtest-form">
                 {{ Form::open(array('url'=>URL::route('order_textdrive_call'),'role'=>'form','class'=>'smart-form order-testdrive-form','id'=>'order-testdrive-form0','method'=>'post')) }}
                     <section>
@@ -105,7 +105,7 @@
     <div class="pop-window pop-dtest closed" data-popup="test-drive-models">
         <i class="js-pop-close">&#x2715;</i>
         <div class="dtest-in">
-            <div class="title">Заявка<br>на тест-драйв</div>
+            <div class="title">Запись<br>на тест-драйв</div>
             <div class="dtest-form">
                 {{ Form::open(array('url'=>URL::route('order_textdrive_call'),'role'=>'form','class'=>'smart-form','id'=>'order-testdrive-form','method'=>'post')) }}
                     <fieldset>
@@ -209,7 +209,7 @@
     <div class="pop-window pop-dtest closed" data-popup="call">
         <i class="js-pop-close">&#x2715;</i>
         <div class="dtest-in">
-            <div class="title">Заказать<br>звонок</div>
+            <div class="title">Заказ<br>звонка</div>
             <div class="dtest-form">
                 {{ Form::open(array('url'=>URL::route('index_order_call'),'role'=>'form','class'=>'smart-form','id'=>'index-order-call-form','method'=>'post')) }}
                     <section>

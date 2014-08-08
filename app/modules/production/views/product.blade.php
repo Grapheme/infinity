@@ -37,7 +37,7 @@
                 <div class="price">{{ $product->meta->first()->price }}</div>
                 <div class="text"></div>
                 <a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive">
-                    <span class="icon icon-wheel"></span> Записаться на тестдрайв
+                    <span class="icon icon-wheel"></span> Записаться на тест-драйв
                 </a>
             </div>
         </div>
@@ -51,7 +51,7 @@
             @foreach($product->colors as $product_color)
                 @if (is_object($product_color->images))
                     @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
-                        <li class="color-item" style="background-color: {{ $product_color->color }};" data-color="{{ $product_color->color }}" data-color-title="{{ $product_color->title }}" title="{{ $product_color->title }}"></li>
+                        <li class="color-item" style="background-color: {{ $product_color->color }};" data-color="{{ $product_color->color }}" title="{{ $product_color->title }}"></li>
                     @endif
                 @endif
             @endforeach

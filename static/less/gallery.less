@@ -4,6 +4,7 @@
 	overflow: hidden;
 }
 
+
 .gallery-block {
 	position: absolute;
 	top: 0; left: 0; right: 0; bottom: 0;
@@ -16,6 +17,12 @@
 
 	&.transition {
 		.transition(all, 1s);
+	}
+
+	&:last-child {
+		.gal-down {
+			display: none;
+		}
 	}
 
 	.title {
@@ -142,6 +149,22 @@
 				background: rgba(255, 255, 255, 1);
 				.transform(rotate(-55deg));
 			}
+		}
+	}
+
+	.gal-down {
+		.transition(color);
+		cursor: pointer;
+		position: absolute;
+		left: 50%;
+		margin-left: -15rem / @htmlFontSize;
+		bottom: 5%;
+		color: rgba(255, 255, 255, .3);
+		font-size: 3rem;
+		z-index: 2;
+
+		&:hover {
+			color: rgba(255, 255, 255, .75);
 		}
 	}
 

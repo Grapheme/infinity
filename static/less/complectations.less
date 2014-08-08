@@ -122,6 +122,15 @@
 		}
 	}
 
+	.model-fotorama, .color-container {
+		.transition(opacity);
+		opacity: 0;
+
+		&.loaded {
+			opacity: 1;
+		}
+	}
+
 	.slider-nav-win {
 		position: relative;
 		height: 112rem / @htmlFontSize;

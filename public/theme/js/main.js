@@ -345,6 +345,38 @@ jQuery.fn.galleryAnim = function() {
 		}
 	});
 
+	function gettop() {
+		var active = cont.find('.gallery-block.active');
+		if(active.index() == 0) {
+			allow_scroll = 'top';
+			return ;
+		}
+		fade_allow = false;
+		allow_scroll = false;
+		active.removeClass('active').addClass('fadeOut');
+		block.eq(active.index() - 1).addClass('active');
+		setTimeout(function(){
+			fade_allow = true;
+		}, fade_time);
+	}
+
+	function getdown() {
+		var active = cont.find('.gallery-block.active');
+		if(active.index() + 1 == slides_length) {
+			allow_scroll = 'bottom';
+			return ;
+		}
+		fade_allow = false;
+		allow_scroll = false;
+		active.removeClass('active');
+		block.eq(active.index() + 1).removeClass('fadeOut').addClass('active');
+		setTimeout(function(){
+			fade_allow = true;
+		}, fade_time);
+	}
+
+	$(document).on('click', '.gal-down', getdown);
+
 	$(document).bind('mousewheel DOMMouseScroll', function(event) {
 		var delta;
 
@@ -366,33 +398,11 @@ jQuery.fn.galleryAnim = function() {
 
 		if($('html').hasClass('scroll-blocked') && fade_allow) {
 			if(delta > 0) {
-				var active = cont.find('.gallery-block.active');
-				if(active.index() == 0) {
-					allow_scroll = 'top';
-					return ;
-				}
-				fade_allow = false;
-				allow_scroll = false;
-				active.removeClass('active').addClass('fadeOut');
-				block.eq(active.index() - 1).addClass('active');
-				setTimeout(function(){
-					fade_allow = true;
-				}, fade_time);
+				gettop();
 			} else
 
 			if(delta < 0) {
-				var active = cont.find('.gallery-block.active');
-				if(active.index() + 1 == slides_length) {
-					allow_scroll = 'bottom';
-					return ;
-				}
-				fade_allow = false;
-				allow_scroll = false;
-				active.removeClass('active');
-				block.eq(active.index() + 1).removeClass('fadeOut').addClass('active');
-				setTimeout(function(){
-					fade_allow = true;
-				}, fade_time);
+				getdown();
 			}
 		}
 	});
@@ -410,6 +420,7 @@ jQuery.fn.carsHover = function(){
 var tooltips = (function(){
 	$('.js-tooltip-block').hide();
 	var timeout = false;
+	var show_timeout = false;
 	var timeout_trans = false;
 	var opened = false;
 	var pos_y = $('.main-header').height();
@@ -426,19 +437,26 @@ var tooltips = (function(){
 		var cont = $('.js-tooltip-block[data-tooltip="' + id + '"]');
 		if(opened) {
 			cont.show().siblings().hide();
+			var time = 0;
+		} else {
+			var time = 150;
 		}
-		cont.css('z-index', 999);
-		cont.addClass('active').show();
 		cont.css({
-			'display': 'inline-block',
 			'top': pos_y,
 			'right': $(window).width() - 840 - $('.header-cont').offset().left * 1/1.5 /*$(window).width() - $('.header-cont').offset().left - $('.header-cont').offset().left * 1.5*/
 		});
+		show_timeout = setTimeout(function(){
+			cont.css('z-index', 999);
+			cont.addClass('active').show();
+			cont.css({
+				'display': 'inline-block',
+			});
 
-		var tr_x = this_tool.offset().left - cont.offset().left + this_tool.width()/2 - 15/2;
-		cont.find('.tool-triangle').css('left', tr_x);
-		opened = true;
-		clearTimeout(timeout);
+			var tr_x = this_tool.offset().left - cont.offset().left + this_tool.width()/2 - 15/2;
+			cont.find('.tool-triangle').css('left', tr_x);
+			opened = true;
+			clearTimeout(timeout);
+		}, time);
 	}
 
 	function close(id) {
@@ -448,6 +466,7 @@ var tooltips = (function(){
 			cont.removeClass('active').fadeOut(100);				
 			opened = false;
 		}, 500);
+		clearTimeout(show_timeout);
 	}
 
 })();
@@ -461,7 +480,7 @@ var smart_tabs = (function() {
 		});
 	}
 
-	$(document).on('mouseover', '.js-smartabs li', function(){
+	$(document).on('mouseover touchstart', '.js-smartabs li', function(){
 		$(this).addClass('active').siblings().removeClass('active');
 		var parent = $(this).parent().parent().parent();
 		parent.find('.main-block').eq($(this).index()).show().siblings().hide();
@@ -478,6 +497,13 @@ var color = (function(){
 		$('.slider-window').removeClass('window-tocolor');
 		$('.color-container').removeClass('active');
 		return false;
+	});
+})();
+
+var model_load = (function(){
+	$(window).on('load', function(){
+		if($('.model-fotorama').length != 0) $('.model-fotorama').addClass('loaded');
+		if($('.color-container').length != 0) setTimeout(function(){ $('.color-container').addClass('loaded'); }, 500);
 	});
 })();
 

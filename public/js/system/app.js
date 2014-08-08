@@ -371,7 +371,7 @@ $(document).ready(function() {
 
 // Fix page and nav height
 function nav_page_height() {
-	setHeight = $('#main').height();
+	/*setHeight = $('#main').height();
 	menuHeight = $.left_panel.height();
 	windowHeight = $(window).height() - $.navbar_height;
 	//set height
@@ -383,7 +383,7 @@ function nav_page_height() {
 	} else {
 		$.left_panel.css('min-height', windowHeight + 'px');
 		$.root_.css('min-height', windowHeight + 'px');
-	}
+	}*/
 }
 
 $('#main').resize(function() {
