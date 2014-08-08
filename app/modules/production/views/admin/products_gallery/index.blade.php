@@ -35,8 +35,6 @@
                         </label>
                     </section>
 
-                    <br/><br/>
-
                     @endfor
 
                 @endif
