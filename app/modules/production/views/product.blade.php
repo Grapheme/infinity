@@ -103,6 +103,7 @@
             //$fotoramaDiv.hide();
             function setCName(id) {
                 $('.color-name').text($('.color-item').eq(id).attr('data-color-title'));
+                alert(id);
             }
             function setColor(id) {
                 setCName(id);
