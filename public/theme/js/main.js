@@ -55,65 +55,11 @@ $.fn.slider = function(option) {
 			setTimeout(function(){
 				auto(auto_time);
 			}, auto_time);
+			setTimeout(function(){
+				$('.slider-img').removeClass('toload');
+				$('.slide-info').removeClass('toload');
+			}, 100);
 		});
-	}
-
-	var thumb_rm = function(del, out, i) {
-		slider_allow = false;
-		var block = slider.find('.slider-nav .thumb[data-id=' + del + ']').first();
-		var time;
-		if(out) {
-			block.css({
-				'position': 'absolute',
-				'left': -(i+1) * block.outerWidth(true)
-			});
-			setTimeout(function(){
-				block.remove();
-				slider_allow = true;
-			}, 500);
-		} else {
-			setTimeout(function(){
-				block.remove();
-				slider_allow = true;
-			}, 500);
-		}
-	}
-
-	var thumb_show = function(id, type) {
-		var pre_str = get_thumb(id, thumb[id], img[id]);
-		if(type == 'prepend') {
-			slider.find('.slider-nav').prepend(pre_str);
-		} else {
-			slider.find('.slider-nav').append(pre_str);
-		}
-	}
-
-	var nav_change = function(dif, direction) {
-		if(direction == 'prepend') {
-			var x = - slider.find('.thumb').outerWidth(true) * dif;
-			slider_nav.attr('style', '-webkit-transform: translateX('+ x +'px);');
-			setTimeout(function(){
-				slider_nav.addClass('transition');
-				slider_nav.removeAttr('style');
-				setTimeout(function(){
-					slider_nav.removeClass('transition');
-				}, 500);
-			}, 1);
-		}
-		if(direction == 'append') {
-			var x = slider.find('.thumb').outerWidth(true) * dif;
-			slider_nav.attr('style', '-webkit-transform: translateX('+ x +'px);');
-			setTimeout(function(){
-				slider_nav.addClass('transition');
-				slider_nav.removeAttr('style');
-				setTimeout(function(){
-					slider_nav.removeClass('transition');
-				}, 500);
-			}, 1);
-			
-			
-		}
-
 	}
 
 	var auto = function(time) {
@@ -140,47 +86,6 @@ $.fn.slider = function(option) {
 		setTimeout(function(){
 			info_rm.removeClass('fadeout').removeClass('active');
 		}, 500);
-
-		if(slider.find('.thumb[data-id=' + id + ']').index() < active_thumb.index()) {
-			var del_id = parseInt(slider.find('.thumb').last().attr('data-id'));
-			var add_id = parseInt(slider.find('.thumb').first().attr('data-id')) - 1;
-
-			for(var i = 0; i < dif; i++) {
-				del = del_id - i;
-				add = add_id - i;
-				
-				if(add < 0) {
-					add = slide_length - Math.abs(add);
-				}
-				if(del < 0) {
-					del = slide_length - Math.abs(del);
-				}
-
-				thumb_rm(del);
-				thumb_show(add, 'prepend');
-				nav_change(dif, 'prepend');
-			}
-
-		} else {
-			var del_id = parseInt(slider.find('.thumb').first().attr('data-id'));
-			var add_id = parseInt(slider.find('.thumb').last().attr('data-id')) + 1;
-
-			for(var i = 0; i < dif; i++) {
-				del = del_id + (dif - 1 - i);
-				add = add_id + i;
-
-				if(add > slide_length - 1) {
-					add = add - slide_length;
-				}
-				if(del > slide_length - 1) {
-					del = del - slide_length;
-				}
-
-				thumb_rm(del, true, i);
-				thumb_show(add, 'append');
-				nav_change(dif, 'append');
-			}
-		}
 
 		active_thumb = slider.find('.thumb[data-id=' + id + ']');
 		active_id = id;

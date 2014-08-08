@@ -3,10 +3,10 @@
     $products_slider = Channel::where('category_id',@$channelCategory->id)->orderBy('title')->with('images')->get();
 ?>
 <div class="slider-container">
-    <div class="slider-img"></div>
+    <div class="slider-img toload"></div>
     <div class="wrapper slider-wrapper">
     @foreach($products_slider as $slide)
-        <div class="slide-info">
+        <div class="slide-info toload">
             <div class="title">{{ $slide->title }}</div>
             <div class="text">
                 {{ $slide->short }}

@@ -10,11 +10,16 @@
 	}
 
 	.slider-img {
+		.transition(all, 3s);
 		position: absolute;
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
 		z-index: 1;
+
+		&.toload {
+			.transform(scale(1.15) translate(-10px, -15px));
+		}
 
 		&:before {
 			content: "";
@@ -41,12 +46,17 @@
 	}
 
 	.slide-info {
+		.transition(all, 2s);
 		position: absolute;
 		top: 450rem / @htmlFontSize;
 		left: 15rem / @htmlFontSize;
 		width: 500rem / @htmlFontSize;
 		text-shadow: 3px 3px 5px rgba(0, 0, 0, .5);
 		display: none;
+
+		&.toload {
+			.transform(translate(0, -15px));
+		}
 
 		.title {
 			color: #fff;
