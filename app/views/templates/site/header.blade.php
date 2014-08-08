@@ -244,7 +244,7 @@
                     @if(!is_null($product->menu_image) && File::exists(public_path('uploads/galleries/'.$product->menu_image->name)))
                        <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->menu_image->name) }})"></div>
                     @endif
-                        <div class="car-name">{{ $product->meta->first()->title }}</div>
+                        <div class="car-name">{{ $product->meta->first()->short_title }}</div>
             @foreach($product->related_products as $related_product)
                 <li>
                 @if(!is_null($related_product->menu_image) && File::exists(public_path('uploads/galleries/'.$related_product->menu_image->name)))
@@ -261,7 +261,7 @@
             @else
             <div class="main-block">
             @endif
-                <div class="car-name">{{ $product->meta->first()->title }}</div>
+                <div class="car-name">{{ $product->meta->first()->short_title }}</div>
                 {{ $product->meta->first()->in_menu_content }}
                 <div class="car-btns">
                     <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="drive-btn"><span class="icon icon-page"></span>Подробнее</a>
