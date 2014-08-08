@@ -4,11 +4,16 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery.min.js');}}"><\/script>')</script>
 @endif
+
+    {{-- Вова, охуеть --}}
+    if (0)
 	{{HTML::script('js/system/main.js');}}
 	{{HTML::script('js/vendor/SmartNotification.min.js');}}
 	{{HTML::script('js/vendor/jquery.validate.min.js');}}
 	{{HTML::script('js/system/app.js');}}
 	{{HTML::script('js/system/messages.js');}}
+    @endif
+
 	{{HTML::script('theme/js/plugins.js');}}
 	<script type="text/javascript">
 		if(typeof runFormValidation === 'function'){
