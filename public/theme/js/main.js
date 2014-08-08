@@ -439,7 +439,7 @@ var tooltips = (function(){
 			cont.show().siblings().hide();
 			var time = 0;
 		} else {
-			var time = 300;
+			var time = 150;
 		}
 		cont.css({
 			'top': pos_y,
