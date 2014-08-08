@@ -95,7 +95,7 @@
         </div>
         <div class="footer-bottom">
             <span>© 2014 Copyright GEDON Group</span>
-            <span class="fl-r">сделано в <a href="http://grapheme.ru" target="_blank">ГРАФЕМА</a></span>
+            <span class="fl-r">Cделано в <a href="http://grapheme.ru" target="_blank">ГРАФЕМА</a></span>
         </div>
     </div>
 </footer>
