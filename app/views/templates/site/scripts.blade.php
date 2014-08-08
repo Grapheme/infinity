@@ -6,7 +6,7 @@
 @endif
 
     {{-- Вова, охуеть --}}
-    if (0)
+    @if (0)
 	{{HTML::script('js/system/main.js');}}
 	{{HTML::script('js/vendor/SmartNotification.min.js');}}
 	{{HTML::script('js/vendor/jquery.validate.min.js');}}
