@@ -461,7 +461,7 @@ var tooltips = (function(){
 
 	function close(id) {
 		var cont = $('.js-tooltip-block[data-tooltip="' + id + '"]');
-		cont.css('z-index', 5);
+		cont.css('z-index', 6);
 		timeout = setTimeout(function(){
 			cont.removeClass('active').fadeOut(100);				
 			opened = false;
