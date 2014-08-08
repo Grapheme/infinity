@@ -1,7 +1,9 @@
 .slider-container {
 	position: relative;
 	z-index: 1;
-	height: 50rem;
+	max-height: 50rem;
+	min-height: 45rem;
+	height: 100vh;
 	background: #000;
 
 	.slider-wrapper {
@@ -69,7 +71,7 @@
 
 		.text {
 			color: #fff;
-			font-size: 16rem / @htmlFontSize;
+			font-size: 14rem / @htmlFontSize;
 			font-weight: 300;
 			width: 410rem / @htmlFontSize;
 			line-height: 20rem / @htmlFontSize;
@@ -77,6 +79,10 @@
 			p {
 				margin: 0 0 7rem / @htmlFontSize;
 			}
+		}
+
+		ul {
+			line-height: 1.8em;
 		}
 	}
 
