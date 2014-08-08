@@ -761,3 +761,13 @@ body.smart-style-2 {
     border: 1px solid rgba(0, 0, 0, .2);
     border-radius: 4px;
 }
+
+/*
+body {
+    overflow: visible;
+    height: auto;
+}
+#left-panel {
+    height: 100%;
+}
+*/
