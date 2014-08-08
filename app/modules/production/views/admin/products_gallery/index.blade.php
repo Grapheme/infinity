@@ -2,8 +2,11 @@
 
 
 @section('content')
-<h1>Продукция: Галереи ({{ $product->meta->first()->title }})</h1>
-{{ Form::open(array('url' => URL::route('product_gallery_store', array('product_id' => $product->id)), 'role'=>'form', 'class' => 'smart-form', 'id' => 'product-gallery-form', 'method' => 'post')) }}
+
+    <h1>Продукция: Галереи ({{ $product->meta->first()->title }})</h1>
+
+    {{ Form::open(array('url' => URL::route('product_gallery_store', array('product_id' => $product->id)), 'role'=>'form', 'class' => 'smart-form', 'id' => 'product-gallery-form', 'method' => 'post')) }}
+
     <div class="row margin-top-10">
         <section class="col col-6">
             <div class="well">
@@ -38,20 +41,22 @@
 
                 @endif
                 </fieldset>
+
+                <footer>
+                    <a class="btn btn-default no-margin regular-10 uppercase pull-left btn-spinner" href="{{URL::previous()}}">
+                        <i class="fa fa-arrow-left hidden"></i> <span class="btn-response-text">Назад</span>
+                    </a>
+                    <button type="submit" autocomplete="off" class="btn btn-success no-margin regular-10 uppercase btn-form-submit">
+                        <i class="fa fa-spinner fa-spin hidden"></i> <span class="btn-response-text">Сохранить</span>
+                    </button>
+                </footer>
+
             </div>
         </section>
     </div>
-    <section class="col-6">
-        <footer>
-            <a class="btn btn-default no-margin regular-10 uppercase pull-left btn-spinner" href="{{URL::previous()}}">
-                <i class="fa fa-arrow-left hidden"></i> <span class="btn-response-text">Назад</span>
-            </a>
-            <button type="submit" autocomplete="off" class="btn btn-success no-margin regular-10 uppercase btn-form-submit">
-                <i class="fa fa-spinner fa-spin hidden"></i> <span class="btn-response-text">Сохранить</span>
-            </button>
-        </footer>
-    </section>
-{{ Form::close() }}
+
+    {{ Form::close() }}
+
 @stop
 
 
