@@ -337,6 +337,19 @@ var tooltips = (function(){
 		close($(this).attr('data-tooltip'));
 	});
 
+	function init() {
+		setTimeout(function(){
+			$('.car-tooltip').each(function(){
+				var lblock = $(this).find('.left-block li');
+				var mblock = $(this).find('.main-block');
+				if(lblock.length != 0) {
+					var w = mblock.eq(0).outerWidth(true) - lblock.outerWidth(true);
+					mblock.css('width', w);
+				}
+			});
+		}, 500);
+	}
+
 	function show(id) {
 		var this_tool = $('.js-tooltip[data-tooltip="' + id + '"]');
 		var cont = $('.js-tooltip-block[data-tooltip="' + id + '"]');
@@ -373,6 +386,8 @@ var tooltips = (function(){
 		}, 500);
 		clearTimeout(show_timeout);
 	}
+
+	init();
 
 })();
 
