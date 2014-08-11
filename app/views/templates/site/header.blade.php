@@ -262,7 +262,7 @@
             <div class="main-block">
             @endif
                 <div class="car-name">{{ $product->meta->first()->short_title }}</div>
-                <div claas="car-desc">{{ $product->meta->first()->in_menu_content }}</div>
+                <div class="car-desc">{{ $product->meta->first()->in_menu_content }}</div>
                 <div class="car-btns">
                     <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="drive-btn"><span class="icon icon-page"></span>Подробнее</a>
                     <!--<a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive" data-model="{{ $product->meta->first()->title }}"><span class="icon icon-wheel"></span>Записаться на тестдрайв</a>
