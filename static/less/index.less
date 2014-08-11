@@ -51,11 +51,11 @@
 	.slide-info {
 		.transition(all, 2s);
 		position: absolute;
-		top: 50%;
-		left: 15rem / @htmlFontSize;
 		width: 500rem / @htmlFontSize;
-		text-shadow: 3px 3px 5px rgba(0, 0, 0, .5);
 		display: none;
+		top: 12rem;
+    	left: 0;
+    	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.75);
 
 		&.toload {
 			.transform(translate(0, -15px));
@@ -78,6 +78,10 @@
 
 			p {
 				margin: 0 0 7rem / @htmlFontSize;
+			}
+
+			ul {
+				margin-top: 25rem / @htmlFontSize;
 			}
 		}
 
