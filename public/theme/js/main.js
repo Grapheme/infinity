@@ -222,7 +222,7 @@ jQuery.fn.galleryAnim = function() {
 		slides_length = block.length,
 		allow_scroll = 'top',
 		fade_allow = true,
-		start_timeout = false,
+		anim_allow = false,
 		fade_time = 1000;
 
 	block.eq(0).addClass('active').siblings().addClass('fadeOut');
@@ -238,18 +238,18 @@ jQuery.fn.galleryAnim = function() {
 		if(allow_scroll != 'bottom' && $(window).scrollTop() > $('.gallery').offset().top) {
 			$(window).scrollTop($('.gallery').offset().top);
 			$('html').addClass('scroll-blocked');
-			fade_allow = false;
-			start_timeout = setTimeout(function(){
-				fade_allow = true;
+			anim_allow = false;
+			setTimeout(function(){
+				anim_allow = true;
 			}, 1000);
 		}
 
 		if(allow_scroll == 'bottom' && $(window).scrollTop() + $(window).height() < $('.gallery').offset().top + $('.gallery').height()) {
 			$(window).scrollTop($('.gallery').offset().top);
 			$('html').addClass('scroll-blocked');
-			fade_allow = false;
-			start_timeout = setTimeout(function(){
-				fade_allow = true;
+			anim_allow = false;
+			setTimeout(function(){
+				anim_allow = true;
 			}, 1000);
 		}
 
@@ -260,7 +260,7 @@ jQuery.fn.galleryAnim = function() {
 	});
 
 	function gettop() {
-		clearTimeout(start_timeout);
+		if(!anim_allow) return;
 		var active = cont.find('.gallery-block.active');
 		if(active.index() == 0) {
 			allow_scroll = 'top';
@@ -276,7 +276,7 @@ jQuery.fn.galleryAnim = function() {
 	}
 
 	function getdown() {
-		clearTimeout(start_timeout);
+		if(!anim_allow) return;
 		var active = cont.find('.gallery-block.active');
 		if(active.index() + 1 == slides_length) {
 			allow_scroll = 'bottom';
