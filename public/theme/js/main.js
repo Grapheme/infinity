@@ -222,7 +222,7 @@ jQuery.fn.galleryAnim = function() {
 		slides_length = block.length,
 		allow_scroll = 'top',
 		fade_allow = true,
-		start_timeout,
+		start_timeout = false,
 		fade_time = 1000;
 
 	block.eq(0).addClass('active').siblings().addClass('fadeOut');
