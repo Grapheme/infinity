@@ -1,28 +1,35 @@
 .top-bg {
 	position: relative;
 
-	img {
-		width: 100%;
+	.offer-img {
+		height: 600rem / @htmlFontSize;
+		max-height: 90vh;
+		background-size: cover;
+		background-position: center center;
 	}
 
 	header {
 		position: absolute;
 		top: 124rem / @htmlFontSize;
 		left: 78rem / @htmlFontSize;
+		text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 
 		width: 400rem / @htmlFontSize; //317
 
 		h2 {
 			margin: 0 0 16rem / @htmlFontSize;
 
-			font-size: 34.5em / @htmlFontSize; 
-			line-height: 37em / 34.5;
+			font-size: 2rem;
+			font-weight: 300;
 			text-transform: uppercase;
+			margin-bottom: 1.25rem;
 		}
 
 		.desc {
-			font-size: 14em / @htmlFontSize;
-			text-transform: uppercase;
+			font-size: .875rem;
+			font-weight: 300;
+			width: 25.625rem;
+			line-height: 1.25rem;
 		}
 
 	}

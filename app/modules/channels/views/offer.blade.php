@@ -12,7 +12,7 @@
         </div>
     </header>
     @if(File::exists(public_path('uploads/galleries/'.$element->channel->first()->images->name)))
-    <img src="{{ asset('uploads/galleries/'.$element->channel->first()->images->name) }}" alt="">
+        <div class="offer-img" style="background-image: url({{ asset('uploads/galleries/'.$element->channel->first()->images->name) }});"></div>
     @endif
 </section>
 
