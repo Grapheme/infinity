@@ -237,11 +237,19 @@ jQuery.fn.galleryAnim = function() {
 		if(allow_scroll != 'bottom' && $(window).scrollTop() > $('.gallery').offset().top) {
 			$(window).scrollTop($('.gallery').offset().top);
 			$('html').addClass('scroll-blocked');
+			fade_allow = false;
+			setTimeout(function(){
+				fade_allow = true;
+			}, 1000);
 		}
 
 		if(allow_scroll == 'bottom' && $(window).scrollTop() + $(window).height() < $('.gallery').offset().top + $('.gallery').height()) {
 			$(window).scrollTop($('.gallery').offset().top);
 			$('html').addClass('scroll-blocked');
+			fade_allow = false;
+			setTimeout(function(){
+				fade_allow = true;
+			}, 1000);
 		}
 
 		if($('html').hasClass('scroll-blocked')) {
@@ -430,16 +438,5 @@ var model_load = (function(){
 $('.testSelect').SumoSelect();
 $('.cars-tooltip').carsHover();
 
-//Click events
-/*$('.colorView').click( function() {
-	$('.colorWrapper').addClass('active');
-});
-$('.color-close').click( function() {
-	$('.colorWrapper').removeClass('active');
-});*/
-
-//var colorNames = ['цвет1','цвет2','цвет3','цвет4','цвет5','цвет6','цвет7','цвет8','цвет9','цвет10'];
-
 $("ul#tabs").tabs("#tabContent");
-//$(".colors-list").colorChange(colorNames);
 
