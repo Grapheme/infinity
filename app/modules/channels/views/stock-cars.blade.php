@@ -22,7 +22,7 @@ if (count($instocks)) {
 
 ?>
 <main>
-    <section class="buy-offer used">
+    <section class="information buy-offer used">
         <section class="buy-suboffer">
             <header>
                 <h1>
