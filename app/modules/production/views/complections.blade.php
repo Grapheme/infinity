@@ -6,7 +6,7 @@
 @section('content')
 @include('production/views/accepts/product-menu')
 @if($product->complections->count())
-<section class="complectations information">
+<section class="complectations inf-block">
     <header class="clearfix">
         <h1>Комплектации и цены</h1>
         <div class="filter">
