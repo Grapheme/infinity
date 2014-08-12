@@ -276,7 +276,10 @@
                 <div class="car-desc">{{ $product->meta->first()->in_menu_content }}</div>
                 @if ($product->instocks->count())
                 <div class="car-instock">
-                    <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->instocks->count() }} {{ $product->meta->first()->title }} в наличии</a>
+                    <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">
+                        {{--{{ $product->instocks->count() }} {{ $product->meta->first()->title }} в наличии--}}
+                        {{ trans_choice(':count автомобиль|:count автомобиля|:count автомобилей', $product->instocks->count(), array(), 'ru') }} в наличии
+                    </a>
                 </div>
                 @endif
                 <div class="car-btns">
@@ -297,7 +300,10 @@
                 <div class="car-desc">{{ $related_product->meta->first()->in_menu_content }}</div>
                 @if ($related_product->instocks->count())
                 <div class="car-instock">
-                    <a href="{{ link::to(ProductionController::$prefix_url.'/'.$related_product->meta->first()->seo_url) }}">{{ $related_product->instocks->count() }} {{ $related_product->meta->first()->title }} в наличии</a>
+                    <a href="{{ link::to(ProductionController::$prefix_url.'/'.$related_product->meta->first()->seo_url) }}">
+                        {{--{{ $related_product->instocks->count() }} {{ $related_product->meta->first()->title }} в наличии--}}
+                        {{ trans_choice(':count автомобиль|:count автомобиля|:count автомобилей', $related_product->instocks->count(), array(), 'ru') }} в наличии
+                    </a>
                 </div>
                 @endif
                 <div class="car-btns">
