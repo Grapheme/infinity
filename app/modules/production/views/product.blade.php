@@ -76,7 +76,7 @@
     <script>
         $(window).on('load', function(){
             $('.model-fotorama').fotorama({
-                'width': '1240px',
+                'width': '100%',
                 'height': '640px',
                 'fit': 'cover',
                 'loop': true,
