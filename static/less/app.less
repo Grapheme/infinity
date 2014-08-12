@@ -144,7 +144,23 @@ html {
 }
 
 .awwards {
-	
+	position: relative;
+	padding-left: 200rem / @htmlFontSize;
+
+	&:before {
+		content: "";
+		height: 100%:
+		width: 180rem / @htmlFontSize;
+		background: url(../img/champ.svg) no-repeat 0 0 e('/') auto 100%;
+	}
+
+	.desc {
+		margin-bottom: 15rem / @htmlFontSize;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 }
 
 .dict {
