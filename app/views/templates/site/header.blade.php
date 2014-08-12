@@ -267,7 +267,7 @@
             @else
             <div class="main-block">
             @endif
-                <div class="car-name">{{ $product->meta->first()->short_title }}</div>
+                <div class="car-name">{{ $product->meta->first()->title }}</div>
                 <div class="car-desc">{{ $product->meta->first()->in_menu_content }}</div>
                 <div class="car-btns">
                     <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="drive-btn"><span class="icon icon-page"></span>Подробнее</a>
