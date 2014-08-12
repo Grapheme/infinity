@@ -7,8 +7,8 @@
     <div class="wrapper slider-wrapper">
     @foreach($products_slider as $slide)
         <div class="slide-info toload">
-            <div class="title">{{ $slide->title }}</div>
-            <div class="text">
+            <div class="car-name">{{ $slide->title }}</div>
+            <div class="car-desc">
                 {{ $slide->short }}
             </div>
         </div>
