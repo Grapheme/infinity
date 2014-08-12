@@ -5,7 +5,7 @@
 
 @section('content')
 {{ $content }}
-<section class="accessories sect-wrapper">
+<section class="accessories sect-wrapper inf-block">
     <header>
         <h1>Аксессуары</h1>
     </header>
