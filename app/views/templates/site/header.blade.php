@@ -253,14 +253,14 @@
                     @if(!is_null($product->menu_image) && File::exists(public_path('uploads/galleries/'.$product->menu_image->name)))
                         <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->menu_image->name) }})"></div>
                     @endif
-                    <div class="car-name">{{ $product->meta->first()->title }}</div>
+                    <div class="car-name">{{ trim(preg_replace('~infiniti~is', '', $product->meta->first()->title)) }}</div>
 
                     @foreach($product->related_products as $related_product)
                         <li>
                         @if(!is_null($related_product->menu_image) && File::exists(public_path('uploads/galleries/'.$related_product->menu_image->name)))
                             <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/'.$related_product->menu_image->name) }})"></div>
                         @endif
-                            <div class="car-name">{{ $related_product->meta->first()->title }}</div>
+                            <div class="car-name">{{ trim(preg_replace('~infiniti~is', '', $related_product->meta->first()->title)) }}</div>
                     @endforeach
 
             </ul>
@@ -272,7 +272,7 @@
             @else
             <div class="main-block">
             @endif
-                <div class="car-name">{{ $product->meta->first()->title }}</div>
+                <div class="car-name">{{ trim(preg_replace('~infiniti~is', '', $product->meta->first()->title)) }}</div>
                 <div class="car-desc">{{ $product->meta->first()->in_menu_content }}</div>
                 @if ($product->instocks->count())
                 <div class="car-instock">
@@ -293,7 +293,7 @@
             @else
             <div class="main-block">
             @endif
-                <div class="car-name">{{ $related_product->meta->first()->title }}</div>
+                <div class="car-name">{{ trim(preg_replace('~infiniti~is', '', $related_product->meta->first()->title)) }}</div>
                 <div class="car-desc">{{ $related_product->meta->first()->in_menu_content }}</div>
                 @if ($related_product->instocks->count())
                 <div class="car-instock">
@@ -326,7 +326,7 @@
                     @if(!is_null($product->menu_image) && File::exists(public_path('uploads/galleries/thumbs/'.$product->menu_image->name)))
                         <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/thumbs/'.$product->menu_image->name) }});"></div>
                     @endif
-                        <div class="car-name">{{ $product->meta->first()->title }}</div>
+                        <div class="car-name">{{ trim(preg_replace('~infiniti~is', '', $product->meta->first()->title)) }}</div>
                  @endforeach
                 </ul>
             </div>
