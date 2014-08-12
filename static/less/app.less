@@ -43,13 +43,23 @@ html {
 		margin-bottom: .5rem;
 	}
 	.car-desc {
-		font-size: .875rem;
+		font-size: 16rem / @htmlFontSize;
 		font-weight: 300;
 		width: 25.625rem;
 		line-height: 1.25rem;
 
 		ul {
+			font-size: 14rem / @htmlFontSize;
+			list-style: none;
 			margin-top: 1.5625rem;
+
+			li {
+				margin-bottom: 8rem / @htmlFontSize;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
 		}
 	}
 }
