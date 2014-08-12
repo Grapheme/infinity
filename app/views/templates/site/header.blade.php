@@ -251,16 +251,17 @@
             <ul class="car-ul js-smartabs">
                  <li>
                     @if(!is_null($product->menu_image) && File::exists(public_path('uploads/galleries/'.$product->menu_image->name)))
-                       <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->menu_image->name) }})"></div>
+                        <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->menu_image->name) }})"></div>
                     @endif
-                        <div class="car-name">{{ $product->meta->first()->title }}</div>
-            @foreach($product->related_products as $related_product)
-                <li>
-                @if(!is_null($related_product->menu_image) && File::exists(public_path('uploads/galleries/'.$related_product->menu_image->name)))
-                   <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/'.$related_product->menu_image->name) }})"></div>
-                @endif
-                    <div class="car-name">{{ $related_product->meta->first()->title }}</div>
-            @endforeach
+                    <div class="car-name">{{ $product->meta->first()->title }}</div>
+
+                    @foreach($product->related_products as $related_product)
+                        <li>
+                        @if(!is_null($related_product->menu_image) && File::exists(public_path('uploads/galleries/'.$related_product->menu_image->name)))
+                            <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/'.$related_product->menu_image->name) }})"></div>
+                        @endif
+                            <div class="car-name">{{ $related_product->meta->first()->title }}</div>
+                    @endforeach
 
             </ul>
         </div><!--
