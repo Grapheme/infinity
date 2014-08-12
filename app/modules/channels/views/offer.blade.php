@@ -12,7 +12,7 @@
         </div>
     </header>
     @if(File::exists(public_path('uploads/galleries/'.$element->channel->first()->images->name)))
-    <img src="{{ asset('uploads/galleries/'.$element->channel->first()->images->name) }}" alt="">
+        <div class="offer-img" style="background-image: url({{ asset('uploads/galleries/'.$element->channel->first()->images->name) }});"></div>
     @endif
 </section>
 
@@ -20,7 +20,7 @@
     $channelCategory = ChannelCategory::where('slug',$element->slug)->first();
     $offers = Channel::where('category_id',@$channelCategory->id)->where('id','!=',$element->channel->first()->id)->orderBy('title')->with('images')->get();
 ?>
-<section class="buy-offer">
+<section class="buy-offer information">
     <header>
         <div class="desc">
             {{ $element->channel->first()->desc }}

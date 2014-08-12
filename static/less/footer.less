@@ -26,6 +26,7 @@
 			font-size: 11rem / @htmlFontSize;
 			text-transform: uppercase;
 			margin-bottom: 25rem / @htmlFontSize;
+			font-weight: 600;
 		}
 
 		.footer-ul {
@@ -84,7 +85,13 @@
 
 			.soc-link {
 				.transition(color);
-				font-family: "social";
+				display: inline-block;
+				font-family: FontAwesome;
+				font-style: normal;
+				font-weight: normal;
+				line-height: 1;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
 				text-decoration: none;
 				color: rgba(255, 255, 255, 0.4);
 				margin-right: 5rem / @htmlFontSize;
@@ -95,18 +102,18 @@
 			}
 		}
 
-		.icon-fb:before { content: '\e800'; }
-		.icon-in:before { content: '\e801'; }
-		.icon-vk:before { content: '\e802'; }
+		.icon-fb:before { content: "\f082"; }
+		.icon-in:before { content: "\f16d"; }
+		.icon-vk:before { content: "\f189"; }
 	}
 
 	.footer-bottom {
 		padding: 95rem / @htmlFontSize 0 25rem / @htmlFontSize;
-		color: #b4b4b4;
+		color: #5F5F5F;
 
 		a {
 			.transition(color);
-			color: #b4b4b4;
+			color: #5F5F5F;
 			text-decoration: none;
 			
 			&:hover {

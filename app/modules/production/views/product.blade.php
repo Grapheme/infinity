@@ -27,13 +27,13 @@
     </div>
 
     <div class="slider-window">
-        <div class="wrapper model-cont">
+        <div class="model-cont">
             @if($product->colors->count())
             <a class="drive-btn colorView" href="#"><span class="icon icon-circle"></span> Выбор цвета</a>
             @endif
             <div class="auto-info">
-                <div class="title">{{ $product->meta->first()->title }}</div>
-                <div class="text">{{ $product->meta->first()->preview }}</div>
+                <div class="car-name">{{ $product->meta->first()->title }}</div>
+                <div class="car-desc">{{ $product->meta->first()->preview }}</div>
                 <div class="price">{{ $product->meta->first()->price }}</div>
                 <div class="text"></div>
                 <a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive">
@@ -102,7 +102,7 @@
             var color_fotorama = $fotoramaDiv.data('fotorama');
             //$fotoramaDiv.hide();
             function setCName(id) {
-                $('.color-name').text($('.color-item').eq(id).attr('data-color-title'));
+                $('.color-name').text($('.color-item').eq(id).attr('title'));
             }
             function setColor(id) {
                 setCName(id);

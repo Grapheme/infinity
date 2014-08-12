@@ -19,6 +19,7 @@
 	background: #fff;
 	white-space: nowrap;
 	height: 22rem;
+	overflow: hidden;
 
 	.left-block {
 		.box-sizing;
@@ -39,6 +40,7 @@
 
 				&.active {
 					background: #fff;
+					box-shadow: 0 3px 10px rgba(0, 0, 0, .2);
 
 					&:after {
 						content: "";
@@ -80,7 +82,7 @@
 		display: inline-block;
 		vertical-align: top;
 		border: 1px solid #e0e0e0;
-		width: 840rem / @htmlFontSize;
+		width: 940rem / @htmlFontSize;
 		background-color: #fff;
 		background-position: bottom right;
 		background-repeat: no-repeat;
@@ -88,9 +90,9 @@
 		padding: 30rem / @htmlFontSize 0 35rem / @htmlFontSize 50rem / @htmlFontSize;
 		min-height: 100%;
 
-		.car-name {
-			.inf-title;
+		.car-info-block;
 
+		.car-name {
 			span {
 				font-size: 24rem / @htmlFontSize;
 				font-weight: 200;

@@ -70,7 +70,7 @@
         <div class="search">
             {{ Form::open(array('url'=>link::to('search/request'),'method'=>'post')) }}
             <input type="text" placeholder="Поиск" name="search_request" class="search-input" value="{{ Input::get('query') }}">
-            <button type="submit" class="search-btn"></button>
+            <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
             {{ Form::close() }}
         </div>
         <a href="javascript:void(0);" class="gedon-link"></a>
@@ -249,16 +249,15 @@ Helper::ta($header_models);
                     @if(!is_null($product->menu_image) && File::exists(public_path('uploads/galleries/'.$product->menu_image->name)))
                        <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/'.$product->menu_image->name) }})"></div>
                     @endif
+                        <div class="car-name">{{ $product->meta->first()->short_title }}</div>
+            @foreach($product->related_products as $related_product)
+                <li>
+                @if(!is_null($related_product->menu_image) && File::exists(public_path('uploads/galleries/'.$related_product->menu_image->name)))
+                   <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/'.$related_product->menu_image->name) }})"></div>
+                @endif
+                    <div class="car-name">{{ $related_product->meta->first()->title }}</div>
+            @endforeach
 
-                    <div class="car-name">{{ $product->meta->first()->title }}</div>
-
-                    @foreach($product->related_products as $related_product)
-                        <li>
-                        @if(!is_null($related_product->menu_image) && File::exists(public_path('uploads/galleries/'.$related_product->menu_image->name)))
-                            <div class="car-photo" style="background-image: url({{ asset('uploads/galleries/'.$related_product->menu_image->name) }})"></div>
-                        @endif
-                            <div class="car-name">{{ $related_product->meta->first()->title }}</div>
-                    @endforeach
             </ul>
         </div><!--
         --> @endif
@@ -268,8 +267,8 @@ Helper::ta($header_models);
             @else
             <div class="main-block">
             @endif
-                <div class="car-name">{{ $product->meta->first()->title }}</div>
-                {{ $product->meta->first()->in_menu_content }}
+                <div class="car-name">{{ $product->meta->first()->short_title }}</div>
+                <div class="car-desc">{{ $product->meta->first()->in_menu_content }}</div>
                 <div class="car-btns">
                     <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="drive-btn"><span class="icon icon-page"></span>Подробнее</a>
                     <!--<a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive" data-model="{{ $product->meta->first()->title }}"><span class="icon icon-wheel"></span>Записаться на тестдрайв</a>
@@ -285,7 +284,7 @@ Helper::ta($header_models);
             <div class="main-block">
             @endif
                 <div class="car-name">{{ $related_product->meta->first()->title }}</div>
-            {{ $related_product->meta->first()->in_menu_content }}
+                <div class="car-desc">{{ $related_product->meta->first()->in_menu_content }}</div>
                 <div class="car-btns">
                     <a href="{{ link::to(ProductionController::$prefix_url.'/'.$related_product->meta->first()->seo_url) }}" class="drive-btn"><span class="icon icon-page"></span>Подробнее</a>
                     <!--<a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive" data-model="{{ $product->meta->first()->title }}"><span class="icon icon-wheel"></span>Записаться на тестдрайв</a>

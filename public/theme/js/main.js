@@ -55,65 +55,11 @@ $.fn.slider = function(option) {
 			setTimeout(function(){
 				auto(auto_time);
 			}, auto_time);
+			setTimeout(function(){
+				$('.slider-img').removeClass('toload');
+				$('.slide-info').removeClass('toload');
+			}, 100);
 		});
-	}
-
-	var thumb_rm = function(del, out, i) {
-		slider_allow = false;
-		var block = slider.find('.slider-nav .thumb[data-id=' + del + ']').first();
-		var time;
-		if(out) {
-			block.css({
-				'position': 'absolute',
-				'left': -(i+1) * block.outerWidth(true)
-			});
-			setTimeout(function(){
-				block.remove();
-				slider_allow = true;
-			}, 500);
-		} else {
-			setTimeout(function(){
-				block.remove();
-				slider_allow = true;
-			}, 500);
-		}
-	}
-
-	var thumb_show = function(id, type) {
-		var pre_str = get_thumb(id, thumb[id], img[id]);
-		if(type == 'prepend') {
-			slider.find('.slider-nav').prepend(pre_str);
-		} else {
-			slider.find('.slider-nav').append(pre_str);
-		}
-	}
-
-	var nav_change = function(dif, direction) {
-		if(direction == 'prepend') {
-			var x = - slider.find('.thumb').outerWidth(true) * dif;
-			slider_nav.attr('style', '-webkit-transform: translateX('+ x +'px);');
-			setTimeout(function(){
-				slider_nav.addClass('transition');
-				slider_nav.removeAttr('style');
-				setTimeout(function(){
-					slider_nav.removeClass('transition');
-				}, 500);
-			}, 1);
-		}
-		if(direction == 'append') {
-			var x = slider.find('.thumb').outerWidth(true) * dif;
-			slider_nav.attr('style', '-webkit-transform: translateX('+ x +'px);');
-			setTimeout(function(){
-				slider_nav.addClass('transition');
-				slider_nav.removeAttr('style');
-				setTimeout(function(){
-					slider_nav.removeClass('transition');
-				}, 500);
-			}, 1);
-			
-			
-		}
-
 	}
 
 	var auto = function(time) {
@@ -140,47 +86,6 @@ $.fn.slider = function(option) {
 		setTimeout(function(){
 			info_rm.removeClass('fadeout').removeClass('active');
 		}, 500);
-
-		if(slider.find('.thumb[data-id=' + id + ']').index() < active_thumb.index()) {
-			var del_id = parseInt(slider.find('.thumb').last().attr('data-id'));
-			var add_id = parseInt(slider.find('.thumb').first().attr('data-id')) - 1;
-
-			for(var i = 0; i < dif; i++) {
-				del = del_id - i;
-				add = add_id - i;
-				
-				if(add < 0) {
-					add = slide_length - Math.abs(add);
-				}
-				if(del < 0) {
-					del = slide_length - Math.abs(del);
-				}
-
-				thumb_rm(del);
-				thumb_show(add, 'prepend');
-				nav_change(dif, 'prepend');
-			}
-
-		} else {
-			var del_id = parseInt(slider.find('.thumb').first().attr('data-id'));
-			var add_id = parseInt(slider.find('.thumb').last().attr('data-id')) + 1;
-
-			for(var i = 0; i < dif; i++) {
-				del = del_id + (dif - 1 - i);
-				add = add_id + i;
-
-				if(add > slide_length - 1) {
-					add = add - slide_length;
-				}
-				if(del > slide_length - 1) {
-					del = del - slide_length;
-				}
-
-				thumb_rm(del, true, i);
-				thumb_show(add, 'append');
-				nav_change(dif, 'append');
-			}
-		}
 
 		active_thumb = slider.find('.thumb[data-id=' + id + ']');
 		active_id = id;
@@ -317,6 +222,7 @@ jQuery.fn.galleryAnim = function() {
 		slides_length = block.length,
 		allow_scroll = 'top',
 		fade_allow = true,
+		anim_allow = false,
 		fade_time = 1000;
 
 	block.eq(0).addClass('active').siblings().addClass('fadeOut');
@@ -332,11 +238,19 @@ jQuery.fn.galleryAnim = function() {
 		if(allow_scroll != 'bottom' && $(window).scrollTop() > $('.gallery').offset().top) {
 			$(window).scrollTop($('.gallery').offset().top);
 			$('html').addClass('scroll-blocked');
+			anim_allow = false;
+			setTimeout(function(){
+				anim_allow = true;
+			}, 1000);
 		}
 
 		if(allow_scroll == 'bottom' && $(window).scrollTop() + $(window).height() < $('.gallery').offset().top + $('.gallery').height()) {
 			$(window).scrollTop($('.gallery').offset().top);
 			$('html').addClass('scroll-blocked');
+			anim_allow = false;
+			setTimeout(function(){
+				anim_allow = true;
+			}, 1000);
 		}
 
 		if($('html').hasClass('scroll-blocked')) {
@@ -346,6 +260,7 @@ jQuery.fn.galleryAnim = function() {
 	});
 
 	function gettop() {
+		if(!anim_allow) return;
 		var active = cont.find('.gallery-block.active');
 		if(active.index() == 0) {
 			allow_scroll = 'top';
@@ -361,6 +276,7 @@ jQuery.fn.galleryAnim = function() {
 	}
 
 	function getdown() {
+		if(!anim_allow) return;
 		var active = cont.find('.gallery-block.active');
 		if(active.index() + 1 == slides_length) {
 			allow_scroll = 'bottom';
@@ -432,6 +348,19 @@ var tooltips = (function(){
 		close($(this).attr('data-tooltip'));
 	});
 
+	function init() {
+		setTimeout(function(){
+			$('.car-tooltip').each(function(){
+				var lblock = $(this).find('.left-block li');
+				var mblock = $(this).find('.main-block');
+				if(lblock.length != 0) {
+					var w = mblock.eq(0).outerWidth(true) - lblock.outerWidth(true);
+					mblock.css('width', w);
+				}
+			});
+		}, 500);
+	}
+
 	function show(id) {
 		var this_tool = $('.js-tooltip[data-tooltip="' + id + '"]');
 		var cont = $('.js-tooltip-block[data-tooltip="' + id + '"]');
@@ -461,13 +390,15 @@ var tooltips = (function(){
 
 	function close(id) {
 		var cont = $('.js-tooltip-block[data-tooltip="' + id + '"]');
-		cont.css('z-index', 5);
+		cont.css('z-index', 6);
 		timeout = setTimeout(function(){
 			cont.removeClass('active').fadeOut(100);				
 			opened = false;
 		}, 500);
 		clearTimeout(show_timeout);
 	}
+
+	init();
 
 })();
 
@@ -510,16 +441,5 @@ var model_load = (function(){
 $('.testSelect').SumoSelect();
 $('.cars-tooltip').carsHover();
 
-//Click events
-/*$('.colorView').click( function() {
-	$('.colorWrapper').addClass('active');
-});
-$('.color-close').click( function() {
-	$('.colorWrapper').removeClass('active');
-});*/
-
-//var colorNames = ['цвет1','цвет2','цвет3','цвет4','цвет5','цвет6','цвет7','цвет8','цвет9','цвет10'];
-
 $("ul#tabs").tabs("#tabContent");
-//$(".colors-list").colorChange(colorNames);
 

@@ -40,7 +40,7 @@
 			display: inline-block;
 			vertical-align: middle;
 			line-height: 30rem / @htmlFontSize;
-			margin-top: 30rem / @htmlFontSize;
+			margin-top: 23rem / @htmlFontSize;
 
 			.option {
 				display: inline-block;
@@ -116,12 +116,12 @@
 				.box-sizing;
 				font-family: 'Open Sans', sans-serif;
 				font-weight: 300;
-				font-size: 14rem / @htmlFontSize;
+				font-size: 13rem / @htmlFontSize;
 				padding: 0 25rem / @htmlFontSize 0 10rem / @htmlFontSize;
 				margin: 0;
 				border: 0 none;
 				background: rgba(255, 255, 255, 0.2);
-				height: 23rem / @htmlFontSize;
+				height: 25rem / @htmlFontSize;
 				width: 145rem / @htmlFontSize;
 				color: #fff;
 
@@ -131,11 +131,13 @@
 
 			.search-btn {
 				position: absolute;
-				top: 0;
+				bottom: 0;
 				right: 0;
-				height: 100%;
+				height: 90%;
 				width: 30rem / @htmlFontSize;
-				background: url(../img/search-icon.png) no-repeat center center e('/') 10rem / @htmlFontSize 10rem / @htmlFontSize;
+				color: #fff;
+				font-size: 12rem / @htmlFontSize;
+				background: transparent;
 				border: 0 none;
 				outline: 0 none;
 			}
@@ -146,7 +148,7 @@
 			vertical-align: middle;
 			width: 102rem / @htmlFontSize;
 			height: 32rem / @htmlFontSize;
-			background: url(../img/gedon.png) no-repeat 0 0 e('/') 100%;
+			background: url(../img/gedon.svg) no-repeat 0 0 e('/') 100%;
 		}
 	}
 }
@@ -159,7 +161,7 @@
 	height: 55rem / @htmlFontSize;
 	line-height: 54rem / @htmlFontSize;
 	background: #633e7c;
-	z-index: 4;
+	z-index: 5;
 	font-family: 'Helvetica Neue', 'Open Sans', sans-serif;
 	white-space: nowrap;
 	min-width: 980rem / @htmlFontSize;
@@ -225,5 +227,10 @@
 		.icon {
 			margin-right: 8rem / @htmlFontSize;
 		}
+	}
+
+	.model-right {
+		display: inline-block;
+		float: right;
 	}
 }
