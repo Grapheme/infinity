@@ -11,8 +11,12 @@
                 $query_related_product_meta->orderBy('title');
             }));
             $query_related_product->with('menu_image');
+            $query_related_product->with('instocks');
         }));
+        $query_product->with('instocks');
     }))->get();
+
+    #Helper::tad($header_models);
 
     #$page_slug = Route::currentRouteName() == 'page' ? Config::get('page.slug') : false;
     $route = Route::currentRouteName();
@@ -269,6 +273,11 @@
             @endif
                 <div class="car-name">{{ $product->meta->first()->title }}</div>
                 <div class="car-desc">{{ $product->meta->first()->in_menu_content }}</div>
+                @if ($product->instocks->count())
+                <div class="car-instock">
+                    <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->instocks->count() }} {{ $product->meta->first()->title }} в наличии</a>
+                </div>
+                @endif
                 <div class="car-btns">
                     <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="drive-btn"><span class="icon icon-page"></span>Подробнее</a>
                     <!--<a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive" data-model="{{ $product->meta->first()->title }}"><span class="icon icon-wheel"></span>Записаться на тестдрайв</a>
@@ -285,6 +294,11 @@
             @endif
                 <div class="car-name">{{ $related_product->meta->first()->title }}</div>
                 <div class="car-desc">{{ $related_product->meta->first()->in_menu_content }}</div>
+                @if ($related_product->instocks->count())
+                <div class="car-instock">
+                    <a href="{{ link::to(ProductionController::$prefix_url.'/'.$related_product->meta->first()->seo_url) }}">{{ $related_product->instocks->count() }} {{ $related_product->meta->first()->title }} в наличии</a>
+                </div>
+                @endif
                 <div class="car-btns">
                     <a href="{{ link::to(ProductionController::$prefix_url.'/'.$related_product->meta->first()->seo_url) }}" class="drive-btn"><span class="icon icon-page"></span>Подробнее</a>
                     <!--<a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive" data-model="{{ $product->meta->first()->title }}"><span class="icon icon-wheel"></span>Записаться на тестдрайв</a>
