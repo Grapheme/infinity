@@ -4,7 +4,7 @@
 ?>
 @if(!is_null($channelCategory) && $offers->count())
 <section class="buy-offer">
-    <section class="information buy-suboffer">
+    <section class="inf-block buy-suboffer">
         <h1>{{ $channelCategory->title }}</h1>
         <ul class="sub-offers-ul">
         @foreach($offers as $offer)
