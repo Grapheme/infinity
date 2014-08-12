@@ -272,16 +272,16 @@
             @else
             <div class="main-block">
             @endif
-                <div class="car-name">{{ trim(preg_replace('~infiniti~is', '', $product->meta->first()->title)) }}</div>
-                <div class="car-desc">{{ $product->meta->first()->in_menu_content }}</div>
-                @if ($product->instocks->count())
-                <div class="car-instock">
-                    <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">
-                        {{--{{ $product->instocks->count() }} {{ $product->meta->first()->title }} в наличии--}}
-                        {{ trans_choice(':count автомобиль|:count автомобиля|:count автомобилей', $product->instocks->count(), array(), 'ru') }} в наличии
-                    </a>
+                <div class="car-name">
+                    {{ trim(preg_replace('~infiniti~is', '', $product->meta->first()->title)) }}
+                    @if ($product->instocks->count())
+                        <a class="cars-instock" href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">
+                            {{--{{ $product->instocks->count() }} {{ $product->meta->first()->title }} в наличии--}}
+                            {{ trans_choice(':count автомобиль|:count автомобиля|:count автомобилей', $product->instocks->count(), array(), 'ru') }} в наличии
+                        </a>
+                    @endif
                 </div>
-                @endif
+                <div class="car-desc">{{ $product->meta->first()->in_menu_content }}</div>
                 <div class="car-btns">
                     <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}" class="drive-btn"><span class="icon icon-page"></span>Подробнее</a>
                     <!--<a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive" data-model="{{ $product->meta->first()->title }}"><span class="icon icon-wheel"></span>Записаться на тестдрайв</a>
@@ -296,16 +296,16 @@
             @else
             <div class="main-block">
             @endif
-                <div class="car-name">{{ trim(preg_replace('~infiniti~is', '', $related_product->meta->first()->title)) }}</div>
-                <div class="car-desc">{{ $related_product->meta->first()->in_menu_content }}</div>
-                @if ($related_product->instocks->count())
-                <div class="car-instock">
-                    <a href="{{ link::to(ProductionController::$prefix_url.'/'.$related_product->meta->first()->seo_url) }}">
-                        {{--{{ $related_product->instocks->count() }} {{ $related_product->meta->first()->title }} в наличии--}}
-                        {{ trans_choice(':count автомобиль|:count автомобиля|:count автомобилей', $related_product->instocks->count(), array(), 'ru') }} в наличии
-                    </a>
+                <div class="car-name">
+                    {{ trim(preg_replace('~infiniti~is', '', $related_product->meta->first()->title)) }}
+                    @if ($related_product->instocks->count())
+                        <a class="cars-instock" href="{{ link::to(ProductionController::$prefix_url.'/'.$related_product->meta->first()->seo_url) }}">
+                            {{--{{ $related_product->instocks->count() }} {{ $related_product->meta->first()->title }} в наличии--}}
+                            {{ trans_choice(':count автомобиль|:count автомобиля|:count автомобилей', $related_product->instocks->count(), array(), 'ru') }} в наличии
+                        </a>
+                    @endif
                 </div>
-                @endif
+                <div class="car-desc">{{ $related_product->meta->first()->in_menu_content }}</div>
                 <div class="car-btns">
                     <a href="{{ link::to(ProductionController::$prefix_url.'/'.$related_product->meta->first()->seo_url) }}" class="drive-btn"><span class="icon icon-page"></span>Подробнее</a>
                     <!--<a href="javascript:void(0);" class="drive-btn js-pop-show" data-popup="test-drive" data-model="{{ $product->meta->first()->title }}"><span class="icon icon-wheel"></span>Записаться на тестдрайв</a>
