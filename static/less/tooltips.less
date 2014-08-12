@@ -93,11 +93,17 @@
 		.car-info-block;
 
 		.cars-instock {
+			.transition(border);
 			color: #aaa;
 			font-size: 14rem / @htmlFontSize;
 			text-decoration: none;
 			margin-top: 17rem / @htmlFontSize;
 			float: right;
+			border-bottom: 1px solid;
+
+			&:hover {
+				border-color: transparent;
+			}
 		}
 
 		.car-name {
