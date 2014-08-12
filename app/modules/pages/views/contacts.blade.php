@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-    <section class="contacts sect-wrapper">
+    <section class="contacts sect-wrapper inf-block">
         <header>
             <h1>Контакты</h1>
             <div class="desc">
