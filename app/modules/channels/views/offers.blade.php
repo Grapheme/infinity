@@ -3,8 +3,7 @@
     $offers = Channel::where('category_id',@$channelCategory->id)->orderBy('title')->with('images')->get();
 ?>
 @if(!is_null($channelCategory) && $offers->count())
-<section class="buy-offer">
-    <section class="inf-block buy-suboffer">
+<section class="buy-offer inf-block">
         <h1>{{ $channelCategory->title }}</h1>
         <ul class="sub-offers-ul">
         @foreach($offers as $offer)
@@ -30,6 +29,5 @@
                 </div>
         @endforeach
         </ul>
-    </section>
 </section>
 @endif
