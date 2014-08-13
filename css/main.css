@@ -590,6 +590,40 @@ html {
 .fl-r {
   float: right;
 }
+.not-found {
+  text-align: center;
+  margin-top: 12.5rem;
+}
+.not-found .nf-block {
+  text-align: left;
+  display: inline-block;
+}
+.not-found .nf-left {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 7.5rem;
+  color: #633e7c;
+  line-height: 7.5rem;
+  margin-right: 3.125rem;
+}
+.not-found .nf-right {
+  display: inline-block;
+  vertical-align: top;
+  color: #1c1c1c;
+  width: 16.875rem;
+}
+.not-found .nf-right .title {
+  font-size: 1.4375rem;
+  font-weight: 500;
+  margin-bottom: 0.3125rem;
+  text-transform: uppercase;
+}
+.not-found .nf-right .desc {
+  position: relative;
+  left: 0.125rem;
+  font-size: 0.9375rem;
+  line-height: 1.5625rem;
+}
 .news-ul {
   padding: 0;
   margin: 0;

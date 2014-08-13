@@ -183,3 +183,43 @@ html {
 .fl-r {
 	float: right;
 }
+
+.not-found {
+	text-align: center;
+	margin-top: 200rem / @htmlFontSize;
+
+	.nf-block {
+		text-align: left;
+		display: inline-block;
+	}
+
+	.nf-left {
+		display: inline-block;
+		vertical-align: top;
+		font-size: 120rem / @htmlFontSize;
+		color: #633e7c;
+		line-height: 120rem / @htmlFontSize;
+		margin-right: 50rem / @htmlFontSize;
+	}
+
+	.nf-right {
+		display: inline-block;
+		vertical-align: top;
+		color: #1c1c1c;
+		width: 270rem / @htmlFontSize;
+
+		.title {
+			font-size: 23rem / @htmlFontSize;
+			font-weight: 500;
+			margin-bottom: 5rem / @htmlFontSize;
+			text-transform: uppercase;
+		}
+
+		.desc {
+			position: relative;
+			left: 2rem / @htmlFontSize;
+			font-size: 15rem / @htmlFontSize;
+			line-height: 25rem / @htmlFontSize;
+		}
+	}
+}
