@@ -59,7 +59,7 @@ $.fn.slider = function(option) {
 		context.beginPath();
 		context.arc(x, y, radius, -(quart), ((circ) * current) - quart, false);
 		context.stroke();
-		curPerc = curPerc + 0.5;
+		curPerc = curPerc + 0.25;
 		if (curPerc < loaded) {
 			requestAnimationFrame(function () {
 				animate(loaded, curPerc / 100, id)
