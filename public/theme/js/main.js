@@ -522,7 +522,6 @@ var menu_level = (function(){
 			clearTimeout(show_timeout);
 			$('.header-main-menu').addClass('closed');
 			$('.header-menu[data-option="' + option + '"]').addClass('active').siblings().removeClass('active');
-			$('.header-menu[data-option="' + option + '"]').siblings().find('.option').removeClass('active');
 			show(option, 0);
 		}
 	});
@@ -547,6 +546,7 @@ var menu_level = (function(){
 			blocks.eq(i).addClass('active');
 			i++;
 			if(blocks.length == i) {
+				$('.header-menu .option').addClass('active');
 				return;
 			}
 			show(option, i);
@@ -558,7 +558,7 @@ var menu_level = (function(){
 			clearTimeout(show_timeout);
 			$('.header-main-menu').removeClass('closed');
 			$('.header-menu[data-option="' + option + '"]').removeClass('active');
-			$('.header-menu[data-option="' + option + '"] .option').removeClass('active');
+			$('.header-menu .option').removeClass('active');
 			car_tooltip_allow = true;
 		}, 1000);
 	}
