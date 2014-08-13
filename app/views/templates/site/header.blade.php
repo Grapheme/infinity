@@ -41,32 +41,57 @@
     <div class="header-cont">
         <nav class="main-nav">
             <ul class="list-unstyled">
-                <li class="option"><a href="{{ link::to('about') }}" class="@if($page_slug == 'about') active @endif">О компании</a>
-                <li class="option"><a href="{{ link::to('reserve-parts') }}" class="@if($page_slug == 'reserve-parts') active @endif">Сервис и запчасти</a>
-                <li class="option"><a href="{{ link::to('offers') }}" class="@if($page_slug == 'offers') active @endif">Спецпредложения</a>
-                <li class="option"><a href="{{ link::to('services') }}" class="@if($page_slug == 'services') active @endif">Услуги</a>
+                <li class="option" data-option="about"><a href="{{ link::to('about') }}" class="@if($page_slug == 'about') active @endif">О компании</a>
+                <li class="option" data-option="fix"><a href="{{ link::to('reserve-parts') }}" class="@if($page_slug == 'reserve-parts') active @endif">Сервис и запчасти</a>
+                <li class="option" data-option=""><a href="{{ link::to('offers') }}" class="@if($page_slug == 'offers') active @endif">Спецпредложения</a>
+                <li class="option" data-option="service"><a href="{{ link::to('services') }}" class="@if($page_slug == 'services') active @endif">Услуги</a>
             </ul>
         </nav>
         <div class="head-models">
-        @foreach($header_models as $product_category)
-            @if($product_category->product->count())
-            <div class="model">
-                <div class="title">{{ $product_category->title }}</div>
-                <div class="items">
-                @foreach($product_category->product as $product)
-                    @if($product->in_menu == 1)
-                    <a class="js-tooltip @if($page_slug == $product->meta->first()->seo_url) active @endif" data-tooltip="model-{{ $product->id }}" href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->meta->first()->short_title  }}</a>
-                    @endif
-                @endforeach
+            <div class="header-main-menu">
+            @foreach($header_models as $product_category)
+                @if($product_category->product->count())
+                <div class="model">
+                    <div class="title">{{ $product_category->title }}</div>
+                    <div class="items">
+                    @foreach($product_category->product as $product)
+                        @if($product->in_menu == 1)
+                        <a class="js-tooltip @if($page_slug == $product->meta->first()->seo_url) active @endif" data-tooltip="model-{{ $product->id }}" href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->meta->first()->short_title  }}</a>
+                        @endif
+                    @endforeach
+                    </div>
+                </div>
+                @endif
+            @endforeach
+                <div class="model">
+                    <div class="title">&nbsp;</div>
+                    <div class="items">
+                        <a class="js-tooltip" data-tooltip="all" href="javascript:void(0);">Все модели</a>
+                    </div>
                 </div>
             </div>
-            @endif
-        @endforeach
-            <div class="model">
-                <div class="title">&nbsp;</div>
-                <div class="items">
-                    <a class="js-tooltip" data-tooltip="all" href="javascript:void(0);">Все модели</a>
-                </div>
+            <div class="header-menu" data-option="about">
+                <ul>
+                    <li class="option"><a href="{{ link::to('about') }}">Компания</a>
+                    <li class="option"><a href="{{ link::to('news') }}">Новости</a>
+                    <li class="option"><a href="{{ link::to('history') }}">История</a>
+                    <li class="option"><a href="{{ link::to('contacts') }}">Контакты</a>
+                </ul>
+            </div>
+            <div class="header-menu" data-option="service">
+                <ul>
+                    <li class="option"><a href="{{ link::to('services#finance') }}">Автокредитование</a>
+                    <li class="option"><a href="{{ link::to('services#insurance') }}">Страхование</a>
+                    <li class="option"><a href="{{ link::to('services#tradein') }}">Trade-in</a>
+                </ul>
+            </div>
+            <div class="header-menu" data-option="fix">
+                <ul>
+                    <li class="option"><a href="{{ link::to('reserve-parts#service') }}">Сервис</a>
+                    <li class="option"><a href="{{ link::to('reserve-parts#spares') }}">Запчасти</a>
+                    <li class="option"><a href="{{ link::to('reserve-parts#guarantee') }}">Гарантия</a>
+                    <li class="option"><a href="{{ link::to('reserve-parts-accessories') }}">Аксессуары</a>
+                </ul>
             </div>
         </div>
     </div>

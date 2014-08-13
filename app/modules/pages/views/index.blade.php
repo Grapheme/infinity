@@ -7,6 +7,8 @@
 @include('channels/views/index-slider')
 {{ $content }}
 @stop
-@section('scripts')
-
+@section('page_script')
+	<script>
+		$('.slider-container').slider(true);
+	</script>
 @stop
