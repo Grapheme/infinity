@@ -47,3 +47,48 @@
 		.transition();
 	}
 }
+
+.slider-dots {
+	position: absolute;
+	width: 100%;
+	height: 30rem / @htmlFontSize;
+	z-index: 5;
+	left: 0;
+	bottom: 150rem / @htmlFontSize;
+	text-align: center;
+
+	.dot {
+		.transition;
+		display: inline-block;
+		vertical-align: middle;
+		width: 10rem / @htmlFontSize;
+		height: 10rem / @htmlFontSize;
+		border-radius: 10rem / @htmlFontSize;
+		background: #ccc;
+
+		&.closed {
+			opacity: 0;
+		}
+	}
+
+	.dot-cont {
+		display: inline-block;
+		vertical-align: top;
+		width: 20rem / @htmlFontSize;
+		height: 20rem / @htmlFontSize;
+		margin: 0 10rem / @htmlFontSize;
+	}
+
+	#canvas-dot {
+		.transition(all, 1.5s, ease);
+		.transform(scale(.5));
+		display: inline-block;
+		vertical-align: middle;
+		opacity: 0;
+		
+		&.loaded {
+			opacity: 1;
+			.transform(scale(1));
+		}
+	}
+}

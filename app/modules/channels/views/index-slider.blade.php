@@ -30,4 +30,6 @@
     <div class="slider-nav-win" style="display: none;">
         <ul class="slider-nav"></ul>
     </div>
+    <div class="slider-dots">
+    </div>
 </div>

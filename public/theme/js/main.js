@@ -13,6 +13,75 @@ $.fn.slider = function(option) {
 		auto_time = 4000,
 		auto_timeout;
 
+
+	/*** CANVAS CIRCLES ***/
+
+	var canvas, context, x, y, radius, endPercent, curPerc, counterClockwise, circ, quart;
+
+	function canvas_dest(id) {
+		var block = $('.slider-dots .dot-cont').eq(id);
+		block.html('<i class="dot"></i>');
+	}
+
+	function canvas_init(id) {
+		var block = $('.slider-dots .dot-cont').eq(id);
+		block.find('.dot').addClass('closed');
+		setTimeout(function(){
+			block.find('.dot').remove();
+			block.html('<canvas id="canvas-dot" width="20px" height="20px"></canvas>');
+			setTimeout(function(){
+				block.find('#canvas-dot').addClass('loaded');
+			}, 50);
+			canvas = document.getElementById('canvas-dot');
+			context = canvas.getContext('2d');
+			x = canvas.width / 2;
+			y = canvas.height / 2;
+			radius = 5;
+			endPercent = 101;
+			curPerc = 0;
+			counterClockwise = false;
+			circ = Math.PI * 2;
+			quart = Math.PI / 2;
+
+			context.lineWidth = 2;
+			context.strokeStyle = '#ccc';
+			context.shadowOffsetX = 0;
+			context.shadowOffsetY = 0;
+			context.shadowBlur = 10;
+			context.shadowColor = 'transparent';
+
+			animate(101, 0, id);
+		}, 500);
+	}
+
+	function animate(loaded, current, id) {
+		context.clearRect(0, 0, canvas.width, canvas.height);
+		context.beginPath();
+		context.arc(x, y, radius, -(quart), ((circ) * current) - quart, false);
+		context.stroke();
+		curPerc = curPerc + 0.5;
+		if (curPerc < loaded) {
+			requestAnimationFrame(function () {
+				animate(loaded, curPerc / 100, id)
+			});
+		} else {
+			setTimeout(function(){
+				if(slide_length == active_id + 1) {
+					var toshow = 0;
+				} else {
+					var toshow = active_id + 1;
+				}
+				show(toshow);
+			}, 500);
+		}
+	}
+
+	//canvas_init(0);
+
+	/*** END OF CANVAS CIRCLES ***/
+
+
+
 	var get_thumb = function(id, thumb, img) {
 		return '<li class="thumb" data-id="' + id + '" style="background-image: url(' + thumb + ')" data-img="' + img + '">';
 	}
@@ -25,6 +94,7 @@ $.fn.slider = function(option) {
 			img[j] = $(this).attr('data-img');
 			thumb[j] = $(this).attr('data-thumb');
 			$('body').append('<img src="' + img[j] + '" alt="" style="display: none;">');
+			$('.slider-dots').append('<div class="dot-cont"><i class="dot"></i></div>');
 			j++;
 		});
 		j = 0;
@@ -52,8 +122,9 @@ $.fn.slider = function(option) {
 		}
 
 		$(window).on('load', function(){
+			canvas_init(0);
 			setTimeout(function(){
-				auto(auto_time);
+				//auto(auto_time);
 			}, auto_time);
 			setTimeout(function(){
 				$('.slider-img').removeClass('toload');
@@ -62,20 +133,10 @@ $.fn.slider = function(option) {
 		});
 	}
 
-	var auto = function(time) {
-		if(slide_length == active_id + 1) {
-			var toshow = 0;
-		} else {
-			var toshow = active_id + 1;
-		}
-		show(toshow);
-		auto_timeout = setTimeout(function(){
-			auto(time);
-		}, time);
-	}
-
 	var show = function(id) {
 		if(id == active_id || !slider_allow) return;
+		canvas_dest(active_id);
+		canvas_init(id);
 
 		var dif = Math.abs(slider.find('.thumb[data-id=' + id + ']').index() - active_thumb.index());
 
