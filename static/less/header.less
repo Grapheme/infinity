@@ -78,7 +78,7 @@
 			.header-menu {
 				.transition(opacity);
 				position: absolute;
-				bottom: 0;
+				top: -5rem / @htmlFontSize;
 				z-index: 2;
 				opacity: 0;
 
@@ -86,9 +86,15 @@
 					.list-unstyled;
 
 					.option {
+						.transition(opacity);
 						display: inline-block;
 						vertical-align: top;
 						margin-right: 30rem / @htmlFontSize;
+						opacity: 0;
+
+						&.active {
+							opacity: 1;
+						}
 
 						&:last-child {
 							margin-right: 0;
