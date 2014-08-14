@@ -62,6 +62,7 @@
                     <li class="option"><a href="{{ link::to('reserve-parts#service') }}">Сервис</a>
                     <li class="option"><a href="{{ link::to('reserve-parts#spares') }}">Запчасти</a>
                     <li class="option"><a href="{{ link::to('reserve-parts#guarantee') }}">Гарантия</a>
+                    <li class="option"><a href="{{ link::to('reserve-parts#vip') }}">VIP обслуживание</a>
                     <li class="option"><a href="{{ link::to('reserve-parts-accessories') }}">Аксессуары</a>
 
                 </ul>

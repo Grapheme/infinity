@@ -540,6 +540,12 @@ var menu_level = (function(){
 		close(option);
 	});
 
+	$(document).on('click', '.header-menu', function(){
+		if(!$(this).hasClass('active')) {
+			return false;
+		}
+	});
+
 	function show(option, i) {
 		show_timeout = setTimeout(function(){
 			var blocks = $('.header-menu[data-option="' + option + '"] .option');
