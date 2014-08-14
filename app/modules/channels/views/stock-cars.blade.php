@@ -63,9 +63,9 @@ $statuses = Config::get('site.instock_statuses');
 $status = @$statuses[$instock->status_id];
 }
 $image = false;
-if (is_object($instock->image))
+if (@is_object($instock->image))
 $image = $instock->image;
-else if (is_object($instock->color->images))
+else if (@is_object($instock->color) && @is_object($instock->color->images))
 $image = $instock->color->images;
 ?>
             <tr data-model-id="{{ is_object($instock->product) ? $instock->product->id : '' }}">
