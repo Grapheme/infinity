@@ -223,3 +223,53 @@ html {
 		}
 	}
 }
+
+.search-inp {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0 10rem / @htmlFontSize;
+	outline: 0 none;
+	border: 1px solid #a0a0a0;
+	width: 330rem / @htmlFontSize;
+	height: 40rem / @htmlFontSize;
+	color: #999999;
+	font-size: 18rem / @htmlFontSize;
+	font-weight: 300;
+}
+
+.search-results {
+	.list-unstyled;
+	margin-bottom: 150rem / @htmlFontSize;
+
+	li {
+		padding: 50rem / @htmlFontSize 0;
+
+		&:first-child {
+			padding-top: 0;
+		}
+
+		&:nth-of-type(2n) {
+			background: #f7f7f7;
+		}
+
+		.title {
+			.transition(border);
+			display: inline-block;
+			font-size: 23rem / @htmlFontSize;
+			color: #1c1c1c;
+			text-decoration: none;
+			text-transform: uppercase;
+			border-bottom: 1px solid;
+			margin-bottom: 20rem / @htmlFontSize;
+
+			&:hover {
+				border-color: transparent;
+			}
+		}
+
+		.desc {
+			font-size: 15rem / @htmlFontSize;
+			color: #1c1c1c;
+		}
+	}
+}
