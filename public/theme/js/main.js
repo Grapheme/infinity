@@ -504,7 +504,7 @@ var color = (function(){
 })();
 
 var model_load = (function(){
-	$(function(){
+	$(window).on('load', function(){
 		if($('.model-fotorama').length != 0) $('.model-fotorama').addClass('loaded');
 		if($('.color-container').length != 0) setTimeout(function(){ $('.color-container').addClass('loaded'); }, 500);
 	});
@@ -570,7 +570,7 @@ var menu_level = (function(){
 	}
 })();
 
-$('.testSelect').SumoSelect();
 $('.cars-tooltip').carsHover();
 $("ul#tabs").tabs("#tabContent");
+$('.testSelect').SumoSelect();
 

@@ -273,3 +273,59 @@ html {
 		}
 	}
 }
+
+.spec-tabs {
+	.list-unstyled;
+}
+
+.filter #tabs {
+	a {
+		cursor: pointer;
+	}
+
+	li.active a {
+		border-color: transparent;
+	}
+}
+
+.spec-tab {
+	margin: 50rem / @htmlFontSize 0 70rem / @htmlFontSize;
+	display: none;
+
+	&.active {
+		display: block;
+	}
+
+	h3 {
+		text-align: left;
+		background-color: #333;
+		color: #fff;
+		font-size: .875rem;
+		height: 1.5625rem;
+		font-weight: 300;
+		text-transform: uppercase;
+		height: 50rem / @htmlFontSize;
+		margin: 0;
+		line-height: 50rem / @htmlFontSize;
+		padding-left: .9375rem;
+	}
+
+	table {
+		width: 100%;
+		
+
+		thead tr {
+			text-align: left;
+			background-color: #333;
+			color: #fff;
+			font-size: .875rem;
+			height: 1.5625rem;
+			font-weight: 300;
+			text-transform: uppercase;
+		}
+
+		td {
+			padding: .9375rem .9375rem .9375rem;
+		}
+	}
+}
