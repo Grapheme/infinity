@@ -2,7 +2,7 @@
 
 return array (
 	'host'    => '127.0.0.1',
-	'port'    => 9312,
+	'port'    => 3306,
     'indexes' => array (
         'channelsIndexInfinity' => array('table'=>'channels','column'=>'id'),
         'productsIndexInfinity' => array('table'=>'products','column'=>'id'),
