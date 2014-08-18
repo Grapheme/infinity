@@ -96,7 +96,8 @@ class SphinxsearchController extends \BaseController {
     private static function getChannelsModels($foundRecords){
 
         if($recordIDs = self::getValueInObject($foundRecords)):
-            return Channel::whereIn('id',$recordIDs)->get();
+            $channelCategory = ChannelCategory::where('slug','offer')->first();
+            return Channel::where('category_id',@$channelCategory->id)->whereIn('id',$recordIDs)->get();
         endif;
         return null;
     }
@@ -104,9 +105,7 @@ class SphinxsearchController extends \BaseController {
     private static function getProductsModels($foundRecords){
 
         if($recordIDs = self::getValueInObject($foundRecords)):
-            if($products = Product::whereIn('id',$recordIDs)->with('images')->get()):
-                return $products->toArray();
-            endif;
+            return Product::whereIn('id',$recordIDs)->with('meta')->get();
         endif;
         return null;
     }
@@ -114,9 +113,7 @@ class SphinxsearchController extends \BaseController {
     private static function getProductsAccessoriesModels($foundRecords){
 
         if($recordIDs = self::getValueInObject($foundRecords)):
-            if($products = Product::whereIn('id',$recordIDs)->with('images')->get()):
-                return $products->toArray();
-            endif;
+            return ProductAccessory::whereIn('id',$recordIDs)->with('product')->with('category')->with('accessibility')->get();
         endif;
         return null;
     }
@@ -124,7 +121,7 @@ class SphinxsearchController extends \BaseController {
     private static function getNewsModels($foundRecords){
 
         if($recordIDs = self::getValueInObject($foundRecords)):
-            return I18nNews::whereIn('id',$recordIDs)->with('photo')->get();
+            return I18nNews::whereIn('id',$recordIDs)->with('meta')->get();
         endif;
         return null;
     }
@@ -135,6 +132,5 @@ class SphinxsearchController extends \BaseController {
             return I18nPage::whereIn('id',$recordIDs)->with('metas')->get();
         endif;
         return null;
-
     }
 }
