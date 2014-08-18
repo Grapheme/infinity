@@ -157,7 +157,7 @@ class FeedbackController extends BaseController {
         return Response::json($json_request, 200);
     }
 
-    public function postSendmessage($email = null, $data = null, $template = 'feedback') {
+    private function postSendmessage($email = null, $data = null, $template = 'feedback') {
 
         return  Mail::send($this->module['gtpl'].$template,$data, function ($message) use ($email, $data) {
             if(!is_null($email) && $email != ''):
