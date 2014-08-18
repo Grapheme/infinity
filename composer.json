@@ -10,7 +10,7 @@
         "barryvdh/laravel-ide-helper": "1.*",
 		"doctrine/dbal": "2.5.x-dev",
 		"barryvdh/laravel-debugbar": "*",
-		"scalia/sphinxsearch": "0.1.1"
+		"scalia/sphinxsearch": "*"
 	},
 	"autoload": {
 		"classmap": [
