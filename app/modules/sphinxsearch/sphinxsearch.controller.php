@@ -57,34 +57,39 @@ class SphinxsearchController extends \BaseController {
         $indexes = self::readIndexes($searchText);
         $result['channels'] = self::getChannelsModels($indexes['channels']);
         $result['products'] = self::getProductsModels($indexes['products']);
-        $result['reviews'] = self::getReviewsModels($indexes['reviews']);
+        $result['news'] = self::getNewsModels($indexes['news']);
         $result['pages'] = self::getPagesModels($indexes['pages']);
         return $result;
     }
 
     private static function readIndexes($searchText){
 
-        $channels = SphinxSearch::search($searchText, 'channelsIndex')->setFieldWeights(array('title' => 10, 'short' => 8, 'desc' => 6, 'category_title' => 1))
+        $channels = SphinxSearch::search($searchText, 'channelsIndexInfinity')->setFieldWeights(array('title' => 10, 'short' => 8, 'desc' => 6, 'category_title' => 1))
             ->setMatchMode(\Sphinx\SphinxClient::SPH_MATCH_EXTENDED)
             ->SetSortMode(\Sphinx\SphinxClient::SPH_SORT_RELEVANCE, "@weight DESC")
             ->limit(6)->get();
 
-        $products = SphinxSearch::search($searchText, 'productsIndex')->setFieldWeights(array('title' => 10, 'short' => 8, 'desc' => 6, 'category_title' => 1))
+        $products = SphinxSearch::search($searchText, 'productsIndexInfinity')->setFieldWeights(array('title' => 10, 'preview' => 8, 'content' => 6,'specifications'=>8, 'category_title' => 1))
             ->setMatchMode(\Sphinx\SphinxClient::SPH_MATCH_EXTENDED)
             ->SetSortMode(\Sphinx\SphinxClient::SPH_SORT_RELEVANCE, "@weight DESC")
             ->limit(6)->get();
 
-        $reviews = SphinxSearch::search($searchText, 'reviewsIndex')->setFieldWeights(array('name' => 10, 'name' => 8, 'details' => 1))
+        $accessories = SphinxSearch::search($searchText, 'productsAccessibilityIndexInfinity')->setFieldWeights(array('title' => 10, 'description' => 8))
             ->setMatchMode(\Sphinx\SphinxClient::SPH_MATCH_EXTENDED)
             ->SetSortMode(\Sphinx\SphinxClient::SPH_SORT_RELEVANCE, "@weight DESC")
             ->limit(6)->get();
 
-        $pages = SphinxSearch::search($searchText, 'pagesIndex')->setFieldWeights(array('seo_title' => 10, 'seo_description' => 10, 'seo_h1' => 10, 'content' => 8))
+        $news = SphinxSearch::search($searchText, 'newsIndexInfinity')->setFieldWeights(array('title' => 10, 'preview' => 8, 'content' => 6))
             ->setMatchMode(\Sphinx\SphinxClient::SPH_MATCH_EXTENDED)
             ->SetSortMode(\Sphinx\SphinxClient::SPH_SORT_RELEVANCE, "@weight DESC")
             ->limit(6)->get();
 
-        return compact('channels','products','reviews','pages');
+        $pages = SphinxSearch::search($searchText, 'pagesIndexInfinity')->setFieldWeights(array('seo_title' => 10, 'seo_description' => 10, 'seo_h1' => 10, 'content' => 8))
+            ->setMatchMode(\Sphinx\SphinxClient::SPH_MATCH_EXTENDED)
+            ->SetSortMode(\Sphinx\SphinxClient::SPH_SORT_RELEVANCE, "@weight DESC")
+            ->limit(6)->get();
+
+        return compact('channels','products','accessories','news','pages');
     }
 
     private static function getChannelsModels($foundRecords){
@@ -105,10 +110,10 @@ class SphinxsearchController extends \BaseController {
         return null;
     }
 
-    private static function getReviewsModels($foundRecords){
+    private static function getNewsModels($foundRecords){
 
         if($recordIDs = self::getValueInObject($foundRecords)):
-            return Reviews::whereIn('id',$recordIDs)->with('photo')->get();
+            return I18nNews::whereIn('id',$recordIDs)->with('photo')->get();
         endif;
         return null;
     }
