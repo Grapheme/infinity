@@ -57,6 +57,7 @@ class SphinxsearchController extends \BaseController {
         $indexes = self::readIndexes($searchText);
         $result['channels'] = self::getChannelsModels($indexes['channels']);
         $result['products'] = self::getProductsModels($indexes['products']);
+        $result['accessories'] = self::getProductsAccessoriesModels($indexes['products']);
         $result['news'] = self::getNewsModels($indexes['news']);
         $result['pages'] = self::getPagesModels($indexes['pages']);
         return $result;
@@ -101,6 +102,16 @@ class SphinxsearchController extends \BaseController {
     }
 
     private static function getProductsModels($foundRecords){
+
+        if($recordIDs = self::getValueInObject($foundRecords)):
+            if($products = Product::whereIn('id',$recordIDs)->with('images')->get()):
+                return $products->toArray();
+            endif;
+        endif;
+        return null;
+    }
+
+    private static function getProductsAccessoriesModels($foundRecords){
 
         if($recordIDs = self::getValueInObject($foundRecords)):
             if($products = Product::whereIn('id',$recordIDs)->with('images')->get()):
