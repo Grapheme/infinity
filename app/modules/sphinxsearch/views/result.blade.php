@@ -16,15 +16,6 @@ endif;
 </section>
 <section>
     <ul class="search-results">
-    @if(!is_null($result['channels']) && count($result['channels']))
-        @foreach($result['channels'] as $channel)
-        <li>
-            <div class="inf-block">
-                <a href="{{ link::to('offer/'.$channel->link) }}" class="title">{{ $channel->title }}</a>
-                <div class="desc">{{ Str::words(strip_tags($channel->desc), 100, ' ...') }}</div>
-            </div>
-        @endforeach
-    @endif
     @if(!is_null($result['products']) && count($result['products']))
         @foreach($result['products'] as $product)
         <li>
@@ -40,6 +31,15 @@ endif;
             <div class="inf-block">
                 <a href="#" class="title"></a>
                 <div class="desc"></div>
+            </div>
+        @endforeach
+    @endif
+    @if(!is_null($result['channels']) && count($result['channels']))
+        @foreach($result['channels'] as $channel)
+        <li>
+            <div class="inf-block">
+                <a href="{{ link::to('offer/'.$channel->link) }}" class="title">{{ $channel->title }}</a>
+                <div class="desc">{{ Str::words(strip_tags($channel->desc), 100, ' ...') }}</div>
             </div>
         @endforeach
     @endif
