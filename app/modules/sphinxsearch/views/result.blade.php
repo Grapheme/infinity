@@ -56,8 +56,8 @@ endif;
         @foreach($result['pages'] as $page)
         <li>
             <div class="inf-block">
-                <a href="#" class="title"></a>
-                <div class="desc"></div>
+                <a href="{{ link::to($page->seo_url) }}" class="title">{{ $page->name }}</a>
+                <div class="desc">{{ Str::words(strip_tags($page->content), 100, ' ...') }}</div>
             </div>
         @endforeach
     @endif
