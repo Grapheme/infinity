@@ -2,13 +2,13 @@
 
 return array(
 
-    'feedback_mail' => 'vkharseev@gmail.com',
-    'feedback_name' => 'Владимир Харсеев',
+    'feedback_mail' => 'support@grapheme.ru',
+    'feedback_name' => 'grapheme.ru',
 
 	'driver' => 'smtp',
 	'host' => 'smtp.gmail.com',
 	'port' => 587,
-	'from' => array('address' => 'uspensky.pk@gmail.com', 'name' => 'Успенский ПК'),
+	'from' => array('address' => 'uspensky.pk@gmail.com', 'name' => 'Infiniti'),
 	'encryption' => 'tls',
 	'username' => 'uspensky.pk@gmail.com',
 	'password' => 'hf5msdfl34',

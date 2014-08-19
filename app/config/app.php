@@ -9,7 +9,7 @@ return array(
 	'use_css_local' => FALSE,
 	'use_scripts_local' => FALSE,
 	
-	'default_page_title' => 'Infinity GEDON',
+	'default_page_title' => 'Infiniti GEDON',
 	'template' => 'site',
 	'manifest' => storage_path('meta'),
 
