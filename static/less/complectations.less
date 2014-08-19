@@ -113,12 +113,14 @@
 	min-height: 550rem / @htmlFontSize;
 
 	.model-fotorama, .color-fotorama {
-		.transition(opacity);
-		opacity: 0;
-
 		.fotorama__wrap {
 			margin: 0 auto;
 		}
+	}
+
+	.model-fotorama, .color-container {
+		.transition(opacity);
+		opacity: 0;
 
 		&.loaded {
 			opacity: 1;
@@ -128,8 +130,6 @@
 	.model-fotorama {
 		background: #fafafa;
 	}
-
-	.model
 
 	.slider-nav-win {
 		position: relative;
