@@ -20,12 +20,44 @@ endif;
         @foreach($result['channels'] as $channel)
         <li>
             <div class="inf-block">
-                <a href="#" class="title">
-                    Infiniti q70 Цвета
-                </a>
-                <div class="desc">
-                    Вам остается только выбрать маршрут для Вашего путешествия, а мы с удовольствием  подготовим Ваш автомобиль к яркому сезону. Ждём Вас в нашем сервисном центре Инфинити «Гедон Авто-Премиум».
-                </div>
+                <a href="#" class="title">{{  }}</a>
+                <div class="desc">{{  }}</div>
+            </div>
+        @endforeach
+    @endif
+    @if(!is_null($result['products']) && count($result['products']))
+        @foreach($result['products'] as $product)
+        <li>
+            <div class="inf-block">
+                <a href="#" class="title">{{  }}</a>
+                <div class="desc">{{  }}</div>
+            </div>
+        @endforeach
+    @endif
+    @if(!is_null($result['accessories']) && count($result['accessories']))
+        @foreach($result['accessories'] as $accessory)
+        <li>
+            <div class="inf-block">
+                <a href="#" class="title">{{  }}</a>
+                <div class="desc">{{  }}</div>
+            </div>
+        @endforeach
+    @endif
+    @if(!is_null($result['news']) && count($result['news']))
+        @foreach($result['news'] as $news)
+        <li>
+            <div class="inf-block">
+                <a href="#" class="title">{{  }}</a>
+                <div class="desc">{{  }}</div>
+            </div>
+        @endforeach
+    @endif
+    @if(!is_null($result['pages']) && count($result['pages']))
+        @foreach($result['pages'] as $page)
+        <li>
+            <div class="inf-block">
+                <a href="#" class="title">{{  }}</a>
+                <div class="desc">{{  }}</div>
             </div>
         @endforeach
     @endif
