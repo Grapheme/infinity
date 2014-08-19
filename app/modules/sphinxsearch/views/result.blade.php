@@ -25,15 +25,6 @@ endif;
             </div>
         @endforeach
     @endif
-    @if($result['accessories'] && count($result['accessories']))
-        @foreach($result['accessories'] as $accessory)
-        <li>
-            <div class="inf-block">
-                <a href="{{ link::to(ProductionController::$prefix_url.'/'.$accessory->product->meta->first()->seo_url.'/accessories#'.$accessory->id) }}" class="title">{{ $accessory->title }}</a>
-                <div class="desc">{{ Str::words(strip_tags($accessory->description), 100, ' ...') }}</div>
-            </div>
-        @endforeach
-    @endif
     @if($result['channels'] && count($result['channels']))
         @foreach($result['channels'] as $channel)
         <li>
@@ -58,6 +49,15 @@ endif;
             <div class="inf-block">
                 <a href="{{ link::to($page->seo_url) }}" class="title">{{ $page->name }}</a>
                 <div class="desc">{{ Str::words(strip_tags($page->content), 100, ' ...') }}</div>
+            </div>
+        @endforeach
+    @endif
+    @if($result['accessories'] && count($result['accessories']))
+        @foreach($result['accessories'] as $accessory)
+        <li>
+            <div class="inf-block">
+                <a href="{{ link::to(ProductionController::$prefix_url.'/'.$accessory->product->meta->first()->seo_url.'/accessories#'.$accessory->id) }}" class="title">{{ $accessory->title }}</a>
+                <div class="desc">{{ Str::words(strip_tags($accessory->description), 100, ' ...') }}</div>
             </div>
         @endforeach
     @endif
