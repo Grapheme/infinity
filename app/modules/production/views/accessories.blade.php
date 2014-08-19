@@ -20,6 +20,7 @@
                             <img class="acc-left" src="{{ asset('uploads/galleries/thumbs/'.$accessory->images->name) }}" alt="">
                         @endif
                         <div class="acc-right">
+                            <a name="{{ $accessory->id }}"></a>
                             <h2>{{ $accessory->title }}</h2>
                             <div class="desc">
                                 {{ $accessory->description }}
