@@ -53,13 +53,7 @@ class SphinxsearchController extends \BaseController {
 
     public static function search($searchText){
 
-        $indexes = self::readIndexes($searchText);
-        $result['channels'] = self::getChannelsModels($indexes['channels']);
-        $result['products'] = self::getProductsModels($indexes['products']);
-        $result['accessories'] = self::getProductsAccessoriesModels($indexes['products']);
-        $result['news'] = self::getNewsModels($indexes['news']);
-        $result['pages'] = self::getPagesModels($indexes['pages']);
-        return $result;
+        return self::readIndexes($searchText);
     }
 
     private static function readIndexes($searchText){
@@ -90,46 +84,5 @@ class SphinxsearchController extends \BaseController {
             ->limit(6)->get();
 
         return compact('channels','products','accessories','news','pages');
-    }
-
-    private static function getChannelsModels($foundRecords){
-
-        if($recordIDs = self::getValueInObject($foundRecords)):
-            $channelCategory = ChannelCategory::where('slug','offer')->first();
-            return Channel::where('category_id',@$channelCategory->id)->whereIn('id',$recordIDs)->get();
-        endif;
-        return null;
-    }
-
-    private static function getProductsModels($foundRecords){
-
-        if($recordIDs = self::getValueInObject($foundRecords)):
-            return Product::whereIn('id',$recordIDs)->with('meta')->get();
-        endif;
-        return null;
-    }
-
-    private static function getProductsAccessoriesModels($foundRecords){
-
-        if($recordIDs = self::getValueInObject($foundRecords)):
-            return ProductAccessory::whereIn('id',$recordIDs)->with('product')->with('category')->with('accessibility')->get();
-        endif;
-        return null;
-    }
-
-    private static function getNewsModels($foundRecords){
-
-        if($recordIDs = self::getValueInObject($foundRecords)):
-            return I18nNews::whereIn('id',$recordIDs)->with('meta')->get();
-        endif;
-        return null;
-    }
-
-    private static function getPagesModels($foundRecords){
-
-        if($recordIDs = self::getValueInObject($foundRecords)):
-            return I18nPage::whereIn('id',$recordIDs)->with('metas')->get();
-        endif;
-        return null;
     }
 }
