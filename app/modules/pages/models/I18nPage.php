@@ -28,9 +28,8 @@ class I18nPage extends Eloquent {
 		endif;
 	}
 
-    #/*
+
     public function metas() {
         return $this->hasMany('I18nPageMeta','page_id');
     }
-    #*/
 }

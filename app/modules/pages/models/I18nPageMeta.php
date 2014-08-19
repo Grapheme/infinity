@@ -13,4 +13,7 @@ class I18nPageMeta extends BaseModel {
 		#'seo_url' => 'alpha_dash',
 	);
 
+    public function page(){
+        return $this->belongsTo('I18nPage','page_id');
+    }
 }

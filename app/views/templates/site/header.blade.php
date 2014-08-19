@@ -16,21 +16,16 @@
         $query_product->with('instocks');
     }))->get();
 
-    #Helper::tad($header_models);
+    $pages_seo_url = array();
+    $all_pages = I18nPage::with('metas')->get();
+    foreach($all_pages as $page):
+        $pages_seo_url[$page->slug] = $page->metas->first();
+    endforeach;
 
     #$page_slug = Route::currentRouteName() == 'page' ? Config::get('page.slug') : false;
     $route = Route::currentRouteName();
     $page_slug = Config::get('page.slug');
-
-
 ?>
-
-@if (0)
-<span style="color:#000">
-    {{ Route::currentRouteName() }} <br/>
-    {{ Config::get('page.slug') }}
-</span>
-@endif
 
 <header class="main-header{{ Request::is('/') ? '' : ' static-header' }}">
     @if(!Request::is('/'))
@@ -41,10 +36,10 @@
     <div class="header-cont">
         <nav class="main-nav">
             <ul class="list-unstyled">
-                <li class="option" data-option="about"><a href="{{ link::to('about') }}" class="@if($page_slug == 'about') active @endif">О компании</a>
-                <li class="option" data-option="fix"><a href="{{ link::to('reserve-parts') }}" class="@if($page_slug == 'reserve-parts') active @endif">Сервис и запчасти</a>
-                <li class="option" data-option=""><a href="{{ link::to('offers') }}" class="@if($page_slug == 'offers') active @endif">Спецпредложения</a>
-                <li class="option" data-option="service"><a href="{{ link::to('services') }}" class="@if($page_slug == 'services') active @endif">Услуги</a>
+                <li class="option" data-option="about"><a href="{{ link::to(@$pages_seo_url['about']->seo_url) }}" class="@if($page_slug == @$pages_seo_url['about']->seo_url) active @endif">{{ @$pages_seo_url['about']->name }}</a>
+                <li class="option" data-option="fix"><a href="{{ link::to(@$pages_seo_url['reserve-parts']->seo_url) }}" class="@if($page_slug == @$pages_seo_url['reserve-parts']->seo_url) active @endif">{{ @$pages_seo_url['reserve-parts']->name }}</a>
+                <li class="option" data-option=""><a href="{{ link::to(@$pages_seo_url['offers']->seo_url) }}" class="@if($page_slug == @$pages_seo_url['offers']->seo_url) active @endif">{{ @$pages_seo_url['offers']->name }}</a>
+                <li class="option" data-option="service"><a href="{{ link::to(@$pages_seo_url['services']->seo_url) }}" class="@if($page_slug == @$pages_seo_url['services']->seo_url) active @endif">{{ @$pages_seo_url['services']->name }}</a>
             </ul>
         </nav>
         <div class="head-models">
@@ -72,26 +67,26 @@
             </div>
             <div class="header-menu" data-option="about">
                 <ul>
-                    <li class="option"><a href="{{ link::to('about') }}">Компания</a>
-                    <li class="option"><a href="{{ link::to('news') }}">Новости</a>
-                    <li class="option"><a href="{{ link::to('history') }}">История</a>
-                    <li class="option"><a href="{{ link::to('contacts') }}">Контакты</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['about']->seo_url) }}">{{ @$pages_seo_url['about']->name }}</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['news']->seo_url) }}">{{ @$pages_seo_url['news']->name }}</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['history']->seo_url) }}">{{ @$pages_seo_url['history']->name }}</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['contacts']->seo_url) }}">{{ @$pages_seo_url['contacts']->name }}</a>
                 </ul>
             </div>
             <div class="header-menu" data-option="service">
                 <ul>
-                    <li class="option"><a href="{{ link::to('services#finance') }}">Автокредитование</a>
-                    <li class="option"><a href="{{ link::to('services#insurance') }}">Страхование</a>
-                    <li class="option"><a href="{{ link::to('services#tradein') }}">Trade-in</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['services']->seo_url.'#finance') }}">Автокредитование</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['services']->seo_url.'#insurance') }}">Страхование</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['services']->seo_url.'#tradein') }}">Trade-in</a>
                 </ul>
             </div>
             <div class="header-menu" data-option="fix">
                 <ul>
-                    <li class="option"><a href="{{ link::to('reserve-parts#service') }}">Сервис</a>
-                    <li class="option"><a href="{{ link::to('reserve-parts#spares') }}">Запчасти</a>
-                    <li class="option"><a href="{{ link::to('reserve-parts#guarantee') }}">Гарантия</a>
-                    <li class="option"><a href="{{ link::to('reserve-parts#vip') }}">VIP обслуживание</a>
-                    <li class="option"><a href="{{ link::to('reserve-parts-accessories') }}">Аксессуары</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['reserve-parts']->seo_url.'#service') }}">Сервис</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['reserve-parts']->seo_url.'#spares') }}">Запчасти</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['reserve-parts']->seo_url.'#guarantee') }}">Гарантия</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['reserve-parts']->seo_url.'#vip') }}">VIP обслуживание</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['reserve-parts-accessories']->seo_url) }}">Аксессуары</a>
                 </ul>
             </div>
         </div>

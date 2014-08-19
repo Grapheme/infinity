@@ -6,6 +6,12 @@
             $query_product_meta->orderBy('title');
         }));
     }))->get();
+
+    $pages_seo_url = array();
+    $all_pages = I18nPage::with('metas')->get();
+    foreach($all_pages as $page):
+        $pages_seo_url[$page->slug] = $page->metas->first();
+    endforeach;
 ?>
 <footer class="main-footer">
     <div class="footer-top">
@@ -29,10 +35,10 @@
                     <li class="option"><a href="{{ link::to('club') }}">Клуб</a>
                     --}}
 
-                    <li class="option"><a href="{{ link::to('about') }}">Компания</a>
-                    <li class="option"><a href="{{ link::to('news') }}">Новости</a>
-                    <li class="option"><a href="{{ link::to('history') }}">История</a>
-                    <li class="option"><a href="{{ link::to('contacts') }}">Контакты</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['about']->seo_url) }}">{{ @$pages_seo_url['about']->name }}</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['news']->seo_url) }}">{{ @$pages_seo_url['news']->name }}</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['history']->seo_url) }}">{{ @$pages_seo_url['history']->name }}</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['contacts']->seo_url) }}">{{ @$pages_seo_url['contacts']->name }}</a>
                 </ul>
             </div>
             <div class="footer-block">
@@ -43,9 +49,9 @@
                     <li class="option"><a href="{{ link::to('services-maintenance-program') }}">Программы ТО</a>
                     --}}
 
-                    <li class="option"><a href="{{ link::to('services#finance') }}">Автокредитование</a>
-                    <li class="option"><a href="{{ link::to('services#insurance') }}">Страхование</a>
-                    <li class="option"><a href="{{ link::to('services#tradein') }}">Trade-in</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['services']->seo_url.'#finance') }}">Автокредитование</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['services']->seo_url.'#insurance') }}">Страхование</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['services']->seo_url.'#tradein') }}">Trade-in</a>
 
                 </ul>
             </div>
@@ -59,19 +65,19 @@
                     <li class="option"><a href="{{ link::to('reserve-parts-accessories') }}">Аксессуары</a>
                     --}}
 
-                    <li class="option"><a href="{{ link::to('reserve-parts#service') }}">Сервис</a>
-                    <li class="option"><a href="{{ link::to('reserve-parts#spares') }}">Запчасти</a>
-                    <li class="option"><a href="{{ link::to('reserve-parts#guarantee') }}">Гарантия</a>
-                    <li class="option"><a href="{{ link::to('reserve-parts#vip') }}">VIP обслуживание</a>
-                    <li class="option"><a href="{{ link::to('reserve-parts-accessories') }}">Аксессуары</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['reserve-parts']->seo_url.'#service') }}">Сервис</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['reserve-parts']->seo_url.'#spares') }}">Запчасти</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['reserve-parts']->seo_url.'#guarantee') }}">Гарантия</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['reserve-parts']->seo_url.'#vip') }}">VIP обслуживание</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['reserve-parts-accessories']->seo_url) }}">Аксессуары</a>
 
                 </ul>
             </div>
             <div class="footer-block">
                 <div class="title">Автомобили</div>
                 <ul class="footer-ul">
-                    <li class="option"><a href="{{ link::to('cars-in-stock') }}">В наличии</a>
-                    <li class="option"><a href="{{ link::to('cars-for-sale') }}">С пробегом</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['cars-in-stock']->seo_url) }}">В наличии</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['cars-for-sale']->seo_url) }}">С пробегом</a>
                 </ul>
             </div>
         </div>

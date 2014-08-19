@@ -29,8 +29,8 @@ endif;
         @foreach($result['accessories'] as $accessory)
         <li>
             <div class="inf-block">
-                <a href="#" class="title"></a>
-                <div class="desc"></div>
+                <a href="javascript:void(0);" class="title">{{ $accessory->title }}</a>
+                <div class="desc">{{ Str::words(strip_tags($accessory->description), 100, ' ...') }}</div>
             </div>
         @endforeach
     @endif
