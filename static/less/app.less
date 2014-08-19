@@ -319,7 +319,6 @@ html {
 
 	table {
 		width: 100%;
-		
 
 		thead tr {
 			text-align: left;
@@ -329,6 +328,16 @@ html {
 			height: 1.5625rem;
 			font-weight: 300;
 			text-transform: uppercase;
+		}
+
+		tbody {
+			tr {
+				font-size: 14rem / @htmlFontSize;
+
+				&:nth-of-type(2n) {
+					background: #f5f5f5;
+				}
+			}
 		}
 
 		td {
