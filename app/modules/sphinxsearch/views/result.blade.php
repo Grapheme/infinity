@@ -16,7 +16,7 @@ endif;
 </section>
 <section>
     <ul class="search-results">
-    @if(!is_null($result['channels']) && $result['channels']->count())
+    @if(!is_null($result['channels']) && count($result['channels']))
         @foreach($result['channels'] as $channel)
         <li>
             <div class="inf-block">
