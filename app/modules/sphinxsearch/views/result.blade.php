@@ -20,8 +20,8 @@ endif;
         @foreach($result['channels'] as $channel)
         <li>
             <div class="inf-block">
-                <a href="#" class="title">{{  }}</a>
-                <div class="desc">{{  }}</div>
+                <a href="{{ link::to('offer/'.$channel->link) }}" class="title">{{ $channel->title }}</a>
+                <div class="desc">{{ Str::words(strip_tags($channel->desc), 100, ' ...') }}</div>
             </div>
         @endforeach
     @endif
