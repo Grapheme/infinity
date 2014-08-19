@@ -47,8 +47,8 @@ endif;
         @foreach($result['news'] as $news)
         <li>
             <div class="inf-block">
-                <a href="#" class="title"></a>
-                <div class="desc"></div>
+                <a href="javascript:void(0);" class="title">{{ $news->title }}</a>
+                <div class="desc">{{ Str::words(strip_tags($news->preview), 100, ' ...') }}</div>
             </div>
         @endforeach
     @endif
