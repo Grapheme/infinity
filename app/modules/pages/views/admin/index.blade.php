@@ -38,9 +38,9 @@
 						<td>{{ $page->metas->first()->name }}</td>
 						<td class="width-350 text-center">
 						@if($page->start_page == 1)
-							<a href="{{ link::to($page->seo_url) }}" target="_blank">На главную</a>
+							<a href="{{ link::to($page->metas->first()->seo_url) }}" target="_blank">На главную</a>
 						@else
-							<a href="{{ link::to($page->slug) }}" target="_blank">{{ $page->slug }}</a>
+							<a href="{{ link::to($page->metas->first()->seo_url) }}" target="_blank">{{ $page->metas->first()->seo_url }}</a>
 						@endif
 						</td>
 						@if(Allow::action('pages','publication') && 0)
