@@ -29,8 +29,8 @@ endif;
         @foreach($result['products'] as $product)
         <li>
             <div class="inf-block">
-                <a href="#" class="title"></a>
-                <div class="desc"></div>
+                <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->seo_url) }}" class="title">{{ $product->title }}</a>
+                <div class="desc">{{ Str::words(strip_tags($product->preview), 100, ' ...') }}</div>
             </div>
         @endforeach
     @endif
