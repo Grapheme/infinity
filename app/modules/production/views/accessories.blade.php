@@ -6,7 +6,7 @@
 
 @section('content')
 @include('production/views/accepts/product-menu')
-<section class="information accessories sect-wrapper">
+<section class="accessories complectations inf-block">
     <header><h1>{{ $product->meta->first()->title }}: Аксессуары</h1></header>
     @if(!is_null($product->accessories) && count($product->accessories))
     <dl class="acc-dl">
