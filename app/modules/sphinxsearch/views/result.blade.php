@@ -29,8 +29,8 @@ endif;
         @foreach($result['products'] as $product)
         <li>
             <div class="inf-block">
-                <a href="#" class="title">{{  }}</a>
-                <div class="desc">{{  }}</div>
+                <a href="#" class="title"></a>
+                <div class="desc"></div>
             </div>
         @endforeach
     @endif
@@ -38,8 +38,8 @@ endif;
         @foreach($result['accessories'] as $accessory)
         <li>
             <div class="inf-block">
-                <a href="#" class="title">{{  }}</a>
-                <div class="desc">{{  }}</div>
+                <a href="#" class="title"></a>
+                <div class="desc"></div>
             </div>
         @endforeach
     @endif
@@ -47,8 +47,8 @@ endif;
         @foreach($result['news'] as $news)
         <li>
             <div class="inf-block">
-                <a href="#" class="title">{{  }}</a>
-                <div class="desc">{{  }}</div>
+                <a href="#" class="title"></a>
+                <div class="desc"></div>
             </div>
         @endforeach
     @endif
@@ -56,8 +56,8 @@ endif;
         @foreach($result['pages'] as $page)
         <li>
             <div class="inf-block">
-                <a href="#" class="title">{{  }}</a>
-                <div class="desc">{{  }}</div>
+                <a href="#" class="title"></a>
+                <div class="desc"></div>
             </div>
         @endforeach
     @endif
