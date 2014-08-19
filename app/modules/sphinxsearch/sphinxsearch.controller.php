@@ -71,7 +71,7 @@ class SphinxsearchController extends \BaseController {
         $accessories = SphinxSearch::search($searchText, 'productsAccessibilityIndexInfinity')->setFieldWeights(array('title' => 10, 'description' => 8))
             ->setMatchMode(\Sphinx\SphinxClient::SPH_MATCH_EXTENDED)
             ->SetSortMode(\Sphinx\SphinxClient::SPH_SORT_RELEVANCE, "@weight DESC")
-            ->limit(6)->get();
+            ->limit(6)->with('product.meta')->get();
 
         $news = SphinxSearch::search($searchText, 'newsIndexInfinity')->setFieldWeights(array('title' => 10, 'preview' => 8, 'content' => 6))
             ->setMatchMode(\Sphinx\SphinxClient::SPH_MATCH_EXTENDED)

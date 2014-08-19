@@ -16,7 +16,7 @@ endif;
 </section>
 <section>
     <ul class="search-results">
-    @if(!is_null($result['products']) && count($result['products']))
+    @if($result['products'] && count($result['products']))
         @foreach($result['products'] as $product)
         <li>
             <div class="inf-block">
@@ -25,16 +25,16 @@ endif;
             </div>
         @endforeach
     @endif
-    @if(!is_null($result['accessories']) && count($result['accessories']))
+    @if($result['accessories'] && count($result['accessories']))
         @foreach($result['accessories'] as $accessory)
         <li>
             <div class="inf-block">
-                <a href="javascript:void(0);" class="title">{{ $accessory->title }}</a>
+                <a href="{{ link::to(ProductionController::$prefix_url.'/'.$accessory->product->meta->first()->seo_url.'/accessories#'.$accessory->id) }}" class="title">{{ $accessory->title }}</a>
                 <div class="desc">{{ Str::words(strip_tags($accessory->description), 100, ' ...') }}</div>
             </div>
         @endforeach
     @endif
-    @if(!is_null($result['channels']) && count($result['channels']))
+    @if($result['channels'] && count($result['channels']))
         @foreach($result['channels'] as $channel)
         <li>
             <div class="inf-block">
@@ -43,7 +43,7 @@ endif;
             </div>
         @endforeach
     @endif
-    @if(!is_null($result['news']) && count($result['news']))
+    @if($result['news'] && count($result['news']))
         @foreach($result['news'] as $news)
         <li>
             <div class="inf-block">
@@ -52,7 +52,7 @@ endif;
             </div>
         @endforeach
     @endif
-    @if(!is_null($result['pages']) && count($result['pages']))
+    @if($result['pages'] && count($result['pages']))
         @foreach($result['pages'] as $page)
         <li>
             <div class="inf-block">
