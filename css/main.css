@@ -2090,7 +2090,8 @@ html {
 .auto-slider .color-container.loaded {
   opacity: 1;
 }
-.auto-slider .model-fotorama {
+.auto-slider .model-fotorama,
+.auto-slider .color-fotorama {
   background: #f3f3f3;
 }
 .auto-slider .slider-nav-win {
