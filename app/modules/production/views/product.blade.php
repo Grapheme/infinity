@@ -87,7 +87,7 @@
                 'click': false
             });
             var $fotoramaDiv = $('.color-fotorama').fotorama({
-                'width': '100%',
+                'width': '1240px',
                 'height': '550px',
                 'fit': 'cover',
                 'arrows': false,

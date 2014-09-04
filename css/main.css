@@ -486,7 +486,7 @@ html {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 40rem;
+  height: 34.375rem;
   z-index: -1;
   background: #fff;
 }
@@ -674,6 +674,12 @@ html {
   margin: 0;
   list-style: none;
 }
+.spec-tabs li ul {
+  padding-left: 2.5rem;
+  line-height: 1.4375rem;
+  font-size: 0.875rem;
+  list-style: initial;
+}
 .filter #tabs a {
   cursor: pointer;
 }
@@ -711,6 +717,12 @@ html {
   height: 1.5625rem;
   font-weight: 300;
   text-transform: uppercase;
+}
+.spec-tab table tbody tr {
+  font-size: 0.875rem;
+}
+.spec-tab table tbody tr:nth-of-type(2n) {
+  background: #f5f5f5;
 }
 .spec-tab table td {
   padding: .9375rem .9375rem .9375rem;
@@ -2057,6 +2069,9 @@ html {
   font-size: 0.875em;
   line-height: 1.71428571em;
 }
+.car-list .car-item .car-body ul {
+  list-style: initial;
+}
 .auto-slider {
   position: relative;
   min-height: 34.375rem;
@@ -2074,6 +2089,9 @@ html {
 .auto-slider .model-fotorama.loaded,
 .auto-slider .color-container.loaded {
   opacity: 1;
+}
+.auto-slider .model-fotorama {
+  background: #f3f3f3;
 }
 .auto-slider .slider-nav-win {
   position: relative;
@@ -2641,7 +2659,7 @@ html {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   float: left;
-  width: 53.5rem;
+  width: 40rem;
   height: 100%;
   padding: 1.5rem 0 0 1.5rem;
 }
