@@ -473,7 +473,7 @@ class Application extends Container implements HttpKernelInterface, TerminableIn
     }
     public static function getBootstrapFile()
     {
-        return '/var/www/test.grapheme.ru/infinity/vendor/laravel/framework/src/Illuminate/Foundation' . '/start.php';
+        return '/var/www/dev.grapheme.ru/infinity/vendor/laravel/framework/src/Illuminate/Foundation' . '/start.php';
     }
     public function startExceptionHandling()
     {
@@ -673,7 +673,6 @@ class Application extends Container implements HttpKernelInterface, TerminableIn
     }
     protected function registerBaseMiddlewares()
     {
-        
     }
     public function middleware($class, array $parameters = array())
     {
@@ -683,7 +682,7 @@ class Application extends Container implements HttpKernelInterface, TerminableIn
     public function forgetMiddleware($class)
     {
         $this->middlewares = array_filter($this->middlewares, function ($m) use($class) {
-            return $m['class'] != $class;
+            return get_class($m['class']) != $class;
         });
     }
     public function handle(SymfonyRequest $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
@@ -904,6 +903,7 @@ class EnvironmentDetector
 }
 namespace Illuminate\Http;
 
+use SplFileInfo;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 class Request extends SymfonyRequest
@@ -1038,10 +1038,15 @@ class Request extends SymfonyRequest
     }
     public function hasFile($key)
     {
-        if (is_array($file = $this->file($key))) {
-            $file = head($file);
+        if (!is_array($files = $this->file($key))) {
+            $files = array($files);
         }
-        return $file instanceof \SplFileInfo && $file->getPath() != '';
+        foreach ($files as $file) {
+            if ($file instanceof SplFileInfo && $file->getPath() != '') {
+                return true;
+            }
+        }
+        return false;
     }
     public function header($key = null, $default = null)
     {
@@ -1604,7 +1609,7 @@ class Request
             }
         }
         $host = strtolower(preg_replace('/:\\d+$/', '', trim($host)));
-        if ($host && !preg_match('/^\\[?(?:[a-zA-Z0-9-:\\]_]+\\.?)+$/', $host)) {
+        if ($host && '' !== preg_replace('/(?:^\\[)?[a-zA-Z0-9-:\\]_]+\\.?/', '', $host)) {
             throw new \UnexpectedValueException(sprintf('Invalid Host "%s"', $host));
         }
         if (count(self::$trustedHostPatterns) > 0) {
@@ -1693,6 +1698,10 @@ class Request
         if (null === $this->locale) {
             $this->setPhpDefaultLocale($locale);
         }
+    }
+    public function getDefaultLocale()
+    {
+        return $this->defaultLocale;
     }
     public function setLocale($locale)
     {
@@ -1927,7 +1936,6 @@ class Request
                 \Locale::setDefault($locale);
             }
         } catch (\Exception $e) {
-            
         }
     }
     private function getUrlencodedPrefix($string, $prefix)
@@ -2160,12 +2168,12 @@ class ServerBag extends ParameterBag
                 $authorizationHeader = $this->parameters['REDIRECT_HTTP_AUTHORIZATION'];
             }
             if (null !== $authorizationHeader) {
-                if (0 === stripos($authorizationHeader, 'basic')) {
-                    $exploded = explode(':', base64_decode(substr($authorizationHeader, 6)));
+                if (0 === stripos($authorizationHeader, 'basic ')) {
+                    $exploded = explode(':', base64_decode(substr($authorizationHeader, 6)), 2);
                     if (count($exploded) == 2) {
                         list($headers['PHP_AUTH_USER'], $headers['PHP_AUTH_PW']) = $exploded;
                     }
-                } elseif (empty($this->parameters['PHP_AUTH_DIGEST']) && 0 === stripos($authorizationHeader, 'digest')) {
+                } elseif (empty($this->parameters['PHP_AUTH_DIGEST']) && 0 === stripos($authorizationHeader, 'digest ')) {
                     $headers['PHP_AUTH_DIGEST'] = $authorizationHeader;
                     $this->parameters['PHP_AUTH_DIGEST'] = $authorizationHeader;
                 }
@@ -2504,7 +2512,6 @@ class MetadataBag implements SessionBagInterface
     }
     public function clear()
     {
-        
     }
     public function getName()
     {
@@ -2729,7 +2736,6 @@ class ExceptionHandler
         ob_start(array($this, 'catchOutput'));
         $this->failSafeHandle($exception);
         while (null === $this->caughtBuffer && ob_end_flush()) {
-            
         }
         if (isset($this->caughtBuffer[0])) {
             ob_start(array($this, 'cleanOutput'));
@@ -2944,7 +2950,6 @@ abstract class ServiceProvider
     }
     public function boot()
     {
-        
     }
     public abstract function register();
     public function package($package, $namespace = null, $path = null)
@@ -3764,7 +3769,6 @@ namespace Symfony\Component\HttpKernel\Debug;
 use Symfony\Component\Debug\ErrorHandler as DebugErrorHandler;
 class ErrorHandler extends DebugErrorHandler
 {
-    
 }
 namespace Illuminate\Config;
 
@@ -4009,11 +4013,11 @@ class FileLoader implements LoaderInterface
     {
         $file = "packages/{$package}/{$group}.php";
         if ($this->files->exists($path = $this->defaultPath . '/' . $file)) {
-            $items = array_merge($items, $this->getRequire($path));
+            $items = array_replace_recursive($items, $this->getRequire($path));
         }
         $path = $this->getPackagePath($env, $package, $group);
         if ($this->files->exists($path)) {
-            $items = array_merge($items, $this->getRequire($path));
+            $items = array_replace_recursive($items, $this->getRequire($path));
         }
         return $items;
     }
@@ -6821,6 +6825,7 @@ abstract class Model implements ArrayAccess, ArrayableInterface, JsonableInterfa
     {
         foreach ($this->touches as $relation) {
             $this->{$relation}()->touch();
+            $this->{$relation}->touchOwners();
         }
     }
     public function touches($relation)
@@ -7222,12 +7227,11 @@ abstract class Model implements ArrayAccess, ArrayableInterface, JsonableInterfa
     {
         $format = $this->getDateFormat();
         if ($value instanceof DateTime) {
-            
         } elseif (is_numeric($value)) {
             $value = Carbon::createFromTimestamp($value);
         } elseif (preg_match('/^(\\d{4})-(\\d{2})-(\\d{2})$/', $value)) {
             $value = Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
-        } elseif (!$value instanceof DateTime) {
+        } else {
             $value = Carbon::createFromFormat($format, $value);
         }
         return $value->format($format);
@@ -7280,14 +7284,21 @@ abstract class Model implements ArrayAccess, ArrayableInterface, JsonableInterfa
         $this->original[$attribute] = $this->attributes[$attribute];
         return $this;
     }
-    public function isDirty($attribute = null)
+    public function isDirty($attributes = null)
     {
         $dirty = $this->getDirty();
-        if (is_null($attribute)) {
+        if (is_null($attributes)) {
             return count($dirty) > 0;
-        } else {
-            return array_key_exists($attribute, $dirty);
         }
+        if (!is_array($attributes)) {
+            $attributes = func_get_args();
+        }
+        foreach ($attributes as $attribute) {
+            if (array_key_exists($attribute, $dirty)) {
+                return true;
+            }
+        }
+        return false;
     }
     public function getDirty()
     {
@@ -7443,6 +7454,7 @@ interface JsonableInterface
 }
 namespace Illuminate\Database;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Connectors\ConnectionFactory;
 class DatabaseManager implements ConnectionResolverInterface
 {
@@ -7457,12 +7469,18 @@ class DatabaseManager implements ConnectionResolverInterface
     }
     public function connection($name = null)
     {
-        $name = $name ?: $this->getDefaultConnection();
+        list($name, $type) = $this->parseConnectionName($name);
         if (!isset($this->connections[$name])) {
             $connection = $this->makeConnection($name);
+            $this->setPdoForType($connection, $type);
             $this->connections[$name] = $this->prepare($connection);
         }
         return $this->connections[$name];
+    }
+    protected function parseConnectionName($name)
+    {
+        $name = $name ?: $this->getDefaultConnection();
+        return Str::endsWith($name, array('::read', '::write')) ? explode('::', $name, 2) : array($name, null);
     }
     public function purge($name = null)
     {
@@ -7517,6 +7535,15 @@ class DatabaseManager implements ConnectionResolverInterface
         $connection->setReconnector(function ($connection) {
             $this->reconnect($connection->getName());
         });
+        return $connection;
+    }
+    protected function setPdoForType(Connection $connection, $type = null)
+    {
+        if ($type == 'read') {
+            $connection->setPdo($connection->getReadPdo());
+        } elseif ($type == 'write') {
+            $connection->setReadPdo($connection->getPdo());
+        }
         return $connection;
     }
     protected function getConfig($name)
@@ -7826,7 +7853,14 @@ class Store implements SessionInterface
     }
     public function setId($id)
     {
-        $this->id = $id ?: $this->generateSessionId();
+        if (!$this->isValidId($id)) {
+            $id = $this->generateSessionId();
+        }
+        $this->id = $id;
+    }
+    public function isValidId($id)
+    {
+        return is_string($id) && preg_match('/^[a-f0-9]{40}$/', $id);
     }
     protected function generateSessionId()
     {
@@ -8821,7 +8855,6 @@ abstract class AbstractHandler implements HandlerInterface
     }
     public function close()
     {
-        
     }
     public function pushProcessor($callback)
     {
@@ -8873,7 +8906,6 @@ abstract class AbstractHandler implements HandlerInterface
         try {
             $this->close();
         } catch (\Exception $e) {
-            
         }
     }
     protected function getDefaultFormatter()
@@ -9728,18 +9760,21 @@ class PhpEngine implements EngineInterface
     }
     protected function evaluatePath($__path, $__data)
     {
+        $obLevel = ob_get_level();
         ob_start();
         extract($__data);
         try {
             include $__path;
         } catch (\Exception $e) {
-            $this->handleViewException($e);
+            $this->handleViewException($e, $obLevel);
         }
         return ltrim(ob_get_clean());
     }
-    protected function handleViewException($e)
+    protected function handleViewException($e, $obLevel)
     {
-        ob_get_clean();
+        while (ob_get_level() > $obLevel) {
+            ob_end_clean();
+        }
         throw $e;
     }
 }
