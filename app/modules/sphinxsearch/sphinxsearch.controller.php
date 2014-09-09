@@ -1,8 +1,8 @@
 <?php
 
-class SphinxsearchController extends \BaseController {
+class SearchController extends \BaseController {
 
-    public static $name = 'sphinxsearch';
+    public static $name = 'search';
     public static $group = 'production';
 
     public function __construct(){
