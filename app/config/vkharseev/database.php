@@ -6,7 +6,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'infinity',
+			'database'  => 'infiniti',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',
