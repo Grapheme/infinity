@@ -14,6 +14,7 @@
     <![endif]-->
     @include('templates.site.header')
     <main>
+    <i>вован</i>
     @yield('content', @$content)
     </main>
     @include('templates.site.footer')
