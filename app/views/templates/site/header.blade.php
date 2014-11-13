@@ -296,7 +296,7 @@
                 <div class="car-name">
                     {{ trim(preg_replace('~infiniti~is', '', $product->meta->first()->title)) }}
                     @if ($product->instocks->count())
-                        <a class="cars-instock" href="{{ link::to('cars-in-stock?model='.$product->id) }}">
+                        <a class="cars-instock" href="{{ link::to(@$pages_seo_url['cars-in-stock']->seo_url.'?model='.$product->id) }}">
                             {{--{{ $product->instocks->count() }} {{ $product->meta->first()->title }} в наличии--}}
                             {{ trans_choice(':count автомобиль|:count автомобиля|:count автомобилей', $product->instocks->count(), array(), 'ru') }} в наличии
                         </a>
@@ -320,7 +320,7 @@
                 <div class="car-name">
                     {{ trim(preg_replace('~infiniti~is', '', $related_product->meta->first()->title)) }}
                     @if ($related_product->instocks->count())
-                        <a class="cars-instock" href="{{ link::to('cars-in-stock?model='.$related_product->id) }}">
+                        <a class="cars-instock" href="{{ link::to(@$pages_seo_url['cars-in-stock']->seo_url.'?model='.$related_product->id) }}">
                             {{--{{ $related_product->instocks->count() }} {{ $related_product->meta->first()->title }} в наличии--}}
                             {{ trans_choice(':count автомобиль|:count автомобиля|:count автомобилей', $related_product->instocks->count(), array(), 'ru') }} в наличии
                         </a>
