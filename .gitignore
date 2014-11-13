@@ -4,14 +4,11 @@ composer.phar
 composer.lock
 /.htaccess
 
-/var/www/test.grapheme.ru/infinity/public/uploads
+#/var/www/test.grapheme.ru/infinity/public/uploads
 
-public/uploads/*
-public/uploads/galleries/thumbnail/*.gpg
-public/uploads/galleries/thumbnail/*.png
+#public/uploads/*
+#public/uploads/galleries/thumbnail/*.gpg
+#public/uploads/galleries/thumbnail/*.png
 
-public/uploads/galleries/*.jpg
-public/uploads/galleries/thumbs/*.jpg
-
-public/uploads/galleries/*.png
-public/uploads/galleries/thumbs/*.png
+#public/uploads/galleries/*.jpg
+#public/uploads/galleries/thumbs/*.jpg
