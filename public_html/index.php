@@ -17,9 +17,6 @@
 | loading of any our classes "manually". Feels great to relax.
 |
 */
-
-ini_set('memory_limit', '-1');
-
 require __DIR__.'/../bootstrap/autoload.php';
 
 /*
