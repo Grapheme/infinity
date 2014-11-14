@@ -51,7 +51,7 @@
                     <div class="items">
                     @foreach($product_category->product as $product)
                         @if($product->in_menu == 1)
-                        <a class="js-tooltip @if($page_slug == $product->meta->pluck('seo_url')) active @endif" data-tooltip="model-{{ $product->id }}" href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->meta->first()->short_title  }}</a>
+                        <a class="js-tooltip @if($page_slug == $product->meta->pluck('seo_url')) active @endif" data-tooltip="model-{{ $product->id }}" href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->pluck('seo_url')) }}">{{ $product->meta->pluck('short_title')  }}</a>
                         @endif
                     @endforeach
                     </div>
