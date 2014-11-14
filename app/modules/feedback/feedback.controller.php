@@ -61,6 +61,7 @@ class FeedbackController extends BaseController {
         $json_request = array('status'=>FALSE, 'responseText'=>'','responseErrorText'=>'','redirect'=>FALSE);
         $validation = Validator::make(Input::all(), array('fio'=>'required', 'phone'=>'required', 'datetime'=>'required'));
         if($validation->passes()):
+            Config::set('mail.sendto_mail','kr.infiniti-sales@gedon.ru');
             $this->postSendmessage(
                 NULL,
                 array('subject'=>'Заказ звонка','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'datetime'=>Input::get('datetime')),
@@ -94,6 +95,7 @@ class FeedbackController extends BaseController {
             if($product = Product::where('id',Input::get('product_id'))->with('meta')->first()):
                 $product_title = $product->meta->first()->title;
             endif;
+            Config::set('mail.sendto_mail','kr.infiniti-sales@gedon.ru');
             $this->postSendmessage(
                 Input::get('email'),
                 array('subject'=>'Заявка на тест-драйв', 'name'=>Input::get('fio'), 'phone'=>Input::get('phone'), 'email'=>Input::get('email'), 'product'=>$product_title),
@@ -119,6 +121,7 @@ class FeedbackController extends BaseController {
             'product'=>'required'
         ));
         if($validation->passes()):
+            Config::set('mail.sendto_mail','kr.infiniti-ruksto@gedon.ru');
             $this->postSendmessage(
                 Input::get('email'),
                 array('subject'=>'Запись на сервис','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'product'=>Input::get('product'),'email'=>Input::get('email'),'content'=>Input::get('content')),
@@ -143,6 +146,7 @@ class FeedbackController extends BaseController {
             #'email'=>'required|email'
         ));
         if($validation->passes()):
+            Config::set('mail.sendto_mail','kr.infiniti-ozch@gedon.ru');
             $this->postSendmessage(
                 Input::get('email'),
                 array('subject'=>'Заказ запчастей','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'email'=>Input::get('email'),'content'=>Input::get('content')),
@@ -163,7 +167,7 @@ class FeedbackController extends BaseController {
             if(!is_null($email) && $email != ''):
                 $message->from($email, @$data['name']);
             endif;
-            $message->to(Config::get('mail.feedback_mail'), Config::get('mail.feedback_name'))->subject(@$data['subject']);
+            $message->to(Config::get('mail.sendto_mail'), Config::get('mail.feedback_name'))->subject(@$data['subject']);
         });
     }
 }
