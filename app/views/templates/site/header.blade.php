@@ -51,7 +51,7 @@
                     <div class="items">
                     @foreach($product_category->product as $product)
                         @if($product->in_menu == 1)
-                        <a class="js-tooltip @if($page_slug == $product->meta->first()->seo_url) active @endif" data-tooltip="model-{{ $product->id }}" href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->meta->first()->short_title }}</a>
+                        <a class="js-tooltip @if($page_slug == $product->meta->first()->seo_url) active @endif" data-tooltip="model-{{ $product->id }}" href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->meta->first()->short_title  }}</a>
                         @endif
                     @endforeach
                     </div>
@@ -93,10 +93,10 @@
     </div>
     <div class="header-right">
         <div class="search">
-            {{ Form::open(array('url'=>link::to('search/request'),'method'=>'post')) }}
-            <input type="text" placeholder="Поиск" name="search_request" class="search-input" value="{{ Input::get('query') }}">
-            <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-            {{ Form::close() }}
+            {{-- Form::open(array('url'=>link::to('search/request'),'method'=>'post')) --}}
+            <!--<input type="text" placeholder="Поиск" name="search_request" class="search-input" value="{{ Input::get('query') }}">
+            <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>-->
+            {{-- Form::close() --}}
         </div>
         <a href="javascript:void(0);" class="gedon-link"></a>
     </div>
