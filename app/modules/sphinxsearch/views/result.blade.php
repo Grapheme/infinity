@@ -1,4 +1,5 @@
 <?php
+$totalCount = 0; $result = array();
 if (Input::has('query')):
     $result = SphinxsearchController::search(Input::get('query'));
     $totalCount = $result['channels'] ? count($result['channels']) : 0;
@@ -15,12 +16,12 @@ endif;
     </header>
     <div class="cars-filter">
         <input class="search-inp" value="{{ Input::get('query') }}">
-        <div class="founded">Найдено результатов: <span>{{ $totalCount }}</span></div>
+        <div class="founded">Найдено результатов: <span>{{ @$totalCount }}</span></div>
     </div>
 </section>
 <section>
     <ul class="search-results">
-    @if($result['products'] && count($result['products']))
+    @if(@$result['products'] && count(@$result['products']))
         @foreach($result['products'] as $product)
         <li>
             <div class="inf-block">
@@ -29,8 +30,8 @@ endif;
             </div>
         @endforeach
     @endif
-    @if($result['channels'] && count($result['channels']))
-        @foreach($result['channels'] as $channel)
+    @if(@$result['channels'] && count(@$result['channels']))
+        @foreach(@$result['channels'] as $channel)
         <li>
             <div class="inf-block">
                 <a href="{{ link::to('offer/'.$channel->link) }}" class="title">{{ $channel->title }}</a>
@@ -38,7 +39,7 @@ endif;
             </div>
         @endforeach
     @endif
-    @if($result['news'] && count($result['news']))
+    @if(@$result['news'] && count(@$result['news']))
         @foreach($result['news'] as $news)
         <li>
             <div class="inf-block">
@@ -47,7 +48,7 @@ endif;
             </div>
         @endforeach
     @endif
-    @if($result['pages'] && count($result['pages']))
+    @if(@$result['pages'] && count(@$result['pages']))
         @foreach($result['pages'] as $page)
         <li>
             <div class="inf-block">
@@ -56,7 +57,7 @@ endif;
             </div>
         @endforeach
     @endif
-    @if($result['accessories'] && count($result['accessories']))
+    @if(@$result['accessories'] && count(@$result['accessories']))
         @foreach($result['accessories'] as $accessory)
         <li>
             <div class="inf-block">
