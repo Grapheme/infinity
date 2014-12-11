@@ -69,14 +69,16 @@
         var comtabs = (function(){
             function init() {
                 $('.js-comtab').first().siblings().hide();
-                $('.js-comlink').first().addClass('active');
+                $('.js-comlink').first().trigger('click');
             }
             $('.js-comlink').on('click', function(){
                 $(this).addClass('active').parent().siblings().find('a').removeClass('active');
                 $('.js-comtab[data-type="' + $(this).attr('data-type') + '"]').show().siblings().hide();
                 return false;
             });
-            init();
+            $(function(){
+                init();
+            });
         })();
     </script>
 @stop
