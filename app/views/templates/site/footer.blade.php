@@ -96,6 +96,9 @@
                 <a href="{{ link::to() }}" class="soc-link icon-vk"></a>
                 <a href="{{ link::to() }}" class="soc-link icon-in"></a>
             </div>
+            <div class="contact-block">
+                <a href="http://infiniti.ru" target="_blank" class="typical-link">INFINITI в России</a>
+            </div>
         </div>
         <div class="clearfix"></div>
     </div>
