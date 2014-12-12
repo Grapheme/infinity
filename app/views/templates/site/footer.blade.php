@@ -21,7 +21,7 @@
                 <ul class="footer-ul">
             @foreach($footer_models as $product_category)
                 @foreach($product_category->product as $product)
-                    <li class="option"><a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ $product->meta->first()->title  }}</a>
+                    <li class="option"><a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url) }}">{{ substr($product->meta->first()->title,9)  }}</a>
                 @endforeach
             @endforeach
                 </ul>
