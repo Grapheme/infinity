@@ -91,7 +91,7 @@
                 <a href="tel:+78632928892" class="contact-link">+7 863-292-88-92</a><br>
                 <a href="tel:+78633050500" class="contact-link">+7 863 305-05-00</a>
             </div>
-            <div class="soc-icons">
+            <div class="soc-icons contact-block">
                 <a href="{{ link::to() }}" class="soc-link icon-fb"></a>
                 <a href="{{ link::to() }}" class="soc-link icon-vk"></a>
                 <a href="{{ link::to() }}" class="soc-link icon-in"></a>
