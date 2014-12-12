@@ -14,7 +14,7 @@ return array(
 	'manifest' => storage_path('meta'),
 
 
-	'debug' => true,
+	'debug' => false,
 	'url' => 'http://www.infiniti-gedon.ru/',
 	'timezone' => 'UTC',
 	'locale' => 'ru',
