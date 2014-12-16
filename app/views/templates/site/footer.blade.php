@@ -91,10 +91,13 @@
                 <a href="tel:+78632928892" class="contact-link">+7 863-292-88-92</a><br>
                 <a href="tel:+78633050500" class="contact-link">+7 863 305-05-00</a>
             </div>
-            <div class="soc-icons">
+            <div class="soc-icons contact-block">
                 <a href="{{ link::to() }}" class="soc-link icon-fb"></a>
                 <a href="{{ link::to() }}" class="soc-link icon-vk"></a>
                 <a href="{{ link::to() }}" class="soc-link icon-in"></a>
+            </div>
+            <div class="contact-block">
+                <a href="http://infiniti.ru" target="_blank" class="typical-link">INFINITI в России</a>
             </div>
         </div>
         <div class="clearfix"></div>
