@@ -16,5 +16,5 @@ return array(
 	'password' => '465c500abd5f680f0b20405deb967b36',
 	'sendmail' => '/usr/sbin/sendmail -bs',
 	'encryption' => 'tls',
-	'pretend' => 1,
+	'pretend' => false,
 );
