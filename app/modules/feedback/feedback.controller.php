@@ -62,6 +62,7 @@ class FeedbackController extends BaseController {
         $validation = Validator::make(Input::all(), array('fio'=>'required', 'phone'=>'required', 'datetime'=>'required'));
         if($validation->passes()):
             Config::set('mail.sendto_mail','infiniti-info@gedon.ru');
+            #Config::set('mail.sendto_mail','vkharseev@gmail.com');
             $this->postSendmessage(
                 NULL,
                 array('subject'=>'Заказ звонка','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'datetime'=>Input::get('datetime')),
