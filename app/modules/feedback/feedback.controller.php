@@ -165,10 +165,8 @@ class FeedbackController extends BaseController {
     private function postSendmessage($email = null, $data = null, $template = 'feedback') {
 
         return  Mail::send($this->module['gtpl'].$template,$data, function ($message) use ($email, $data) {
-            if(!is_null($email) && $email != ''):
-                $message->from($email, @$data['name']);
-            endif;
-            $message->to(Config::get('mail.sendto_mail'), Config::get('mail.feedback_name'))->subject(@$data['subject']);
+            $message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
+            $message->to(Config::get('mail.sendto_mail'))->subject(@$data['subject']);
         });
     }
 }
