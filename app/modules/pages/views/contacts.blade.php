@@ -26,10 +26,10 @@
                     <h2>Телефон</h2>
                     <a href="tel:+78633050500">+7 863 305-05-00</a>
                 </div>
-                <div>
+                <!-- <div>
                     <h2>Отдел продаж</h2>
                     <a href="+78632928892">+7 863 292-88-92</a>
-                </div>
+                </div> -->
                 <div>
                     <h2>Email</h2>
                     <a href="mailto:infiniti-info@gedon.ru">infiniti-info@gedon.ru</a>
