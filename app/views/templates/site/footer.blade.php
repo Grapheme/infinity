@@ -88,7 +88,7 @@
                 Новочеркасское шоссе, 16В
             </adress>
             <div class="contact-block">
-                <a href="tel:+78632928892" class="contact-link">+7 863-292-88-92</a><br>
+                <!-- <a href="tel:+78632928892" class="contact-link">+7 863-292-88-92</a><br> -->
                 <a href="tel:+78633050500" class="contact-link">+7 863 305-05-00</a>
             </div>
             <div class="soc-icons contact-block">
