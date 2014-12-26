@@ -97,6 +97,9 @@ class FeedbackController extends BaseController {
                 $product_title = $product->meta->first()->title;
             endif;
             Config::set('mail.sendto_mail','infiniti-info@gedon.ru');
+            Config::set('mail.sendto_mail_copy.first','Infiniti-sales@gedon.ru');
+            Config::set('mail.sendto_mail_copy.second','Infiniti-info@gedon.ru');
+            Config::set('mail.sendto_mail_copy.third','Infiniti-client@gedon.ru');
             $this->postSendmessage(
                 Input::get('email'),
                 array('subject'=>'Заявка на тест-драйв', 'name'=>Input::get('fio'), 'phone'=>Input::get('phone'), 'email'=>Input::get('email'), 'product'=>$product_title),
@@ -123,6 +126,9 @@ class FeedbackController extends BaseController {
         ));
         if($validation->passes()):
             Config::set('mail.sendto_mail','infiniti-info@gedon.ru');
+            Config::set('mail.sendto_mail_copy.first','Infiniti-serv@gedon.ru');
+            Config::set('mail.sendto_mail_copy.second','Infiniti-master@gedon.ru');
+            Config::set('mail.sendto_mail_copy.third','Infiniti-service@gedon.ru');
             $this->postSendmessage(
                 Input::get('email'),
                 array('subject'=>'Запись на сервис','name'=>Input::get('fio'),'phone'=>Input::get('phone'),'product'=>Input::get('product'),'email'=>Input::get('email'),'content'=>Input::get('content')),
@@ -166,6 +172,15 @@ class FeedbackController extends BaseController {
 
         return  Mail::send($this->module['gtpl'].$template,$data, function ($message) use ($email, $data) {
             $message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
+            if (Config::has('mail.sendto_mail_copy.first')):
+                $message->cc(Config::get('mail.sendto_mail_copy.first'));
+            endif;
+            if (Config::has('mail.sendto_mail_copy.second')):
+                $message->cc(Config::get('mail.sendto_mail_copy.second'));
+            endif;
+            if (Config::has('mail.sendto_mail_copy.third')):
+                $message->cc(Config::get('mail.sendto_mail_copy.third'));
+            endif;
             $message->to(Config::get('mail.sendto_mail'))->subject(@$data['subject']);
         });
     }
