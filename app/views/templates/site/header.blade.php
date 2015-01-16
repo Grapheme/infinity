@@ -62,6 +62,11 @@
                     <div class="title">&nbsp;</div>
                     <div class="items">
                         <a class="js-tooltip" data-tooltip="all" href="javascript:void(0);">Все модели</a>
+                    </div>
+                </div>
+                <div class="model">
+                    <div class="title">&nbsp;</div>
+                    <div class="items">
                         <a href="{{ link::to(@$pages_seo_url['cars-in-stock']->seo_url) }}">В наличии</a>
                     </div>
                 </div>
