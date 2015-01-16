@@ -26,7 +26,7 @@
     $route = Route::currentRouteName();
     $page_slug = Config::get('page.slug');
 ?>
-
+<div class="page-wrp">
 <header class="main-header{{ Request::is('/') ? '' : ' static-header' }}">
     @if(!Request::is('/'))
     <a href="{{ link::to() }}" class="logo"></a>
@@ -62,6 +62,7 @@
                     <div class="title">&nbsp;</div>
                     <div class="items">
                         <a class="js-tooltip" data-tooltip="all" href="javascript:void(0);">Все модели</a>
+                        <a href="{{ link::to(@$pages_seo_url['cars-in-stock']->seo_url) }}">В наличии</a>
                     </div>
                 </div>
             </div>
