@@ -7,7 +7,7 @@ function runFormValidation() {
     var contact_feedback = $("#contact-feedback-form").validate({
         rules:{
             fio: {required : true},
-            email: {required : true, email : true},
+            email: {required : true},
             content: {required : true}
         },
         messages : {
