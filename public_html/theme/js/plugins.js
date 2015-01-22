@@ -2,24 +2,17 @@
  *  http://grapheme.ru/
  */
 
-$(function(){
-
-});
-
-
 function runFormValidation() {
 
     var contact_feedback = $("#contact-feedback-form").validate({
         rules:{
             fio: {required : true},
             email: {required : true, email : true},
-            //phone: {required : true},
             content: {required : true}
         },
         messages : {
             fio : {required : 'Укажите Ваше полное имя'},
-            email : {required : 'Укажите адрес электронной почты'},
-            phone : {required : 'Укажите контактный номер телефона'},
+            email : {required : 'Укажите Email или телефон'},
             content : {required : 'Укажите текст вопроса'}
         },
         errorPlacement : function(error, element){error.insertAfter(element.parent());},
@@ -112,7 +105,7 @@ function runFormValidation() {
         }
     });
 
-    var order_testdrive_call0 = $("#order-testdrive-form0").validate({
+    var order_testdrive_call = $("#order-testdrive-form0").validate({
         rules:{
             fio: {required : true},
             phone: {required : true},
