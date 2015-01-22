@@ -8,6 +8,21 @@ html {
 	font-family: 'Open Sans', sans-serif;
 }
 
+html, body {
+	height: 100%;
+}
+
+.page-wrp {
+	min-height: 100%;
+	margin-bottom: -410px;
+
+	&:after {
+		content: "";
+		display: block;
+		height: 410px;
+	}
+}
+
 .wrapper {
 	position: relative;
 	width: 100%;
