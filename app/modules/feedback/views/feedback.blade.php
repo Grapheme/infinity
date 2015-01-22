@@ -6,11 +6,9 @@
 <body>
 	<div>
 		<p>
-            Сообщение от: {{ $name }} <{{ $email }}>
-            <br>Телефон: {{ $phone }}
-            <hr/>
-			{{ $content }}
-            <hr/>
+			Посетитель: {{ @$name }} <br>
+			Email/Телефон: {{ @$email }}<br>
+			Сообщение: <br>{{ $content }}
 		</p>
 	</div>
 </body>
