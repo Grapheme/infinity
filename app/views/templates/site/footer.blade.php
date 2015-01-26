@@ -93,9 +93,9 @@
                 <a href="tel:+78633050500" class="contact-link">+7 863 305-05-00</a>
             </div>
             <div class="soc-icons contact-block">
-                <a href="{{ link::to() }}" class="soc-link icon-fb"></a>
-                <a href="{{ link::to() }}" class="soc-link icon-vk"></a>
-                <a href="{{ link::to() }}" class="soc-link icon-in"></a>
+                <a target="_blank" href="https://ru-ru.facebook.com/people/%D0%98%D0%BD%D1%84%D0%B8%D0%BD%D0%B8%D1%82%D0%B8-%D0%93%D0%B5%D0%B4%D0%BE%D0%BD/100002742610075" class="soc-link icon-fb"></a>
+                <a target="_blank" href="https://vk.com/infinitigedon" class="soc-link icon-vk"></a>
+                <a target="_blank" href="http://instagram.com/infinitigedon" class="soc-link icon-in"></a>
             </div>
             <div class="contact-block">
                 <a href="http://infiniti.ru" target="_blank" class="typical-link">INFINITI в России</a>
