@@ -31,7 +31,7 @@
         @endif
             </div><!--
          --><div class="car-body">
-                @if(0)
+                @if(FALSE)
                     <div class="car-links">
                     @if(!empty($complection->brochure) && File::exists(public_path($complection->brochure)))
                          <a target="_blank" class="" href="{{ asset($complection->brochure) }}"><span class="icon icon-bricks"></span> Брошюра</a>
