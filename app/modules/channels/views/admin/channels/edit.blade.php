@@ -16,7 +16,7 @@
 				<header>Для изменения элемента отредактируйте форму:</header>
 				<fieldset>
                     <section>
-                        <label class="label">Название</label>
+                        <label class="label">Порядковый номер</label>
                         <label class="input">
                             {{ Form::text('order') }}
                         </label>
