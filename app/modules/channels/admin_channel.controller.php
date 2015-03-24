@@ -63,7 +63,7 @@ class AdminChannelController extends BaseController {
 
         $cat = Input::get('cat');
 		$channels = new Channel;
-        $channels = is_numeric($cat) ? $channels->where('category_id', $cat)->paginate($limit) : $channels->paginate($limit);
+        $channels = is_numeric($cat) ? $channels->where('category_id', $cat)->orderBy('order')->paginate($limit) : $channels->orderBy('order')->paginate($limit);
 
 		return View::make($this->module['tpl'].'index', compact('channels', 'categories', 'cat', 'category'));
 	}
@@ -179,6 +179,7 @@ class AdminChannelController extends BaseController {
         $channel->link = BaseController::stringTranslite(Input::get('link'));
         $channel->category_id = Input::get('category_id');
         $channel->product_id = Input::get('product_id');
+        $channel->order = Input::get('order');
         $channel->short = Input::get('short');
         $channel->desc = Input::get('desc');
         $channel->template = Input::get('template');

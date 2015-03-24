@@ -22,6 +22,7 @@ class CreateChannelsTables extends Migration {
                 $table->increments('id');
                 $table->integer('category_id')->default(0)->unsigned()->nullable();
                 $table->integer('product_id')->default(0)->unsigned()->nullable();
+                $table->integer('order')->default(0)->unsigned()->nullable();
                 $table->string('template',100)->nullable();
                 $table->string('title', 128)->nullable();
                 $table->string('price', 64)->nullable();
