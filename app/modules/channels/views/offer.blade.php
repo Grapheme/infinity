@@ -33,7 +33,7 @@
             @foreach($offers as $offer)
                 <li class="sub-offers-li">
                     @if(File::exists(public_path('uploads/galleries/'.$offer->images->name)))
-                   <div class="sub-offers-li-head" style="background: url({{ asset('uploads/galleries/thumbs/'.$offer->images->name) }}) no-repeat 0 0 / cover;">
+                   <div class="sub-offers-li-head" style="background: url({{ asset('uploads/galleries/thumbs/'.$offer->images->name) }}) no-repeat center center / cover;">
                        @if(!empty($offer->link))
                        <a href="{{ link::to('offer/'.$offer->link) }}"></a>
                        @endif
