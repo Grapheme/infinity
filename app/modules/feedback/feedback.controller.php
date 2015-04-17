@@ -127,10 +127,11 @@ class FeedbackController extends BaseController {
             if($product = Product::where('id',Input::get('product_id'))->with('meta')->first()):
                 $product_title = $product->meta->first()->title;
             endif;
-            Config::set('mail.sendto_mail','infiniti-info@gedon.ru');
-            Config::set('mail.sendto_mail_copy.first','Infiniti-sales@gedon.ru');
-            Config::set('mail.sendto_mail_copy.second','Infiniti-info@gedon.ru');
-            Config::set('mail.sendto_mail_copy.third','Infiniti-client@gedon.ru');
+            Config::set('mail.sendto_mail','vkharseev@gmail.com');
+//            Config::set('mail.sendto_mail','infiniti-info@gedon.ru');
+//            Config::set('mail.sendto_mail_copy.first','Infiniti-sales@gedon.ru');
+//            Config::set('mail.sendto_mail_copy.second','Infiniti-info@gedon.ru');
+//            Config::set('mail.sendto_mail_copy.third','Infiniti-client@gedon.ru');
             $this->postSendmessage(
                 Input::get('email'),
                 array('subject'=>'Заявка на кредит', 'name'=>Input::get('fio'), 'phone'=>Input::get('phone'), 'email'=>Input::get('email'), 'product'=>$product_title),
