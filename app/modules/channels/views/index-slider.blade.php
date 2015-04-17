@@ -18,7 +18,6 @@
             <li class="option"><a href="#" class="js-pop-show" data-popup="test-drive-models">Записаться<br>на тест-драйв</a>
             <li class="option"><a href="#" class="js-pop-show" data-popup="recover">Записаться<br>на сервис</a>
             <li class="option"><a href="#" class="js-pop-show" data-popup="items">Заказать<br>запчасти</a>
-            <li class="option"><a href="#" class="js-pop-show" data-popup="credit">Заявка<br>на кредит</a>
         </ul>
     </div>
     <div class="js-slider-nav">
