@@ -260,6 +260,49 @@
             </div>
         </div>
     </div>
+
+    <div class="pop-window pop-dtest closed" data-popup="credit">
+        <i class="js-pop-close">&#x2715;</i>
+        <div class="dtest-in">
+            <div class="title">Заявка<br>на кредит</div>
+            <div class="dtest-form">
+                {{ Form::open(array('url'=>URL::route('order_credit'),'role'=>'form','class'=>'smart-form','id'=>'order-credit-form','method'=>'post')) }}
+                <fieldset>
+                    <section>
+                        <input type="text" name="fio" class="dtest-input" placeholder="Ф.И.О.">
+                    </section>
+                    <section>
+                        <input type="text" name="phone" class="dtest-input" placeholder="Телефон">
+                    </section>
+                    <section>
+                        <input type="text" name="email" class="dtest-input" placeholder="Email">
+                    </section>
+                    <section>
+                        <select name="product_id" autoconplete="off" class="testSelect">
+                            <option value="">Выберите модель</option>
+                            @foreach($header_models as $product_category)
+                                @if($product_category->product->count())
+                                    @foreach($product_category->product as $product)
+                                        @if($product->in_menu == 1)
+                                            <option value="{{ $product->id }}">{{ $product->meta->first()->title  }}</option>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            @endforeach
+                        </select>
+                    </section>
+                </fieldset>
+                <footer>
+                    <button type="submit" autocomplete="off" class="btn fl-r btn-form-submit">
+                        <i class="fa fa-spinner fa-spin hidden"></i> <span class="btn-response-text">Отправить</span>
+                    </button>
+                </footer>
+                {{ Form::close() }}
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
 </section>
 
 @if($header_models->count())

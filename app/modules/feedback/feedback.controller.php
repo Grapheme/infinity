@@ -15,6 +15,9 @@ class FeedbackController extends BaseController {
         Route::post("/order-test-drive",array('as' => 'order_textdrive_call','uses' => $class."@postOrderTestDrive"));
         Route::post("/order-service",array('as' => 'order_service','uses' => $class."@postOrderService"));
         Route::post("/order_reserve",array('as' => 'order_reserve','uses' => $class."@postOrderReserve"));
+
+        Route::post("/order-credit",array('as' => 'order_credit','uses' => $class."@postOrderCredit"));
+
     }
 
     /****************************************************************************/
@@ -98,6 +101,40 @@ class FeedbackController extends BaseController {
                 Input::get('email'),
                 array('subject'=>'Заявка на тест-драйв', 'name'=>Input::get('fio'), 'phone'=>Input::get('phone'), 'email'=>Input::get('email'), 'product'=>$product_title),
                 'order_test_drive'
+            );
+            $json_request['responseText'] = 'Сообщение отправлено';
+            $json_request['status'] = TRUE;
+        else:
+            $json_request['responseText'] = 'Неверно заполнены поля';
+            $json_request['responseErrorText'] = implode($validation->messages()->all(), '<br />');
+        endif;
+        return Response::json($json_request, 200);
+    }
+
+    public function postOrderCredit() {
+
+        if(!Request::ajax()) return App::abort(404);
+        $json_request = array('status'=>FALSE, 'responseText'=>'','responseErrorText'=>'','redirect'=>FALSE);
+        $validation = Validator::make(Input::all(), array(
+            'fio'=>'required',
+            'phone'=>'required',
+            #'email'=>'required|email',
+            'product_id'=>'required')
+        );
+
+        if($validation->passes()):
+            $product_title = 'Не определено';
+            if($product = Product::where('id',Input::get('product_id'))->with('meta')->first()):
+                $product_title = $product->meta->first()->title;
+            endif;
+            Config::set('mail.sendto_mail','infiniti-info@gedon.ru');
+            Config::set('mail.sendto_mail_copy.first','Infiniti-sales@gedon.ru');
+            Config::set('mail.sendto_mail_copy.second','Infiniti-info@gedon.ru');
+            Config::set('mail.sendto_mail_copy.third','Infiniti-client@gedon.ru');
+            $this->postSendmessage(
+                Input::get('email'),
+                array('subject'=>'Заявка на кредит', 'name'=>Input::get('fio'), 'phone'=>Input::get('phone'), 'email'=>Input::get('email'), 'product'=>$product_title),
+                'order_credit'
             );
             $json_request['responseText'] = 'Сообщение отправлено';
             $json_request['status'] = TRUE;
