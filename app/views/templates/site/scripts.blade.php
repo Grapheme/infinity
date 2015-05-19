@@ -78,5 +78,6 @@
         } else { f(); }
     })(document, window, "yandex_metrika_callbacks");
     </script>
+    <link href="https://clients.streamwood.ru/StreamWood/sw.css" rel="stylesheet" type="text/css" /> <script type="text/javascript" src="https://clients.streamwood.ru/StreamWood/sw.js" charset="utf-8"></script> <script type="text/javascript"> swQ(document).ready(function(){ swQ().SW({ swKey: '5b6479f4c44f84b3573414c87f869185', swDomainKey: '6d64c2e167d188219ba9b83f397a46a5' }); swQ('body').SW('load'); }); </script>
     <noscript><div><img src="//mc.yandex.ru/watch/27506610" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
