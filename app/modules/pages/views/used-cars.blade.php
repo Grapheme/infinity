@@ -12,13 +12,12 @@
     </header>
     <?php
         $products = $accessories = $years = array();
-        #if($all_products = Product::with('meta')->get()):
         $all_products = ChannelCategory::where('slug', 'car-for-sale')->with(array('channel' => function($query){
                 $query->with(array('product' => function($query){
                         $query->with('meta');
                     }));
             }))->first();
-        #Helper::tad($all_products);
+        Helper::tad($all_products);
         if(count($all_products->channel)):
             foreach($all_products->channel as $product):
                 if (!$product->product)
