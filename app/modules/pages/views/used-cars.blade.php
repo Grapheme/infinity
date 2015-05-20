@@ -25,7 +25,7 @@
                     continue;
                 #$products[$product->id] = $product->meta->first()->title;
                 $products[$product->product->id] = $product->product->meta[0]->title;
-                $years[] = $product->year;
+                $years[$product->year] = $product->year;
             endforeach;
             rsort($years);
         endif;
@@ -42,9 +42,9 @@
                 @endforeach
             </select>
             @endif
-            <select name="year" class="customSelect selectYear filterSelectYear" data-filter-object-selector=".sub-offers-ul">
+            <select name="year" autocomplete="off" class="customSelect selectYear filterSelectYear" data-filter-object-selector=".sub-offers-ul">
                 <option value="0">Все года</option>
-            @foreach($years as $year)
+            @foreach($years as $year_index => $year)
                 <option value="{{ $year }}">{{ $year }}</option>
             @endforeach
             </select>
