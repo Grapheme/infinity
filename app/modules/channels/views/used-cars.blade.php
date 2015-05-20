@@ -1,11 +1,5 @@
-
 @if(!is_null($channelCategory) && $cars->count())
 <ul class="sub-offers-ul">
-
-    <?
-    #Helper::tad($cars);
-    ?>
-
 @foreach($cars as $car)
     <li data-model-id="{{ $car->product_id }}" data-model-year="{{ (int)$car->year }}" class="sub-offers-li">
         @if(!is_null($car->images) && File::exists(public_path('uploads/galleries/thumbs/'.$car->images->name)))
