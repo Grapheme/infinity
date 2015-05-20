@@ -22,6 +22,7 @@ that the width is big enough to contain all items.
     list-style: none;
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 /*
@@ -33,12 +34,17 @@ have a fixed width and height (but it's not required).
     float: left;
     border-left: 2px solid #fff;
     border-right: 2px solid #fff;
+    height: 100%;
 
     &:first-child {
 		border-left: none;
     }
     &:last-child {
 		border-right: none;
+    }
+
+    img {
+    	max-height: 100%;
     }
 }
 
