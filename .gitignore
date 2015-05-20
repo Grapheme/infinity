@@ -12,4 +12,3 @@ composer.lock
 
 #public_html/uploads/galleries/*.jpg
 #public_html/uploads/galleries/thumbs/*.jpg
-test.txt
