@@ -59,6 +59,7 @@ class FeedbackController extends BaseController {
         $validation = Validator::make(Input::all(), array('fio'=>'required', 'phone'=>'required', 'datetime'=>'required'));
         if($validation->passes()):
             Config::set('mail.sendto_mail','infiniti-info@gedon.ru');
+            Config::set('mail.sendto_mail_copy.first','infiniti-sales@gedon.ru');
             #Config::set('mail.sendto_mail','vkharseev@gmail.com');
             $this->postSendmessage(
                 NULL,
@@ -94,9 +95,7 @@ class FeedbackController extends BaseController {
                 $product_title = $product->meta->first()->title;
             endif;
             Config::set('mail.sendto_mail','infiniti-info@gedon.ru');
-            Config::set('mail.sendto_mail_copy.first','Infiniti-sales@gedon.ru');
-            Config::set('mail.sendto_mail_copy.second','Infiniti-info@gedon.ru');
-            Config::set('mail.sendto_mail_copy.third','Infiniti-client@gedon.ru');
+            Config::set('mail.sendto_mail_copy.first','infiniti-sales@gedon.ru');
             $this->postSendmessage(
                 Input::get('email'),
                 array('subject'=>'Заявка на тест-драйв', 'name'=>Input::get('fio'), 'phone'=>Input::get('phone'), 'email'=>Input::get('email'), 'product'=>$product_title),
