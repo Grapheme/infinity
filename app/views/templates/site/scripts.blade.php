@@ -59,7 +59,7 @@
         var carfinParam = {
         'partner': 688,
         'htmlPrice': 'carfinPrice',
-        'positionAlign': 'left',
+        'positionAlign': 'right',
         'positionTop': 50,
         'tpl': 14
         };
