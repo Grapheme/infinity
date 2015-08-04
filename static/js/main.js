@@ -447,7 +447,7 @@ var tooltips = (function(){
 				cont.hide();
 				//cont.find('.cars-ul li').removeClass('fadeOut');
 			}, 500);
-		}, 1000);
+		}, 2000);
 	}
 
 })();
