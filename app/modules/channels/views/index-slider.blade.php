@@ -10,6 +10,9 @@
             <div class="car-name">{{ $slide->title }}</div>
             <div class="car-desc">
                 {{ $slide->short }}
+                @if(!empty($slide->link))
+                    <a class="slider-link" href="{{ $slide->link }}">ПОДРОБНЕЕ</a>
+                @endif
             </div>
         </div>
     @endforeach
