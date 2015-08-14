@@ -30,6 +30,7 @@ class ProductionController extends BaseController {
                     Route::get('/'.$self::$prefix_url.'/{url}/galleries', array('as' => 'galleries_product', 'uses' => __CLASS__.'@showProductGalleries')); ## I18n Production
                     Route::get('/'.$self::$prefix_url.'/{url}/complections', array('as' => 'complections_product', 'uses' => __CLASS__.'@showProductComplections')); ## I18n Production
                     Route::get('/'.$self::$prefix_url.'/{url}/accessories', array('as' => 'accessories_product', 'uses' => __CLASS__.'@showProductAccessories')); ## I18n Production
+                    Route::get('/'.$self::$prefix_url.'/{url}/extras-equipment', array('as' => 'extras_equipment_product', 'uses' => __CLASS__.'@showProductExtrasEquipment')); ## I18n Production
                 });
             }
         }
@@ -42,6 +43,7 @@ class ProductionController extends BaseController {
             Route::get('/'.$self::$prefix_url.'/{url}/galleries', array('as' => 'galleries_product', 'uses' => __CLASS__.'@showProductGalleries'));
             Route::get('/'.$self::$prefix_url.'/{url}/complections', array('as' => 'complections_product', 'uses' => __CLASS__.'@showProductComplections'));
             Route::get('/'.$self::$prefix_url.'/{url}/accessories', array('as' => 'accessories_product', 'uses' => __CLASS__.'@showProductAccessories'));
+            Route::get('/'.$self::$prefix_url.'/{url}/extras-equipment', array('as' => 'extras_equipment_product', 'uses' => __CLASS__.'@showProductExtrasEquipment')); ## I18n Production
         });
     }
 
@@ -230,6 +232,53 @@ class ProductionController extends BaseController {
             $product->accessories = $accessories;
         endif;
         return View::make($this->tpl.'accessories',
+            array(
+                'product' => $product,
+                'page_title'=>$product->meta->first()->title,
+                'page_description'=>'',
+                'page_keywords'=>'',
+                'page_author'=>'',
+                'page_h1'=>$product->meta->first()->title
+            )
+        );
+    }
+
+    public function showProductExtrasEquipment($url){
+
+        if (!@$url) $url = Input::get('url');
+        $products = Product::where('show_item',1)->with(array('meta' => function ($query) use ($url) {
+            $query->where('seo_url', $url);
+        }))->with(array('extras_equipment'=>function($query){
+            $query->with('images');
+            $query->with('category');
+        }))->get();
+        $product = NULL;
+        foreach ($products as $product_info):
+            if (!is_null($product_info->meta->first()) && $product_info->meta->first()->seo_url == $url):
+                @$product_info->meta->first()->content = '';
+                @$product_info->meta->first()->preview = '';
+                @$product_info->meta->first()->in_menu_content = '';
+                @$product_info->meta->first()->specifications = '';
+                $product = $product_info;
+                break;
+            endif;
+        endforeach;
+        if(is_null($product)):
+            return App::abort(404);
+        endif;
+        if($product->extras_equipment->count()):
+            $categories = ProductAccessoryCategories::lists('title','id');
+            $equipments = array();
+            foreach ($categories as $category_id => $category_title):
+                foreach ($product->extras_equipment as $accessory):
+                    if($accessory->category_id == $category_id):
+                        $equipments[$category_title][] = $accessory;
+                    endif;
+                endforeach;
+            endforeach;
+            $product->extras_equipment = $equipments;
+        endif;
+        return View::make($this->tpl.'extras_equipment',
             array(
                 'product' => $product,
                 'page_title'=>$product->meta->first()->title,

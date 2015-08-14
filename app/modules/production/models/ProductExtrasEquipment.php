@@ -12,6 +12,7 @@ class ProductExtrasEquipment extends BaseModel {
     );
 
     public function images(){
+
         return $this->belongsTo('Photo','image_id');
     }
 
