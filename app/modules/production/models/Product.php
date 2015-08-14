@@ -43,6 +43,10 @@ class Product extends BaseModel {
         return $this->hasMany('ProductAccessory','product_id');
     }
 
+    public  function extras_equipment(){
+        return $this->hasMany('ProductExtrasEquipment','product_id');
+    }
+
     public  function galleries(){
         return $this->hasMany('Rel_mod_gallery','unit_id');
     }

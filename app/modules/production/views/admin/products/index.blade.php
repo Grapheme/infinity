@@ -48,15 +48,11 @@
 
     @if($products->count())
     <div class="row">
-    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     		<table class="table table-striped table-bordered">
     			<thead>
     				<tr>
-                        {{--
-    					<th class="col-lg-1 text-center">ID</th>
-                        --}}
     					<th class="col-lg-5 text-center" style="white-space:nowrap;">Продукт</th>
-    					<th class="col-lg-5 text-center" style="white-space:nowrap;">Цена</th>
     					<th class="col-lg-1 text-center">Дополнительно</th>
     					<th class="col-lg-1 text-center">Действия</th>
     				</tr>
@@ -64,19 +60,14 @@
     			<tbody>
     			@foreach($products as $product)
     				<tr class="vertical-middle">
-                        {{--
-    					<td class="text-center">{{ $product->id }}</td>
-                        --}}
     					<td>
                             {{ $product->meta->first()->title }}
-                        </td>
-                        <td>
-                            {{ $product->meta->first()->price }}
                         </td>
     					<td class="text-center" style="white-space:nowrap;">
     					    @if(Allow::action($module['group'], 'product_edit'))
                             <a href="{{ URL::route('instock.index', array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">В наличии{{ $product->instocks->count() ? ' (' . $product->instocks->count() . ')' : '' }}</a>
                             <a href="{{ URL::route('product_accessory_index',array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">Аксессуары</a>
+                            <a href="{{ URL::route('product_extras_equipment_index',array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">Доп. оборудование</a>
                             <a href="{{ URL::route('product_complection_index',array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">Комплектации и цены</a>
                             <a href="{{ URL::route('product_color_index',array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">Цвета</a>
                             <a href="{{ URL::route('product_video_index',array('product_id'=>$product->id)) }}" class="btn btn-link margin-right-10">Видео</a>
