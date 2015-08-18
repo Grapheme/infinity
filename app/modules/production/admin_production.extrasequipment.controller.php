@@ -140,6 +140,7 @@ class AdminProductionExtrasequipmentController extends BaseController {
             $equipment = $this->equipment;
         endif;
 
+        $equipment->order = Input::get('order');
         $equipment->product_id = $this->product->id;
         $equipment->title = Input::get('title');
         $equipment->price = Input::get('price');

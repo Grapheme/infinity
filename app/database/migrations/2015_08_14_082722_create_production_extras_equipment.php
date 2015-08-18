@@ -15,6 +15,7 @@ class CreateProductionExtrasEquipment extends Migration {
 			$table->integer('accessibility_id')->default(0)->unsigned()->nullable();
 			$table->integer('image_id')->default(0)->unsigned()->nullable();
 			$table->integer('product_id')->default(0)->unsigned()->nullable();
+			$table->integer('order')->default(0)->unsigned()->nullable();
 			$table->timestamps();
 		});
 	}

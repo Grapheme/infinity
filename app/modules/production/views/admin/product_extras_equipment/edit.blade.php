@@ -43,6 +43,12 @@
                             {{ Form::textarea('description',NULL,array('class'=>'redactor redactor_150')) }}
                         </label>
                     </section>
+                    <section>
+                        <label class="label">Порядковый номер</label>
+                        <label class="input"> <i class="icon-append fa fa-list-alt"></i>
+                            {{ Form::text('order') }}
+                        </label>
+                    </section>
                 </fieldset>
             </div>
         </section>

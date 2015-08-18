@@ -11,7 +11,13 @@
     </header>
     <?php
         $products = $accessories = array();
-        if($all_products = Product::with('meta')->get()):
+        if($all_products = Product::where('in_menu', 1)->with('meta')->get()):
+            foreach($all_products as $index => $product):
+                $all_products[$index]['meta']->first()->preview = '';
+                $all_products[$index]['meta']->first()->in_menu_content = '';
+                $all_products[$index]['meta']->first()->specifications = '';
+                $all_products[$index]['meta']->first()->content = '';
+            endforeach;
             foreach($all_products as $product):
                 $products[$product->id] = $product->meta->first()->title;
             endforeach;
@@ -49,7 +55,7 @@
         <dt class="acc-dt"><h2>{{ $accessories_category_title }}</h2></dt>
             <dd class="acc-dd">
                 <ul class="acc-ul">
-                @foreach($accessories_category as $accessory )
+                @foreach($accessories_category as $accessoryz )
                     <li data-model-id="{{ $accessory->product->id }}" class="acc-li clearfix">
                         @if(File::exists(public_path('uploads/galleries/thumbs/'.$accessory->images->name)))
                             <img class="acc-left" src="{{ asset('uploads/galleries/thumbs/'.$accessory->images->name) }}" alt="">
