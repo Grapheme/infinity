@@ -16,7 +16,7 @@
                 $products[$product->id] = $product->meta->first()->title;
             endforeach;
         endif;
-        $all_accessories = ProductExtrasEquipment::orderBy('order')->orderBy('price')->with('category')->with('images')->with('product')->get();
+        $all_accessories = ProductExtrasEquipment::orderBy('order')->orderBy('price', 'DESC')->with('category')->with('images')->with('product')->get();
 
         if($all_accessories->count()):
             $categories = ProductAccessoryCategories::lists('title','id');
