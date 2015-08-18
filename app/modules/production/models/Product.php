@@ -44,7 +44,7 @@ class Product extends BaseModel {
     }
 
     public  function extras_equipment(){
-        return $this->hasMany('ProductExtrasEquipment','product_id');
+        return $this->hasMany('ProductExtrasEquipment','product_id')->orderBy('order');
     }
 
     public  function galleries(){
