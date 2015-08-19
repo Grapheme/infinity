@@ -11,7 +11,7 @@
             {{ $element->channel->first()->short }}
         </div>
     </header>
-    @if(File::exists(public_path('uploads/galleries/'.$element->channel->first()->images->name)))
+    @if(!empty($element->channel->first()->images) && File::exists(public_path('uploads/galleries/'.$element->channel->first()->images->name)))
         <div class="offer-img" style="background-image: url({{ asset('uploads/galleries/'.$element->channel->first()->images->name) }});"></div>
     @endif
 </section>
@@ -32,7 +32,7 @@
         <ul class="sub-offers-ul">
             @foreach($offers as $offer)
                 <li class="sub-offers-li">
-                    @if(File::exists(public_path('uploads/galleries/'.$offer->images->name)))
+                    @if(!empty($offer->images) && File::exists(public_path('uploads/galleries/'.$offer->images->name)))
                    <div class="sub-offers-li-head" style="background: url({{ asset('uploads/galleries/thumbs/'.$offer->images->name) }}) no-repeat center center / cover;">
                        @if(!empty($offer->link))
                        <a href="{{ link::to('offer/'.$offer->link) }}"></a>

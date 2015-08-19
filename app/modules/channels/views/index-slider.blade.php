@@ -25,7 +25,7 @@
     </div>
     <div class="js-slider-nav">
     @foreach($products_slider as $slide)
-        @if(File::exists(public_path('uploads/galleries/'.$slide->images->name)))
+        @if(!empty($slide->images) && File::exists(public_path('uploads/galleries/'.$slide->images->name)))
         <i data-thumb="{{ asset('uploads/galleries/thumbs/'.$slide->images->name) }}" data-img="{{ asset('uploads/galleries/'.$slide->images->name) }}"></i>
         @endif
     @endforeach

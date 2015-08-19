@@ -51,7 +51,7 @@
                 <ul class="acc-ul">
                 @foreach($accessories_category as $accessory)
                     <li data-model-id="{{ $accessory->product->id }}" class="acc-li clearfix">
-                        @if(File::exists(public_path('uploads/galleries/thumbs/'.$accessory->images->name)))
+                        @if(!empty($accessory->images) && File::exists(public_path('uploads/galleries/thumbs/'.$accessory->images->name)))
                             <img class="acc-left" src="{{ asset('uploads/galleries/thumbs/'.$accessory->images->name) }}" alt="">
                         @endif
                         <div class="acc-right">

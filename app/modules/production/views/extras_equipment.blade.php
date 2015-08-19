@@ -16,7 +16,7 @@
                     <ul class="acc-ul">
                         @foreach($accessories as $accessory)
                             <li class="acc-li clearfix">
-                                @if(File::exists(public_path('uploads/galleries/thumbs/'.$accessory->images->name)))
+                                @if(!empty($accessory->images) && File::exists(public_path('uploads/galleries/thumbs/'.$accessory->images->name)))
                                     <img class="acc-left"
                                          src="{{ asset('uploads/galleries/thumbs/'.$accessory->images->name) }}"
                                          alt="">
