@@ -10,6 +10,7 @@
         <h1>Аксессуары</h1>
     </header>
     <?php
+        if(0):
         $products = $accessories = array();
         if($all_products = Product::with('meta')->get()):
             foreach($all_products as $product):
@@ -28,6 +29,7 @@
                     endif;
                 endforeach;
             endforeach;
+        endif;
         endif;
     ?>
 @if(count($products))
