@@ -10,7 +10,6 @@
         <h1>Аксессуары</h1>
     </header>
     <?php
-        if(0):
         $products = $accessories = array();
         if($all_products = Product::with('meta')->get()):
             foreach($all_products as $product):
@@ -30,10 +29,9 @@
                 endforeach;
             endforeach;
         endif;
-        endif;
     ?>
 @if(count($products))
-    <div class="cars-filter">
+    <!-- <div class="cars-filter">
         <select class="customSelect selectModel filterSelectModel" data-filter-object-selector=".acc-ul">
             <option value="0">Все модели</option>
         @foreach($products as $product_id => $product_title)
@@ -43,7 +41,7 @@
         <div class="founded">
             Найдено результатов: <span id="count-results" class="count-results">{{ $all_accessories->count() }}</span>
         </div>
-    </div>
+    </div> -->
 @endif
 @if(count($accessories))
     <dl class="acc-dl">
