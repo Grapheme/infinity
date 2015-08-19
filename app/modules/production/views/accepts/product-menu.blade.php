@@ -10,6 +10,7 @@
        <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url.'/galleries') }}" class="model-option @if($route == 'galleries_product') active @endif">Галерея</a>
        <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url.'/complections') }}" class="model-option @if($route == 'complections_product') active @endif">Комплектации и цены</a>
        <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url.'/accessories') }}" class="model-option @if($route == 'accessories_product') active @endif">Аксессуары</a>
+       <a href="{{ link::to(ProductionController::$prefix_url.'/'.$product->meta->first()->seo_url.'/extras-equipment') }}" class="model-option @if($route == 'extras-equipment') active @endif">Доп. оборудование</a>
    </div><!--
  --><div class="model-right">
 		@if($instocks_count = $product->instocks->count())<span class="model-exist"><a href="{{ link::to(I18nPage::where('slug','cars-in-stock')->first()->metas()->pluck('seo_url').'?model=' . $product->id) }}" class="model-option">{{ $instocks_count }} {{ $product->meta->first()->title }} в наличии</a></span>@endif<!--

@@ -126,7 +126,7 @@ class AdminChannelController extends BaseController {
         $json_request = array('status'=>FALSE, 'responseText'=>'', 'responseErrorText'=>'', 'redirect'=>FALSE, 'gallery'=>0);
         $validation = Validator::make(Input::all(), Product::$rules);
         if($validation->passes()):
-            $channel = $this->channel->find($id);
+            $channel = $this->channel->where('id', $id)->first();
             self::saveChannelModel($channel);
             $json_request['gallery'] = self::saveChannelGallery();
             $json_request['responseText'] = 'Элемент канала обновлен';
@@ -147,7 +147,7 @@ class AdminChannelController extends BaseController {
         Allow::permission($this->module['group'], 'channel_delete');
         $json_request = array('status'=>FALSE, 'responseText'=>'');
         if(Request::ajax()):
-            $channel = $this->channel->find($id);
+            $channel = $this->channel->where('id', $id)->first();
             if (!empty($channel->file) && File::exists(public_path($channel->file))):
                 File::delete(public_path($channel->file));
             endif;
@@ -176,7 +176,7 @@ class AdminChannelController extends BaseController {
         $channel->title = Input::get('title');
         $channel->price = Input::get('price');
         $channel->year = Input::get('year');
-        $channel->link = BaseController::stringTranslite(Input::get('link'));
+        $channel->link = Input::get('link');
         $channel->category_id = Input::get('category_id');
         $channel->product_id = Input::get('product_id');
         $channel->order = Input::get('order');

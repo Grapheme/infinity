@@ -25,7 +25,7 @@
                 <h3>{{ $complection->title }}</h3>
                 <div class="car-price">{{ $complection->price }}</div>
         @if(!empty($complection->images))
-            @if(File::exists(public_path('uploads/galleries/thumbs/'.$complection->images->name)))
+            @if(!empty($complection->images) && File::exists(public_path('uploads/galleries/thumbs/'.$complection->images->name)))
                 <img class="car-image" src="{{ asset('uploads/galleries/thumbs/'.$complection->images->name) }}" alt="">
             @endif
         @endif

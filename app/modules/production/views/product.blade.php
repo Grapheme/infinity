@@ -18,7 +18,7 @@
         <div class="color-fotorama">
             @foreach($product->colors as $product_color)
                 @if (is_object($product_color->images))
-                    @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
+                    @if(!empty($product_color->images) && File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
                         <img src="{{ $product_color->images->full() }}" alt="">
                     @endif
                 @endif
@@ -50,7 +50,7 @@
             <ul class="colors-list">
             @foreach($product->colors as $product_color)
                 @if (is_object($product_color->images))
-                    @if(File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
+                    @if(!empty($product_color->images) && File::exists(public_path('uploads/galleries/'.$product_color->images->name)))
                         <li class="color-item" style="background-color: {{ $product_color->color }};" data-color="{{ $product_color->color }}" title="{{ $product_color->title }}"></li>
                     @endif
                 @endif

@@ -73,6 +73,7 @@
                     <li class="option"><a href="{{ link::to(@$pages_seo_url['reserve-parts']->seo_url.'#guarantee') }}">Гарантия</a>
                     <li class="option"><a href="{{ link::to(@$pages_seo_url['reserve-parts']->seo_url.'#vip') }}">VIP обслуживание</a>
                     <li class="option"><a href="{{ link::to(@$pages_seo_url['reserve-parts-accessories']->seo_url) }}">Аксессуары</a>
+                    <li class="option"><a href="{{ link::to(@$pages_seo_url['extras-equipment']->seo_url) }}">Доп. оборудование</a>
 
                 </ul>
             </div>
