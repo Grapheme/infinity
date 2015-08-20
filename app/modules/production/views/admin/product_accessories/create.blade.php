@@ -48,6 +48,12 @@
                             {{ Form::textarea('description','',array('class'=>'redactor redactor_150')) }}
                         </label>
                     </section>
+                    <section>
+                        <label class="label">Порядковый номер</label>
+                        <label class="input"> <i class="icon-append fa fa-list-alt"></i>
+                            {{ Form::text('order', (int) ProductAccessory::orderBy('order','DESC')->pluck('order') + 1) }}
+                        </label>
+                    </section>
                 </fieldset>
             </div>
         </section>

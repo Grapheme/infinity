@@ -140,6 +140,7 @@ class AdminProductionAccessoriesController extends BaseController {
             $accessory = $this->accessory;
         endif;
 
+        $accessory->order = Input::get('order');
         $accessory->product_id = $this->product->id;
         $accessory->title = Input::get('title');
         $accessory->price = Input::get('price');
