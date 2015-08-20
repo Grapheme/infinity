@@ -11,15 +11,14 @@
         </header>
         <?php
         $products = $accessories = array();
-        if($all_products = Product::where('in_menu', 1)->with('meta', 'accessories')->get()):
+        if($all_products = Product::where('in_menu', 1)->with('accessories')->get()):
             foreach ($all_products as $product):
                 if (count($product->accessories)):
                     $products[$product->id] = $product->meta->first()->title;
                 endif;
             endforeach;
         endif;
-        $all_accessories = ProductAccessory::orderBy('title')->orderBy('price')->with('category')->with('accessibility')->with('images')->with('product')->get();
-
+        $all_accessories = ProductAccessory::orderBy('order')->orderBy('price')->with('category')->with('accessibility')->with('images')->with('product')->get();
         if($all_accessories->count()):
             $categories = ProductAccessoryCategories::lists('title','id');
             $accessories = array();
