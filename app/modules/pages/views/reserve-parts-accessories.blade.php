@@ -20,17 +20,17 @@
     endif;
     $all_accessories = ProductAccessory::orderBy('title')->orderBy('price')->with('category')->with('accessibility')->with('images')->with('product')->get();
 
-    if ($all_accessories->count()):
-        $categories = ProductAccessoryCategories::lists('title', 'id');
-        $accessories = array();
-        foreach ($categories as $category_id => $category_title):
-            foreach ($all_accessories as $accessory):
-                if ($accessory->category_id == $category_id):
-                    $accessories[$category_title][] = $accessory;
-                endif;
+        if($all_accessories->count()):
+            $categories = ProductAccessoryCategories::lists('title','id');
+            $accessories = array();
+            foreach ($categories as $category_id => $category_title):
+                foreach ($all_accessories as $accessory):
+                    if($accessory->category_id == $category_id):
+                        $accessories[$category_title][] = $accessory;
+                    endif;
+                endforeach;
             endforeach;
-        endforeach;
-    endif;
+        endif;
     ?>
     @if(count($products))
         <div class="cars-filter">
@@ -46,42 +46,40 @@
                                            class="count-results">{{ $all_accessories->count() }}</span>
             </div>
         </div>
-    @endif
-    @if(count($accessories))
-        <dl class="acc-dl">
-            @foreach($accessories as $accessories_category_title => $accessories_category )
-                <dt class="acc-dt"><h2>{{ $accessories_category_title }}</h2></dt>
-                <dd class="acc-dd">
-                    <ul class="acc-ul">
-                        @foreach($accessories_category as $accessory )
-                            <li data-model-id="{{ $accessory->product->id }}" class="acc-li clearfix">
-                                @if(!empty($accessory->images) && File::exists(public_path('uploads/galleries/thumbs/'.$accessory->images->name)))
-                                    <img class="acc-left"
-                                         src="{{ asset('uploads/galleries/thumbs/'.$accessory->images->name) }}"
-                                         alt="">
-                                @endif
-                                <div class="acc-right">
-                                    <h2>{{ $accessory->title }}</h2>
-
-                                    <div class="desc">
-                                        {{ $accessory->description }}
-                                    </div>
-                                    @if(!empty($accessory->price))
-                                        <div class="price">
-                                            {{ $accessory->price }}
-                                        </div>
-                                    @endif
-                                    <div class="availability">
-                                        {{ $accessory->accessibility->title }}
-                                    </div>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                </dd>
-            @endforeach
-        </dl>
-    @endif
+    </div> -->
+@endif
+@if(count($accessories))
+    <dl class="acc-dl">
+        @foreach($accessories as $accessories_category_title => $accessories_category )
+        <dt class="acc-dt"><h2>{{ $accessories_category_title }}</h2></dt>
+            <dd class="acc-dd">
+                <ul class="acc-ul">
+                @foreach($accessories_category as $accessory )
+                    <li data-model-id="{{ $accessory->product->id }}" class="acc-li clearfix">
+                        @if(File::exists(public_path('uploads/galleries/thumbs/'.$accessory->images->name)))
+                            <img class="acc-left" src="{{ asset('uploads/galleries/thumbs/'.$accessory->images->name) }}" alt="">
+                        @endif
+                        <div class="acc-right">
+                            <h2>{{ $accessory->title }}</h2>
+                            <div class="desc">
+                                {{ $accessory->description }}
+                            </div>
+                            @if(!empty($accessory->price))
+                            <div class="price">
+                                {{ $accessory->price }}
+                            </div>
+                            @endif
+                            <div class="availability">
+                                {{ $accessory->accessibility->title }}
+                            </div>
+                        </div>
+                    </li>
+                @endforeach
+                </ul>
+            </dd>
+        @endforeach
+    </dl>
+@endif
 </section>
 @stop
 @section('scripts')
