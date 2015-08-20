@@ -11,9 +11,11 @@
     </header>
     <?php
         $products = $accessories = array();
-        if($all_products = Product::where('in_menu', 1)->with('meta')->get()):
-            foreach($all_products as $product):
-                $products[$product->id] = $product->meta->first()->title;
+        if($all_products = Product::where('in_menu', 1)->with('meta','extras_equipment')->get()):
+            foreach ($all_products as $product):
+                if(count($product->extras_equipment)):
+                    $products[$product->id] = $product->meta->first()->title;
+                endif;
             endforeach;
         endif;
         $all_accessories = ProductExtrasEquipment::orderBy('order')->orderBy('price', 'DESC')->with('category')->with('images')->with('product')->get();
