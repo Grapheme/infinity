@@ -1,3 +1,7 @@
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ $('.slider-container').addClass('mobile-slider-fix');
+}
+
 var grphm_slider = (function(){
 	$.fn.slider = function(option) {
 		var img = [],
