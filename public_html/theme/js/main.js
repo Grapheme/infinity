@@ -1,3 +1,7 @@
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	$('.slider-container').addClass('mobile-slider-fix');
+}
+
 var car_tooltip_allow = true;
 
 $.fn.slider = function(option) {

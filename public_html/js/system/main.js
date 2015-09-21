@@ -1,6 +1,10 @@
 /*  Author: Grapheme Group
  *  http://grapheme.ru/
  */
+
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	$('.slider-container').addClass('mobile-slider-fix');
+}
  
 var BASIC = BASIC || {};
 
